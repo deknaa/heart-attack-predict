@@ -12,5 +12,6 @@
 </head>
 <body>
     <x-navbar></x-navbar>
+    <x-hero-section></x-hero-section>
 </body>
 </html>
