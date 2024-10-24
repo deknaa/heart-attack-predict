@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,5 +13,6 @@
 <body>
     <x-navbar></x-navbar>
     <x-hero-section></x-hero-section>
+    <x-landing-page.how-its-work></x-landing-page.how-its-work>
 </body>
 </html>
