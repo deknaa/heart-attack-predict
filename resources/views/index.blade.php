@@ -14,5 +14,6 @@
     <x-navbar></x-navbar>
     <x-hero-section></x-hero-section>
     <x-landing-page.how-its-work></x-landing-page.how-its-work>
+    <x-landing-page.testimony></x-landing-page.testimony>
 </body>
 </html>
