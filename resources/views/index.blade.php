@@ -17,5 +17,6 @@
     <x-landing-page.testimony></x-landing-page.testimony>
     <x-landing-page.about></x-landing-page.about>
     <x-landing-page.articles></x-landing-page.articles>
+    <x-landing-page.contacts></x-landing-page.contacts>
 </body>
 </html>
