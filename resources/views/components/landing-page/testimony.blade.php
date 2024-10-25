@@ -1,7 +1,7 @@
 <div class="mt-24 mb-7 flex justify-center">
     <h2 class="text-4xl lg:text-6xl font-extrabold text-left">Testimony</h2>
 </div>
-<div class="max-w-screen-xl flex flex-col lg:flex-row justify-between mx-auto p-4 ">
+<div class="max-w-screen-xl flex flex-col lg:flex-row justify-between mx-auto p-4 mb-12">
     @for ($i = 1; $i <= 3; $i++)
         <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <article class="p-5">
