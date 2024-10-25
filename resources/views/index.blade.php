@@ -16,5 +16,6 @@
     <x-landing-page.how-its-work></x-landing-page.how-its-work>
     <x-landing-page.testimony></x-landing-page.testimony>
     <x-landing-page.about></x-landing-page.about>
+    <x-landing-page.articles></x-landing-page.articles>
 </body>
 </html>
