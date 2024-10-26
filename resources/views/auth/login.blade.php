@@ -8,14 +8,15 @@
             <div class="bg-green-600 h-screen">
                 <div class="p-7 flex justify-end h-[20vh]">
                     <div class="flex items-center justify-center">
-                        <a href="{{ url('/') }}"
-                            class="text-slate-200 hover:text-white border border-slate-200 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 w-full">
-                            <div class="flex gap-2">
-                                <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+
+                        <a href="{{ url('/') }}" class="relative inline-flex items-center justify-center p-4 px-10 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-white rounded-lg shadow-md group">
+                            <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 translate-x-full bg-white group-hover:translate-x-0 ease">
+                                <svg class="w-6 h-6 text-green-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12l4-4m-4 4 4 4"/>
                                 </svg>
-                                Back to website
-                            </div>
+                            </span>
+                            <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-y-full ease">Back to website</span>
+                            <span class="relative invisible">Back to website</span>
                         </a>
                     </div>
                 </div>
