@@ -1,5 +1,95 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <div class="flex max-h-screen w-full">
+
+        <div class="w-1/2">
+            <div class="bg-green-600 h-screen">
+                <div class="p-7 flex justify-end h-[20vh]">
+                    <div class="flex items-center justify-center">
+
+                        <a href="{{ route('login') }}" class="relative inline-flex items-center justify-center p-4 px-10 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-white rounded-lg shadow-md group">
+                            <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 translate-x-full bg-white group-hover:translate-x-0 ease">
+                                <svg class="w-6 h-6 text-green-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12l4-4m-4 4 4 4"/>
+                                </svg>
+                            </span>
+                            <span class="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-y-full ease">Back to login</span>
+                            <span class="relative invisible">Back to login</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="flex items-center justify-end h-[80vh]">
+                    <img src="{{ asset('image/landingpage/doctor.png') }}" alt="" class="w-full h-full">
+                </div>
+            </div>
+        </div>
+
+        <div class="w-1/2 flex flex-col justify-center mt-2">
+            <div class="ml-48">
+                <h1 class="text-4xl font-extrabold">Health<span class="text-green-600">Care</span></h1>
+                <h2 class="text-lg mb-5">Create an Account</h2>
+                <form action="{{ route('register') }}" method="POST">
+                    @csrf
+                    
+                    {{-- Name --}}
+                    <div class="mb-6">
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                        <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-2/3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter your name" required autofocus autocomplete="username" value="{{ old('name') }}"/>
+                        <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                    </div>
+
+                    {{-- Email Address --}}
+                    <div class="mb-6">
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email address</label>
+                        <input type="email" id="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-2/3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter your email address" required autofocus autocomplete="username" value="{{ old('email') }}"/>
+                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    </div>
+
+                    {{-- Password --}}
+                    <div class="mb-6">
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                        <input type="password" id="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-2/3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="•••••••••" required autocomplete="new-password" />
+                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                    </div>
+
+                    {{-- Confirm Password --}}
+                    <div class="mb-6">
+                        <label for="password_confirmation" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm Password</label>
+                        <input type="password" id="password_confirmation" name="password_confirmation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-2/3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="•••••••••" required autocomplete="new-password" />
+                        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                    </div>
+
+                    <div class="flex items-start w-2/3">
+                        <div>
+                            <input id="terms" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" name="terms" required/>
+                            <label for="terms" class="ms-2 me-36 text-sm font-medium text-gray-900 dark:text-gray-300">I agree to the <a href="" class="underline text-blue-500 hover:text-blue-700">Terms & Conditions</a></label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="w-2/3 text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 mt-5">{{ __('Sign Up') }}</button>
+                    </div>
+
+                    <div class="flex justify-center items-center gap-3 w-2/3 mt-2">
+                        <hr class="w-1/4">
+                        <p>Or Register With</p>
+                        <hr class="w-1/4">
+                    </div>
+
+                    <div class="flex items-center justify-center w-2/3 mt-3">
+                        <button type="button" class="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 me-2 mb-2">
+                            <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 19">
+                            <path fill-rule="evenodd" d="M8.842 18.083a8.8 8.8 0 0 1-8.65-8.948 8.841 8.841 0 0 1 8.8-8.652h.153a8.464 8.464 0 0 1 5.7 2.257l-2.193 2.038A5.27 5.27 0 0 0 9.09 3.4a5.882 5.882 0 0 0-.2 11.76h.124a5.091 5.091 0 0 0 5.248-4.057L14.3 11H9V8h8.34c.066.543.095 1.09.088 1.636-.086 5.053-3.463 8.449-8.4 8.449l-.186-.002Z" clip-rule="evenodd"/>
+                            </svg>
+                            Sign Up with Google
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+    {{-- <form method="POST" action="{{ route('register') }}">
         @csrf
 
         <!-- Name -->
@@ -48,5 +138,5 @@
                 {{ __('Register') }}
             </x-primary-button>
         </div>
-    </form>
+    </form> --}}
 </x-guest-layout>
