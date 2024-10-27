@@ -1,7 +1,75 @@
 <x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+    <div class="w-full h-screen flex items-center justify-center">
+        <div class="bg-green-500 rounded-xl shadow-xl w-1/2 h-auto">
+            <div class="flex items-center justify-center">
+                {{-- icons --}}
+                <div class="bg-white w-fit rounded-lg p-1 mt-7">
+                    <svg class="w-10 h-10 text-green-500 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 14v3m-3-6V7a3 3 0 1 1 6 0v4m-8 0h10a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1Z" />
+                    </svg>
+                </div>
+            </div>
+            <div class="flex flex-col items-center justify-center pl-32 pr-32">
+                {{-- Text reset password --}}
+                <h1 class="text-2xl font-bold mt-5 mb-5 text-white">Reset Your Password</h1>
+                <p class="text-center mb-6 text-white">
+                    {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+                </p>
+            </div>
+            <div class="flex items-center justify-center">
+                {{-- input email --}}
+                <div class="w-2/4">
+                    <div class="relative mb-6 ">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
+                                <path
+                                    d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z" />
+                                <path
+                                    d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
+                            </svg>
+                        </div>
+                        <input type="email" id="email" name="email" value="{{ old('email') }}"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Enter Your Email" required autofocus />
+                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center justify-center mb-5">
+                <button type="submit" class="relative inline-block text-lg group">
+                    <span
+                        class="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
+                        <span class="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
+                        <span
+                            class="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-green-700 group-hover:-rotate-180 ease"></span>
+                        <span class="relative">{{ __('Reset Password') }}</span>
+                    </span>
+                    <span
+                        class="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-green-700 rounded-lg group-hover:mb-0 group-hover:mr-0"
+                        data-rounded="rounded-lg"></span>
+                </button>
+            </div>
+            <div class="flex items-center justify-center mb-7 font-bold">
+                <a href="{{ route('login') }}" class="text-white hover:underline">
+                    <div class="flex gap-1 items-center">
+                        <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                            viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 12h14M5 12l4-4m-4 4 4 4" />
+                        </svg>
+                        Back to log in
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
+    {{-- <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
+        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+    </div> --}}
 
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -9,7 +77,7 @@
     <form method="POST" action="{{ route('password.email') }}">
         @csrf
 
-        <!-- Email Address -->
+        {{-- <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
@@ -20,6 +88,6 @@
             <x-primary-button>
                 {{ __('Email Password Reset Link') }}
             </x-primary-button>
-        </div>
+        </div> --}}
     </form>
 </x-guest-layout>
