@@ -6,14 +6,16 @@
             {{-- heading --}}
             <div class="flex items-center justify-between mb-10">
                 <div>
-                    <h2 class="font-bold text-lg">Good Morning, {{ Auth::user()->name }}</h2>
+                    <h2 class="font-bold text-lg">
+                        Good Morning, {{ Auth::user()->name }}</h2>
                     <p class="text-slate-400">Quotes Lorem ipsum dolor sit amet.</p>
                 </div>
                 <div class="flex flex-col">
-                    <h3>Today Is <b>Monday</b></h3>
+                    <h3>Today Is <b>{{ $time->dayName }}</b></h3>
                     <div class="flex gap-2">
-                        <p>October 28, 2024</p>
-                        <p>8.55 AM</p>
+                        {{-- <p>October 28, 2024</p> --}}
+                        <p>{{ $time->day }} {{ $time->monthName }}, {{ $time->year }}</p>
+                        <p>{{ $time->hour }}:{{ $time->minute }}:{{ $time->second }}</p>
                     </div>
                 </div>
             </div>
