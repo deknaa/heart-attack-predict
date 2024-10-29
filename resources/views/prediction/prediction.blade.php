@@ -49,78 +49,25 @@
 
                     {{-- Jenis Kelamin --}}
                     <div class="mb-6 mt-4">
-                        <label for="sex"
-                            class="flex items-center mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis
-                            Kelamin
-                            <button data-popover-target="popover-sex" data-popover-placement="bottom-end"
-                                type="button"><svg class="w-4 h-4 ms-1 text-gray-400 hover:text-gray-500"
-                                    aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-                                        clip-rule="evenodd"></path>
-                                </svg><span class="sr-only">Show information</span></button></label>
-                        <div data-popover id="popover-sex" role="tooltip"
-                            class="absolute z-10 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400">
-                            <div class="p-3 space-y-2">
-                                <h3 class="font-semibold text-gray-900 dark:text-white">Jenis Kelamin
-                                </h3>
-                                <p>Jenis kelamin laki-laki cenderung memiliki risiko lebih tinggi terkena serangan jantung pada usia yang lebih muda dibandingkan perempuan.</p>
-                                <a href="#"
-                                    class="flex items-center font-medium text-blue-600 dark:text-blue-500 dark:hover:text-blue-600 hover:text-blue-700 hover:underline">Read
-                                    more <svg class="w-2 h-2 ms-1.5 rtl:rotate-180" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2" d="m1 9 4-4-4-4" />
-                                    </svg></a>
-                            </div>
-                            <div data-popper-arrow></div>
-                        </div>
-                        <select id="sex"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option selected>Pilih Jenis Kelamin</option>
-                            <option value="0">Perempuan</option>
-                            <option value="1">Laki-Laki</option>
-                        </select>
+                        <x-forms.label-popover :for="'sex'"
+                        :text="'Jenis Kelamin'"
+                        popover-target="popover-sex" popover-id="popover-sex" popover-title="Jenis Kelamin" popover-description="Pria sering kali memiliki risiko lebih tinggi untuk terkena serangan jantung pada usia yang lebih muda dibandingkan dengan wanita." 
+                        />
+                       <x-forms.select-input 
+                       id="sex" 
+                       name="sex" 
+                       :options="['0' => 'Perempuan', '1' => 'Laki-Laki']" 
+                       placeholder="Pilih Jenis Kelamin" 
+                       selected="{{ old('sex') }}" 
+                       />
                     </div>
 
                     {{-- Nyeri Dada --}}
                     <div class="mb-6 mt-4">
-                        <label for="cp"
-                            class="flex items-center mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Nyeri
-                            Dada
-                            <button data-popover-target="popover-cp" data-popover-placement="bottom-end"
-                                type="button"><svg class="w-4 h-4 ms-1 text-gray-400 hover:text-gray-500"
-                                    aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-                                        clip-rule="evenodd"></path>
-                                </svg><span class="sr-only">Show information</span></button></label>
-                        <div data-popover id="popover-cp" role="tooltip"
-                            class="absolute z-10 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400">
-                            <div class="p-3 space-y-2">
-                                <h3 class="font-semibold text-gray-900 dark:text-white">Tipe Nyeri Dada
-                                </h3>
-                                <p> Tipe nyeri dada bisa menjadi indikator utama kondisi jantung seseorang. Nyeri dada yang khas seringkali menandakan masalah pada jantung.</p>
-                                <h3 class="font-semibold text-gray-900 dark:text-white">Deskripsi</h3>
-                                <p>
-                                    <span>Typical angina (nyeri dada khas akibat jantung)</span><br><br>
-                                    <span>Atypical angina (nyeri dada tidak khas)</span><br><br>
-                                    <span>Non-anginal pain (nyeri dada bukan karena jantung)</span><br><br>
-                                    <span>Asymptomatic (tidak ada gejala nyeri dada)</span>
-                                    
-                                </p>
-                                <a href="#"
-                                    class="flex items-center font-medium text-blue-600 dark:text-blue-500 dark:hover:text-blue-600 hover:text-blue-700 hover:underline">Read
-                                    more <svg class="w-2 h-2 ms-1.5 rtl:rotate-180" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2" d="m1 9 4-4-4-4" />
-                                    </svg></a>
-                            </div>
-                            <div data-popper-arrow></div>
-                        </div>
+                        <x-forms.label-popover :for="'age'"
+                        :text="'Usia'"
+                        popover-target="popover-tes" popover-id="popover-tes" popover-title="Usia" popover-description="Usia pasien dalam tahun. Semakin tua usia seseorang, semakin besar risiko terkena serangan jantung, terutama jika ada faktor risiko lainnya." 
+                        />
                         <select id="cp"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option selected>Pilih Jenis Nyeri Dada</option>
