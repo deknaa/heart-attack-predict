@@ -85,7 +85,6 @@
                 localStorage.setItem('color-theme', 'dark');
             }
         }
-
     });
 </script>
 
