@@ -22,4 +22,10 @@ class PredictionController extends Controller
     {
 
     }
+
+    // to view history of predict
+    public function historyPredict()
+    {
+        return view('prediction.history');
+    }
 }
