@@ -11,9 +11,21 @@ class PredictionController extends Controller
     public function predictionPage()
     {
         $time = Carbon::now();
+        $hour = now()->format('H');
+
+        if($hour >= 5 && $hour < 12) {
+            $greeting = 'Good Morning';
+        }elseif($hour >= 12 && $hour < 15) {
+            $greeting = 'Good Afternoon';
+        }elseif($hour >= 15 && $hour < 18){
+            $greeting = 'Good Evening';
+        }else{
+            $greeting = 'Good Night';
+        }
 
         return view('prediction.prediction', [
-            'time' => $time
+            'time' => $time,
+            'greeting' => $greeting
         ]);
     }
 
