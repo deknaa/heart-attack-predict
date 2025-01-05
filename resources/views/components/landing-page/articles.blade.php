@@ -1,4 +1,4 @@
-<div class="max-w-screen-xl flex flex-col lg:flex-row justify-between mx-auto p-4 mb-12">
+<div class="flex flex-col lg:flex-row justify-center gap-3 p-4 pb-12 bg-white dark:bg-gray-900">
     @for ($i = 1; $i <= 3; $i++)
     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <a href="#">

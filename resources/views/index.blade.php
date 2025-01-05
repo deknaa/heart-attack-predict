@@ -23,7 +23,7 @@
 
 <body>
     <x-navbar></x-navbar>
-    <x-hero-section></x-hero-section>
+    <x-landing-page.hero-section></x-landing-page.hero-section>
     <x-landing-page.how-its-work></x-landing-page.how-its-work>
     <x-landing-page.testimony></x-landing-page.testimony>
     <x-landing-page.about></x-landing-page.about>
