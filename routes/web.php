@@ -23,7 +23,7 @@ Route::middleware(['auth', 'userRole'])->group(function () {
     Route::get('/history-predict', [PredictionController::class, 'historyPredict'])->name('predict.history');
 
     // Route for Articles
-
+    
 });
 
 // Route untuk user dengan role admin

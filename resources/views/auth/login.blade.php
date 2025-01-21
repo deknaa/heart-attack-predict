@@ -3,20 +3,18 @@
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <div class="flex flex-col md:flex-row min-h-screen w-full">
-        <!-- Left Side - Image Section -->
         <div class="w-full md:w-1/2">
             <div class="bg-green-600 h-0 md:min-h-screen relative">
-                <!-- Back Button -->
                 <div class="p-4 md:p-7 flex justify-end">
                     <div class="flex items-center justify-center">
                         <a href="{{ url('/') }}"
-                            class="relative inline-flex items-center justify-center px-6 md:px-10 py-2 md:py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-black dark:border-white rounded-lg shadow-md group">
+                            class="relative inline-flex items-center justify-center px-6 md:px-10 py-2 md:py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-green-500 md:border-white rounded-lg shadow-md group">
                             <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 translate-x-full bg-white group-hover:translate-x-0 ease">
                                 <svg class="w-5 h-5 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12l4-4m-4 4 4 4" />
                                 </svg>
                             </span>
-                            <span class="absolute flex items-center justify-center w-full h-full text-black dark:text-white transition-all duration-300 transform group-hover:translate-y-full ease">Back to website</span>
+                            <span class="absolute flex items-center justify-center w-full h-full text-green-500 md:text-white transition-all duration-300 transform group-hover:translate-y-full ease">Back to website</span>
                             <span class="relative invisible">Back to website</span>
                         </a>
                     </div>
