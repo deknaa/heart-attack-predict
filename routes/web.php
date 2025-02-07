@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\PredictionController;
 use App\Http\Controllers\ProfileController;
 use App\Livewire\DashboardAdmin;
@@ -28,7 +29,10 @@ Route::middleware(['auth', 'userRole'])->group(function () {
 
 // Route untuk user dengan role admin
 Route::middleware(['auth', 'adminRole'])->group(function () {
-    Route::get('dashboard/admin', DashboardAdmin::class)->name('dashboard.admin');
+    // Route::get('dashboard/admin', DashboardAdmin::class)->name('dashboard.admin');
 });
+
+Route::get('auth/google', [GoogleAuthController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('auth/google/callback', [GoogleAuthController::class, 'handleGoogleCallback'])->name('auth.google.callback');
 
 require __DIR__.'/auth.php';
