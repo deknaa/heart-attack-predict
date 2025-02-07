@@ -29,7 +29,7 @@ Route::middleware(['auth', 'userRole'])->group(function () {
 
 // Route untuk user dengan role admin
 Route::middleware(['auth', 'adminRole'])->group(function () {
-    // Route::get('dashboard/admin', DashboardAdmin::class)->name('dashboard.admin');
+    Route::get('dashboard/admin', DashboardAdmin::class)->name('dashboard.admin');
 });
 
 Route::get('auth/google', [GoogleAuthController::class, 'redirectToGoogle'])->name('auth.google');
