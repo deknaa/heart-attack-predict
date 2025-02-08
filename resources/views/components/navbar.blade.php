@@ -27,7 +27,7 @@
                                 id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                                 data-dropdown-placement="bottom">
                                 <span class="sr-only">Open user menu</span>
-                                <img class="w-8 h-8 rounded-full" src="{{ Auth::user()->avatar_url }}"
+                                <img class="w-8 h-8 rounded-full" src="{{ auth()->user()->avatar_url ?? 'https://ui-avatars.com/api/?name=' . urlencode(auth()->user()->name) }}"
                                     alt="user photo">
                             </button>
                             <!-- Dropdown menu -->
@@ -202,7 +202,7 @@
                                     id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                                     data-dropdown-placement="bottom">
                                     <span class="sr-only">Open user menu</span>
-                                    <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg"
+                                    <img class="w-8 h-8 rounded-full" src="{{ auth()->user()->avatar_url ?? 'https://ui-avatars.com/api/?name=' . urlencode(auth()->user()->name) }}"
                                         alt="user photo">
                                 </button>
                                 <!-- Dropdown menu -->
@@ -407,7 +407,7 @@
                             id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                             data-dropdown-placement="bottom">
                             <span class="sr-only">Open user menu</span>
-                            <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg"
+                            <img class="w-8 h-8 rounded-full" src="{{ auth()->user()->avatar_url ?? 'https://ui-avatars.com/api/?name=' . urlencode(auth()->user()->name) }}"
                                 alt="user photo">
                         </button>
                         <!-- Dropdown menu -->
