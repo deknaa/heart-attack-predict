@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Socialite\Facades\Socialite;
 
 class GoogleAuthController extends Controller
@@ -41,12 +43,12 @@ class GoogleAuthController extends Controller
                     $count++;
                 }   
                 
-                $newUser = User::create([
+                $newUser = User::updateOrCreate([
                     'name' => $user->name,
                     'username' => $tempUsername,
                     'email' => $user->email,
                     'google_id'=> $user->id,
-                    'avatar' => $user->avatar,
+                    'avatar' => $this->saveAvatar($user->getAvatar()),
                     'password' => encrypt('i23exa9712nxasdFKADLESU9'),
                     'role' => 'user'
                 ]);
@@ -57,6 +59,20 @@ class GoogleAuthController extends Controller
     
         } catch (\Exception $e) {
             return redirect()->route('login')->with('error', 'Sepertinya telah terjadi kesalahan di Google. Silahkan coba lagi.');
+        }
+    }
+
+    private function saveAvatar($avatarUrl)
+    {
+        try {
+            $response = Http::get($avatarUrl);
+            if($response->successful()) {
+                $avatarPath = 'avatars/' . uniqid() . '.jpg';
+                Storage::disk('public')->put($avatarPath, $response->body());
+                return $avatarPath;
+            }
+        } catch (\Exception $e) {
+            return null;
         }
     }
 }

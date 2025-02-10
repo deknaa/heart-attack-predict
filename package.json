@@ -17,8 +17,12 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "@tiptap/core": "^2.11.5",
+        "@tiptap/pm": "^2.11.5",
+        "@tiptap/starter-kit": "^2.11.5",
         "aos": "^2.3.4",
         "apexcharts": "^4.0.0",
-        "flowbite": "^2.5.2"
+        "flowbite": "^2.5.2",
+        "flowbite-typography": "^1.0.5"
     }
 }
