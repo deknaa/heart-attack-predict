@@ -13,6 +13,7 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script>
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
@@ -23,16 +24,18 @@
             document.documentElement.classList.remove('dark')
         }
     </script>
+    @livewireStyles
 </head>
 
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-        @include('components.navbar')
+        <livewire:components.navbar />
         <main>
             {{ $slot }}
         </main>
     </div>
 </body>
+@livewireScripts
 <script>
     var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
     var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
