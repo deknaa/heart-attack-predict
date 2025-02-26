@@ -1,21 +1,16 @@
 <x-app-layout>
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            {{-- <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div> --}}
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
 
-            <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
+            <div class="w-full max-w-sm p-4 bg-white rounded-lg shadow dark:bg-gray-800 md:p-6">
                 <div class="flex justify-between mb-5">
-                    <div class="grid gap-4 grid-cols-2">
+                    <div class="grid grid-cols-2 gap-4">
                         <div>
                             <h5
-                                class="inline-flex items-center text-gray-500 dark:text-gray-400 leading-none font-normal mb-2">
+                                class="inline-flex items-center mb-2 font-normal leading-none text-gray-500 dark:text-gray-400">
                                 Clicks
                                 <svg data-popover-target="clicks-info" data-popover-placement="bottom"
-                                    class="w-3 h-3 text-gray-400 hover:text-gray-900 dark:hover:text-white cursor-pointer ms-1"
+                                    class="w-3 h-3 text-gray-400 cursor-pointer hover:text-gray-900 dark:hover:text-white ms-1"
                                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                     viewBox="0 0 20 20">
                                     <path
@@ -44,14 +39,14 @@
                                     <div data-popper-arrow></div>
                                 </div>
                             </h5>
-                            <p class="text-gray-900 dark:text-white text-2xl leading-none font-bold">42,3k</p>
+                            <p class="text-2xl font-bold leading-none text-gray-900 dark:text-white">42,3k</p>
                         </div>
                         <div>
                             <h5
-                                class="inline-flex items-center text-gray-500 dark:text-gray-400 leading-none font-normal mb-2">
+                                class="inline-flex items-center mb-2 font-normal leading-none text-gray-500 dark:text-gray-400">
                                 CPC
                                 <svg data-popover-target="cpc-info" data-popover-placement="bottom"
-                                    class="w-3 h-3 text-gray-400 hover:text-gray-900 dark:hover:text-white cursor-pointer ms-1"
+                                    class="w-3 h-3 text-gray-400 cursor-pointer hover:text-gray-900 dark:hover:text-white ms-1"
                                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                     viewBox="0 0 20 20">
                                     <path
@@ -80,13 +75,13 @@
                                     <div data-popper-arrow></div>
                                 </div>
                             </h5>
-                            <p class="text-gray-900 dark:text-white text-2xl leading-none font-bold">$5.40</p>
+                            <p class="text-2xl font-bold leading-none text-gray-900 dark:text-white">$5.40</p>
                         </div>
                     </div>
                     <div>
                         <button id="dropdownDefaultButton" data-dropdown-toggle="lastDaysdropdown"
                             data-dropdown-placement="bottom" type="button"
-                            class="px-3 py-2 inline-flex items-center text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Last
+                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Last
                             week <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"

@@ -16,8 +16,10 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('content');
-            $table->string('image')->nullable();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->string('featured_image')->nullable();
+            $table->enum('visibility', ['private', 'public'])->default('private');
+            $table->string('category');
             $table->timestamps();
         });
     }

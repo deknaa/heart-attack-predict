@@ -11,9 +11,11 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script>
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
@@ -24,18 +26,16 @@
             document.documentElement.classList.remove('dark')
         }
     </script>
-    @livewireStyles
 </head>
 
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-        <livewire:components.navbar />
+        <x-navbar />
         <main>
             {{ $slot }}
         </main>
     </div>
 </body>
-@livewireScripts
 <script>
     var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
     var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -76,6 +76,10 @@
                 localStorage.setItem('color-theme', 'dark');
             }
         }
+    });
+
+    const quill = new Quill('#editor', {
+    theme: 'snow'
     });
 </script>
 
