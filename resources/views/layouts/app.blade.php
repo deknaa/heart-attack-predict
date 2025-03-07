@@ -15,7 +15,10 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
-    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <!-- Quill CSS -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <!-- Quill JS -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>w
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script>
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC

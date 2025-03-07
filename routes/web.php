@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\admin\AnnouncementController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\GoogleAuthController;
+use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\PredictionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\UserDashboardController;
@@ -36,6 +37,7 @@ Route::middleware(['auth', 'adminRole'])->group(function () {
     
     // Route for Articles
     Route::resource('article', ArticleController::class);
+    Route::post('upload-image', [ImageUploadController::class, 'upload'])->name('image.upload');
     
     Route::get('users/data', [AdminDashboardController::class, 'usersData'])->name('users.data');
 

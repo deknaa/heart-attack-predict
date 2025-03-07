@@ -16,6 +16,9 @@ class Article extends Model
         'content',
         'image',
         'user_id',
+        'featured_image',
+        'visibility',
+        'category',
     ];
 
     // Auto generate slug when created new article

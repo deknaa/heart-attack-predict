@@ -34,6 +34,9 @@ class ArticleController extends Controller
         $request->validate([
             'title' => 'required|string|max:150|min:5',
             'content' => 'required|string|min:5',
+            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'visibility' => 'required|in:public,private',
+            'category' => 'required|in:umum,kesehatan_mental,gizi_nutrisi,penyakit,seksual_reproduksi,tips_kesehatan',
         ]);
 
         Article::create([
@@ -41,6 +44,9 @@ class ArticleController extends Controller
             'slug' => Str::slug($request->title) . '-' . Str::random(5),
             'content' => $request->content,
             'user_id' => Auth::id(),
+            'featured_image' => $request->hasFile('featured_image') ? $request->file('featured_image')->store('featured_image', 'public') : null,
+            'visibility' => $request->visibility,
+            'category' => $request->category,
         ]);
 
         return redirect()->route('article.index')->with('success', 'Article created successfully');
@@ -49,32 +55,52 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug )
     {
-        //
+        $article = Article::with('user')->where('slug', $slug)->firstOrFail();
+        return view('admin.article.show', compact('article'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $slug)
     {
-        //
+        $article = Article::with('user')->where('slug', $slug)->firstOrFail();
+        return view('admin.article.edit', compact('article'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $slug)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:150|min:5',
+            'content' => 'required|string|min:5',
+            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'visibility' => 'required|in:public,private',
+            'category' => 'required|in:umum,kesehatan_mental,gizi_nutrisi,penyakit,seksual_reproduksi,tips_kesehatan',
+        ]);
+
+        $article = Article::where('slug', $slug)->firstOrFail();
+        $article->update([
+            'title' => $request->title,
+            'content' => $request->content,
+            'featured_image' => $request->hasFile('featured_image') ? $request->file('featured_image')->store('featured_image', 'public') : $article->featured_image,
+            'visibility' => $request->visibility,
+            'category' => $request->category,
+        ]);
+
+        return redirect()->route('article.index')->with('success', 'Article updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Article $article)
     {
-        //
+        $article->delete();
+        return redirect()->route('article.index')->with('success', 'Article deleted successfully');
     }
 }

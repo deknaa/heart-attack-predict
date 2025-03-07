@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
-            $table->text('content');
+            $table->longText('content');
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('featured_image')->nullable();
             $table->enum('visibility', ['private', 'public'])->default('private');
-            $table->string('category');
+            $table->enum('category', ['umum', 'kesehatan_mental', 'gizi_nutrisi', 'penyakit', 'seksual_reproduksi', 'tips_kesehatan'])->default('umum');
             $table->timestamps();
         });
     }

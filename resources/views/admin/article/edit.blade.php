@@ -1,13 +1,14 @@
 <x-app-layout>
     <div class="overflow-hidden bg-white shadow-sm p-14 sm:ml-64 sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
-            <form action="{{ route('article.store') }}" enctype="multipart/form-data" method="POST">
+            <form action="{{ route('article.update', $article->slug) }}" enctype="multipart/form-data" method="POST">
+                @method('PUT')
                 @csrf
                 <div class="mb-4">
                     <label for="title" class="block text-sm font-medium text-gray-700">Judul</label>
                     <input type="text" name="title" id="title"
                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                        value="{{ old('title') }}" required>
+                        value="{{ old('title', $article->title) }}" required>
                     @error('title')
                         <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                     @enderror
@@ -16,8 +17,9 @@
                 <div class="mb-4">
                     <label for="editor" class="block text-sm font-medium text-gray-700">Konten</label>
                     <div id="editor" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm min-h-[300px]">
+                        {!! $article->content !!}
                     </div>
-                    <input type="hidden" name="content" id="content" value="{{ old('content') }}">
+                    <input type="hidden" name="content" id="content" value="{{ old('content', $article->content) }}">
                     @error('content')
                         <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                     @enderror
@@ -27,7 +29,7 @@
                     <div class="mb-4">
                         <label for="featured_image" class="block text-sm font-medium text-gray-700">Featured
                             Image</label>
-                        <input type="file" name="featured_image" id="featured_image" accept="image/*">
+                        <img src="{{ asset('storage/' . $article->featured_image) }}" alt="">
                         @error('featured_image')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                         @enderror
@@ -36,8 +38,10 @@
                     <div class="mb-4">
                         <label for="visibility" class="block text-sm font-medium text-gray-700">Visibility</label>
                         <select name="visibility" id="visibility">
-                            <option value="public">Public</option>
-                            <option value="private">Private</option>
+                            <option value="public" {{ $article->visibility == 'public' ? 'selected' : '' }}>
+                                Public</option>
+                            <option value="private" {{ $article->visibility == 'private' ? 'selected' : '' }}>
+                                Private</option>
                         </select>
                         @error('visibility')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
@@ -47,12 +51,12 @@
                     <div class="mb-4">
                         <label for="category" class="block text-sm font-medium text-gray-700">Category</label>
                         <select name="category" id="category">
-                            <option value="umum">Umum</option>
-                            <option value="kesehatan_mental">Mental</option>
-                            <option value="gizi_nutrisi">Gizi dan Nutrisi</option>
-                            <option value="penyakit">Penyakit</option>
-                            <option value="seksual_reproduksi">Seksual dan Reproduksi</option>
-                            <option value="tips_kesehatan">Tips Kesehatan</option>
+                            <option value="umum" {{ $article->category == 'umum' ? 'selected' : '' }}>Umum</option>
+                            <option value="kesehatan_mental" {{ $article->category == 'kesehatan_mental' ? 'selected' : '' }}>Mental</option>
+                            <option value="gizi_nutrisi" {{ $article->category == 'gizi_nutrisi' ? 'selected' : '' }}>Gizi dan Nutrisi</option>
+                            <option value="penyakit" {{ $article->category == 'penyakit' ? 'selected' : '' }}>Penyakit</option>
+                            <option value="seksual_reproduksi" {{ $article->category == 'seksual_reproduksi' ? 'selected' : '' }}>Seksual dan Reproduksi</option>
+                            <option value="tips_kesehatan" {{ $article->category == 'tips_kesehatan' ? 'selected' : '' }}>Tips Kesehatan</option>
                         </select>
                         @error('category')
                             <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
