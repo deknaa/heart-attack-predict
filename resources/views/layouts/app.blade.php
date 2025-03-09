@@ -19,6 +19,8 @@
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <!-- Quill JS -->
     <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script>
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
