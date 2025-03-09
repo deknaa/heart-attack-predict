@@ -1,136 +1,504 @@
 <x-app-layout>
-<div class="min-h-screen bg-gray-50 dark:bg-gray-900">
-    <div class="max-w-4xl px-4 py-12 mx-auto sm:px-6 lg:px-8">
-        <!-- Breadcrumb -->
-        <nav class="flex mb-8" aria-label="Breadcrumb">
-            <ol class="inline-flex items-center space-x-1 md:space-x-3">
-                <li class="inline-flex items-center">
-                    <a href="" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
-                        <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
-                        </svg>
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <div class="flex items-center">
-                        <svg class="w-3 h-3 mx-1 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                        </svg>
-                        <a href="#" class="text-sm font-medium text-gray-700 ms-1 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Articles</a>
-                    </div>
-                </li>
-                <li aria-current="page">
-                    <div class="flex items-center">
-                        <svg class="w-3 h-3 mx-1 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                        </svg>
-                        <span class="text-sm font-medium text-gray-500 ms-1 md:ms-2 dark:text-gray-400">{{ $article->title }}</span>
-                    </div>
-                </li>
-            </ol>
-        </nav>
-
-        <!-- article Header -->
-        <div class="mb-8">
-            <div class="flex items-center gap-4 mb-4">
-                <span class="px-3 py-1 text-sm font-semibold text-blue-600 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
-                    {{ $article->category ?? 'Uncategorized' }}
-                </span>
-                <span class="text-gray-500 dark:text-gray-400">
-                    {{ $article->created_at }}
-                </span>
-            </div>
-            <h1 class="mb-6 text-4xl font-bold text-gray-900 dark:text-white">
-                {{ $article->title }}
-            </h1>
-            <div class="flex items-center space-x-4">
-                <img class="w-12 h-12 rounded-full" src="{{ $article->user->avatar_url ?? 'https://ui-avatars.com/api/?name=Author' }}" alt="Author avatar">
-                <div>
-                    <div class="font-medium text-gray-800 dark:text-white">
-                        {{ $article->user->name }}
-                        {{-- {{ $article->user->name ?? 'Anonymous' }} --}}
-                    </div>
-                    <div class="text-sm text-gray-500 dark:text-gray-400">
-                        {{ $article->author->role ?? 'Contributor' }}
+    <div class="p-12 sm:ml-64">
+        <div class="p-5 bg-white rounded-lg">
+        <!-- Article Header -->
+        <header class="py-16 text-white bg-gradient-to-r from-blue-500 to-purple-600">
+            <div class="container px-4 mx-auto">
+                <div class="flex flex-wrap">
+                    <div class="w-full md:w-2/3 md:pr-8">
+                        <span
+                            class="px-3 py-1 text-sm font-medium text-blue-600 bg-white rounded-full">{{ $article->category }}</span>
+                        <h1 class="mt-4 mb-3 text-3xl font-bold md:text-4xl lg:text-5xl">{{ $article->title }}</h1>
+                        <div class="flex items-center space-x-4 text-sm text-blue-100">
+                            <div class="flex items-center">
+                                <img src="{{ $article->user->avatar_url }}" alt="Author" class="w-8 h-8 mr-2 rounded-full">
+                                <span>{{ $article->user->name }}</span>
+                            </div>
+                            <span>•</span>
+                            <span>{{ $article->created_at->diffForHumans() }}</span>
+                            <span>•</span>
+                            <span>{{ $article->views }} views</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </header>
 
-        <!-- Featured Image -->
-        <div class="relative w-full h-[400px] mb-8 rounded-xl overflow-hidden">
-            <img src="/docs/images/blog/image-1.jpg" 
-                 alt="{{ $article->title }}" 
-                 class="object-cover w-full h-full">
-        </div>
+        <!-- Article Content -->
+        <main class="container px-4 py-8 mx-auto">
+            <div class="flex flex-wrap -mx-4">
+                <!-- Main content -->
+                <div class="w-full px-4 lg:w-2/3">
+                    <!-- Featured image -->
+                    <div class="mb-8 overflow-hidden shadow-md rounded-xl">
+                        @if($article->featured_image)
+                            <img src="{{ Storage::url($article->featured_image) }}" alt="Featured Image" class="w-full h-auto">
+                        @else
+                            <span></span>
+                        @endif
+                    </div>
 
-        <!-- article Content -->
-        <article class="prose prose-lg max-w-none dark:prose-invert">
-            {!! $article->content !!}
-        </article>
+                    <!-- Article body -->
+                    <article class="prose lg:prose-xl max-w-none">
+                        {!! $article->content !!}
+                    </article>
 
-        <!-- Tags -->
-        @if($article->tags && count($article->tags) > 0)
-        <div class="pt-8 mt-8 border-t border-gray-200 dark:border-gray-700">
-            <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">Tags</h3>
-            <div class="flex flex-wrap gap-2">
-                @foreach($article->tags as $tag)
-                <a href="#" class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-full hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-300">
-                    #{{ $tag->name }}
-                </a>
-                @endforeach
-            </div>
-        </div>
-        @endif
+                    <!-- Tags -->
+                    <div class="flex flex-wrap gap-2 my-8">
+                            <a href="#"
+                        class="px-3 py-1 text-sm text-gray-700 transition bg-gray-100 rounded-full hover:bg-gray-200">{{ $article->category }}</a>
+                    </div>
 
-        <!-- Share Buttons -->
-        <div class="pt-8 mt-8 border-t border-gray-200 dark:border-gray-700">
-            <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">Share this article</h3>
-            <div class="flex space-x-4">
-                <a href="#" class="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
-                    </svg>
-                </a>
-                <a href="#" class="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
-                    </svg>
-                </a>
-                <a href="#" class="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" clip-rule="evenodd"></path>
-                    </svg>
-                </a>
-            </div>
-        </div>
-
-        <!-- Related Articles -->
-        @if(isset($relatedArticles) && count($relatedArticles) > 0)
-        <div class="pt-8 mt-12 border-t border-gray-200 dark:border-gray-700">
-            <h3 class="mb-6 text-2xl font-bold text-gray-900 dark:text-white">Related Articles</h3>
-            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-                @foreach($relatedArticles as $relatedArticle)
-                <a href="#" class="block group">
-                    <div class="flex items-center space-x-4">
-                        <img src="/docs/images/blog/image-1.jpg" 
-                             alt="{{ $relatedArticle->title }}" 
-                             class="object-cover w-24 h-24 rounded-lg">
-                        <div>
-                            <h4 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
-                                {{ $relatedArticle->title }}
-                            </h4>
-                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                                {{ $relatedArticle->created_at->format('F j, Y') }}
-                            </p>
+                    <!-- Author bio -->
+                    <div class="p-6 my-8 bg-blue-50 rounded-xl">
+                        <div class="flex flex-col sm:flex-row">
+                            <img src="{{ $article->user->avatar_url }}" alt="Author"
+                                class="w-24 h-24 mx-auto mb-4 rounded-full sm:mx-0 sm:mb-0">
+                            <div class="sm:ml-6">
+                                <h3 class="mb-2 text-xl font-bold">{{ $article->user->name }}</h3>
+                                @if($article->user->author_description)
+                                    <p class="mb-4 text-gray-600">{{ $article->user->author_description }}</p>
+                                @else
+                                    <p class="mb-4 text-gray-600">Author belum memiliki deskripsi</p>
+                                @endif
+                                <div class="flex space-x-4">
+                                    <a href="#" class="text-blue-600 hover:text-blue-800"><i
+                                            class="fab fa-twitter"></i></a>
+                                    <a href="#" class="text-blue-600 hover:text-blue-800"><i
+                                            class="fab fa-linkedin"></i></a>
+                                    <a href="#" class="text-blue-600 hover:text-blue-800"><i
+                                            class="far fa-envelope"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </a>
-                @endforeach
+
+                    <!-- Share buttons -->
+                    <div class="py-6 my-8 border-t border-b">
+                        <h3 class="mb-4 text-lg font-bold">Bagikan Artikel Ini</h3>
+                        <div class="flex space-x-4">
+                            <a href="#"
+                                class="flex items-center px-4 py-2 text-white transition bg-blue-600 rounded-lg hover:bg-blue-700">
+                                <i class="mr-2 fab fa-facebook-f"></i> Facebook
+                            </a>
+                            <a href="#"
+                                class="flex items-center px-4 py-2 text-white transition bg-blue-400 rounded-lg hover:bg-blue-500">
+                                <i class="mr-2 fab fa-twitter"></i> Twitter
+                            </a>
+                            <a href="#"
+                                class="flex items-center px-4 py-2 text-white transition bg-green-500 rounded-lg hover:bg-green-600">
+                                <i class="mr-2 fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                            <a href="#"
+                                class="flex items-center px-4 py-2 text-gray-700 transition bg-gray-200 rounded-lg hover:bg-gray-300">
+                                <i class="mr-2 far fa-envelope"></i> Email
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Comments -->
+                    <section class="my-8">
+                        <h3 class="mb-6 text-2xl font-bold">Komentar (3)</h3>
+
+                        <!-- Comment form -->
+                        <div class="p-6 mb-8 bg-white rounded-lg shadow-sm">
+                            <h4 class="mb-4 text-lg font-medium">Tinggalkan Komentar</h4>
+                            <form>
+                                <div class="grid grid-cols-1 gap-4 mb-4 md:grid-cols-2">
+                                    <div>
+                                        <label for="name" class="block mb-2 text-gray-700">Nama</label>
+                                        <input type="text" id="name"
+                                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div>
+                                        <label for="email" class="block mb-2 text-gray-700">Email</label>
+                                        <input type="email" id="email"
+                                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="comment" class="block mb-2 text-gray-700">Komentar</label>
+                                    <textarea id="comment" rows="4"
+                                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                                </div>
+                                <button type="submit"
+                                    class="px-6 py-2 text-white transition bg-blue-600 rounded-lg hover:bg-blue-700">Kirim
+                                    Komentar</button>
+                            </form>
+                        </div>
+
+                        <!-- Comment list -->
+                        <div class="space-y-6">
+                            <!-- Comment 1 -->
+                            <div class="p-6 bg-white rounded-lg shadow-sm">
+                                <div class="flex items-start">
+                                    <img src="/api/placeholder/48/48" alt="Commenter" class="w-12 h-12 rounded-full">
+                                    <div class="flex-1 ml-4">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <h5 class="font-bold">Andi Wijaya</h5>
+                                            <span class="text-sm text-gray-500">2 jam yang lalu</span>
+                                        </div>
+                                        <p class="text-gray-700">Artikel yang sangat informatif! Saya setuju bahwa
+                                            Indonesia memiliki potensi besar di bidang AI, tetapi perlu investasi lebih
+                                            dalam infrastruktur dan pendidikan.</p>
+                                        <div class="flex mt-3 space-x-4 text-sm">
+                                            <button
+                                                class="flex items-center text-gray-500 transition hover:text-blue-600">
+                                                <i class="mr-1 far fa-thumbs-up"></i> 12
+                                            </button>
+                                            <button class="text-gray-500 transition hover:text-blue-600">Balas</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Comment 2 -->
+                            <div class="p-6 bg-white rounded-lg shadow-sm">
+                                <div class="flex items-start">
+                                    <img src="/api/placeholder/48/48" alt="Commenter" class="w-12 h-12 rounded-full">
+                                    <div class="flex-1 ml-4">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <h5 class="font-bold">Siti Rahma</h5>
+                                            <span class="text-sm text-gray-500">1 hari yang lalu</span>
+                                        </div>
+                                        <p class="text-gray-700">Sebagai pengembang software, saya sangat tertarik
+                                            dengan perkembangan AI di Indonesia. Namun saya khawatir dengan kesenjangan
+                                            digital yang masih menjadi tantangan utama.</p>
+                                        <div class="flex mt-3 space-x-4 text-sm">
+                                            <button
+                                                class="flex items-center text-gray-500 transition hover:text-blue-600">
+                                                <i class="mr-1 far fa-thumbs-up"></i> 8
+                                            </button>
+                                            <button class="text-gray-500 transition hover:text-blue-600">Balas</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Comment 3 with reply -->
+                            <div class="p-6 bg-white rounded-lg shadow-sm">
+                                <div class="flex items-start">
+                                    <img src="/api/placeholder/48/48" alt="Commenter" class="w-12 h-12 rounded-full">
+                                    <div class="flex-1 ml-4">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <h5 class="font-bold">Hendra Gunawan</h5>
+                                            <span class="text-sm text-gray-500">2 hari yang lalu</span>
+                                        </div>
+                                        <p class="text-gray-700">Bagaimana dengan isu privasi data dalam pengembangan
+                                            AI di Indonesia? Saya rasa ini perlu dibahas lebih dalam.</p>
+                                        <div class="flex mt-3 space-x-4 text-sm">
+                                            <button
+                                                class="flex items-center text-gray-500 transition hover:text-blue-600">
+                                                <i class="mr-1 far fa-thumbs-up"></i> 5
+                                            </button>
+                                            <button class="text-gray-500 transition hover:text-blue-600">Balas</button>
+                                        </div>
+
+                                        <!-- Reply -->
+                                        <div class="pt-4 mt-4 ml-6 border-t">
+                                            <div class="flex items-start">
+                                                <img src="/api/placeholder/40/40" alt="Author"
+                                                    class="w-10 h-10 rounded-full">
+                                                <div class="flex-1 ml-3">
+                                                    <div class="flex items-center justify-between mb-2">
+                                                        <h5 class="font-bold">Budi Santoso <span
+                                                                class="text-sm text-blue-600">(Penulis)</span></h5>
+                                                        <span class="text-sm text-gray-500">1 hari yang lalu</span>
+                                                    </div>
+                                                    <p class="text-gray-700">Terima kasih atas pertanyaannya, Hendra.
+                                                        Anda benar, privasi data adalah aspek penting yang seharusnya
+                                                        menjadi fokus dalam pengembangan AI. Saya berencana membahas ini
+                                                        di artikel selanjutnya.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 text-center">
+                            <button
+                                class="px-6 py-2 text-blue-600 transition border border-blue-600 rounded-lg hover:bg-blue-50">Lihat
+                                Lebih Banyak Komentar</button>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="w-full px-4 mt-8 lg:w-1/3 lg:mt-0">
+                    <!-- Author card (mobile only) -->
+                    <div class="p-6 mb-8 lg:hidden bg-blue-50 rounded-xl">
+                        <div class="flex items-center">
+                            <img src="/api/placeholder/64/64" alt="Author" class="w-16 h-16 rounded-full">
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold">Budi Santoso</h3>
+                                <p class="text-gray-600">Peneliti & Konsultan Teknologi</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Search -->
+                    <div class="p-6 mb-8 bg-white rounded-lg shadow-sm">
+                        <h3 class="mb-4 text-lg font-bold">Cari Artikel</h3>
+                        <div class="relative">
+                            <input type="text" placeholder="Kata kunci..."
+                                class="w-full px-4 py-2 pr-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <button class="absolute right-3 top-2.5 text-gray-400 hover:text-gray-600">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter -->
+                    <div class="p-6 mb-8 text-white rounded-lg shadow-sm bg-gradient-to-r from-blue-500 to-blue-600">
+                        <h3 class="mb-2 text-lg font-bold">Dapatkan Update Terbaru</h3>
+                        <p class="mb-4">Berlangganan newsletter kami untuk mendapatkan artikel terbaru langsung ke
+                            inbox Anda.</p>
+                        <form>
+                            <div class="flex flex-col space-y-2">
+                                <input type="email" placeholder="Email Anda"
+                                    class="px-4 py-2 text-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300">
+                                <button type="submit"
+                                    class="px-4 py-2 font-medium text-blue-600 transition bg-white rounded-lg hover:bg-blue-50">Berlangganan</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Popular articles -->
+                    <div class="p-6 mb-8 bg-white rounded-lg shadow-sm">
+                        <h3 class="mb-4 text-lg font-bold">Artikel Populer</h3>
+                        <div class="space-y-4">
+                            <a href="#" class="flex group">
+                                <img src="/api/placeholder/80/60" alt="Article thumbnail"
+                                    class="object-cover w-20 h-16 rounded">
+                                <div class="ml-3">
+                                    <h4
+                                        class="font-medium text-gray-900 transition group-hover:text-blue-600 line-clamp-2">
+                                        Bagaimana Big Data Mengubah Strategi Bisnis di Era Digital</h4>
+                                    <p class="mt-1 text-sm text-gray-500">3 hari yang lalu</p>
+                                </div>
+                            </a>
+                            <a href="#" class="flex group">
+                                <img src="/api/placeholder/80/60" alt="Article thumbnail"
+                                    class="object-cover w-20 h-16 rounded">
+                                <div class="ml-3">
+                                    <h4
+                                        class="font-medium text-gray-900 transition group-hover:text-blue-600 line-clamp-2">
+                                        5 Tren Teknologi yang Akan Mendominasi Tahun 2023</h4>
+                                    <p class="mt-1 text-sm text-gray-500">1 minggu yang lalu</p>
+                                </div>
+                            </a>
+                            <a href="#" class="flex group">
+                                <img src="/api/placeholder/80/60" alt="Article thumbnail"
+                                    class="object-cover w-20 h-16 rounded">
+                                <div class="ml-3">
+                                    <h4
+                                        class="font-medium text-gray-900 transition group-hover:text-blue-600 line-clamp-2">
+                                        Keamanan Siber: Tantangan Utama di Era Transformasi Digital</h4>
+                                    <p class="mt-1 text-sm text-gray-500">2 minggu yang lalu</p>
+                                </div>
+                            </a>
+                            <a href="#" class="flex group">
+                                <img src="/api/placeholder/80/60" alt="Article thumbnail"
+                                    class="object-cover w-20 h-16 rounded">
+                                <div class="ml-3">
+                                    <h4
+                                        class="font-medium text-gray-900 transition group-hover:text-blue-600 line-clamp-2">
+                                        Blockchain dan Masa Depan Transaksi Keuangan Digital</h4>
+                                    <p class="mt-1 text-sm text-gray-500">3 minggu yang lalu</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="p-6 mb-8 bg-white rounded-lg shadow-sm">
+                        <h3 class="mb-4 text-lg font-bold">Kategori</h3>
+                        <div class="space-y-2">
+                            <a href="#"
+                                class="flex items-center justify-between py-2 transition border-b hover:text-blue-600">
+                                <span>Teknologi</span>
+                                <span class="px-2 py-1 text-xs text-blue-600 bg-blue-100 rounded">42</span>
+                            </a>
+                            <a href="#"
+                                class="flex items-center justify-between py-2 transition border-b hover:text-blue-600">
+                                <span>Bisnis Digital</span>
+                                <span class="px-2 py-1 text-xs text-blue-600 bg-blue-100 rounded">28</span>
+                            </a>
+                            <a href="#"
+                                class="flex items-center justify-between py-2 transition border-b hover:text-blue-600">
+                                <span>Keamanan Siber</span>
+                                <span class="px-2 py-1 text-xs text-blue-600 bg-blue-100 rounded">15</span>
+                            </a>
+                            <a href="#"
+                                class="flex items-center justify-between py-2 transition border-b hover:text-blue-600">
+                                <span>Startup</span>
+                                <span class="px-2 py-1 text-xs text-blue-600 bg-blue-100 rounded">21</span>
+                            </a>
+                            <a href="#"
+                                class="flex items-center justify-between py-2 transition hover:text-blue-600">
+                                <span>Edukasi</span>
+                                <span class="px-2 py-1 text-xs text-blue-600 bg-blue-100 rounded">16</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Tags cloud -->
+                    <div class="p-6 bg-white rounded-lg shadow-sm">
+                        <h3 class="mb-4 text-lg font-bold">Tag Populer</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="#"
+                                class="px-3 py-1 text-sm text-gray-700 transition bg-gray-100 rounded-full hover:bg-gray-200">Teknologi</a>
+                            <a href="#"
+                                class="px-3 py-1 text-sm text-gray-700 transition bg-gray-100 rounded-full hover:bg-gray-200">AI</a>
+                            <a href="#"
+                                class="px-3 py-1 text-sm text-gray-700 transition bg-gray-100 rounded-full hover:bg-gray-200">AI</a>
+                            <a href="#"
+                                class="px-3 py-1 text-sm text-gray-700 transition bg-gray-100 rounded-full hover:bg-gray-200">Machine
+                                Learning</a>
+                            <a href="#"
+                                class="px-3 py-1 text-sm text-gray-700 transition bg-gray-100 rounded-full hover:bg-gray-200">Big
+                                Data</a>
+                            <a href="#"
+                                class="px-3 py-1 text-sm text-gray-700 transition bg-gray-100 rounded-full hover:bg-gray-200">Digital
+                                Marketing</a>
+                            <a href="#"
+                                class="px-3 py-1 text-sm text-gray-700 transition bg-gray-100 rounded-full hover:bg-gray-200">Startup</a>
+                            <a href="#"
+                                class="px-3 py-1 text-sm text-gray-700 transition bg-gray-100 rounded-full hover:bg-gray-200">Keamanan</a>
+                            <a href="#"
+                                class="px-3 py-1 text-sm text-gray-700 transition bg-gray-100 rounded-full hover:bg-gray-200">Cloud</a>
+                            <a href="#"
+                                class="px-3 py-1 text-sm text-gray-700 transition bg-gray-100 rounded-full hover:bg-gray-200">Blockchain</a>
+                            <a href="#"
+                                class="px-3 py-1 text-sm text-gray-700 transition bg-gray-100 rounded-full hover:bg-gray-200">IoT</a>
+                            <a href="#"
+                                class="px-3 py-1 text-sm text-gray-700 transition bg-gray-100 rounded-full hover:bg-gray-200">Inovasi</a>
+                            <a href="#"
+                                class="px-3 py-1 text-sm text-gray-700 transition bg-gray-100 rounded-full hover:bg-gray-200">UX
+                                Design</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        @endif
+        </main>
+
+        <!-- Related articles -->
+        <section class="py-12 bg-gray-100">
+            <div class="container px-4 mx-auto">
+                <h2 class="mb-8 text-2xl font-bold">Artikel Terkait</h2>
+                <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    <!-- Article card 1 -->
+                    <div class="overflow-hidden transition bg-white shadow-sm rounded-xl hover:shadow-md">
+                        <a href="#">
+                            <img src="/api/placeholder/400/240" alt="Article thumbnail"
+                                class="object-cover w-full h-48">
+                            <div class="p-6">
+                                <span class="text-sm font-medium text-blue-600">Teknologi</span>
+                                <h3 class="mt-2 mb-3 text-xl font-bold transition hover:text-blue-600">Penerapan
+                                    Machine Learning dalam Bisnis di Indonesia</h3>
+                                <p class="text-gray-600 line-clamp-3">Bagaimana bisnis di Indonesia dapat memanfaatkan
+                                    machine learning untuk meningkatkan efisiensi dan profitabilitas.</p>
+                                <div class="flex items-center mt-4">
+                                    <img src="/api/placeholder/24/24" alt="Author"
+                                        class="w-6 h-6 mr-2 rounded-full">
+                                    <span class="text-sm text-gray-500">Anita Wijaya</span>
+                                    <span class="mx-2 text-gray-300">•</span>
+                                    <span class="text-sm text-gray-500">10 Maret 2023</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Article card 2 -->
+                    <div class="overflow-hidden transition bg-white shadow-sm rounded-xl hover:shadow-md">
+                        <a href="#">
+                            <img src="/api/placeholder/400/240" alt="Article thumbnail"
+                                class="object-cover w-full h-48">
+                            <div class="p-6">
+                                <span class="text-sm font-medium text-blue-600">Startup</span>
+                                <h3 class="mt-2 mb-3 text-xl font-bold transition hover:text-blue-600">10 Startup AI
+                                    Indonesia yang Perlu Diperhatikan di 2023</h3>
+                                <p class="text-gray-600 line-clamp-3">Mengenal lebih dekat startup-startup AI Indonesia
+                                    yang sedang berkembang pesat dan inovasi yang mereka tawarkan.</p>
+                                <div class="flex items-center mt-4">
+                                    <img src="/api/placeholder/24/24" alt="Author"
+                                        class="w-6 h-6 mr-2 rounded-full">
+                                    <span class="text-sm text-gray-500">Rendra Pratama</span>
+                                    <span class="mx-2 text-gray-300">•</span>
+                                    <span class="text-sm text-gray-500">5 Maret 2023</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Article card 3 -->
+                    <div class="overflow-hidden transition bg-white shadow-sm rounded-xl hover:shadow-md">
+                        <a href="#">
+                            <img src="/api/placeholder/400/240" alt="Article thumbnail"
+                                class="object-cover w-full h-48">
+                            <div class="p-6">
+                                <span class="text-sm font-medium text-blue-600">Edukasi</span>
+                                <h3 class="mt-2 mb-3 text-xl font-bold transition hover:text-blue-600">Menyiapkan
+                                    Generasi Muda Indonesia untuk Era AI</h3>
+                                <p class="text-gray-600 line-clamp-3">Strategi pendidikan dan pelatihan yang dibutuhkan
+                                    untuk mempersiapkan tenaga kerja Indonesia di era kecerdasan buatan.</p>
+                                <div class="flex items-center mt-4">
+                                    <img src="/api/placeholder/24/24" alt="Author"
+                                        class="w-6 h-6 mr-2 rounded-full">
+                                    <span class="text-sm text-gray-500">Dr. Sinta Dewi</span>
+                                    <span class="mx-2 text-gray-300">•</span>
+                                    <span class="text-sm text-gray-500">28 Februari 2023</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-16 text-white bg-gradient-to-r from-blue-600 to-purple-600">
+            <div class="container px-4 mx-auto text-center">
+                <h2 class="mb-4 text-3xl font-bold">Tetap Update dengan Perkembangan Teknologi</h2>
+                <p class="max-w-3xl mx-auto mb-8 text-xl">Dapatkan artikel terbaru tentang AI, teknologi, dan inovasi
+                    digital langsung ke inbox Anda.</p>
+                <form class="flex flex-col max-w-xl gap-4 mx-auto sm:flex-row">
+                    <input type="email" placeholder="Email Anda"
+                        class="flex-1 px-4 py-3 text-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300">
+                    <button type="submit"
+                        class="px-6 py-3 font-bold text-blue-600 transition bg-white rounded-lg hover:bg-blue-50">Berlangganan</button>
+                </form>
+                <p class="mt-4 text-sm text-blue-100">Kami menghargai privasi Anda. Tidak ada spam, kapanpun.</p>
+            </div>
+        </section>
+
+        <!-- Back to top button -->
+        <button id="back-to-top"
+            class="fixed p-3 text-white transition-opacity duration-300 bg-blue-600 rounded-full shadow-lg opacity-0 bottom-6 right-6 hover:bg-blue-700">
+            <i class="fas fa-arrow-up"></i>
+        </button>
     </div>
-</div>
+    </div>
+    <script>
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.remove('opacity-0');
+                backToTopButton.classList.add('opacity-100');
+            } else {
+                backToTopButton.classList.remove('opacity-100');
+                backToTopButton.classList.add('opacity-0');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </x-app-layout>

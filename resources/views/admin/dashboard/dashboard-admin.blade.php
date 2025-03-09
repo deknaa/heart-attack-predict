@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="p-14 sm:ml-64">
-        <div class="flex gap-5">
+        <div class="flex flex-col gap-5 lg:flex-row">
             <div class="w-full max-w-md p-6 bg-white border-l-4 border-blue-500 rounded-lg shadow-md">
                 <div class="flex items-center justify-between">
                     <div>
@@ -16,8 +16,13 @@
                                 d="M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11.5c.07 0 .14-.007.207-.021.095.014.193.021.293.021h2a2 2 0 0 0 2-2V7a1 1 0 0 0-1-1h-1a1 1 0 1 0 0 2v11h-2V5a2 2 0 0 0-2-2H5Zm7 4a1 1 0 0 1 1-1h.5a1 1 0 1 1 0 2H13a1 1 0 0 1-1-1Zm0 3a1 1 0 0 1 1-1h.5a1 1 0 1 1 0 2H13a1 1 0 0 1-1-1Zm-6 4a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H7a1 1 0 0 1-1-1Zm0 3a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H7a1 1 0 0 1-1-1ZM7 6a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H7Zm1 3V8h1v1H8Z"
                                 clip-rule="evenodd" />
                         </svg>
-
                     </div>
+                </div>
+                <div class="flex items-center mt-4 text-sm">
+                  <span class="flex items-center text-red-500">
+                    <i class="mr-1 fas fa-arrow-down"></i> 0.8%
+                  </span>
+                  <span class="ml-2 text-gray-400">Since last month</span>
                 </div>
             </div>
             <div class="w-full max-w-md p-6 bg-white border-l-4 border-blue-500 rounded-lg shadow-md">
@@ -35,6 +40,12 @@
                                 clip-rule="evenodd" />
                         </svg>
                     </div>
+                </div>
+                <div class="flex items-center mt-4 text-sm">
+                  <span class="flex items-center text-green-500">
+                    <i class="mr-1 fas fa-arrow-up"></i> 8.2%
+                  </span>
+                  <span class="ml-2 text-gray-400">Since last month</span>
                 </div>
             </div>
             <div class="w-full max-w-md p-6 bg-white border-l-4 border-blue-500 rounded-lg shadow-md">
@@ -52,6 +63,12 @@
                                 clip-rule="evenodd" />
                         </svg>
                     </div>
+                </div>
+                <div class="flex items-center mt-4 text-sm">
+                  <span class="flex items-center text-green-500">
+                    <i class="mr-1 fas fa-arrow-up"></i> 5.2%
+                  </span>
+                  <span class="ml-2 text-gray-400">Since last month</span>
                 </div>
             </div>
         </div>
