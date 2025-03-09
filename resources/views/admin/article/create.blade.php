@@ -36,6 +36,7 @@
                     <div class="mb-4">
                         <label for="visibility" class="block text-sm font-medium text-gray-700">Visibility</label>
                         <select name="visibility" id="visibility">
+                            <option value="">Pilih Visibilitas</option>
                             <option value="public">Public</option>
                             <option value="private">Private</option>
                         </select>
@@ -47,6 +48,7 @@
                     <div class="mb-4">
                         <label for="category" class="block text-sm font-medium text-gray-700">Category</label>
                         <select name="category" id="category">
+                            <option value="">Pilih Kategori</option>
                             <option value="umum">Umum</option>
                             <option value="kesehatan_mental">Mental</option>
                             <option value="gizi_nutrisi">Gizi dan Nutrisi</option>
