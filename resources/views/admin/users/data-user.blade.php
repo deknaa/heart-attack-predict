@@ -5,11 +5,6 @@
                 <h1 class="text-xl font-bold">List Data Users</h1>
                 <p class="text-sm">This page for showing list of Users</p>
             </div>
-            <div class="mt-5 lg:mt-0">
-                <a href="{{ route('article.create') }}" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" wire:navigate>
-                    Create Article
-                </a>
-            </div>
         </div>
         {{-- Table Article --}}
         <table id="selection-table">
@@ -75,9 +70,7 @@
                         <td>{{ $user->role }}</td>
                         <td>{{ $user->created_at }}</td>
                         <td>
-                            {{-- <a href="{{ route('admin.article.edit', $article->id) }}" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" wire:navigate>Edit</a>
-                            <a href="#" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</a>
-                            <a href="{{ route('admin.article.details', $article->slug) }}" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" wire:navigate>Details</a> --}}
+                            <a href="{{ route('users.detail', $user->id) }}" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Details</a>
                         </td>
                     </tr>
                 @endforeach

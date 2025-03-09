@@ -40,6 +40,7 @@ Route::middleware(['auth', 'adminRole'])->group(function () {
     Route::post('upload-image', [ImageUploadController::class, 'upload'])->name('image.upload');
     
     Route::get('users/data', [AdminDashboardController::class, 'usersData'])->name('users.data');
+    Route::get('users/data/{id}', [AdminDashboardController::class, 'usersDetail'])->name('users.detail');
 
     Route::resource('admin/announcement', AnnouncementController::class);
 });

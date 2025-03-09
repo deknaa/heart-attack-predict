@@ -21,6 +21,13 @@ class AdminDashboardController extends Controller
     {
         $users = User::all();
 
-        return view('admin.data-user', compact('users'));
+        return view('admin.users.data-user', compact('users'));
+    }
+
+    public function usersDetail($id)
+    { 
+        $user = User::find($id);
+
+        return view('admin.users.detail-user', compact('user'));
     }
 }
