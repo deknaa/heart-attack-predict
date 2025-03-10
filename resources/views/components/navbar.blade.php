@@ -338,17 +338,6 @@
                 </div>
             </div>
         </aside>
-
-        <script>
-            const sidebar = document.getElementById('sidebar-navigation-user');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            mobileMenu.addEventListener('click', function(e) {
-               sidebar.classList.remove('hidden');
-               sidebar.classList.add('block');
-            });
-
-        </script>
     @elseif(auth()->user()->role === 'admin')
         <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-100 shadow-sm dark:bg-gray-800 dark:border-gray-700"
             id="main-navbar">
@@ -378,22 +367,6 @@
                                 </span>
                                 <p class="text-xs text-gray-500 dark:text-gray-400">Admin Portal</p>
                             </div>
-                        </a>
-                    </div>
-
-                    {{-- Center Navigation --}}
-                    <div class="hidden md:flex md:items-center md:space-x-4">
-                        <a href="/dashboard"
-                            class="px-3 py-2 text-sm font-medium text-blue-600 rounded-md dark:text-blue-400">Dashboard</a>
-                        <a href="/articles"
-                            class="px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-700">Articles</a>
-                        <a href="/users"
-                            class="px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-700">Users</a>
-                        <a href="/announcements"
-                            class="flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-700">
-                            Announcements
-                            <span
-                                class="flex items-center justify-center w-5 h-5 ml-2 text-xs font-semibold text-white bg-blue-600 rounded-full">3</span>
                         </a>
                     </div>
 
@@ -689,7 +662,7 @@
             </div>
         </aside>
 
-        <div class="p-4 sm:ml-64">
+        <div class="p-4">
 
         </div>
     @endauth
@@ -699,23 +672,10 @@
         <div class="px-4 py-3 mx-auto max-w-7xl lg:px-6">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-4">
-                    {{-- Mobile menu toggle --}}
-                    <button data-drawer-target="sidebar-navigation" data-drawer-toggle="sidebar-navigation"
-                        aria-controls="sidebar-navigation" type="button"
-                        class="inline-flex items-center p-2 text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                        <span class="sr-only">Toggle navigation menu</span>
-                        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path clip-rule="evenodd" fill-rule="evenodd"
-                                d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
-                            </path>
-                        </svg>
-                    </button>
-
                     {{-- Logo --}}
-                    <a href="/" class="items-center hidden space-x-3 md:flex">
+                    <a href="/" class="items-center space-x-3 md:flex">
                         <img src="https://flowbite.com/docs/images/logo.svg" class="h-9" alt="Company Logo" />
-                        <div>
+                        <div class="hidden md:flex md:flex-col">
                             <span
                                 class="self-center text-xl font-semibold text-gray-800 whitespace-nowrap dark:text-white">
                                 {{ config('app.name') }}
@@ -777,3 +737,5 @@
         </div>
     </nav>
 @endif
+
+@vite(['resources/js/navbar.js'])
