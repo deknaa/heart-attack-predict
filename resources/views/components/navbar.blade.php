@@ -424,7 +424,7 @@
                                         <div class="hidden mr-2 text-right md:block">
                                             <p class="text-sm font-medium text-gray-800 dark:text-white">
                                                 {{ Str::limit(Auth::user()->name, 15) }}</p>
-                                            <p class="text-xs text-gray-500 dark:text-gray-400">Administrator</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">{{ Auth::user()->role }}</p>
                                         </div>
                                         <img class="rounded-full w-9 h-9 ring-2 ring-gray-200 dark:ring-gray-600"
                                             src="{{ auth()->user()->avatar_url ?? 'https://ui-avatars.com/api/?name=' . urlencode(auth()->user()->name) }}"
@@ -436,7 +436,7 @@
                                         </svg>
                                     </button>
 
-                                    <!-- User Dropdown Menu -->
+                                    {{-- User Dropdown Menu --}}
                                     <div class="z-50 hidden min-w-[200px] my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-lg dark:bg-gray-700 dark:divide-gray-600"
                                         id="user-dropdown">
                                         <div class="px-4 py-3">
@@ -447,7 +447,7 @@
                                         </div>
                                         <ul class="py-2" aria-labelledby="user-menu-button">
                                             <li>
-                                                <a href="/dashboard"
+                                                <a href="{{ route('dashboard.admin') }}"
                                                     class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                                                     <svg class="w-4 h-4 mr-2 text-gray-500 dark:text-gray-400" fill="none"
                                                         stroke="currentColor" viewBox="0 0 24 24">
@@ -459,7 +459,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="/profile"
+                                                <a href="{{ route('profile.index', Auth::user()->id) }}"
                                                     class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                                                     <svg class="w-4 h-4 mr-2 text-gray-500 dark:text-gray-400" fill="none"
                                                         stroke="currentColor" viewBox="0 0 24 24">

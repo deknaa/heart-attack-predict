@@ -14,13 +14,15 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('profile/{id}', [ProfileController::class, 'index'])->name('profile.index');
+
 // Route untuk user dengan role users
 Route::middleware(['auth', 'userRole'])->group(function () {
     Route::get('dashboard/user', [UserDashboardController::class, 'index'])->name('dashboard');
-
+    
     Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('profile', [ProfileController::class, 'destrwaoy'])->name('profile.destroy');
+    Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // Route for Predict
     Route::get('predict', [PredictionController::class, 'predictionPage'])->name('predict');
