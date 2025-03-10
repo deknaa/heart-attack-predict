@@ -1,146 +1,153 @@
-<x-app-layout>
+<x-app-layout>>
     <div class="p-14 sm:ml-64">
-        <div class="flex flex-col justify-between mb-8 lg:flex-row lg:items-center">
-            <div>
-                <h1 class="text-xl font-bold">List Data Users</h1>
-                <p class="text-sm">This page for showing list of Users</p>
+        <div class="px-4 py-8 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            {{-- Header --}}
+            <div class="flex flex-col items-start justify-between pb-4 mb-6 border-b sm:flex-row sm:items-center">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Data Users</h1>
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Manage and view data users collection</p>
+                </div>
+            </div>
+
+            {{-- Search and filter --}}
+            <div class="mb-6">
+                <div class="flex flex-col gap-4 sm:flex-row">
+                    <div class="relative flex-grow">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </div>
+                        <input type="search" id="article-search"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                            placeholder="Search users...">
+                    </div>
+                    <select id="article-filter"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                        <option selected>All Role</option>
+                        <option>Admin</option>
+                        <option>User</option>
+                    </select>
+                </div>
+            </div>
+
+            {{-- Table --}}
+            <div class="overflow-hidden border border-gray-200 rounded-lg shadow dark:border-gray-700">
+                <table id="selection-table" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-300">
+                        <tr>
+                            <th class="px-6 py-4">
+                                <span class="flex items-center">
+                                    Name
+                                    <button class="ml-1">
+                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4" />
+                                        </svg>
+                                    </button>
+                                </span>
+                            </th>
+                            <th class="px-6 py-4">
+                                <span class="flex items-center">
+                                    Email
+                                    <button class="ml-1">
+                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4" />
+                                        </svg>
+                                    </button>
+                                </span>
+                            </th>
+                            <th class="px-6 py-4">
+                                <span class="flex items-center">
+                                    Role
+                                    <button class="ml-1">
+                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4" />
+                                        </svg>
+                                    </button>
+                                </span>
+                            </th>
+                            <th class="px-6 py-4">
+                                <span class="flex items-center">
+                                    Created At
+                                    <button class="ml-1">
+                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4" />
+                                        </svg>
+                                    </button>
+                                </span>
+                            </th>
+                            <th class="px-6 py-4 text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($users as $user)
+                            <tr
+                                class="transition-colors duration-150 bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700">
+                                <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+                                    <div class="flex items-center">
+                                        <div
+                                            class="flex items-center justify-center w-8 h-8 mr-3 bg-blue-100 rounded dark:bg-blue-900">
+                                            <span
+                                                class="font-semibold text-blue-700 dark:text-blue-300">{{ substr($user->name, 0, 1) }}</span>
+                                        </div>
+                                        <span>{{ $user->name }}</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <p class="text-sm line-clamp-2">{{ $user->email }}</p>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <p class="text-sm line-clamp-2">{{ $user->role }}</p>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span>{{ $user->created_at->format('M d, Y') }}</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center justify-center space-x-1">
+                                        <a href="{{ route('users.detail', $user->id) }}"
+                                            class="p-2 text-blue-600 rounded-lg hover:bg-blue-100 dark:text-blue-400 dark:hover:bg-gray-700"
+                                            title="View user">
+                                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
-        {{-- Table Article --}}
-        <table id="selection-table">
-            <thead>
-                <tr>
-                    <th>
-                        <span class="flex items-center">
-                            Name
-                            <svg class="w-4 h-4 ms-1" aria-hidden="true" dxmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m8 15 4 4 4-4m0-6-4-4-4 4" />
-                            </svg>
-                        </span>
-                    </th>
-                    <th>
-                        <span class="flex items-center">
-                            Email
-                            <svg class="w-4 h-4 ms-1" aria-hidden="true" dxmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m8 15 4 4 4-4m0-6-4-4-4 4" />
-                            </svg>
-                        </span>
-                    </th>
-                    <th data-type="date" data-format="YYYY/DD/MM">
-                        <span class="flex items-center">
-                            Role
-                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m8 15 4 4 4-4m0-6-4-4-4 4" />
-                            </svg>
-                        </span>
-                    </th>
-                    <th>
-                        <span class="flex items-center">
-                            Created At
-                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m8 15 4 4 4-4m0-6-4-4-4 4" />
-                            </svg>
-                        </span>
-                    </th>
-                    <th>
-                        <span class="flex items-center">
-                            Options
-                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m8 15 4 4 4-4m0-6-4-4-4 4" />
-                            </svg>
-                        </span>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($users as $user)
-                    <tr class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
-                        <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $user->name }}</td>
-                        <td>{{  Str::limit($user->email, 7) }}</td>
-                        <td>{{ $user->role }}</td>
-                        <td>{{ $user->created_at }}</td>
-                        <td>
-                            <a href="{{ route('users.detail', $user->id) }}" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Details</a>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
     </div>
-    <script>
-        if (document.getElementById("selection-table") && typeof simpleDatatables.DataTable !== 'undefined') {
-    
-            let multiSelect = true;
-            let rowNavigation = false;
-            let table = null;
-    
-            const resetTable = function() {
-                if (table) {
-                    table.destroy();
-                }
-    
-                const options = {
-                    rowRender: (row, tr, _index) => {
-                        if (!tr.attributes) {
-                            tr.attributes = {};
-                        }
-                        if (!tr.attributes.class) {
-                            tr.attributes.class = "";
-                        }
-                        if (row.selected) {
-                            tr.attributes.class += " selected";
-                        } else {
-                            tr.attributes.class = tr.attributes.class.replace(" selected", "");
-                        }
-                        return tr;
-                    }
-                };
-                if (rowNavigation) {
-                    options.rowNavigation = true;
-                    options.tabIndex = 1;
-                }
-    
-                table = new simpleDatatables.DataTable("#selection-table", options);
-    
-                // Mark all rows as unselected
-                table.data.data.forEach(data => {
-                    data.selected = false;
-                });
-    
-                table.on("datatable.selectrow", (rowIndex, event) => {
-                    event.preventDefault();
-                    const row = table.data.data[rowIndex];
-                    if (row.selected) {
-                        row.selected = false;
-                    } else {
-                        if (!multiSelect) {
-                            table.data.data.forEach(data => {
-                                data.selected = false;
-                            });
-                        }
-                        row.selected = true;
-                    }
-                    table.update();
-                });
-            };
-    
-            // Row navigation makes no sense on mobile, so we deactivate it and hide the checkbox.
-            const isMobile = window.matchMedia("(any-pointer:coarse)").matches;
-            if (isMobile) {
-                rowNavigation = false;
-            }
-    
-            resetTable();
-        }
-    </script>
+
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                toast: true,
+                position: "bottom-end",
+                title: 'Success',
+                text: "{{ session('success') }}",
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+            });
+        </script>
+    @endif
+    @vite(['resources/js/articleTable.js'])
 </x-app-layout>
