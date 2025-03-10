@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Announcement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class AnnouncementController extends Controller
 {
@@ -12,7 +14,8 @@ class AnnouncementController extends Controller
      */
     public function index()
     {
-        // return view()
+        $announcements = Announcement::all();
+        return view('admin.announcement.view', compact('announcements'));
     }
 
     /**
@@ -20,7 +23,7 @@ class AnnouncementController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.announcement.create');
     }
 
     /**
@@ -28,38 +31,67 @@ class AnnouncementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|min:3',
+            'content' => 'required|string|min:5',
+            'visibility' => 'required|in:public,private',
+        ]);
+
+        Announcement::create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'visibility' => $request->visibility,
+            'slug' => Str::slug($request->title) . '-' . Str::random(5),
+        ]);
+
+        return redirect()->route('announcement.index')->with('success', 'Announcement created successfully');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        //
+        $announcement = Announcement::where('slug', $slug)->firstOrFail();
+        return view('admin.announcement.show', compact('announcement'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $slug)
     {
-        //
+        $announcement = Announcement::where('slug', $slug)->firstOrFail();
+        return view('admin.announcement.edit', compact('announcement'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $slug)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|min:3',
+            'content' => 'required|string|min:5',
+            'visibility' => 'required|in:public,private',
+        ]);
+
+        $announcement = Announcement::where('slug', $slug)->firstOrFail();
+        $announcement->update([
+            'title' => $request->title,
+            'content' => $request->content,
+            'visibility' => $request->visibility,
+        ]);
+
+        return redirect()->route('announcement.index')->with('success', 'Announcement updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Announcement $announcement)
     {
-        //
+        $announcement->delete();
+        return redirect()->route('announcement.index')->with('success', 'Announcement deleted successfully');
     }
 }

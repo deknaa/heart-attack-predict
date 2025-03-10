@@ -591,8 +591,6 @@
                                     <span class="font-medium">Announcements</span>
                                     <div class="text-xs text-gray-500 dark:text-gray-400">Manage system alerts</div>
                                 </div>
-                                <span
-                                    class="inline-flex items-center justify-center w-6 h-6 text-xs font-medium text-white bg-blue-600 rounded-full ms-2">3</span>
                             </a>
                         </li>
                     </ul>

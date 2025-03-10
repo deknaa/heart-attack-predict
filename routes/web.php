@@ -40,7 +40,7 @@ Route::middleware(['auth', 'adminRole'])->group(function () {
     Route::get('users/data', [AdminDashboardController::class, 'usersData'])->name('users.data');
     Route::get('users/data/{id}', [AdminDashboardController::class, 'usersDetail'])->name('users.detail');
 
-    Route::resource('admin/announcement', AnnouncementController::class);
+    Route::resource('announcement', AnnouncementController::class);
 });
 
 Route::get('auth/google', [GoogleAuthController::class, 'redirectToGoogle'])->name('auth.google');
