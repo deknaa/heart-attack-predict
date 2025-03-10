@@ -8,7 +8,8 @@
                         {{-- Mobile menu toggle --}}
                         <button data-drawer-target="sidebar-navigation-user" data-drawer-toggle="sidebar-navigation-user"
                             aria-controls="sidebar-navigation-user" type="button"
-                            class="inline-flex items-center p-2 text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" id="mobile-menu">
+                            class="inline-flex items-center p-2 text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                            id="mobile-menu">
                             <span class="sr-only">Toggle navigation menu</span>
                             <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -665,17 +666,17 @@
         </div>
     @endauth
 @else
-    <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-100 shadow-sm dark:bg-gray-800 dark:border-gray-700"
-        id="main-navbar">
+    <nav class="fixed top-0 z-50 w-full transition-all duration-300 bg-white shadow-sm dark:bg-gray-800 dark:border-gray-700"
+        id="navbar">
         <div class="px-4 py-3 mx-auto max-w-7xl lg:px-6">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-4">
                     {{-- Logo --}}
                     <a href="/" class="items-center space-x-3 md:flex">
-                        <img src="https://flowbite.com/docs/images/logo.svg" class="h-9" alt="Company Logo" />
+                        <span class="text-2xl font-bold text-red-600"><i class="mr-2 fas fa-heartbeat"></i></span>
                         <div class="hidden md:flex md:flex-col">
                             <span
-                                class="self-center text-xl font-semibold text-gray-800 whitespace-nowrap dark:text-white">
+                                class="self-center text-xl font-semibold text-red-600 whitespace-nowrap dark:text-white">
                                 {{ config('app.name') }}
                             </span>
                             <p class="text-xs text-gray-500 dark:text-gray-400">Website for health</p>
@@ -684,20 +685,29 @@
                 </div>
 
                 {{-- Center Navigation --}}
-                <div class="hidden md:flex md:items-center md:space-x-4">
-                    <a href="/"
-                        class="px-3 py-2 text-sm font-medium text-blue-600 rounded-md dark:text-blue-400">Home</a>
-                    <a href="/"
-                        class="px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-700">How
-                        It Works</a>
-                    <a href="/"
-                        class="px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-700">Testimony</a>
-                    <a href="/"
-                        class="px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-700">About</a>
-                    <a href="/"
-                        class="px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-700">Articles</a>
-                    <a href="/"
-                        class="px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-700">Contacts</a>
+                <div class="flex">
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="#home"
+                            class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900 border-b-2 border-red-500">
+                            Beranda
+                        </a>
+                        <a href="#about"
+                            class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700">
+                            Tentang
+                        </a>
+                        <a href="#risk-factors"
+                            class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700">
+                            Faktor Risiko
+                        </a>
+                        <a href="#prediction"
+                            class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700">
+                            Prediksi
+                        </a>
+                        <a href="#faq"
+                            class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700">
+                            FAQ
+                        </a>
+                    </div>
                 </div>
 
                 {{-- Right Side --}}
@@ -721,7 +731,7 @@
 
                     {{-- Button login for guest --}}
                     <a href="{{ route('login') }}"
-                        class="flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700">
+                        class="flex items-center px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:ring-red-300 focus:outline-none dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-700">
                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -735,5 +745,4 @@
         </div>
     </nav>
 @endif
-
 @vite(['resources/js/navbar.js'])

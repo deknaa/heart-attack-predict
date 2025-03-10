@@ -8,7 +8,6 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script>
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
@@ -21,40 +20,15 @@
     <title>HealthCare</title>
 </head>
 
-<body class="font-sans antialiased text-gray-800 bg-gray-50">
-    {{-- Navbar --}}
+<body>
     <x-navbar></x-navbar>
-
-    {{-- Hero Section --}}
     <x-landing-page.hero-section></x-landing-page.hero-section>
-
-    {{-- Stats Section --}}
-    <x-landing-page.stats></x-landing-page.stats>
-
-    {{-- About Section --}}
-    <x-landing-page.about></x-landing-page.about>
-
-    {{-- How it works --}}
     <x-landing-page.how-its-work></x-landing-page.how-its-work>
-
-    {{-- Risk factors --}}
-    <x-landing-page.risk-factors></x-landing-page.risk-factors>
-
-    {{-- Prediction --}}
-    <x-landing-page.prediction></x-landing-page.prediction>
-
-    {{-- Testimonials Section --}}
     <x-landing-page.testimony></x-landing-page.testimony>
-
-    {{-- FAQ Section --}}
-    <x-landing-page.faq></x-landing-page.faq>
-
-    {{-- CTA Section --}}
-    <x-landing-page.cta></x-landing-page.cta>
-
-    {{-- Footer --}}
-    <x-landing-page.footer></x-landing-page.footer>
+    <x-landing-page.about></x-landing-page.about>
+    <x-landing-page.articles></x-landing-page.articles>
+    <x-landing-page.contacts></x-landing-page.contacts>
 </body>
 @vite(['resources/js/darkMode.js'])
-@vite(['resources/js/navbar.js'])
+
 </html>
