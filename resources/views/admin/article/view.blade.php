@@ -1,124 +1,182 @@
 <x-app-layout>
     <div class="p-14 sm:ml-64">
-        <div class="flex flex-col justify-between mb-8 lg:flex-row lg:items-center">
-            <div>
-                <h1 class="text-xl font-bold">List Article</h1>
-                <p class="text-sm">This page for showing list of article</p>
+        <div class="px-4 py-8 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            {{-- Header --}}
+            <div class="flex flex-col items-start justify-between pb-4 mb-6 border-b sm:flex-row sm:items-center">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Articles</h1>
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Manage and view your article collection</p>
+                </div>
+                <div class="mt-4 sm:mt-0">
+                    <a href="{{ route('article.create') }}"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-white transition-colors duration-200 bg-blue-600 rounded-lg shadow-sm hover:bg-blue-700">
+                        <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        Create Article
+                    </a>
+                </div>
             </div>
-            <div class="mt-5 lg:mt-0">
-                <a href="{{ route('article.create') }}"
-                    class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-                    wire:navigate>
-                    Create Article
-                </a>
+
+            {{-- Search and filter --}}
+            <div class="mb-6">
+                <div class="flex flex-col gap-4 sm:flex-row">
+                    <div class="relative flex-grow">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </div>
+                        <input type="search" id="article-search"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                            placeholder="Search articles...">
+                    </div>
+                    <select id="article-filter"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                        <option selected>All Articles</option>
+                        <option>Published</option>
+                        <option>Drafts</option>
+                        <option>My Articles</option>
+                    </select>
+                </div>
+            </div>
+
+            {{-- Table --}}
+            <div class="overflow-hidden border border-gray-200 rounded-lg shadow dark:border-gray-700">
+                <table id="selection-table" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-300">
+                        <tr>
+                            <th class="px-6 py-4">
+                                <span class="flex items-center">
+                                    Title
+                                    <button class="ml-1">
+                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4" />
+                                        </svg>
+                                    </button>
+                                </span>
+                            </th>
+                            <th class="px-6 py-4">
+                                <span class="flex items-center">
+                                    Content
+                                    <button class="ml-1">
+                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4" />
+                                        </svg>
+                                    </button>
+                                </span>
+                            </th>
+                            <th class="px-6 py-4">
+                                <span class="flex items-center">
+                                    Author
+                                    <button class="ml-1">
+                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4" />
+                                        </svg>
+                                    </button>
+                                </span>
+                            </th>
+                            <th class="px-6 py-4">
+                                <span class="flex items-center">
+                                    Created At
+                                    <button class="ml-1">
+                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4" />
+                                        </svg>
+                                    </button>
+                                </span>
+                            </th>
+                            <th class="px-6 py-4 text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($articles as $article)
+                            <tr
+                                class="transition-colors duration-150 bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700">
+                                <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+                                    <div class="flex items-center">
+                                        <div
+                                            class="flex items-center justify-center w-8 h-8 mr-3 bg-blue-100 rounded dark:bg-blue-900">
+                                            <span
+                                                class="font-semibold text-blue-700 dark:text-blue-300">{{ substr($article->title, 0, 1) }}</span>
+                                        </div>
+                                        <span>{{ $article->title }}</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <p class="text-sm line-clamp-2">{{ Str::limit($article->content, 50) }}</p>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center">
+                                        <div
+                                            class="flex items-center justify-center w-6 h-6 mr-2 bg-gray-200 rounded-full dark:bg-gray-600">
+                                            <span class="text-xs">{{ substr($article->user->name, 0, 1) }}</span>
+                                        </div>
+                                        <span>{{ $article->user->name }}</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span>{{ $article->created_at->format('M d, Y') }}</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center justify-center space-x-1">
+                                        <a href="{{ route('article.show', $article->slug) }}"
+                                            class="p-2 text-blue-600 rounded-lg hover:bg-blue-100 dark:text-blue-400 dark:hover:bg-gray-700"
+                                            title="View article">
+                                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                            </svg>
+                                        </a>
+                                        <a href="{{ route('article.edit', $article->slug) }}"
+                                            class="p-2 text-yellow-600 rounded-lg hover:bg-yellow-100 dark:text-yellow-400 dark:hover:bg-gray-700"
+                                            title="Edit article">
+                                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                            </svg>
+                                        </a>
+                                        <form action="{{ route('article.destroy', $article->id) }}" method="POST"
+                                            class="inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button" onclick="confirmDelete(this)"
+                                                class="p-2 text-red-600 rounded-lg hover:bg-red-100 dark:text-red-400 dark:hover:bg-gray-700"
+                                                title="Delete article">
+                                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
-        {{-- Table Article --}}
-        <table id="selection-table">
-            <thead>
-                <tr>
-                    <th>
-                        <span class="flex items-center">
-                            Title
-                            <svg class="w-4 h-4 ms-1" aria-hidden="true" dxmlns="http://www.w3.org/2000/svg"
-                                width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4" />
-                            </svg>
-                        </span>
-                    </th>
-                    <th>
-                        <span class="flex items-center">
-                            Content
-                            <svg class="w-4 h-4 ms-1" aria-hidden="true" dxmlns="http://www.w3.org/2000/svg"
-                                width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4" />
-                            </svg>
-                        </span>
-                    </th>
-                    <th data-type="date" data-format="YYYY/DD/MM">
-                        <span class="flex items-center">
-                            Author
-                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4" />
-                            </svg>
-                        </span>
-                    </th>
-                    <th>
-                        <span class="flex items-center">
-                            Created At
-                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4" />
-                            </svg>
-                        </span>
-                    </th>
-                    <th>
-                        <span class="flex items-center">
-                            Options
-                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4" />
-                            </svg>
-                        </span>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($articles as $article)
-                    <tr class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
-                        <td class="font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $article->title }}
-                        </td>
-                        <td>{{ Str::limit($article->content, 7) }}</td>
-                        <td>{{ $article->user->name }}</td>
-                        <td>{{ $article->created_at }}</td>
-                        <td class="flex items-center">
-                            <a href="{{ route('article.edit', $article->slug) }}" class="inline-block">
-                                <div
-                                    class="flex focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                                    <svg class="w-6 h-6 text-white" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        fill="currentColor" viewBox="0 0 24 24">
-                                        <path fill-rule="evenodd"
-                                            d="M14 4.182A4.136 4.136 0 0 1 16.9 3c1.087 0 2.13.425 2.899 1.182A4.01 4.01 0 0 1 21 7.037c0 1.068-.43 2.092-1.194 2.849L18.5 11.214l-5.8-5.71 1.287-1.31.012-.012Zm-2.717 2.763L6.186 12.13l2.175 2.141 5.063-5.218-2.141-2.108Zm-6.25 6.886-1.98 5.849a.992.992 0 0 0 .245 1.026 1.03 1.03 0 0 0 1.043.242L10.282 19l-5.25-5.168Zm6.954 4.01 5.096-5.186-2.218-2.183-5.063 5.218 2.185 2.15Z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </div>
-                            </a>
-
-                            <form action="{{ route('article.destroy', $article->id) }}" method="POST">
-                                <button type="submit" class="flex focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
-                                @csrf
-                                @method('DELETE')
-                                <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                                    <path fill-rule="evenodd"
-                                        d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                            </form>
-
-                            <a href="{{ route('article.show', $article->slug) }}"
-                                class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><svg
-                                    class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                                    <path fill-rule="evenodd"
-                                        d="M4.998 7.78C6.729 6.345 9.198 5 12 5c2.802 0 5.27 1.345 7.002 2.78a12.713 12.713 0 0 1 2.096 2.183c.253.344.465.682.618.997.14.286.284.658.284 1.04s-.145.754-.284 1.04a6.6 6.6 0 0 1-.618.997 12.712 12.712 0 0 1-2.096 2.183C17.271 17.655 14.802 19 12 19c-2.802 0-5.27-1.345-7.002-2.78a12.712 12.712 0 0 1-2.096-2.183 6.6 6.6 0 0 1-.618-.997C2.144 12.754 2 12.382 2 12s.145-.754.284-1.04c.153-.315.365-.653.618-.997A12.714 12.714 0 0 1 4.998 7.78ZM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </a>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
     </div>
+
     @if (session('success'))
         <script>
             Swal.fire({
@@ -133,70 +191,6 @@
             });
         </script>
     @endif
-    <script>
-        if (document.getElementById("selection-table") && typeof simpleDatatables.DataTable !== 'undefined') {
 
-            let multiSelect = true;
-            let rowNavigation = false;
-            let table = null;
-
-            const resetTable = function() {
-                if (table) {
-                    table.destroy();
-                }
-
-                const options = {
-                    rowRender: (row, tr, _index) => {
-                        if (!tr.attributes) {
-                            tr.attributes = {};
-                        }
-                        if (!tr.attributes.class) {
-                            tr.attributes.class = "";
-                        }
-                        if (row.selected) {
-                            tr.attributes.class += " selected";
-                        } else {
-                            tr.attributes.class = tr.attributes.class.replace(" selected", "");
-                        }
-                        return tr;
-                    }
-                };
-                if (rowNavigation) {
-                    options.rowNavigation = true;
-                    options.tabIndex = 1;
-                }
-
-                table = new simpleDatatables.DataTable("#selection-table", options);
-
-                // Mark all rows as unselected
-                table.data.data.forEach(data => {
-                    data.selected = false;
-                });
-
-                table.on("datatable.selectrow", (rowIndex, event) => {
-                    event.preventDefault();
-                    const row = table.data.data[rowIndex];
-                    if (row.selected) {
-                        row.selected = false;
-                    } else {
-                        if (!multiSelect) {
-                            table.data.data.forEach(data => {
-                                data.selected = false;
-                            });
-                        }
-                        row.selected = true;
-                    }
-                    table.update();
-                });
-            };
-
-            // Row navigation makes no sense on mobile, so we deactivate it and hide the checkbox.
-            const isMobile = window.matchMedia("(any-pointer:coarse)").matches;
-            if (isMobile) {
-                rowNavigation = false;
-            }
-
-            resetTable();
-        }
-    </script>
+    @vite(['resources/js/articleTable.js'])
 </x-app-layout>

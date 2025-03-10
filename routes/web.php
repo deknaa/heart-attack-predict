@@ -27,10 +27,6 @@ Route::middleware(['auth', 'userRole'])->group(function () {
     // Route for Predict
     Route::get('predict', [PredictionController::class, 'predictionPage'])->name('predict');
     Route::get('history-predict', [PredictionController::class, 'historyPredict'])->name('predict.history');
-
-    // Route for Articles
-    // Route::get('article/view', UserView::class)->name('user.article.view');
-    // Route::get('article/{slug}', UserDetails::class)->name('user.article.details');
 });
 
 // Route untuk user dengan role admin
