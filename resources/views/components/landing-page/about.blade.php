@@ -1,13 +1,13 @@
-<section id="about" class="py-16 bg-gray-50">
+<section id="about" class="py-16 bg-gray-50 dark:bg-gray-800">
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="items-center lg:grid lg:grid-cols-2 lg:gap-12">
-            <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
+            <div data-aos="fade-down" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
                 <span class="font-semibold text-red-600">Tentang HealthCare</span>
-                <h2 class="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                <h2 class="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl dark:text-gray-50">
                     Prediksi Medis Berbasis AI
                 </h2>
-                <p class="mt-4 text-lg text-gray-600">
-                    CardioGuard adalah platform prediksi serangan jantung yang menggunakan machine learning canggih
+                <p class="mt-4 text-lg text-gray-600 dark:text-gray-50">
+                    HealthCare adalah platform prediksi serangan jantung yang menggunakan machine learning canggih
                     untuk menganalisis berbagai faktor risiko kesehatan Anda.
                 </p>
                 <div class="mt-8 space-y-4">
@@ -18,8 +18,8 @@
                             </div>
                         </div>
                         <div class="ml-4">
-                            <h3 class="text-lg font-medium text-gray-900">Analisis Faktor Risiko Komprehensif</h3>
-                            <p class="mt-2 text-gray-600">
+                            <h3 class="text-lg font-medium text-gray-900 dark:text-gray-50">Analisis Faktor Risiko Komprehensif</h3>
+                            <p class="mt-2 text-gray-600 dark:text-gray-300">
                                 Kami menganalisis lebih dari 15 faktor risiko yang telah terbukti secara ilmiah
                                 berhubungan dengan serangan jantung.
                             </p>
@@ -32,8 +32,8 @@
                             </div>
                         </div>
                         <div class="ml-4">
-                            <h3 class="text-lg font-medium text-gray-900">Algoritma AI yang Teruji</h3>
-                            <p class="mt-2 text-gray-600">
+                            <h3 class="text-lg font-medium text-gray-900 dark:text-gray-50">Algoritma AI yang Teruji</h3>
+                            <p class="mt-2 text-gray-600 dark:text-gray-300">
                                 Model prediksi kami dilatih dengan dataset dari ribuan kasus nyata dengan tingkat
                                 akurasi mencapai 95%.
                             </p>
@@ -46,8 +46,8 @@
                             </div>
                         </div>
                         <div class="ml-4">
-                            <h3 class="text-lg font-medium text-gray-900">Dikembangkan oleh Ahli Kardiologi</h3>
-                            <p class="mt-2 text-gray-600">
+                            <h3 class="text-lg font-medium text-gray-900 dark:text-gray-50">Dikembangkan oleh Ahli Kardiologi</h3>
+                            <p class="mt-2 text-gray-600 dark:text-gray-300">
                                 Tim kami terdiri dari ahli kardiologi, ilmuwan data, dan pakar kesehatan untuk
                                 memastikan keakuratan dan manfaat klinis.
                             </p>
@@ -55,7 +55,10 @@
                     </div>
                 </div>
             </div>
-            <div class="relative mt-10 lg:mt-0" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
+
+
+            <div class="relative mt-10 lg:mt-0" data-aos="fade-down" data-aos-offset="300"
+                data-aos-easing="ease-in-sine" data-aos-duration="1500">
                 <img class="rounded-xl" src="{{ asset('image/landingpage/doctor2.png') }}" alt="Doctor with patient" />
                 <div class="absolute max-w-xs p-6 bg-white rounded-lg shadow-lg -bottom-6 -right-6">
                     <div class="flex items-start">
@@ -64,7 +67,7 @@
                         </div>
                         <div class="ml-4">
                             <p class="italic text-gray-600">
-                                "CardioGuard telah membantu saya mengidentifikasi pasien berisiko tinggi yang
+                                "HealthCare telah membantu saya mengidentifikasi pasien berisiko tinggi yang
                                 sebelumnya tidak terdeteksi."
                             </p>
                             <div class="mt-3">
@@ -75,6 +78,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>

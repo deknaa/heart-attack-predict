@@ -1,10 +1,10 @@
-<section id="prediction" class="py-16 bg-white">
+<section id="prediction" class="py-16 bg-white dark:bg-gray-800">
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="mb-12 text-center" data-aos="fade-down" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
-            <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+            <h2 class="text-3xl font-extrabold text-gray-900 dark:text-gray-50 sm:text-4xl">
                 Prediksi Risiko Serangan Jantung
             </h2>
-            <p class="max-w-2xl mx-auto mt-4 text-xl text-gray-600">
+            <p class="max-w-2xl mx-auto mt-4 text-xl text-gray-600 dark:text-gray-300">
                 Isi data Anda untuk mendapatkan evaluasi risiko serangan jantung
             </p>
         </div>

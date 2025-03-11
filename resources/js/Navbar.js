@@ -36,4 +36,58 @@ document.addEventListener('DOMContentLoaded', function () {
                 'bg-white/80', 'dark:bg-gray-800/80', 'shadow-md');
         }
     });
+
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    // Toggle mobile menu
+    mobileMenuButton.addEventListener('click', function () {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Sync theme toggles
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+    const darkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
+    const lightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
+
+    // Function to update theme and icons
+    function updateTheme(isDark) {
+        if (isDark) {
+            document.documentElement.classList.add('dark');
+            darkIcon.classList.add('hidden');
+            lightIcon.classList.remove('hidden');
+            darkIconMobile.classList.add('hidden');
+            lightIconMobile.classList.remove('hidden');
+            localStorage.setItem('color-theme', 'dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+            darkIcon.classList.remove('hidden');
+            lightIcon.classList.add('hidden');
+            darkIconMobile.classList.remove('hidden');
+            lightIconMobile.classList.add('hidden');
+            localStorage.setItem('color-theme', 'light');
+        }
+    }
+
+    // Check initial theme
+    if (localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        updateTheme(true);
+    } else {
+        updateTheme(false);
+    }
+
+    // Toggle theme events
+    themeToggle.addEventListener('click', function () {
+        let isDark = document.documentElement.classList.contains('dark');
+        updateTheme(!isDark);
+    });
+
+    themeToggleMobile.addEventListener('click', function () {
+        let isDark = document.documentElement.classList.contains('dark');
+        updateTheme(!isDark);
+    });
 });

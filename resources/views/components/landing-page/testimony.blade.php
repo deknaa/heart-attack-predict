@@ -1,11 +1,11 @@
-<section class="py-16 bg-gray-50">
+<section class="py-16 bg-gray-50 dark:bg-gray-800">
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="mb-12 text-center" data-aos="fade-down" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
-            <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+            <h2 class="text-3xl font-extrabold text-gray-900 dark:text-gray-50 sm:text-4xl">
                 Apa Kata Pengguna Kami
             </h2>
-            <p class="max-w-2xl mx-auto mt-4 text-xl text-gray-600">
-                Pengalaman nyata dari orang-orang yang telah menggunakan CardioGuard
+            <p class="max-w-2xl mx-auto mt-4 text-xl text-gray-600 dark:text-gray-300">
+                Pengalaman nyata dari orang-orang yang telah menggunakan HealthCare
             </p>
         </div>
 
@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <p class="text-gray-600">
-                    "Berkat CardioGuard, saya mengetahui bahwa risiko serangan jantung saya tinggi. Setelah
+                    "Berkat HealthCare, saya mengetahui bahwa risiko serangan jantung saya tinggi. Setelah
                     mengikuti rekomendasi dari aplikasi dan berkonsultasi dengan dokter, tekanan darah dan
                     kolesterol saya turun drastis."
                 </p>
@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <p class="text-gray-600">
-                    "Sebagai dokter umum, saya merekomendasikan CardioGuard kepada pasien saya untuk meningkatkan
+                    "Sebagai dokter umum, saya merekomendasikan HealthCare kepada pasien saya untuk meningkatkan
                     kesadaran mereka tentang kesehatan jantung. Ini adalah alat yang bagus untuk deteksi dini risiko
                     serangan jantung."
                 </p>

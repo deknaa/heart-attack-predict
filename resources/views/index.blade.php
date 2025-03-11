@@ -12,18 +12,18 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script>
+    {{-- <script>
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
                 '(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
             document.documentElement.classList.remove('dark')
         }
-    </script>
+    </script> --}}
     <title>HealthCare</title>
 </head>
 
-<body class="font-sans antialiased text-gray-800 bg-gray-50">
+<body class="overflow-x-hidden font-sans antialiased text-gray-800 bg-gray-50">
     {{-- Navbar --}}
     <x-navbar></x-navbar>
 

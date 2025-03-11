@@ -666,15 +666,15 @@
         </div>
     @endauth
 @else
-    <nav class="fixed top-0 z-50 w-full transition-all duration-300 bg-white shadow-sm dark:bg-gray-800 dark:border-gray-700"
+    <nav class="fixed top-0 z-50 w-full overflow-hidden transition-all duration-300 bg-white shadow-sm dark:bg-gray-800 dark:border-gray-700"
         id="navbar">
         <div class="px-4 py-3 mx-auto max-w-7xl lg:px-6">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-4">
                     {{-- Logo --}}
-                    <a href="/" class="items-center space-x-3 md:flex">
+                    <a href="/" class="flex items-center max-w-full space-x-3">
                         <span class="text-2xl font-bold text-red-600"><i class="mr-2 fas fa-heartbeat"></i></span>
-                        <div class="hidden md:flex md:flex-col">
+                        <div class="flex-col hidden md:flex">
                             <span
                                 class="self-center text-xl font-semibold text-red-600 whitespace-nowrap dark:text-white">
                                 {{ config('app.name') }}
@@ -684,35 +684,45 @@
                     </a>
                 </div>
 
-                {{-- Center Navigation --}}
-                <div class="flex">
-                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                        <a href="#home"
-                            class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900 border-b-2 border-red-500">
-                            Beranda
-                        </a>
-                        <a href="#about"
-                            class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700">
-                            Tentang
-                        </a>
-                        <a href="#risk-factors"
-                            class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700">
-                            Faktor Risiko
-                        </a>
-                        <a href="#prediction"
-                            class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700">
-                            Prediksi
-                        </a>
-                        <a href="#faq"
-                            class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700">
-                            FAQ
-                        </a>
-                    </div>
+                {{-- Mobile menu button --}}
+                <div class="flex items-center sm:hidden">
+                    <button id="mobile-menu-button" type="button"
+                        class="text-gray-500 hover:text-gray-700 focus:outline-none">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                {{-- Center Navigation (Desktop) --}}
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    <a href="#home"
+                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900 border-b-2 border-red-500 dark:text-white">
+                        Beranda
+                    </a>
+                    <a href="#about"
+                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700 dark:text-slate-300">
+                        Tentang
+                    </a>
+                    <a href="#risk-factors"
+                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700 dark:text-slate-300">
+                        Faktor Risiko
+                    </a>
+                    <a href="#prediction"
+                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700 dark:text-slate-300">
+                        Prediksi
+                    </a>
+                    <a href="#faq"
+                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700 dark:text-slate-300">
+                        FAQ
+                    </a>
                 </div>
 
                 {{-- Right Side --}}
-                <div class="flex items-center space-x-3">
-
+                <div class="items-center hidden space-x-3 sm:flex">
                     {{-- Theme Toggle --}}
                     <button id="theme-toggle" type="button"
                         class="p-2 text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
@@ -742,7 +752,67 @@
                     </a>
                 </div>
             </div>
+
+            {{-- Mobile Menu (hidden by default) --}}
+            <div class="hidden sm:hidden" id="mobile-menu">
+                <div class="pt-2 pb-3 space-y-1">
+                    <a href="#home"
+                        class="block py-2 pl-3 pr-4 text-base font-medium text-red-600 border-l-4 border-red-500 dark:text-white">
+                        Beranda
+                    </a>
+                    <a href="#about"
+                        class="block py-2 pl-3 pr-4 text-base font-medium text-gray-500 border-l-4 border-transparent hover:border-gray-300 hover:text-gray-700 dark:text-slate-300">
+                        Tentang
+                    </a>
+                    <a href="#risk-factors"
+                        class="block py-2 pl-3 pr-4 text-base font-medium text-gray-500 border-l-4 border-transparent hover:border-gray-300 hover:text-gray-700 dark:text-slate-300">
+                        Faktor Risiko
+                    </a>
+                    <a href="#prediction"
+                        class="block py-2 pl-3 pr-4 text-base font-medium text-gray-500 border-l-4 border-transparent hover:border-gray-300 hover:text-gray-700 dark:text-slate-300">
+                        Prediksi
+                    </a>
+                    <a href="#faq"
+                        class="block py-2 pl-3 pr-4 text-base font-medium text-gray-500 border-l-4 border-transparent hover:border-gray-300 hover:text-gray-700 dark:text-slate-300">
+                        FAQ
+                    </a>
+                </div>
+                <div class="pt-4 pb-3 border-t border-gray-200 dark:border-gray-600">
+                    <div class="flex items-center justify-between px-3">
+                        <div>
+                            {{-- Theme Toggle (Mobile) --}}
+                            <button id="theme-toggle-mobile" type="button"
+                                class="p-2 text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                <span class="sr-only">Toggle dark mode</span>
+                                <svg id="theme-toggle-dark-icon-mobile" class="hidden w-5 h-5" fill="currentColor"
+                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                                </svg>
+                                <svg id="theme-toggle-light-icon-mobile" class="hidden w-5 h-5" fill="currentColor"
+                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                                        fill-rule="evenodd" clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div>
+                            {{-- Login Button (Mobile) --}}
+                            <a href="{{ route('login') }}"
+                                class="flex items-center px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:ring-red-300 focus:outline-none dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-700">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1">
+                                    </path>
+                                </svg>
+                                Login
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
 @endif
-@vite(['resources/js/navbar.js'])
+{{-- @vite(['resources/js/navbar.js']) --}}

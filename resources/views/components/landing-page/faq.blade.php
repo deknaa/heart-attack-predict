@@ -1,10 +1,10 @@
-<section id="faq" class="py-16 bg-white">
+<section id="faq" class="py-16 bg-white dark:bg-gray-800">
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="mb-12 text-center" data-aos="fade-down" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
-            <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+            <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl dark:text-gray-50">
                 Pertanyaan Yang Sering Diajukan
             </h2>
-            <p class="max-w-2xl mx-auto mt-4 text-xl text-gray-600">
+            <p class="max-w-2xl mx-auto mt-4 text-xl text-gray-600 dark:text-gray-300">
                 Jawaban untuk pertanyaan umum tentang HealthCare
             </p>
         </div>
@@ -15,7 +15,7 @@
                 data-inactive-classes="text-gray-500 dark:text-gray-400 max-w-3xl mx-auto space-y-6">
                 <h2 id="accordion-flush-heading-1" class="max-w-3xl mx-auto space-y-6">
                     <button type="button"
-                        class="flex items-center justify-between w-full gap-3 py-5 font-medium text-gray-500 border-b border-gray-200 rtl:text-right dark:border-gray-700 dark:text-gray-400"
+                        class="flex items-center justify-between w-full gap-3 py-5 font-medium text-gray-500 border-b border-gray-200 rtl:text-right dark:border-gray-700 dark:text-gray-300"
                         data-accordion-target="#accordion-flush-body-1" aria-expanded="false"
                         aria-controls="accordion-flush-body-1">
                         <span>Seberapa akurat prediksi yang diberikan?</span>
@@ -38,7 +38,7 @@
                 </div>
                 <h2 id="accordion-flush-heading-2" class="max-w-3xl mx-auto space-y-6">
                     <button type="button"
-                        class="flex items-center justify-between w-full gap-3 py-5 font-medium text-gray-500 border-b border-gray-200 rtl:text-right dark:border-gray-700 dark:text-gray-400"
+                        class="flex items-center justify-between w-full gap-3 py-5 font-medium text-gray-500 border-b border-gray-200 rtl:text-right dark:border-gray-700 dark:text-gray-300"
                         data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
                         aria-controls="accordion-flush-body-2">
                         <span>Apakah data saya aman?</span>
@@ -60,7 +60,7 @@
                 </div>
                 <h2 id="accordion-flush-heading-3" class="max-w-3xl mx-auto space-y-6">
                     <button type="button"
-                        class="flex items-center justify-between w-full gap-3 py-5 font-medium text-gray-500 border-b border-gray-200 rtl:text-right dark:border-gray-700 dark:text-gray-400"
+                        class="flex items-center justify-between w-full gap-3 py-5 font-medium text-gray-500 border-b border-gray-200 rtl:text-right dark:border-gray-700 dark:text-gray-300"
                         data-accordion-target="#accordion-flush-body-3" aria-expanded="false"
                         aria-controls="accordion-flush-body-3">
                         <span>Bisakah saya menggunakan HealthCare tanpa tes darah?</span>
@@ -82,7 +82,7 @@
                 </div>
                 <h2 id="accordion-flush-heading-4" class="max-w-3xl mx-auto space-y-6">
                     <button type="button"
-                        class="flex items-center justify-between w-full gap-3 py-5 font-medium text-gray-500 border-b border-gray-200 rtl:text-right dark:border-gray-700 dark:text-gray-400"
+                        class="flex items-center justify-between w-full gap-3 py-5 font-medium text-gray-500 border-b border-gray-200 rtl:text-right dark:border-gray-700 dark:text-gray-300"
                         data-accordion-target="#accordion-flush-body-4" aria-expanded="false"
                         aria-controls="accordion-flush-body-4">
                         <span>Seberapa sering saya harus menggunakan HealthCare?</span>
@@ -104,7 +104,7 @@
                 </div>
                 <h2 id="accordion-flush-heading-5" class="max-w-3xl mx-auto space-y-6">
                     <button type="button"
-                        class="flex items-center justify-between w-full gap-3 py-5 font-medium text-gray-500 border-b border-gray-200 rtl:text-right dark:border-gray-700 dark:text-gray-400"
+                        class="flex items-center justify-between w-full gap-3 py-5 font-medium text-gray-500 border-b border-gray-200 rtl:text-right dark:border-gray-700 dark:text-gray-300"
                         data-accordion-target="#accordion-flush-body-5" aria-expanded="false"
                         aria-controls="accordion-flush-body-5">
                         <span>Apakah HealthCare menggantikan dokter?</span>
