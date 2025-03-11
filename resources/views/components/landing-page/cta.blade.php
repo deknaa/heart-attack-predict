@@ -1,5 +1,5 @@
 <section class="py-16 bg-red-600">
-    <div class="px-4 mx-auto text-center max-w-7xl sm:px-6 lg:px-8">
+    <div class="px-4 mx-auto text-center max-w-7xl sm:px-6 lg:px-8" data-aos="fade-down" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
         <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
             Lindungi Jantung Anda Hari Ini
         </h2>

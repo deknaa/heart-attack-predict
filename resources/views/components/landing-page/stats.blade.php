@@ -1,5 +1,5 @@
 <section class="py-12 bg-white">
-    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8" data-aos="fade" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
         <div class="grid grid-cols-1 gap-8 text-center sm:grid-cols-2 lg:grid-cols-4">
             <div class="p-6 rounded-lg bg-red-50">
                 <div class="mb-2 text-4xl font-bold text-red-600">17.9</div>

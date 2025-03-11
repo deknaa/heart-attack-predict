@@ -1,6 +1,6 @@
 <section id="prediction" class="py-16 bg-white">
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div class="mb-12 text-center">
+        <div class="mb-12 text-center" data-aos="fade-down" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
             <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
                 Prediksi Risiko Serangan Jantung
             </h2>
@@ -9,7 +9,7 @@
             </p>
         </div>
 
-        <div class="overflow-hidden bg-white rounded-lg shadow-xl">
+        <div class="overflow-hidden bg-white rounded-lg shadow-xl" data-aos="zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
             <div class="p-6 text-white bg-red-600 sm:flex sm:items-center">
                 <div class="sm:flex-shrink-0">
                     <i class="text-2xl fas fa-clipboard-check"></i>

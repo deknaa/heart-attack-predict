@@ -1,6 +1,6 @@
 <section id="risk-factors" class="py-16 bg-gradient-to-b from-gray-50 to-white">
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div class="mb-12 text-center">
+        <div class="mb-12 text-center" data-aos="fade-down" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
             <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
                 Faktor Risiko Serangan Jantung
             </h2>
@@ -11,7 +11,7 @@
 
         <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             <div
-                class="overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-xl">
+                class="overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-xl" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
                 <div class="p-1 bg-red-600"></div>
                 <div class="p-6">
                     <div class="flex items-center mb-4">
@@ -28,7 +28,7 @@
             </div>
 
             <div
-                class="overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-xl">
+                class="overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-xl" data-aos="fade" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
                 <div class="p-1 bg-red-600"></div>
                 <div class="p-6">
                     <div class="flex items-center mb-4">
@@ -45,7 +45,7 @@
             </div>
 
             <div
-                class="overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-xl">
+                class="overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-xl" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
                 <div class="p-1 bg-red-600"></div>
                 <div class="p-6">
                     <div class="flex items-center mb-4">
@@ -62,7 +62,7 @@
             </div>
 
             <div
-                class="overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-xl">
+                class="overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-xl" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
                 <div class="p-1 bg-red-600"></div>
                 <div class="p-6">
                     <div class="flex items-center mb-4">
@@ -79,7 +79,7 @@
             </div>
 
             <div
-                class="overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-xl">
+                class="overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-xl" data-aos="fade" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
                 <div class="p-1 bg-red-600"></div>
                 <div class="p-6">
                     <div class="flex items-center mb-4">
@@ -96,7 +96,7 @@
             </div>
 
             <div
-                class="overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-xl">
+                class="overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-xl" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
                 <div class="p-1 bg-red-600"></div>
                 <div class="p-6">
                     <div class="flex items-center mb-4">
@@ -113,7 +113,7 @@
             </div>
         </div>
 
-        <div class="mt-10 text-center">
+        <div class="mt-10 text-center" data-aos="fade-down" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
             <a href="#prediction"
                 class="inline-flex items-center px-6 py-3 text-base font-medium text-white bg-red-600 border border-transparent rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                 Periksa Risiko Anda Sekarang

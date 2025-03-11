@@ -1,6 +1,6 @@
 <section class="py-16 bg-white">
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div class="mb-16 text-center">
+        <div class="mb-16 text-center" data-aos="fade-down" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
             <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
                 Bagaimana Cara Kerjanya
             </h2>
@@ -12,7 +12,7 @@
         <div class="relative">
             <div class="absolute inset-x-0 hidden h-1 bg-red-100 top-14 lg:block"></div>
             <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-                <div class="relative">
+                <div class="relative" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
                     <div class="flex justify-center mb-6">
                         <div
                             class="flex items-center justify-center w-12 h-12 text-lg font-bold text-white bg-red-600 rounded-full shadow-lg">
@@ -28,7 +28,7 @@
                     </div>
                 </div>
 
-                <div class="relative">
+                <div class="relative" data-aos="fade-down" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
                     <div class="flex justify-center mb-6">
                         <div
                             class="flex items-center justify-center w-12 h-12 text-lg font-bold text-white bg-red-600 rounded-full shadow-lg">
@@ -44,7 +44,7 @@
                     </div>
                 </div>
 
-                <div class="relative">
+                <div class="relative" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
                     <div class="flex justify-center mb-6">
                         <div
                             class="flex items-center justify-center w-12 h-12 text-lg font-bold text-white bg-red-600 rounded-full shadow-lg">

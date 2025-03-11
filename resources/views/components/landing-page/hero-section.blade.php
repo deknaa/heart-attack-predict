@@ -1,10 +1,10 @@
 <section id="home" class="relative overflow-hidden text-white bg-gradient-to-r from-red-500 to-red-700">
-    <div class="absolute inset-0 opacity-10">
-        <img src="/api/placeholder/1600/900" alt="Background" class="object-cover w-full h-full" />
-    </div>
+    {{-- <div class="absolute inset-0 opacity-10">
+        <img src="#" alt="Background" class="object-cover w-full h-full" />
+    </div> --}}
     <div class="relative px-4 py-16 mx-auto max-w-7xl sm:px-6 sm:py-24 lg:px-8">
         <div class="items-center lg:grid lg:grid-cols-2 lg:gap-8">
-            <div>
+            <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
                 <h1 class="mb-6 text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
                     Deteksi Risiko Serangan Jantung Lebih Awal
                 </h1>
@@ -24,7 +24,7 @@
                     </a>
                 </div>
             </div>
-            <div class="flex justify-center mt-12 lg:mt-0 lg:justify-end">
+            <div class="flex justify-center mt-12 lg:mt-0 lg:justify-end" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
                 <div class="relative w-full max-w-md mx-auto">
                     <img src="{{ asset('image/landingpage/heart.png') }}" alt="Heart Illustration"
                         class="relative rounded-lg" />

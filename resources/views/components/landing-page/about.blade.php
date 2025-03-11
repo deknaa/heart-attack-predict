@@ -1,8 +1,8 @@
 <section id="about" class="py-16 bg-gray-50">
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="items-center lg:grid lg:grid-cols-2 lg:gap-12">
-            <div>
-                <span class="font-semibold text-red-600">Tentang CardioGuard</span>
+            <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
+                <span class="font-semibold text-red-600">Tentang HealthCare</span>
                 <h2 class="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl">
                     Prediksi Medis Berbasis AI
                 </h2>
@@ -55,7 +55,7 @@
                     </div>
                 </div>
             </div>
-            <div class="relative mt-10 lg:mt-0">
+            <div class="relative mt-10 lg:mt-0" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
                 <img class="rounded-xl" src="{{ asset('image/landingpage/doctor2.png') }}" alt="Doctor with patient" />
                 <div class="absolute max-w-xs p-6 bg-white rounded-lg shadow-lg -bottom-6 -right-6">
                     <div class="flex items-start">
