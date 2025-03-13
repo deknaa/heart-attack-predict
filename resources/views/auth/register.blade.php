@@ -1,11 +1,11 @@
 <x-guest-layout>
-    <div class="flex flex-col md:flex-row min-h-screen w-full">
+    <div class="flex flex-col w-full min-h-screen md:flex-row">
         <div class="w-full md:w-1/2">
-            <div class="bg-green-600 h-0 md:min-h-screen relative">
-                <div class="p-4 md:p-7 flex justify-end">
+            <div class="relative h-0 bg-red-700 md:min-h-screen">
+                <div class="flex justify-end p-4 md:p-7">
                     <div class="flex items-center justify-center">
                         <a href="{{ route('login') }}"
-                            class="relative inline-flex items-center justify-center px-6 md:px-10 py-2 md:py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-green-500 md:border-white rounded-lg shadow-md group">
+                            class="relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-green-500 rounded-lg shadow-md md:px-10 md:py-3 md:border-white group">
                             <span
                                 class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 translate-x-full bg-white group-hover:translate-x-0 ease">
                                 <svg class="w-6 h-6 text-green-500 dark:text-green-500" aria-hidden="true"
@@ -16,21 +16,21 @@
                                 </svg>
                             </span>
                             <span
-                                class="absolute flex items-center justify-center w-full h-full text-green-500 md:text-white transition-all duration-300 transform group-hover:translate-y-full ease">Back
+                                class="absolute flex items-center justify-center w-full h-full text-green-500 transition-all duration-300 transform md:text-white group-hover:translate-y-full ease">Back
                                 to login</span>
                             <span class="relative invisible">Back to login</span>
                         </a>
                     </div>
                 </div>
-                <div class="items-center justify-end h-[20vh] md:h-[80vh] hidden md:flex">
+                <div class="items-center justify-end h-[20vh] md:h-[85vh] hidden md:flex">
                     <img src="{{ asset('image/landingpage/doctor.png') }}" alt=""
-                        class="w-full h-full object-cover">
+                        class="object-cover w-full h-full">
                 </div>
             </div>
         </div>
 
-        <div class="w-full md:w-1/2 h-screen flex flex-col justify-center px-6 md:px-0 py-8 md:pt-10 dark:bg-gray-800">
-            <div class="w-full max-w-md mx-auto md:ml-48 md:mr-8 mt-10 md:mt-0">
+        <div class="flex flex-col justify-center w-full h-screen px-6 py-8 md:w-1/2 md:px-0 md:pt-10 dark:bg-gray-800">
+            <div class="w-full max-w-md mx-auto mt-10 md:ml-48 md:mr-8 md:mt-0">
                 <div class="flex justify-end mb-2">
                     <button id="theme-toggle" type="button"
                         class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
@@ -47,8 +47,8 @@
                     </button>
                 </div>
                 <h1 class="text-4xl font-extrabold text-black dark:text-white">Health<span
-                        class="text-green-600">Care</span></h1>
-                <h2 class="text-base md:text-lg mb-6 md:mb-3 dark:text-white">Create an Account</h2>
+                        class="text-red-600">Care</span></h1>
+                <h2 class="mb-6 text-base md:text-lg md:mb-3 dark:text-white">Create an Account</h2>
                 <form action="{{ route('register') }}" method="POST">
                     @csrf
 
@@ -101,9 +101,9 @@
                                 class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
                                 name="terms" data-modal-target="terms-modal" data-modal-toggle="terms-modal" onclick="openTerms()" required />
                             <label for="terms"
-                                class="ms-2 me-1 text-sm font-medium text-gray-900 dark:text-gray-300">I agree to
+                                class="text-sm font-medium text-gray-900 ms-2 me-1 dark:text-gray-300">I agree to
                                 the</label><span
-                                class="underline text-blue-500 hover:text-blue-700 text-sm font-bold cursor-pointer"
+                                class="text-sm font-bold text-blue-500 underline cursor-pointer hover:text-blue-700"
                                 data-modal-target="terms-modal" data-modal-toggle="terms-modal">Terms &
                                 Conditions</span>
                         </div>
@@ -111,7 +111,7 @@
 
                     <div>
                         <button type="submit"
-                            class="w-full text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">{{ __('Sign Up') }}</button>
+                            class="w-full text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">{{ __('Sign Up') }}</button>
                     </div>
 
                     <div class="flex items-center gap-3 my-4">

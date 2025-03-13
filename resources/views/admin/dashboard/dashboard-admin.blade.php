@@ -75,8 +75,8 @@
         <div class="max-w-6xl mx-auto">
             <!-- Header Section -->
             <div class="mt-6 mb-6">
-              <h1 class="text-2xl font-bold text-gray-800">Dashboard Analytics</h1>
-              <p class="text-gray-600">Monitoring performance metrics for Q1 2025</p>
+              <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-50">Dashboard Analytics</h1>
+              <p class="text-gray-600 dark:text-gray-300">Monitoring performance metrics for Q1 2025</p>
             </div>
             
             <!-- Chart Cards Row -->

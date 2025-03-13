@@ -118,7 +118,11 @@
                                     <p class="text-sm line-clamp-2">{{ Str::limit($announcement->content, 50) }}</p>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <span class="capitalize">{{ $announcement->visibility }}</span>
+                                    @if($announcement->visibility == 'public')
+                                        <span class=" capitalize bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-1 rounded">{{ $announcement->visibility }}</span>
+                                    @else
+                                        <span class="capitalize bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-1 rounded">{{ $announcement->visibility }}</span>
+                                    @endif
                                 </td>
                                 <td class="px-6 py-4">
                                     <span>{{ $announcement->created_at->format('M d, Y') }}</span>

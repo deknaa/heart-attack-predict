@@ -2,34 +2,34 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <div class="flex flex-col md:flex-row min-h-screen w-full">
+    <div class="flex flex-col w-full min-h-screen md:flex-row">
         <div class="w-full md:w-1/2">
-            <div class="bg-green-600 h-0 md:min-h-screen relative">
-                <div class="p-4 md:p-7 flex justify-end">
+            <div class="relative h-0 bg-red-700 md:min-h-screen">
+                <div class="flex justify-end p-4 md:p-7">
                     <div class="flex items-center justify-center">
                         <a href="{{ url('/') }}"
-                            class="relative inline-flex items-center justify-center px-6 md:px-10 py-2 md:py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-green-500 md:border-white rounded-lg shadow-md group">
+                            class="relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-green-500 rounded-lg shadow-md md:px-10 md:py-3 md:border-white group">
                             <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 translate-x-full bg-white group-hover:translate-x-0 ease">
                                 <svg class="w-5 h-5 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12l4-4m-4 4 4 4" />
                                 </svg>
                             </span>
-                            <span class="absolute flex items-center justify-center w-full h-full text-green-500 md:text-white transition-all duration-300 transform group-hover:translate-y-full ease">Back to website</span>
+                            <span class="absolute flex items-center justify-center w-full h-full text-green-500 transition-all duration-300 transform md:text-white group-hover:translate-y-full ease">Back to website</span>
                             <span class="relative invisible">Back to website</span>
                         </a>
                     </div>
                 </div>
-                <!-- Doctor Image -->
-                <div class="items-center justify-end h-[20vh] md:h-[80vh] hidden md:flex">
-                    <img src="{{ asset('image/landingpage/doctor.png') }}" alt="" class="w-full h-full object-cover">
+                {{-- Image --}}
+                <div class="items-center justify-end h-[20vh] md:h-[85vh] hidden md:flex">
+                    <img src="{{ asset('image/landingpage/doctor.png') }}" alt="" class="object-cover w-full h-full">
                 </div>
             </div>
         </div>
 
-        <!-- Right Side - Login Form -->
-        <div class="w-full md:w-1/2 h-screen flex flex-col justify-center px-6 md:px-0 py-8 md:pt-10 dark:bg-gray-800">
+        {{-- Right --}}
+        <div class="flex flex-col justify-center w-full h-screen px-6 py-8 md:w-1/2 md:px-0 md:pt-10 dark:bg-gray-800">
             <div class="w-full max-w-md mx-auto md:ml-48 md:mr-8">
-                <!-- Theme Toggle -->
+                {{-- Theme Toggle --}}
                 <div class="flex justify-end mb-2">
                     <button id="theme-toggle" type="button"
                         class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
@@ -42,15 +42,15 @@
                     </button>
                 </div>
 
-                <!-- Header -->
-                <h1 class="text-3xl md:text-4xl font-extrabold dark:text-white">Health<span class="text-green-600">Care</span></h1>
-                <h2 class="text-base md:text-lg mb-6 md:mb-10 dark:text-white">Please Enter Your Account Details</h2>
+                {{-- Header --}}
+                <h1 class="text-3xl font-extrabold md:text-4xl dark:text-white">Health<span class="text-red-600">Care</span></h1>
+                <h2 class="mb-6 text-base md:text-lg md:mb-10 dark:text-white">Please Enter Your Account Details</h2>
 
-                <!-- Login Form -->
+                {{-- Login Form --}}
                 <form action="{{ route('login') }}" method="POST">
                     @csrf
 
-                    <!-- Email -->
+                    {{-- Email --}}
                     <div class="mb-6">
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email address</label>
                         <input type="email" id="email" name="email"
@@ -60,7 +60,7 @@
                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
                     </div>
 
-                    <!-- Password -->
+                    {{-- Password --}}
                     <div class="mb-6">
                         <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                         <input type="password" id="password" name="password"
@@ -69,33 +69,33 @@
                         <x-input-error :messages="$errors->get('password')" class="mt-2" />
                     </div>
 
-                    <!-- Remember Me & Forgot Password -->
-                    <div class="flex flex-row sm:items-center justify-between gap-4 mb-6">
+                    {{-- Remember Me Checkbox --}}
+                    <div class="flex flex-row justify-between gap-4 mb-6 sm:items-center">
                         <div class="flex items-center">
                             <input id="remember_me" type="checkbox"
                                 class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
                                 name="remember" />
-                            <label for="remember_me" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ __('Remember Me') }}</label>
+                            <label for="remember_me" class="text-sm font-medium text-gray-900 ms-2 dark:text-gray-300">{{ __('Remember Me') }}</label>
                         </div>
                         @if (Route::has('password.request'))
                             <a href="{{ route('password.request') }}" class="text-sm text-blue-700 hover:underline dark:text-blue-500">{{ __('Forgot Password?') }}</a>
                         @endif
                     </div>
 
-                    <!-- Sign In Button -->
+                    {{-- Sign In Button --}}
                     <button type="submit"
-                        class="w-full text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-4">
+                        class="w-full text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-4">
                         {{ __('Sign In') }}
                     </button>
 
-                    <!-- Or Divider -->
+                    {{-- Divider --}}
                     <div class="flex items-center gap-3 my-4">
                         <hr class="flex-1">
                         <p class="text-sm text-gray-500 dark:text-white">Or</p>
                         <hr class="flex-1">
                     </div>
 
-                    <!-- Google Sign In -->
+                    {{-- Google Sign In --}}
                     <a href="{{ route('auth.google') }}"
                         class="w-full text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-center dark:focus:ring-[#4285F4]/55 mb-4">
                         <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 19">
@@ -104,7 +104,7 @@
                         Sign in or Register with Google
                     </a>
 
-                    <!-- Register Link -->
+                    {{-- Register Link --}}
                     @if (Route::has('register'))
                         <div class="flex justify-center mt-6">
                             <a href="{{ route('register') }}" class="text-sm underline hover:text-blue-500 dark:text-white hover:dark:text-blue-500">

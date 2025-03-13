@@ -26,8 +26,8 @@
                         <p class="text-gray-600 dark:text-gray-100">
                             Berikan informasi medis dasar seperti usia, tekanan darah, kolesterol, dan gaya hidup.
                         </p>
-                        <img src="/api/placeholder/300/200" alt="Input form"
-                            class="mx-auto mt-4 rounded-lg shadow-md" />
+                        {{-- <img src="/api/placeholder/300/200" alt="Input form"
+                            class="mx-auto mt-4 rounded-lg shadow-md" /> --}}
                     </div>
                 </div>
                 <div class="relative" data-aos="fade-down" data-aos-offset="300" data-aos-easing="ease-in-sine"
@@ -42,8 +42,8 @@
                         <p class="text-gray-600 dark:text-gray-100">
                             Model AI kami menganalisis data menggunakan algoritma canggih untuk menghitung risiko.
                         </p>
-                        <img src="/api/placeholder/300/200" alt="AI analysis"
-                            class="mx-auto mt-4 rounded-lg shadow-md" />
+                        {{-- <img src="/api/placeholder/300/200" alt="AI analysis"
+                            class="mx-auto mt-4 rounded-lg shadow-md" /> --}}
                     </div>
                 </div>
                 <div class="relative" data-aos="fade-down" data-aos-offset="300" data-aos-easing="ease-in-sine"
@@ -58,8 +58,8 @@
                         <p class="text-gray-600 dark:text-gray-100">
                             Terima laporan komprehensif tentang risiko serangan jantung Anda dan rekomendasi.
                         </p>
-                        <img src="/api/placeholder/300/200" alt="Results report"
-                            class="mx-auto mt-4 rounded-lg shadow-md" />
+                        {{-- <img src="/api/placeholder/300/200" alt="Results report"
+                            class="mx-auto mt-4 rounded-lg shadow-md" /> --}}
                     </div>
                 </div>
             </div>

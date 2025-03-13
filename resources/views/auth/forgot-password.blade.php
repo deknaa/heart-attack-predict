@@ -1,8 +1,8 @@
 <x-guest-layout>
-    <div class="w-full h-screen dark:bg-gray-800 flex items-center justify-center">
-        <div class="bg-green-500 rounded-xl shadow-xl w-1/2 h-auto">
+    <div class="flex items-center justify-center w-full h-screen dark:bg-gray-800">
+        <div class="w-1/2 h-auto bg-red-600 shadow-xl rounded-xl">
             <div class="flex justify-end">
-                <div class="bg-white rounded-l-xl shadow-xl">
+                <div class="bg-white shadow-xl rounded-l-xl">
                     <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
                         <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
                         <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
@@ -11,8 +11,8 @@
             </div>
             <div class="flex items-center justify-center">
                 {{-- icons --}}
-                <div class="bg-white dark:bg-gray-700 w-fit rounded-lg p-1">
-                    <svg class="w-10 h-10 text-green-500 dark:text-white" aria-hidden="true"
+                <div class="p-1 bg-white rounded-lg dark:bg-gray-700 w-fit">
+                    <svg class="w-10 h-10 text-red-500 dark:text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 14v3m-3-6V7a3 3 0 1 1 6 0v4m-8 0h10a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1Z" />
@@ -21,8 +21,8 @@
             </div>
             <div class="flex flex-col items-center justify-center pl-32 pr-32">
                 {{-- Text reset password --}}
-                <h1 class="text-2xl font-bold mt-5 mb-5 text-white">Reset Your Password</h1>
-                <p class="text-center mb-6 text-white">
+                <h1 class="mt-5 mb-5 text-2xl font-bold text-white">Reset Your Password</h1>
+                <p class="mb-6 text-center text-white">
                     {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
                 </p>
             </div>
@@ -66,9 +66,9 @@
                     </button>
                 </div>
             </form>
-            <div class="flex items-center justify-center mb-7 font-bold">
+            <div class="flex items-center justify-center font-bold mb-7">
                 <a href="{{ route('login') }}" class="text-white hover:underline">
-                    <div class="flex gap-1 items-center">
+                    <div class="flex items-center gap-1">
                         <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                             viewBox="0 0 24 24">

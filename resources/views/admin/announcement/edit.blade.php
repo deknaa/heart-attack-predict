@@ -1,7 +1,8 @@
 <x-app-layout>
     <div class="overflow-hidden bg-white shadow-sm p-14 sm:ml-64 sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
-            <form action="{{ route('announcement.update', $announcement->slug) }}" enctype="multipart/form-data" method="POST">
+            <form id="announcementForm" action="{{ route('announcement.update', $announcement->slug) }}" enctype="multipart/form-data"
+                method="POST">
                 @method('PUT')
                 @csrf
                 <div class="mb-4">
@@ -19,7 +20,8 @@
                     <div id="editor" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm min-h-[300px]">
                         {!! $announcement->content !!}
                     </div>
-                    <input type="hidden" name="content" id="content" value="{{ old('content', $announcement->content) }}">
+                    <input type="hidden" name="content" id="content"
+                        value="{{ old('content', $announcement->content) }}">
                     @error('content')
                         <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                     @enderror
@@ -45,7 +47,7 @@
                         class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-gray-700 uppercase transition duration-150 ease-in-out bg-gray-300 border border-transparent rounded-md hover:bg-gray-400 active:bg-gray-500 focus:outline-none focus:border-gray-500 focus:ring ring-gray-300 disabled:opacity-25">
                         Kembali
                     </a>
-                    <button type="submit"
+                    <button type="submit" id="submitButton"
                         class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700 active:bg-indigo-800 focus:outline-none focus:border-indigo-900 focus:ring ring-indigo-300 disabled:opacity-25">
                         Simpan
                     </button>
@@ -144,6 +146,25 @@
                             });
                     }
                 };
+            });
+        });
+
+        document.getElementById('submitButton').addEventListener('click', function(event){
+            event.preventDefault();
+
+            Swal.fire({
+                title: "Apakah anda yakin?",
+                text: "Data yang anda simpan akan diperbarui!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya, simpan!",
+                cancelButtonText: "Batal"
+            }).then((result) => {
+                if(result.isConfirmed){
+                    document.getElementById('announcementForm').submit();
+                }
             });
         });
     </script>
