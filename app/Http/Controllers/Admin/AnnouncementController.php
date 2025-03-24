@@ -94,4 +94,16 @@ class AnnouncementController extends Controller
         $announcement->delete();
         return redirect()->route('announcement.index')->with('success', 'Announcement deleted successfully');
     }
+
+    public function list()
+    {
+        $announcements = Announcement::all();
+        return view('user.announcement.show', compact('announcements'));
+    }
+
+    public function detail(string $slug)
+    {
+        $announcements = Announcement::where('slug', $slug)->firstOrFail();
+        return view('user.announcement.detail', compact('announcements'));
+    }
 }

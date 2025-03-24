@@ -27,26 +27,24 @@
                                     class="self-center text-xl font-semibold text-gray-800 whitespace-nowrap dark:text-white">
                                     {{ config('app.name') }}
                                 </span>
-                                <p class="text-xs text-gray-500 dark:text-gray-400">Admin Portal</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">User Portal</p>
                             </div>
                         </a>
                     </div>
 
                     {{-- Center Navigation --}}
                     <div class="hidden md:flex md:items-center md:space-x-4">
-                        <a href="/dashboard"
+                        <a href="{{ route('dashboard') }}"
                             class="px-3 py-2 text-sm font-medium text-blue-600 rounded-md dark:text-blue-400">Dashboard</a>
-                        <a href="/articles"
+                        <a href="{{ route('article.list') }}"
                             class="px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-700">Articles</a>
-                        <a href="/users"
-                            class="px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-700">Users</a>
-                        <a href="/announcements"
+                        <a href="{{ route('announcement.list') }}"
                             class="flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-700">
                             Announcements
                             <span
-                                class="flex items-center justify-center w-5 h-5 ml-2 text-xs font-semibold text-white bg-blue-600 rounded-full">3</span>
+                                class="flex items-center justify-center w-5 h-5 ml-2 text-xs font-semibold text-white bg-blue-600 rounded-full"></span>
                         </a>
-                    </div>
+                    </div> 
 
                     {{-- Right Side --}}
                     <div class="flex items-center space-x-3">
@@ -102,7 +100,7 @@
                                         <div class="hidden mr-2 text-right md:block">
                                             <p class="text-sm font-medium text-gray-800 dark:text-white">
                                                 {{ Str::limit(Auth::user()->name, 15) }}</p>
-                                            <p class="text-xs text-gray-500 dark:text-gray-400">Administrator</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">{{ Auth::user()->role }}</p>
                                         </div>
                                         <img class="rounded-full w-9 h-9 ring-2 ring-gray-200 dark:ring-gray-600"
                                             src="{{ auth()->user()->avatar_url ?? 'https://ui-avatars.com/api/?name=' . urlencode(auth()->user()->name) }}"

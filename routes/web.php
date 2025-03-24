@@ -8,6 +8,7 @@ use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\PredictionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\UserDashboardController;
+use App\Http\Controllers\UserArticleController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,6 +28,14 @@ Route::middleware(['auth', 'userRole'])->group(function () {
     // Route for Predict
     Route::get('predict', [PredictionController::class, 'predictionPage'])->name('predict');
     Route::get('history-predict', [PredictionController::class, 'historyPredict'])->name('predict.history');
+
+    // Route for article
+    Route::get('article/list', [UserArticleController::class, 'list'])->name('article.list');
+    Route::get('article/detail/{slug}', [UserArticleController::class, 'detail'])->name('article.detail');
+
+    // Route for announcement
+    Route::get('announcement/list', [AnnouncementController::class, 'list'])->name('announcement.list');
+    Route::get('announcement/detail/{id}', [AnnouncementController::class, 'detail'])->name('announcement.detail');
 });
 
 // Route untuk user dengan role admin
