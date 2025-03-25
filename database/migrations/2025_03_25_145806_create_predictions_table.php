@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete(); // relasi ke table user
             $table->json('input_data');
             $table->string('prediction_result');
+            $table->string('probability');
             $table->timestamps();
         });
     }

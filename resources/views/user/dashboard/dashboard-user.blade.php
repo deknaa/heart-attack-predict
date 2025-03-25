@@ -295,40 +295,49 @@
     <script>
         // Initialize Chart
         document.addEventListener('DOMContentLoaded', function() {
-            const ctx = document.getElementById('predictionChart').getContext('2d');
-            const chart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun'],
-                    datasets: [{
-                        label: 'Risiko (dalam %)',
-                        data: [22, 19, 18, 16, 15, 15],
-                        borderColor: 'rgba(37, 99, 235, 1)',
-                        backgroundColor: 'rgba(37, 99, 235, 0.1)',
-                        borderWidth: 2,
-                        fill: true,
-                        tension: 0.4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 30,
-                            ticks: {
-                                stepSize: 5
+            fetch('/dashboard/user/predictions') // Ambil data dari endpoint baru
+                .then(response => response.json())
+                .then(data => {
+                    const labels = data.map(item => new Date(item.created_at).toLocaleDateString());
+                    const probabilities = data.map(item => item.probability * 100);
+
+                    const ctx = document.getElementById('predictionChart').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Risiko (dalam %)',
+                                data: probabilities,
+                                borderColor: 'rgba(235, 0, 0, 1)',
+                                backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                                borderWidth: 2,
+                                fill: true,
+                                tension: 0.4
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    display: false
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    max: 100,
+                                    ticks: {
+                                        stepSize: 10
+                                    }
+                                }
                             }
                         }
-                    }
-                }
-            });
+                    });
+                })
+                .catch(error => console.error('Error fetching prediction data:', error));
         });
+
 
         // Mobile menu toggle
         document.addEventListener('DOMContentLoaded', function() {

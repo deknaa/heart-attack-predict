@@ -31,7 +31,8 @@ class PredictionController extends Controller
             Prediction::create([
                 'user_id' => Auth::id(),
                 'input_data' => $request->except('_token'),
-                'prediction_result' => $data['prediction'] ?? 'Unknown'
+                'prediction_result' => $data['prediction'] ?? 'Unknown',
+                'probability' => $data['probability'] ?? 'Unknown'
             ]);
 
             return view('prediction.index', ['result' => $data]);
