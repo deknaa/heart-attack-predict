@@ -36,6 +36,10 @@
                     <div class="hidden md:flex md:items-center md:space-x-4">
                         <a href="{{ route('dashboard') }}"
                             class="px-3 py-2 text-sm font-medium text-blue-600 rounded-md dark:text-blue-400">Dashboard</a>
+                        <a href="{{ route('predict') }}"
+                            class="px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-700">Predictions</a>
+                        <a href="{{ route('predict.history') }}"
+                            class="px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-700">History Predictions</a>
                         <a href="{{ route('article.list') }}"
                             class="px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-700">Articles</a>
                         <a href="{{ route('announcement.list') }}"

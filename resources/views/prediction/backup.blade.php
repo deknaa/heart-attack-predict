@@ -1,12 +1,12 @@
 <x-app-layout>
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <h1 class="text-4xl font-bold mb-1">Prediction Page</h1>
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <h1 class="mb-1 text-4xl font-bold">Prediction Page</h1>
 
             {{-- heading --}}
             <div class="flex items-center justify-between mb-10">
                 <div>
-                    <h2 class="font-bold text-lg">
+                    <h2 class="text-lg font-bold">
                         {{ $greeting }}, {{ Auth::user()->name }}</h2>
                     <p class="text-slate-400">Quotes Lorem ipsum dolor sit amet.</p>
                 </div>
@@ -22,7 +22,7 @@
 
             {{-- Quotes --}}
             <blockquote class="text-xl italic font-semibold text-gray-900 dark:text-white">
-                <svg class="w-8 h-8 text-gray-400 dark:text-gray-600 mb-4" aria-hidden="true"
+                <svg class="w-8 h-8 mb-4 text-gray-400 dark:text-gray-600" aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14">
                     <path
                         d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z" />
@@ -32,14 +32,14 @@
             </blockquote>
 
             {{-- Input Data --}}
-            <div class="mt-10 bg-white rounded-xl shadow-xl p-8">
+            <div class="p-8 mt-10 bg-white shadow-xl rounded-xl">
                 <h2 class="text-3xl">Masukan Data Kesehatan Anda</h2>
                 <p>Data kesehatan akan digunakan untuk memprediksi apakah anda berisiko terkena <b>penyakit serangan
                         jantung</b> atau tidak.</p>
 
                 <form>
                     {{-- Usia --}}
-                     <div class="mb-6 mt-4">
+                     <div class="mt-4 mb-6">
                             <x-forms.label-popover :for="'age'"
                             :text="'Usia'"
                             popover-target="popover-tes" popover-id="popover-tes" popover-title="Usia" popover-description="Usia pasien dalam tahun. Semakin tua usia seseorang, semakin besar risiko terkena serangan jantung, terutama jika ada faktor risiko lainnya." 
@@ -48,7 +48,7 @@
                     </div>
 
                     {{-- Jenis Kelamin --}}
-                    <div class="mb-6 mt-4">
+                    <div class="mt-4 mb-6">
                         <x-forms.label-popover :for="'sex'"
                         :text="'Jenis Kelamin'"
                         popover-target="popover-sex" popover-id="popover-sex" popover-title="Jenis Kelamin" popover-description="Pria sering kali memiliki risiko lebih tinggi untuk terkena serangan jantung pada usia yang lebih muda dibandingkan dengan wanita." 
@@ -63,7 +63,7 @@
                     </div>
 
                     {{-- Nyeri Dada --}}
-                    <div class="mb-6 mt-4">
+                    <div class="mt-4 mb-6">
                         <x-forms.label-popover :for="'cp'"
                         :text="'Chest Pain'"
                         popover-target="popover-cp" popover-id="popover-cp" popover-title="Jenis Kelamin" popover-description="Pria sering kali memiliki risiko lebih tinggi untuk terkena serangan jantung pada usia yang lebih muda dibandingkan dengan wanita." 
@@ -78,7 +78,7 @@
                     </div>
 
                     {{-- Tekanan Darah Saat Istirahat --}}
-                    <div class="mb-6 mt-4">
+                    <div class="mt-4 mb-6">
                         <x-forms.label-popover :for="'trestbps'"
                             :text="'Tekanan Darah Saat Istirahat'"
                             popover-target="popover-trestbps" popover-id="popover-trestbps" popover-title="Tekanan Darah Saat Istirahat" popover-description="Tekanan darah pasien yang diukur saat dalam keadaan istirahat, dinyatakan dalam milimeter merkuri (mm Hg)." 
@@ -87,7 +87,7 @@
                     </div>
 
                     {{-- Kolesterol --}}
-                    <div class="mb-6 mt-4">
+                    <div class="mt-4 mb-6">
                         <x-forms.label-popover :for="'chol'"
                             :text="'Kolesterol (Cholesterol)'"
                             popover-target="popover-chol" popover-id="popover-chol" popover-title="Kolesterol" popover-description="Kadar kolesterol serum dalam darah. Kolesterol yang tinggi dapat meningkatkan risiko terkena serangan jantung." 
@@ -96,7 +96,7 @@
                     </div>
 
                     {{-- Gula Darah Puasa (FastingBS) --}}
-                    <div class="mb-6 mt-4">
+                    <div class="mt-4 mb-6">
                        <x-forms.label-popover :for="'fbs'"
                         :text="'Fasting Blood Sugar'"
                         popover-target="popover-fbs" popover-id="popover-fbs" popover-title="Fasting Blood Sugar" popover-description="Pria sering kali memiliki risiko lebih tinggi untuk terkena serangan jantung pada usia yang lebih muda dibandingkan dengan wanita." 
@@ -111,7 +111,7 @@
                     </div>
 
                     {{-- Elektrodiagram Saat Istirahat (RestingECG) --}}
-                    <div class="mb-6 mt-4">
+                    <div class="mt-4 mb-6">
                         <x-forms.label-popover :for="'restecg'"
                         :text="'Resting electrocardiographic results'"
                         popover-target="popover-restecg" popover-id="popover-restecg" popover-title="Resting electrocardiographic results" popover-description="Pria sering kali memiliki risiko lebih tinggi untuk terkena serangan jantung pada usia yang lebih muda dibandingkan dengan wanita." 
@@ -126,7 +126,7 @@
                     </div>
 
                     {{-- Detak Jantung Maksimum --}}
-                    <div class="mb-6 mt-4">
+                    <div class="mt-4 mb-6">
                         <x-forms.label-popover :for="'thalach'"
                             :text="'Detak Jantung Maksimum'"
                             popover-target="popover-thalach" popover-id="popover-thalach" popover-title="Detak Jantung Maksimum" popover-description="Jumlah detak jantung maksimum per menit yang bisa dicapai selama latihan yang sangat intens. Respon abnormal terhadap latihan bisa menunjukkan masalah jantung." 
@@ -135,7 +135,7 @@
                     </div>
 
                     {{-- Angina saat olahraga (ExerciseAngina) --}}
-                    <div class="mb-6 mt-4">
+                    <div class="mt-4 mb-6">
                         <x-forms.label-popover :for="'exang'"
                         :text="'Exercise induced angina'"
                         popover-target="popover-exang" popover-id="popover-exang" popover-title=" Exercise induced angina" popover-description="Pria sering kali memiliki risiko lebih tinggi untuk terkena serangan jantung pada usia yang lebih muda dibandingkan dengan wanita." 
@@ -150,7 +150,7 @@
                     </div>
 
                     {{-- Depresi ST (Oldpeak) --}}
-                    <div class="mb-6 mt-4">
+                    <div class="mt-4 mb-6">
                         <x-forms.label-popover :for="'oldpeak'"
                             :text="'Depresi ST (Oldpeak)'"
                             popover-target="popover-oldpeak" popover-id="popover-oldpeak" popover-title="Depresi ST (oldpeak)" popover-description="Pengurangan segmen ST pada EKG, diukur dalam mm. Ini dapat memberikan indikasi tentang keparahan penyumbatan atau kerusakan pada jantung. Depresi ST yang signifikan sering dikaitkan dengan adanya masalah pada jantung, khususnya saat ada penyumbatan arteri koroner." 
@@ -159,8 +159,8 @@
                     </div>
 
                     {{-- Kemiringan Segmen ST (ST_Slope) --}}
-                    <div class="mb-6 mt-4">
-                        <div class="mb-6 mt-4">
+                    <div class="mt-4 mb-6">
+                        <div class="mt-4 mb-6">
                             <x-forms.label-popover :for="'slope'"
                                 :text="'Slope'"
                                 popover-target="popover-slope" popover-id="popover-slope" popover-title="Slope" popover-description="Pengurangan segmen ST pada EKG, diukur dalam mm. Ini dapat memberikan indikasi tentang keparahan penyumbatan atau kerusakan pada jantung. Depresi ST yang signifikan sering dikaitkan dengan adanya masalah pada jantung, khususnya saat ada penyumbatan arteri koroner." 
@@ -170,7 +170,7 @@
                     </div>
 
                     {{-- Jumlah Pembuluh Darah Utama yang Diketahui dari Fluoroskopi (ca) --}}
-                    <div class="mb-6 mt-4">
+                    <div class="mt-4 mb-6">
                         <x-forms.label-popover :for="'ca'"
                             :text="'Pembuluh Darah Utama yang Diketahui dari Fluoroskopi (0-3)'"
                             popover-target="popover-ca" popover-id="popover-ca" popover-title="Jumlah Pembuluh Darah Utama yang Diketahui dari Fluoroskopi" popover-description="Jumlah pembuluh darah utama (0-3) yang terlihat melalui fluoroskopi. Semakin banyak pembuluh darah yang teridentifikasi, semakin besar risiko penyumbatan." 
@@ -179,11 +179,11 @@
                     </div>
 
                     {{-- Thalassemia (thal) --}}
-                    <div class="mb-6 mt-4">
+                    <div class="mt-4 mb-6">
                         <label for="thal"
                             class="flex items-center mb-2 text-sm font-medium text-gray-900 dark:text-white">Thalassemia (thal)
                             <button data-popover-target="popover-description" data-popover-placement="bottom-end"
-                                type="button"><svg class="w-4 h-4 ms-1 text-gray-400 hover:text-gray-500"
+                                type="button"><svg class="w-4 h-4 text-gray-400 ms-1 hover:text-gray-500"
                                     aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
@@ -220,7 +220,7 @@
                             <option value="2">Reversible defect (jaringan jantung tidak dapat menyerap thallium hanya saat berolahraga)</option>
                         </select>
 
-                        <div class="mb-6 mt-4">
+                        <div class="mt-4 mb-6">
                             <x-forms.label-popover :for="'slope'"
                                 :text="'Slope'"
                                 popover-target="popover-slope" popover-id="popover-slope" popover-title="Slope" popover-description="Pengurangan segmen ST pada EKG, diukur dalam mm. Ini dapat memberikan indikasi tentang keparahan penyumbatan atau kerusakan pada jantung. Depresi ST yang signifikan sering dikaitkan dengan adanya masalah pada jantung, khususnya saat ada penyumbatan arteri koroner." 

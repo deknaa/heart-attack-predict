@@ -26,8 +26,11 @@ Route::middleware(['auth', 'userRole'])->group(function () {
     Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // Route for Predict
-    Route::get('predict', [PredictionController::class, 'predictionPage'])->name('predict');
-    Route::get('history-predict', [PredictionController::class, 'historyPredict'])->name('predict.history');
+    Route::get('predict', [PredictionController::class, 'index'])->name('predict');
+    Route::post('predict', [PredictionController::class, 'predict'])->name('predict');
+    Route::get('predict-history', [PredictionController::class, 'history'])->name('predict.history');
+    // Route::get('predict', [PredictionController::class, 'predictionPage'])->name('predict');
+    // Route::get('history-predict', [PredictionController::class, 'historyPredict'])->name('predict.history');
 
     // Route for article
     Route::get('article/list', [UserArticleController::class, 'list'])->name('article.list');

@@ -2,42 +2,48 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Prediction;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class PredictionController extends Controller
 {
     // method untuk menampilkan halaman prediksi
-    public function predictionPage()
+    public function index()
     {
-        $time = Carbon::now();
-        $hour = now()->format('H');
-
-        if($hour >= 5 && $hour < 12) {
-            $greeting = 'Good Morning';
-        }elseif($hour >= 12 && $hour < 15) {
-            $greeting = 'Good Afternoon';
-        }elseif($hour >= 15 && $hour < 18){
-            $greeting = 'Good Evening';
-        }else{
-            $greeting = 'Good Night';
-        }
-
-        return view('prediction.prediction', [
-            'time' => $time,
-            'greeting' => $greeting
-        ]);
+        return view('prediction.index');
     }
 
-    // method untuk mengirim data ke API
-    public function prediction(Request $request)
+    public function predict(Request $request)
     {
+        $client = new Client();
 
+        try {
+            $response = $client->post('http://127.0.0.1:5000/predict', [
+                'json' => $request->except('_token'),
+            ]);
+
+            $data = json_decode($response->getBody(), true);
+
+            // Simpan hasil prediksi ke database
+            Prediction::create([
+                'user_id' => Auth::id(),
+                'input_data' => $request->except('_token'),
+                'prediction_result' => $data['prediction'] ?? 'Unknown'
+            ]);
+
+            return view('prediction.index', ['result' => $data]);
+        }catch(\Exception $e){
+            return back()->with('error', 'Gagal mendapatkan hasil prediksi, kemungkinan masalah pada API');
+        }
     }
 
     // to view history of predict
-    public function historyPredict()
+    public function history()
     {
-        return view('prediction.history');
+        $predictions = Prediction::where('user_id', Auth::id())->latest()->get();
+        return view('prediction.history', compact('predictions'));
     }
 }
