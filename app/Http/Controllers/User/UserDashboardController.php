@@ -23,4 +23,22 @@ class UserDashboardController extends Controller
 
         return response()->json($predictions);
     }
+
+    public function getLatestRiskAssessment()
+    {
+        $userId = Auth::id();
+
+        // Ambil data prediksi terbaru dari user yang sedang login
+        $latestPrediction = Prediction::where('user_id', $userId)
+            ->orderBy('created_at', 'desc')
+            ->first();
+
+        if (!$latestPrediction) {
+            return response()->json(['probability' => 0]); // Default jika belum ada data
+        }
+
+        return response()->json([
+            'probability' => $latestPrediction->probability * 100 // Ubah ke persen
+        ]);
+    }
 }

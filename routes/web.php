@@ -21,6 +21,7 @@ Route::get('profile/{id}', [ProfileController::class, 'index'])->name('profile.i
 Route::middleware(['auth', 'userRole'])->group(function () {
     Route::get('dashboard/user', [UserDashboardController::class, 'index'])->name('dashboard');
     Route::get('dashboard/user/predictions', [UserDashboardController::class, 'getUserPredictions']);
+    Route::get('/dashboard/user/risk-assessment', [UserDashboardController::class, 'getLatestRiskAssessment']);
     
     Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');

@@ -75,20 +75,23 @@
                             <h3 class="mb-4 text-lg font-semibold text-gray-800">Penilaian Risiko</h3>
                             <div class="flex items-center mb-4">
                                 <div class="w-full h-4 bg-gray-200 rounded-full">
-                                    <div class="h-4 bg-green-500 rounded-full" style="width: 15%"></div>
+                                    <div id="riskBar" class="h-4 bg-green-500 rounded-full" style="width: 0%;"></div>
                                 </div>
-                                <span class="ml-4 text-lg font-bold text-green-500">15%</span>
+                                <span id="riskPercentage" class="ml-4 text-lg font-bold text-green-500">0%</span>
                             </div>
-                            <p class="mb-4 text-gray-600">Risiko serangan jantung dalam 10 tahun mendatang berdasarkan
-                                faktor-faktor risiko Anda saat ini.</p>
-                            <div class="p-4 border border-green-200 rounded-lg bg-green-50">
+                            <p class="mb-4 text-gray-600">
+                                Risiko serangan jantung dalam 10 tahun mendatang berdasarkan faktor-faktor risiko Anda
+                                saat ini.
+                            </p>
+                            <div id="riskBox" class="p-4 border border-green-200 rounded-lg bg-green-50">
                                 <div class="flex">
                                     <div class="mr-3 text-green-500">
                                         <i class="text-xl fas fa-check-circle"></i>
                                     </div>
                                     <div>
-                                        <p class="font-medium text-green-800">Risiko Rendah</p>
-                                        <p class="text-sm text-gray-600">Pertahankan gaya hidup sehat Anda.</p>
+                                        <p id="riskTitle" class="font-medium text-green-800">Risiko Rendah</p>
+                                        <p id="riskDescription" class="text-sm text-gray-600">Pertahankan gaya hidup
+                                            sehat Anda.</p>
                                     </div>
                                 </div>
                             </div>
@@ -338,6 +341,50 @@
                 .catch(error => console.error('Error fetching prediction data:', error));
         });
 
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/dashboard/user/risk-assessment')
+                .then(response => response.json())
+                .then(data => {
+                    const riskBar = document.getElementById('riskBar');
+                    const riskPercentage = document.getElementById('riskPercentage');
+                    const riskBox = document.getElementById('riskBox');
+                    const riskTitle = document.getElementById('riskTitle');
+                    const riskDescription = document.getElementById('riskDescription');
+
+                    const probability = data.probability; // Ambil probabilitas dari database
+                    riskBar.style.width = probability + '%';
+                    riskPercentage.textContent = probability + '%';
+
+                    // Reset kelas warna agar tidak menumpuk
+                    riskBar.classList.remove('bg-green-500', 'bg-yellow-500', 'bg-red-500');
+                    riskPercentage.classList.remove('text-green-500', 'text-yellow-500', 'text-red-500');
+                    riskBox.classList.remove('bg-green-50', 'bg-yellow-50', 'bg-red-50', 'border-green-200',
+                        'border-yellow-200', 'border-red-200');
+
+                    // Tentukan level risiko berdasarkan probabilitas
+                    if (probability < 30) {
+                        riskBar.classList.add('bg-green-500');
+                        riskPercentage.classList.add('text-green-500');
+                        riskBox.classList.add('bg-green-50', 'border-green-200');
+                        riskTitle.textContent = 'Risiko Rendah';
+                        riskDescription.textContent = 'Pertahankan gaya hidup sehat Anda.';
+                    } else if (probability < 70) {
+                        riskBar.classList.add('bg-yellow-500');
+                        riskPercentage.classList.add('text-yellow-500');
+                        riskBox.classList.add('bg-yellow-50', 'border-yellow-200');
+                        riskTitle.textContent = 'Risiko Sedang';
+                        riskDescription.textContent = 'Perhatikan pola makan dan olahraga lebih teratur.';
+                    } else {
+                        riskBar.classList.add('bg-red-500');
+                        riskPercentage.classList.add('text-red-500');
+                        riskBox.classList.add('bg-red-50', 'border-red-200');
+                        riskTitle.textContent = 'Risiko Tinggi';
+                        riskDescription.textContent =
+                            'Segera konsultasi dengan dokter untuk evaluasi lebih lanjut.';
+                    }
+                })
+                .catch(error => console.error('Error fetching risk assessment:', error));
+        });
 
         // Mobile menu toggle
         document.addEventListener('DOMContentLoaded', function() {
