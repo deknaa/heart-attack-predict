@@ -8,7 +8,11 @@
                 <div class="p-6 mt-20 mb-6 bg-white rounded-lg shadow">
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-lg font-semibold text-gray-800">Status Kesehatan Anda</h3>
-                        <span class="px-3 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Baik</span>
+                        @if($prediction->probability < 0.5)
+                            <span class="px-3 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Baik</span>
+                        @else
+                            <span class="px-3 py-1 text-sm font-medium text-red-800 bg-red-100 rounded-full">Buruk</span>
+                        @endif
                     </div>
                     <div class="flex flex-wrap -mx-2">
                         <div class="w-full px-2 mb-4 md:w-1/4">

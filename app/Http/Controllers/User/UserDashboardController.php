@@ -23,7 +23,7 @@ class UserDashboardController extends Controller
         $trestbps = $input['trestbps']; // tekanan darah
         $chol = $input['chol']; // kolesterol
 
-        return view('user.dashboard.dashboard-user', compact('activitesRecommendation', 'articleRecommendation', 'cp', 'trestbps', 'chol'));
+        return view('user.dashboard.dashboard-user', compact('activitesRecommendation', 'articleRecommendation', 'prediction', 'cp', 'trestbps', 'chol'));
     }
 
     public function getUserPredictions()
