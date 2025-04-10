@@ -19,7 +19,7 @@
                                     </div>
                                     <div>
                                         <p class="text-sm text-gray-500">Detak Jantung</p>
-                                        <p class="text-xl font-bold">75 <span class="text-sm font-normal">bpm</span></p>
+                                        <p class="text-xl font-bold">{{ $cp }} <span class="text-sm font-normal">bpm</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -32,7 +32,7 @@
                                     </div>
                                     <div>
                                         <p class="text-sm text-gray-500">Berat Badan</p>
-                                        <p class="text-xl font-bold">68 <span class="text-sm font-normal">kg</span></p>
+                                        <p class="text-xl font-bold">- <span class="text-sm font-normal">kg</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
                                     </div>
                                     <div>
                                         <p class="text-sm text-gray-500">Tekanan Darah</p>
-                                        <p class="text-xl font-bold">120/80 <span
+                                        <p class="text-xl font-bold">{{ $trestbps }}/80 <span
                                                 class="text-sm font-normal">mmHg</span></p>
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@
                                     </div>
                                     <div>
                                         <p class="text-sm text-gray-500">Kolesterol</p>
-                                        <p class="text-xl font-bold">180 <span class="text-sm font-normal">mg/dL</span>
+                                        <p class="text-xl font-bold">{{ $chol }} <span class="text-sm font-normal">mg/dL</span>
                                         </p>
                                     </div>
                                 </div>

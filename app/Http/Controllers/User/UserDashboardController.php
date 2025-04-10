@@ -13,9 +13,17 @@ class UserDashboardController extends Controller
     public function index()
     {
         $activitesRecommendation = Prediction::where('user_id', Auth::id())->latest()->get(); // rekomendasi aktifitas yang diberikan kepada user (perlu research aktifitas rekomendasi lainnya)
-        $articleRecommendation = Article::all();
+        $articleRecommendation = Article::all(); // rekomendasi artikel belum sesuai sementara ini, seharusnya memberikan rekomendasi berdasarkan prediksi risiko
+        
+        // Status kesehatan user
+        $prediction = Prediction::where('user_id', Auth::id())->latest()->first();
+        $input = $prediction->input_data;
+        
+        $cp = $input['thalach']; // detak jantung
+        $trestbps = $input['trestbps']; // tekanan darah
+        $chol = $input['chol']; // kolesterol
 
-        return view('user.dashboard.dashboard-user', compact('activitesRecommendation', 'articleRecommendation'));
+        return view('user.dashboard.dashboard-user', compact('activitesRecommendation', 'articleRecommendation', 'cp', 'trestbps', 'chol'));
     }
 
     public function getUserPredictions()
