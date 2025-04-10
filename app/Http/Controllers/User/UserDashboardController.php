@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Article;
 use App\Models\Prediction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,9 +12,10 @@ class UserDashboardController extends Controller
 {
     public function index()
     {
-        $activitesRecommendation = Prediction::where('user_id', Auth::id())->latest()->get();
+        $activitesRecommendation = Prediction::where('user_id', Auth::id())->latest()->get(); // rekomendasi aktifitas yang diberikan kepada user (perlu research aktifitas rekomendasi lainnya)
+        $articleRecommendation = Article::all();
 
-        return view('user.dashboard.dashboard-user', compact('activitesRecommendation'));
+        return view('user.dashboard.dashboard-user', compact('activitesRecommendation', 'articleRecommendation'));
     }
 
     public function getUserPredictions()

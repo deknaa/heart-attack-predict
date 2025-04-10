@@ -263,9 +263,15 @@
                 <!-- Articles & Education -->
                 <div class="p-6 mt-6 bg-white rounded-lg shadow">
                     <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-lg font-semibold text-gray-800">Artikel Kesehatan</h3>
-                        <a href="#" class="text-sm text-blue-600 hover:text-blue-800">Lihat Semua</a>
+                        <h3 class="text-lg font-semibold text-gray-800">Rekomendasi Artikel Untuk Anda Baca</h3>
+                        @if($articleRecommendation->count() > 0)
+                            <a href="{{ route('article.list') }}" class="text-sm text-blue-600 hover:text-blue-800">Lihat Semua</a>
+                        @else
+                            <span></span>
+                        @endif
                     </div>
+                    {{-- Rekomendasi artikel belum tuntas, seharusnya rekomendasi artikel di berikan berdasarkan hasil prediksi risiko --}}
+                    @if($articleRecommendation->count() > 0)
                     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                         <div class="overflow-hidden border rounded-lg">
                             <img src="/api/placeholder/320/160" alt="Artikel tentang diet sehat"
@@ -304,6 +310,15 @@
                             </div>
                         </div>
                     </div>
+                    @else
+                    <div class="flex flex-col items-center justify-center py-12 rounded-lg bg-gray-50">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                        <h3 class="mt-4 text-lg font-medium text-gray-900">Belum ada artikel</h3>
+                        <p class="mt-1 text-sm text-gray-500">Silakan periksa kembali nanti untuk informasi terbaru.</p>
+                    </div>
+                    @endif
                 </div>
             </main>
         </div>
