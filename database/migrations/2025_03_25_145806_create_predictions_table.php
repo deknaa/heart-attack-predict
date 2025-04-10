@@ -17,6 +17,8 @@ return new class extends Migration
             $table->json('input_data');
             $table->string('prediction_result');
             $table->string('probability');
+            $table->string('weight');
+            $table->string('health_status');
             $table->timestamps();
         });
     }

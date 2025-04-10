@@ -11,7 +11,9 @@ class UserDashboardController extends Controller
 {
     public function index()
     {
-        return view('user.dashboard.dashboard-user');
+        $activitesRecommendation = Prediction::where('user_id', Auth::id())->latest()->get();
+
+        return view('user.dashboard.dashboard-user', compact('activitesRecommendation'));
     }
 
     public function getUserPredictions()

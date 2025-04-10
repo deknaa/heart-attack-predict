@@ -116,36 +116,50 @@
                         <div class="p-6 bg-white rounded-lg shadow">
                             <h3 class="mb-4 text-lg font-semibold text-gray-800">Rekomendasi untuk Anda</h3>
                             <div class="space-y-4">
-                                <div class="flex p-4 border border-blue-100 rounded-lg bg-blue-50">
-                                    <div class="mr-4 text-blue-500">
-                                        <i class="text-xl fas fa-walking"></i>
+
+                                {{-- Sementara disable dulu, perlu research terkait rekomendasi kesehatan/aktifitas berdasarkan tingkat risiko --}}
+                                @if($activitesRecommendation->count() > 0)
+                                    <div class="flex p-4 border border-blue-100 rounded-lg bg-blue-50">
+                                        <div class="mr-4 text-blue-500">
+                                            <i class="text-xl fas fa-walking"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium">Tingkatkan Aktivitas Fisik</h4>
+                                            <p class="text-sm text-gray-600">Tambahkan 30 menit jalan cepat setiap hari
+                                                untuk mengurangi risiko penyakit jantung sebesar 30%.</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h4 class="font-medium">Tingkatkan Aktivitas Fisik</h4>
-                                        <p class="text-sm text-gray-600">Tambahkan 30 menit jalan cepat setiap hari
-                                            untuk mengurangi risiko penyakit jantung sebesar 30%.</p>
+                                    <div class="flex p-4 border border-blue-100 rounded-lg bg-blue-50">
+                                        <div class="mr-4 text-blue-500">
+                                            <i class="text-xl fas fa-utensils"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium">Perhatikan Konsumsi Garam</h4>
+                                            <p class="text-sm text-gray-600">Batasi konsumsi garam hingga < 5g per hari
+                                                    untuk membantu mengontrol tekanan darah.</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="flex p-4 border border-blue-100 rounded-lg bg-blue-50">
-                                    <div class="mr-4 text-blue-500">
-                                        <i class="text-xl fas fa-utensils"></i>
+                                    <div class="flex p-4 border border-blue-100 rounded-lg bg-blue-50">
+                                        <div class="mr-4 text-blue-500">
+                                            <i class="text-xl fas fa-ban"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium">Hindari Merokok</h4>
+                                            <p class="text-sm text-gray-600">Merokok meningkatkan risiko serangan jantung
+                                                sebesar 200-400%.</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h4 class="font-medium">Perhatikan Konsumsi Garam</h4>
-                                        <p class="text-sm text-gray-600">Batasi konsumsi garam hingga < 5g per hari
-                                                untuk membantu mengontrol tekanan darah.</p>
+                                @else
+                                    <div class="flex p-4 border border-blue-100 rounded-lg bg-blue-50">
+                                        <div class="mr-4 text-blue-500">
+                                            <i class="text-xl fas fa-walking"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium">Tidak Ada Rekomendasi Untuk Anda</h4>
+                                            <p class="text-sm text-gray-600">Anda belum melakukan prediksi risiko, sehingga tidak ada rekomendasi yang diberikan kepada anda.</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="flex p-4 border border-blue-100 rounded-lg bg-blue-50">
-                                    <div class="mr-4 text-blue-500">
-                                        <i class="text-xl fas fa-ban"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-medium">Hindari Merokok</h4>
-                                        <p class="text-sm text-gray-600">Merokok meningkatkan risiko serangan jantung
-                                            sebesar 200-400%.</p>
-                                    </div>
-                                </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -362,7 +376,13 @@
                         'border-yellow-200', 'border-red-200');
 
                     // Tentukan level risiko berdasarkan probabilitas
-                    if (probability < 30) {
+                    if (probability == 0) {
+                        riskBar.classList.add('bg-green-500');
+                        riskPercentage.classList.add('text-green-500');
+                        riskBox.classList.add('bg-green-50', 'border-green-200');
+                        riskTitle.textContent = 'Tidak Ada Risiko';
+                        riskDescription.textContent = 'Lakukan Prediksi Risiko untuk mengetahui tingkat risiko anda.';
+                    } else if (probability < 50){
                         riskBar.classList.add('bg-green-500');
                         riskPercentage.classList.add('text-green-500');
                         riskBox.classList.add('bg-green-50', 'border-green-200');

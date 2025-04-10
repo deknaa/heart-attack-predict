@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Prediction;
+use App\Models\User;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -13,6 +14,12 @@ class PredictionController extends Controller
     // method untuk menampilkan halaman prediksi
     public function index()
     {
+        $user = Auth::user();
+        
+        // if($user->is_data_filled !== true){
+        //     return redirect()->route('dashboard')->with('error', 'Lengkapi pertanyaan terlebih dahulu');
+        // }
+
         return view('prediction.index');
     }
 

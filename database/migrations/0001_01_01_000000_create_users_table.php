@@ -21,6 +21,7 @@ return new class extends Migration
             $table->enum('role', ['user', 'admin'])->default('user');
             $table->string('google_id')->nullable();
             $table->string('avatar')->nullable();
+            $table->boolean('is_data_filled')->default('false');
             $table->rememberToken();
             $table->timestamps();
         });
