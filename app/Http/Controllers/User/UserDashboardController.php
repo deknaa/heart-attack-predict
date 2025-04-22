@@ -13,7 +13,7 @@ class UserDashboardController extends Controller
     public function index()
     {
         $activitesRecommendation = Prediction::where('user_id', Auth::id())->latest()->get(); // rekomendasi aktifitas yang diberikan kepada user (perlu research aktifitas rekomendasi lainnya)
-        $articleRecommendation = Article::all(); // rekomendasi artikel belum sesuai sementara ini, seharusnya memberikan rekomendasi berdasarkan prediksi risiko
+        $articleRecommendation = Article::with('user')->latest()->get();// rekomendasi artikel belum sesuai sementara ini, seharusnya memberikan rekomendasi berdasarkan prediksi risiko
         
         // Status kesehatan user
         $prediction = Prediction::where('user_id', Auth::id())->latest()->first();
