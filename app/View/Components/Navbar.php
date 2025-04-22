@@ -22,6 +22,7 @@ class Navbar extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.navbar');
+        $announcements = Announcement::where('visibility', 'public')->count();
+        return view('components.navbar', compact('announcements'));
     }
 }
