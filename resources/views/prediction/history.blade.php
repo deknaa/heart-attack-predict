@@ -24,6 +24,7 @@
                             <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Tanggal</th>
                             <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Input Data</th>
                             <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Hasil Prediksi</th>
+                            <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Probabilitas</th>
                             <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">AKSI</th>
                         </tr>
                     </thead>
@@ -42,10 +43,16 @@
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 text-sm whitespace-nowrap">
-                                    <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full 
-                                        {{ $prediction->prediction_result > 0.5 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
-                                        {{ $prediction->prediction_result }}
+                                    <span class="inline-flex px-2 py-1 text-xs font-semibold leading-5 rounded-full">
+                                       @if($prediction->prediction_result == 1)
+                                        <span class="p-2 text-red-800 bg-red-100 rounded">Berisiko Serangan Jantung</span>
+                                       @else
+                                        <span class="p-2 text-green-800 bg-green-100 rounded">Tidak Berisiko Serangan Jantung</span>
+                                       @endif
                                     </span>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">
+                                    {{ $prediction->probability }}%
                                 </td>
                                 <td class="px-6 py-4 text-sm font-medium whitespace-nowrap">
                                     <div class="flex space-x-2">

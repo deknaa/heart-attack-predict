@@ -1,8 +1,8 @@
 <x-app-layout>
-    <div class="p-14 sm:ml-64">
+    <div class="p-14">
         <div class="min-h-screen" x-data="{ activeTab: 'profile' }">
             <!-- Profile Header -->
-            <div class="px-4 py-8 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="px-4 pt-8 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div class="overflow-hidden bg-white rounded-lg shadow">
                     <!-- Cover Photo -->
                     <div class="relative h-48 bg-gradient-to-r from-purple-500 to-indigo-600">
@@ -47,9 +47,6 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="mt-3">
-                                <p class="text-gray-700">Web Developer | UI/UX Enthusiast | Pecinta Kopi ☕</p>
-                            </div>
                             <div class="flex mt-3 space-x-6">
                                 <div class="flex items-center text-gray-500 hover:text-gray-700">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
@@ -59,58 +56,14 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                     </svg>
-                                    <span class="ml-1 text-sm">Bandung, Indonesia</span>
-                                </div>
-                                <div class="flex items-center text-gray-500 hover:text-gray-700">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                                    </svg>
-                                    <a href="#" class="ml-1 text-sm">budisantoso.com</a>
-                                </div>
-                            </div>
-                            <div class="flex mt-3 space-x-6">
-                                <div class="flex items-center">
-                                    <span class="font-medium text-gray-900">126</span>
-                                    <span class="ml-1 text-sm text-gray-500">Mengikuti</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <span class="font-medium text-gray-900">582</span>
-                                    <span class="ml-1 text-sm text-gray-500">Pengikut</span>
+                                    @if ($users->address) 
+                                        <span class="ml-1 text-sm">{{ $users->address }}</span>
+                                    @else
+                                        <span class="ml-1 text-sm">Unknown</span>
+                                    @endif
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Navigation Tabs -->
-                    <div class="border-t border-gray-200">
-                        <nav class="flex -mb-px">
-                            <button @click="activeTab = 'profile'"
-                                class="w-1/4 px-1 py-4 text-sm font-medium text-center border-b-2"
-                                :class="activeTab === 'profile' ? 'border-indigo-500 text-indigo-600' :
-                                    'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'">
-                                Profil
-                            </button>
-                            <button @click="activeTab = 'posts'"
-                                class="w-1/4 px-1 py-4 text-sm font-medium text-center border-b-2"
-                                :class="activeTab === 'posts' ? 'border-indigo-500 text-indigo-600' :
-                                    'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'">
-                                Postingan
-                            </button>
-                            <button @click="activeTab = 'photos'"
-                                class="w-1/4 px-1 py-4 text-sm font-medium text-center border-b-2"
-                                :class="activeTab === 'photos' ? 'border-indigo-500 text-indigo-600' :
-                                    'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'">
-                                Foto
-                            </button>
-                            <button @click="activeTab = 'activity'"
-                                class="w-1/4 px-1 py-4 text-sm font-medium text-center border-b-2"
-                                :class="activeTab === 'activity' ? 'border-indigo-500 text-indigo-600' :
-                                    'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'">
-                                Aktivitas
-                            </button>
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -123,86 +76,20 @@
                     <div class="p-6 bg-white rounded-lg shadow">
                         <h2 class="mb-4 text-lg font-medium text-gray-900">Tentang</h2>
                         <p class="mb-4 text-gray-700">
-                            Saya adalah seorang web developer yang berpengalaman dalam pengembangan aplikasi web
-                            menggunakan HTML, CSS, JavaScript, dan React. Saya juga tertarik dengan UI/UX design dan
-                            selalu berusaha membuat antarmuka yang mudah digunakan dan menarik.
+                            Usia : {{ $age }} Tahun <br>
+                            Jenis Kelamin : {{ $sex ? 'Laki-laki' : 'Perempuan' }}
                         </p>
-                        <div class="space-y-3">
-                            <div class="flex">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                </svg>
-                                <span class="ml-2 text-gray-700">Bekerja di <a href="#"
-                                        class="text-indigo-600 hover:text-indigo-500">PT Digital Kreasi</a></span>
-                            </div>
-                            <div class="flex">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                                    <path
-                                        d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-                                </svg>
-                                <span class="ml-2 text-gray-700">Belajar di <a href="#"
-                                        class="text-indigo-600 hover:text-indigo-500">Institut Teknologi
-                                        Bandung</a></span>
-                            </div>
-                            <div class="flex">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                                </svg>
-                                <span class="ml-2 text-gray-700">Tinggal di <a href="#"
-                                        class="text-indigo-600 hover:text-indigo-500">Bandung, Indonesia</a></span>
-                            </div>
-                        </div>
                     </div>
 
                     <!-- Skills Section -->
                     <div class="p-6 bg-white rounded-lg shadow">
                         <div class="flex items-center justify-between mb-4">
-                            <h2 class="text-lg font-medium text-gray-900">Keahlian</h2>
-                            <button type="button" class="text-sm text-indigo-600 hover:text-indigo-500">
-                                + Tambah
-                            </button>
+                            <h2 class="text-lg font-medium text-gray-900">Data Kesehatan</h2>
                         </div>
-                        <div class="flex flex-wrap gap-2">
-                            <span
-                                class="inline-flex items-center px-3 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">
-                                HTML5
-                            </span>
-                            <span
-                                class="inline-flex items-center px-3 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">
-                                CSS3
-                            </span>
-                            <span
-                                class="inline-flex items-center px-3 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">
-                                JavaScript
-                            </span>
-                            <span
-                                class="inline-flex items-center px-3 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">
-                                React
-                            </span>
-                            <span
-                                class="inline-flex items-center px-3 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">
-                                Node.js
-                            </span>
-                            <span
-                                class="inline-flex items-center px-3 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">
-                                Tailwind CSS
-                            </span>
-                            <span
-                                class="inline-flex items-center px-3 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">
-                                UI/UX Design
-                            </span>
-                            <span
-                                class="inline-flex items-center px-3 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">
-                                Figma
-                            </span>
+                        <div class="flex flex-wrap gap-4">
+                            <p>Detak Jantung : {{ $cp }}</p>
+                            <p>Tekanan Darah : {{ $trestbps }}</p>
+                            <p>Kolesterol : {{ $chol }}</p>
                         </div>
                     </div>
 
@@ -221,7 +108,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                 </svg>
-                                <span class="ml-2 text-gray-700">budi.santoso@email.com</span>
+                                <span class="ml-2 text-gray-700">{{ $users->email }}</span>
                             </div>
                             <div class="flex">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500" fill="none"
@@ -229,7 +116,11 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                 </svg>
-                                <span class="ml-2 text-gray-700">+62 812 3456 7890</span>
+                                @if($users->no_telp)
+                                    <span class="ml-2 text-gray-700">{{ $users->no_telp }}</span>
+                                @else
+                                    <span class="ml-2 text-gray-700">Unknown</span>
+                                @endif
                             </div>
                             <div class="pt-3 mt-3 border-t border-gray-200">
                                 <h3 class="mb-2 text-sm font-medium text-gray-900">Media Sosial</h3>
@@ -274,294 +165,8 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Posts Tab -->
-                <div x-show="activeTab === 'posts'" class="mt-6">
-                    <div class="mb-6 overflow-hidden bg-white rounded-lg shadow">
-                        <!-- Post Form -->
-                        <div class="p-4 border-b">
-                            <div class="flex">
-                                <img class="w-10 h-10 rounded-full" src="/api/placeholder/40/40" alt="Foto profil">
-                                <div class="flex-1 ml-3">
-                                    <textarea rows="2"
-                                        class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                        placeholder="Bagikan pemikiran Anda..."></textarea>
-                                    <div class="flex items-center justify-between mt-2">
-                                        <div class="flex space-x-2">
-                                            <button type="button"
-                                                class="inline-flex items-center p-1 text-gray-400 border border-transparent rounded-full shadow-sm hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5"
-                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                                </svg>
-                                            </button>
-                                            <button type="button"
-                                                class="inline-flex items-center p-1 text-gray-400 border border-transparent rounded-full shadow-sm hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5"
-                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                                                </svg>
-                                            </button>
-                                            <button type="button"
-                                                class="inline-flex items-center p-1 text-gray-400 border border-transparent rounded-full shadow-sm hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5"
-                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                        <button type="button"
-                                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                            Posting
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Post List -->
-                        <div class="divide-y divide-gray-200">
-                            <!-- Post 1 -->
-                            <div class="p-4">
-                                <div class="flex space-x-3">
-                                    <img class="w-10 h-10 rounded-full" src="/api/placeholder/40/40"
-                                        alt="Foto profil">
-                                    <div class="flex-1 space-y-1">
-                                        <div class="flex items-center justify-between">
-                                            <h3 class="text-sm font-medium">Budi Santoso</h3>
-                                            <p class="text-sm text-gray-500">3 jam yang lalu</p>
-                                        </div>
-                                        <p class="text-sm text-gray-700">
-                                            Baru selesai mengerjakan proyek website dengan React dan Tailwind CSS.
-                                            Sangat puas dengan hasilnya! Siapa yang tertarik untuk diskusi tentang
-                                            front-end development?
-                                        </p>
-                                        <img class="mt-3 border border-gray-200 rounded-lg"
-                                            src="/api/placeholder/600/400" alt="Screenshot proyek">
-                                        <div class="flex mt-2 space-x-4">
-                                            <button type="button"
-                                                class="flex items-center text-sm text-gray-500 hover:text-gray-700">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1"
-                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
-                                                </svg>
-                                                <span>24 Suka</span>
-                                            </button>
-                                            <button type="button"
-                                                class="flex items-center text-sm text-gray-500 hover:text-gray-700">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1"
-                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                                                </svg>
-                                                <span>8 Komentar</span>
-                                            </button>
-                                            <button type="button"
-                                                class="flex items-center text-sm text-gray-500 hover:text-gray-700">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1"
-                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-                                                </svg>
-                                                <span>Bagikan</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Post 2 -->
-                            <div class="p-4">
-                                <div class="flex space-x-3">
-                                    <img class="w-10 h-10 rounded-full" src="/api/placeholder/40/40"
-                                        alt="Foto profil">
-                                    <div class="flex-1 space-y-1">
-                                        <div class="flex items-center justify-between">
-                                            <h3 class="text-sm font-medium">Budi Santoso</h3>
-                                            <p class="text-sm text-gray-500">2 hari yang lalu</p>
-                                        </div>
-                                        <p class="text-sm text-gray-700">
-                                            Menghadiri workshop UI/UX Design kemarin. Banyak hal baru yang
-                                            dipelajari tentang prinsip desain dan user experience. Siapa yang
-                                            tertarik dengan topik ini juga?
-                                        </p>
-                                        <div class="flex mt-2 space-x-4">
-                                            <button type="button"
-                                                class="flex items-center text-sm text-gray-500 hover:text-gray-700">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1"
-                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
-                                                </svg>
-                                                <span>36 Suka</span>
-                                            </button>
-                                            <button type="button"
-                                                class="flex items-center text-sm text-gray-500 hover:text-gray-700">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1"
-                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                                                </svg>
-                                                <span>12 Komentar</span>
-                                            </button>
-                                            <button type="button"
-                                                class="flex items-center text-sm text-gray-500 hover:text-gray-700">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1"
-                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-                                                </svg>
-                                                <span>Bagikan</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Photos Tab -->
-                <div x-show="activeTab === 'photos'" class="mt-6">
-                    <div class="p-6 bg-white rounded-lg shadow">
-                        <div class="flex items-center justify-between mb-4">
-                            <h2 class="text-lg font-medium text-gray-900">Album Foto</h2>
-                            <button type="button"
-                                class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                + Album Baru
-                            </button>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
-                            <div class="relative group">
-                                <div class="overflow-hidden bg-gray-100 rounded-lg aspect-w-1 aspect-h-1">
-                                    <img src="/api/placeholder/320/320" alt="Foto proyek" class="object-cover">
-                                    <div
-                                        class="absolute inset-0 transition-all duration-200 bg-black bg-opacity-0 group-hover:bg-opacity-30">
-                                    </div>
-                                </div>
-                                <p class="mt-2 text-sm font-medium text-gray-900">Proyek Web (24)</p>
-                            </div>
-                            <div class="relative group">
-                                <div class="overflow-hidden bg-gray-100 rounded-lg aspect-w-1 aspect-h-1">
-                                    <img src="/api/placeholder/320/320" alt="Foto workshop" class="object-cover">
-                                    <div
-                                        class="absolute inset-0 transition-all duration-200 bg-black bg-opacity-0 group-hover:bg-opacity-30">
-                                    </div>
-                                </div>
-                                <p class="mt-2 text-sm font-medium text-gray-900">Workshop (12)</p>
-                            </div>
-                            <div class="relative group">
-                                <div class="overflow-hidden bg-gray-100 rounded-lg aspect-w-1 aspect-h-1">
-                                    <img src="/api/placeholder/320/320" alt="Foto kantor" class="object-cover">
-                                    <div
-                                        class="absolute inset-0 transition-all duration-200 bg-black bg-opacity-0 group-hover:bg-opacity-30">
-                                    </div>
-                                </div>
-                                <p class="mt-2 text-sm font-medium text-gray-900">Kantor (8)</p>
-                            </div>
-                            <div class="relative group">
-                                <div class="overflow-hidden bg-gray-100 rounded-lg aspect-w-1 aspect-h-1">
-                                    <img src="/api/placeholder/320/320" alt="Foto traveling" class="object-cover">
-                                    <div
-                                        class="absolute inset-0 transition-all duration-200 bg-black bg-opacity-0 group-hover:bg-opacity-30">
-                                    </div>
-                                </div>
-                                <p class="mt-2 text-sm font-medium text-gray-900">Traveling (18)</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Activity Tab -->
-                <div x-show="activeTab === 'activity'" class="mt-6">
-                    <div class="overflow-hidden bg-white rounded-lg shadow">
-                        <div class="p-6 border-b">
-                            <h2 class="text-lg font-medium text-gray-900">Aktivitas Terkini</h2>
-                        </div>
-                        <div class="px-6 py-4">
-                            <ul class="divide-y divide-gray-200">
-                                <!-- Activity 1 -->
-                                <li class="py-4">
-                                    <div class="flex space-x-3">
-                                        <img class="w-10 h-10 rounded-full" src="/api/placeholder/40/40"
-                                            alt="Foto profil">
-                                        <div class="flex-1 space-y-1">
-                                            <div class="flex items-center justify-between">
-                                                <h3 class="text-sm font-medium">Budi Santoso</h3>
-                                                <p class="text-sm text-gray-500">1 jam yang lalu</p>
-                                            </div>
-                                            <p class="text-sm text-gray-700">
-                                                Memperbarui foto profil
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <!-- Activity 2 -->
-                                <li class="py-4">
-                                    <div class="flex space-x-3">
-                                        <img class="w-10 h-10 rounded-full" src="/api/placeholder/40/40"
-                                            alt="Foto profil">
-                                        <div class="flex-1 space-y-1">
-                                            <div class="flex items-center justify-between">
-                                                <h3 class="text-sm font-medium">Budi Santoso</h3>
-                                                <p class="text-sm text-gray-500">3 jam yang lalu</p>
-                                            </div>
-                                            <p class="text-sm text-gray-700">
-                                                Membagikan postingan baru tentang proyek website
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <!-- Activity 3 -->
-                                <li class="py-4">
-                                    <div class="flex space-x-3">
-                                        <img class="w-10 h-10 rounded-full" src="/api/placeholder/40/40"
-                                            alt="Foto profil">
-                                        <div class="flex-1 space-y-1">
-                                            <div class="flex items-center justify-between">
-                                                <h3 class="text-sm font-medium">Budi Santoso</h3>
-                                                <p class="text-sm text-gray-500">Kemarin</p>
-                                            </div>
-                                            <p class="text-sm text-gray-700">
-                                                Menambahkan keahlian baru: Tailwind CSS
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <!-- Activity 4 -->
-                                <li class="py-4">
-                                    <div class="flex space-x-3">
-                                        <img class="w-10 h-10 rounded-full" src="/api/placeholder/40/40"
-                                            alt="Foto profil">
-                                        <div class="flex-1 space-y-1">
-                                            <div class="flex items-center justify-between">
-                                                <h3 class="text-sm font-medium">Budi Santoso</h3>
-                                                <p class="text-sm text-gray-500">2 hari yang lalu</p>
-                                            </div>
-                                            <p class="text-sm text-gray-700">
-                                                Menghadiri workshop UI/UX Design
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
             </div>
+            
         </div>
     </div>
 </x-app-layout>

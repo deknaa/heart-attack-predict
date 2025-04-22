@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Prediction;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -17,7 +18,17 @@ class ProfileController extends Controller
     {
         $users = User::findOrFail($id);
 
-        return view('profile.details', compact('users'));
+        // Status kesehatan user
+        $prediction = Prediction::where('user_id', Auth::id())->latest()->first();
+        $input = $prediction->input_data;
+        
+        $age = $input['age']; // Usia
+        $sex = $input['sex']; // Jenis Kelamin
+        $cp = $input['thalach']; // detak jantung
+        $trestbps = $input['trestbps']; // tekanan darah
+        $chol = $input['chol']; // kolesterol
+
+        return view('profile.details', compact('users', 'input', 'cp', 'trestbps', 'chol', 'age', 'sex'));
     }
 
     /**

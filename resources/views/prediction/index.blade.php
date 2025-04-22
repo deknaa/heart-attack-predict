@@ -8,8 +8,8 @@
                     <path
                         d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z" />
                 </svg>
-                {{-- <p>"{{ $quotes->quotes }}" - {{ $quotes->author }} --}}
-                </p>
+                {{-- <p>"{{ $quotes->title }}" - {{ $quotes->author }}
+                </p> --}}
             </blockquote>
 
             @if(session('error'))
@@ -17,7 +17,7 @@
             @endif
 
             {{-- Input Data --}}
-            <div class="min-h-screen px-4 py-12 bg-gradient-to-br from-blue-50 to-blue-100 sm:px-6 lg:px-8">
+            <div class="min-h-screen px-4 py-12 sm:px-6 lg:px-8">
                 <div class="max-w-4xl mx-auto overflow-hidden bg-white shadow-2xl rounded-xl">
                     <div class="p-6 bg-gradient-to-r from-blue-500 to-blue-600">
                         <h2 class="flex items-center justify-center gap-4 text-3xl font-extrabold text-center text-white">
@@ -39,7 +39,10 @@
                         <div class="grid gap-6 md:grid-cols-2">
                             <div class="space-y-4">
                                 <div>
-                                    <label class="block mb-2 text-sm font-medium text-gray-700">Usia</label>
+                                    <x-forms.label-popover :for="'age'"
+                                    :text="'Usia'"
+                                    popover-target="popover-age" popover-id="popover-age" popover-title="Usia" popover-description="Usia pasien dalam tahun. Semakin tua usia seseorang, semakin besar risiko terkena serangan jantung, terutama jika ada faktor risiko lainnya." 
+                                    />
                                     <input 
                                         type="number" 
                                         name="age" 
@@ -49,9 +52,10 @@
                                 </div>
             
                                 <div>
-                                    <label class="block mb-2 text-sm font-medium text-gray-700">
-                                        Jenis Kelamin (0: Perempuan, 1: Laki-laki)
-                                    </label>
+                                    <x-forms.label-popover :for="'sex'"
+                                    :text="'Jenis Kelamin (0: Perempuan, 1: Laki-laki)'"
+                                    popover-target="popover-sex" popover-id="popover-sex" popover-title="Jenis Kelamin" popover-description="Pria sering kali memiliki risiko lebih tinggi untuk terkena serangan jantung pada usia yang lebih muda dibandingkan dengan wanita." 
+                                    />
                                     <input 
                                         type="number" 
                                         name="sex" 
@@ -61,9 +65,10 @@
                                 </div>
             
                                 <div>
-                                    <label class="block mb-2 text-sm font-medium text-gray-700">
-                                        Tipe Nyeri Dada (0-3)
-                                    </label>
+                                    <x-forms.label-popover :for="'cp'"
+                                    :text="'Tipe Nyeri Dada (0-3)'"
+                                    popover-target="popover-cp" popover-id="popover-cp" popover-title="Tipe Nyeri Dada" popover-description="Pria sering kali memiliki risiko lebih tinggi untuk terkena serangan jantung pada usia yang lebih muda dibandingkan dengan wanita." 
+                                    />
                                     <input 
                                         type="number" 
                                         name="cp" 
@@ -73,9 +78,10 @@
                                 </div>
             
                                 <div>
-                                    <label class="block mb-2 text-sm font-medium text-gray-700">
-                                        Tekanan Darah
-                                    </label>
+                                    <x-forms.label-popover :for="'trestbps'"
+                                    :text="'Tekanan Darah'"
+                                    popover-target="popover-trestbps" popover-id="popover-trestbps" popover-title="Tekanan Darah" popover-description="Tekanan darah pasien yang diukur saat dalam keadaan istirahat, dinyatakan dalam milimeter merkuri (mm Hg)." 
+                                    />
                                     <input 
                                         type="number" 
                                         name="trestbps" 
@@ -85,9 +91,10 @@
                                 </div>
             
                                 <div>
-                                    <label class="block mb-2 text-sm font-medium text-gray-700">
-                                        Kolesterol
-                                    </label>
+                                    <x-forms.label-popover :for="'chol'"
+                                    :text="'Kolesterol (Cholesterol)'"
+                                    popover-target="popover-chol" popover-id="popover-chol" popover-title="Kolesterol" popover-description="Kadar kolesterol serum dalam darah. Kolesterol yang tinggi dapat meningkatkan risiko terkena serangan jantung." 
+                                    />
                                     <input 
                                         type="number" 
                                         name="chol" 
@@ -97,9 +104,10 @@
                                 </div>
             
                                 <div>
-                                    <label class="block mb-2 text-sm font-medium text-gray-700">
-                                        Gula Darah Puasa (0: Tidak, 1: Ya)
-                                    </label>
+                                    <x-forms.label-popover :for="'fbs'"
+                                    :text="'Gula Darah Puasa (0: Tidak, 1: Ya)'"
+                                    popover-target="popover-fbs" popover-id="popover-fbs" popover-title="Kolesterol" popover-description="Kadar kolesterol serum dalam darah. Kolesterol yang tinggi dapat meningkatkan risiko terkena serangan jantung." 
+                                    />
                                     <input 
                                         type="number" 
                                         name="fbs" 
@@ -109,9 +117,10 @@
                                 </div>
             
                                 <div>
-                                    <label class="block mb-2 text-sm font-medium text-gray-700">
-                                        Hasil Elektrokardiografi (0-2)
-                                    </label>
+                                    <x-forms.label-popover :for="'restecg'"
+                                    :text="'Hasil Elektrokardiografi (0-2)'"
+                                    popover-target="popover-restecg" popover-id="popover-restecg" popover-title="Kolesterol" popover-description="Kadar kolesterol serum dalam darah. Kolesterol yang tinggi dapat meningkatkan risiko terkena serangan jantung." 
+                                    />
                                     <input 
                                         type="number" 
                                         name="restecg" 
@@ -123,9 +132,10 @@
             
                             <div class="space-y-4">
                                 <div>
-                                    <label class="block mb-2 text-sm font-medium text-gray-700">
-                                        Detak Jantung Maksimum
-                                    </label>
+                                    <x-forms.label-popover :for="'thalach'"
+                                    :text="'Detak Jantung Maksimum'"
+                                    popover-target="popover-thalach" popover-id="popover-thalach" popover-title="Detak Jantung Maksimum" popover-description="Jumlah detak jantung maksimum per menit yang bisa dicapai selama latihan yang sangat intens. Respon abnormal terhadap latihan bisa menunjukkan masalah jantung." 
+                                    />
                                     <input 
                                         type="number" 
                                         name="thalach" 
@@ -135,9 +145,10 @@
                                 </div>
             
                                 <div>
-                                    <label class="block mb-2 text-sm font-medium text-gray-700">
-                                        Angina Induksi Latihan (0: Tidak, 1: Ya)
-                                    </label>
+                                    <x-forms.label-popover :for="'exang'"
+                                    :text="'Angina Induksi Latihan (0: Tidak, 1: Ya)'"
+                                    popover-target="popover-exang" popover-id="popover-exang" popover-title="Detak Jantung Maksimum" popover-description="Jumlah detak jantung maksimum per menit yang bisa dicapai selama latihan yang sangat intens. Respon abnormal terhadap latihan bisa menunjukkan masalah jantung." 
+                                    />
                                     <input 
                                         type="number" 
                                         name="exang" 
@@ -147,9 +158,10 @@
                                 </div>
             
                                 <div>
-                                    <label class="block mb-2 text-sm font-medium text-gray-700">
-                                        Depresi ST
-                                    </label>
+                                    <x-forms.label-popover :for="'oldpeak'"
+                                    :text="'Depresi ST (Oldpeak)'"
+                                    popover-target="popover-oldpeak" popover-id="popover-oldpeak" popover-title="Depresi ST (oldpeak)" popover-description="Pengurangan segmen ST pada EKG, diukur dalam mm. Ini dapat memberikan indikasi tentang keparahan penyumbatan atau kerusakan pada jantung. Depresi ST yang signifikan sering dikaitkan dengan adanya masalah pada jantung, khususnya saat ada penyumbatan arteri koroner." 
+                                    />
                                     <input 
                                         type="number" 
                                         step="0.1" 
@@ -160,9 +172,10 @@
                                 </div>
             
                                 <div>
-                                    <label class="block mb-2 text-sm font-medium text-gray-700">
-                                        Kemiringan Segmen ST (0-2)
-                                    </label>
+                                    <x-forms.label-popover :for="'slope'"
+                                    :text="'Kemiringan Segmen ST (0-2)'"
+                                    popover-target="popover-slope" popover-id="popover-slope" popover-title="Depresi ST (oldpeak)" popover-description="Pengurangan segmen ST pada EKG, diukur dalam mm. Ini dapat memberikan indikasi tentang keparahan penyumbatan atau kerusakan pada jantung. Depresi ST yang signifikan sering dikaitkan dengan adanya masalah pada jantung, khususnya saat ada penyumbatan arteri koroner." 
+                                    />
                                     <input 
                                         type="number" 
                                         name="slope" 
@@ -172,9 +185,10 @@
                                 </div>
             
                                 <div>
-                                    <label class="block mb-2 text-sm font-medium text-gray-700">
-                                        Jumlah Pembuluh Darah yang Ditemukan (0-4)
-                                    </label>
+                                    <x-forms.label-popover :for="'ca'"
+                                    :text="'Jumlah Pembuluh Darah yang Ditemukan (0-4)'"
+                                    popover-target="popover-ca" popover-id="popover-ca" popover-title="Depresi ST (oldpeak)" popover-description="Pengurangan segmen ST pada EKG, diukur dalam mm. Ini dapat memberikan indikasi tentang keparahan penyumbatan atau kerusakan pada jantung. Depresi ST yang signifikan sering dikaitkan dengan adanya masalah pada jantung, khususnya saat ada penyumbatan arteri koroner." 
+                                    />
                                     <input 
                                         type="number" 
                                         name="ca" 
@@ -184,9 +198,10 @@
                                 </div>
             
                                 <div>
-                                    <label class="block mb-2 text-sm font-medium text-gray-700">
-                                        Hasil Tes Thalassemia (0-3)
-                                    </label>
+                                    <x-forms.label-popover :for="'thal'"
+                                    :text="'Hasil Tes Thalassemia (0-3)'"
+                                    popover-target="popover-thal" popover-id="popover-thal" popover-title="Depresi ST (oldpeak)" popover-description="Pengurangan segmen ST pada EKG, diukur dalam mm. Ini dapat memberikan indikasi tentang keparahan penyumbatan atau kerusakan pada jantung. Depresi ST yang signifikan sering dikaitkan dengan adanya masalah pada jantung, khususnya saat ada penyumbatan arteri koroner." 
+                                    />
                                     <input 
                                         type="number" 
                                         name="thal" 
@@ -195,6 +210,56 @@
                                     >
                                 </div>
                             </div>
+
+                            {{-- Pertanyaan Lain --}}
+                            {{-- <div class="space-y-4">
+                                <h2 class="text-lg font-bold">Pertanyaan Lain</h2>
+                                <div>
+                                    <label class="block mb-2 text-sm font-medium text-gray-700">
+                                        Berat Badan
+                                    </label>
+                                    <input 
+                                        type="number" 
+                                        name="weight" 
+                                        class="w-full px-3 py-2 transition duration-200 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+                                        required
+                                    >
+                                </div>
+                                <div>
+                                    <label class="block mb-2 text-sm font-medium text-gray-700">
+                                        Apakah Anda Merokok?
+                                    </label>
+                                    <select name="is_smoke" id="is_smoke" class="w-full px-3 py-2 transition duration-200 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                        <option value="">Pilih Opsi</option>
+                                        <option value="true">Iya Merokok</option>
+                                        <option value="false">Tidak Merokok</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="md:pt-7"></div>
+                                <div>
+                                    <label class="block mb-2 text-sm font-medium text-gray-700">
+                                        Apakah Anda Berolahraga?
+                                    </label>
+                                    <select name="is_exercise" id="is_smoke" class="w-full px-3 py-2 transition duration-200 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                        <option value="">Pilih Opsi</option>
+                                        <option value="true">Iya Berolahraga</option>
+                                        <option value="false">Tidak Berolahraga</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block mb-2 text-sm font-medium text-gray-700">
+                                        Seberapa Sering Anda Berolahraga Dalam Seminggu?
+                                    </label>
+                                    <input 
+                                        type="number" 
+                                        name="total_exercise" 
+                                        class="w-full px-3 py-2 transition duration-200 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+                                        required
+                                    >
+                                </div>
+                            </div> --}}
                         </div>
             
                         <div class="mt-6">
@@ -207,6 +272,7 @@
                         </div>
                     </form>
             
+                    {{-- Hasil dari prediksi --}}
                     @if(isset($result))
                         <div class="p-8 border-t bg-gray-50">
                             <div class="max-w-xl mx-auto overflow-hidden bg-white rounded-lg shadow-lg">
@@ -239,7 +305,7 @@
                     @endif
                 </div>
             </div>
-        
+
         </div>
     </div>
 </x-app-layout>

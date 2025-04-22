@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('predictions', function (Blueprint $table) {
+        Schema::create('health_data', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete(); // relasi ke table user
-            $table->json('input_data');
-            $table->string('prediction_result');
-            $table->string('probability');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete(); //relasi ke table users
+            $table->float('weight');
+            $table->boolean('is_smoking');
+            $table->boolean('is_exercise');
+            $table->integer('total_exercise');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('predictions');
+        Schema::dropIfExists('health_data');
     }
 };

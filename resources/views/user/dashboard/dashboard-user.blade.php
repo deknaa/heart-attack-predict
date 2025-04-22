@@ -173,7 +173,7 @@
                             <h3 class="mb-4 text-lg font-semibold text-gray-800">Tindakan</h3>
                             <div class="space-y-3">
                                 <a href="#"
-                                    class="flex items-center justify-between p-3 text-white transition duration-200 bg-blue-600 rounded-lg hover:bg-blue-700">
+                                    class="flex items-center justify-between p-3 text-gray-800 transition duration-200 bg-gray-100 rounded-lg hover:bg-blue-700 hover:text-white">
                                     <span class="flex items-center">
                                         <i class="mr-3 fas fa-calculator"></i>
                                         <span>Prediksi Baru</span>
@@ -181,23 +181,14 @@
                                     <i class="fas fa-chevron-right"></i>
                                 </a>
                                 <a href="#"
-                                    class="flex items-center justify-between p-3 text-gray-800 transition duration-200 bg-gray-100 rounded-lg hover:bg-gray-200">
-                                    <span class="flex items-center">
-                                        <i class="mr-3 fas fa-user-md"></i>
-                                        <span>Konsultasi Dokter</span>
-                                    </span>
-                                    <i class="fas fa-chevron-right"></i>
-                                </a>
-                                <a href="#"
-                                    class="flex items-center justify-between p-3 text-gray-800 transition duration-200 bg-gray-100 rounded-lg hover:bg-gray-200">
+                                    class="flex items-center justify-between p-3 text-gray-800 transition duration-200 bg-gray-100 rounded-lg hover:bg-blue-700 hover:text-white">
                                     <span class="flex items-center">
                                         <i class="mr-3 fas fa-download"></i>
                                         <span>Unduh Laporan</span>
                                     </span>
-                                    <i class="fas fa-chevron-right"></i>
                                 </a>
                                 <a href="#"
-                                    class="flex items-center justify-between p-3 text-gray-800 transition duration-200 bg-gray-100 rounded-lg hover:bg-gray-200">
+                                    class="flex items-center justify-between p-3 text-gray-800 transition duration-200 bg-gray-100 rounded-lg hover:bg-blue-700 hover:text-white">
                                     <span class="flex items-center">
                                         <i class="mr-3 fas fa-bell"></i>
                                         <span>Atur Pengingat</span>
@@ -206,61 +197,6 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Upcoming Checkups -->
-                <div class="p-6 mt-6 bg-white rounded-lg shadow">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-lg font-semibold text-gray-800">Jadwal Pemeriksaan</h3>
-                        <a href="#" class="text-sm text-blue-600 hover:text-blue-800">Lihat Semua</a>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full bg-white">
-                            <thead>
-                                <tr>
-                                    <th
-                                        class="px-4 py-2 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                                        Tanggal</th>
-                                    <th
-                                        class="px-4 py-2 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                                        Jenis</th>
-                                    <th
-                                        class="px-4 py-2 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                                        Dokter</th>
-                                    <th
-                                        class="px-4 py-2 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                                        Status</th>
-                                    <th class="px-4 py-2 border-b border-gray-200 bg-gray-50"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="px-4 py-3 border-b border-gray-200">20 Mar 2025</td>
-                                    <td class="px-4 py-3 border-b border-gray-200">Cek Tekanan Darah</td>
-                                    <td class="px-4 py-3 border-b border-gray-200">Dr. Anindita</td>
-                                    <td class="px-4 py-3 border-b border-gray-200">
-                                        <span
-                                            class="inline-flex px-2 text-xs font-semibold leading-5 text-yellow-800 bg-yellow-100 rounded-full">Mendatang</span>
-                                    </td>
-                                    <td class="px-4 py-3 text-right border-b border-gray-200">
-                                        <button class="text-blue-600 hover:text-blue-900">Detail</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-4 py-3 border-b border-gray-200">5 Apr 2025</td>
-                                    <td class="px-4 py-3 border-b border-gray-200">EKG</td>
-                                    <td class="px-4 py-3 border-b border-gray-200">Dr. Surya</td>
-                                    <td class="px-4 py-3 border-b border-gray-200">
-                                        <span
-                                            class="inline-flex px-2 text-xs font-semibold leading-5 text-gray-800 bg-gray-100 rounded-full">Dijadwalkan</span>
-                                    </td>
-                                    <td class="px-4 py-3 text-right border-b border-gray-200">
-                                        <button class="text-blue-600 hover:text-blue-900">Detail</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
 
