@@ -61,4 +61,9 @@ class User extends Authenticatable
         
         return 'https://ui-avatars.com/api/?name=' . urlencode($this->name);
     }
+
+    public function predictions()
+    {
+        return $this->hasMany(Prediction::class);
+    }
 }

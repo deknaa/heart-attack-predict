@@ -45,7 +45,8 @@
                                     />
                                     <input 
                                         type="number" 
-                                        name="age" 
+                                        name="age"
+                                        value="{{ old('age', $inputData['age'] ?? '') }}" 
                                         class="w-full px-3 py-2 transition duration-200 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
                                         required
                                     >
@@ -58,7 +59,8 @@
                                     />
                                     <input 
                                         type="number" 
-                                        name="sex" 
+                                        name="sex"
+                                        value="{{ old('sex', $inputData['sex'] ?? '') }}" 
                                         class="w-full px-3 py-2 transition duration-200 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
                                         required
                                     >
@@ -71,7 +73,8 @@
                                     />
                                     <input 
                                         type="number" 
-                                        name="cp" 
+                                        name="cp"
+                                        value="{{ old('cp', $inputData['cp'] ?? '') }}" 
                                         class="w-full px-3 py-2 transition duration-200 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
                                         required
                                     >
@@ -84,7 +87,8 @@
                                     />
                                     <input 
                                         type="number" 
-                                        name="trestbps" 
+                                        name="trestbps"
+                                        value="{{ old('trestbps', $inputData['trestbps'] ?? '') }}" 
                                         class="w-full px-3 py-2 transition duration-200 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
                                         required
                                     >
@@ -97,7 +101,8 @@
                                     />
                                     <input 
                                         type="number" 
-                                        name="chol" 
+                                        name="chol"
+                                        value="{{ old('chol', $inputData['chol'] ?? '') }}" 
                                         class="w-full px-3 py-2 transition duration-200 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
                                         required
                                     >
@@ -110,7 +115,8 @@
                                     />
                                     <input 
                                         type="number" 
-                                        name="fbs" 
+                                        name="fbs"
+                                        value="{{ old('fbs', $inputData['fbs'] ?? '') }}" 
                                         class="w-full px-3 py-2 transition duration-200 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
                                         required
                                     >
@@ -123,7 +129,8 @@
                                     />
                                     <input 
                                         type="number" 
-                                        name="restecg" 
+                                        name="restecg"
+                                        value="{{ old('restecg', $inputData['restecg'] ?? '') }}" 
                                         class="w-full px-3 py-2 transition duration-200 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
                                         required
                                     >
@@ -138,7 +145,8 @@
                                     />
                                     <input 
                                         type="number" 
-                                        name="thalach" 
+                                        name="thalach"
+                                        value="{{ old('thalach', $inputData['thalach'] ?? '') }}" 
                                         class="w-full px-3 py-2 transition duration-200 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
                                         required
                                     >
@@ -151,7 +159,8 @@
                                     />
                                     <input 
                                         type="number" 
-                                        name="exang" 
+                                        name="exang"
+                                        value="{{ old('exang', $inputData['exang'] ?? '') }}" 
                                         class="w-full px-3 py-2 transition duration-200 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
                                         required
                                     >
@@ -165,7 +174,8 @@
                                     <input 
                                         type="number" 
                                         step="0.1" 
-                                        name="oldpeak" 
+                                        name="oldpeak"
+                                        value="{{ old('oldpeak', $inputData['oldpeak'] ?? '') }}" 
                                         class="w-full px-3 py-2 transition duration-200 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
                                         required
                                     >
@@ -178,7 +188,8 @@
                                     />
                                     <input 
                                         type="number" 
-                                        name="slope" 
+                                        name="slope"
+                                        value="{{ old('slope', $inputData['slope'] ?? '') }}" 
                                         class="w-full px-3 py-2 transition duration-200 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
                                         required
                                     >
@@ -191,7 +202,8 @@
                                     />
                                     <input 
                                         type="number" 
-                                        name="ca" 
+                                        name="ca"
+                                        value="{{ old('ca', $inputData['ca'] ?? '') }}" 
                                         class="w-full px-3 py-2 transition duration-200 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
                                         required
                                     >
@@ -204,62 +216,13 @@
                                     />
                                     <input 
                                         type="number" 
-                                        name="thal" 
+                                        name="thal"
+                                        value="{{ old('thal', $inputData['thal'] ?? '') }}" 
                                         class="w-full px-3 py-2 transition duration-200 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
                                         required
                                     >
                                 </div>
                             </div>
-
-                            {{-- Pertanyaan Lain --}}
-                            {{-- <div class="space-y-4">
-                                <h2 class="text-lg font-bold">Pertanyaan Lain</h2>
-                                <div>
-                                    <label class="block mb-2 text-sm font-medium text-gray-700">
-                                        Berat Badan
-                                    </label>
-                                    <input 
-                                        type="number" 
-                                        name="weight" 
-                                        class="w-full px-3 py-2 transition duration-200 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
-                                        required
-                                    >
-                                </div>
-                                <div>
-                                    <label class="block mb-2 text-sm font-medium text-gray-700">
-                                        Apakah Anda Merokok?
-                                    </label>
-                                    <select name="is_smoke" id="is_smoke" class="w-full px-3 py-2 transition duration-200 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                                        <option value="">Pilih Opsi</option>
-                                        <option value="true">Iya Merokok</option>
-                                        <option value="false">Tidak Merokok</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="space-y-4">
-                                <div class="md:pt-7"></div>
-                                <div>
-                                    <label class="block mb-2 text-sm font-medium text-gray-700">
-                                        Apakah Anda Berolahraga?
-                                    </label>
-                                    <select name="is_exercise" id="is_smoke" class="w-full px-3 py-2 transition duration-200 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                                        <option value="">Pilih Opsi</option>
-                                        <option value="true">Iya Berolahraga</option>
-                                        <option value="false">Tidak Berolahraga</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block mb-2 text-sm font-medium text-gray-700">
-                                        Seberapa Sering Anda Berolahraga Dalam Seminggu?
-                                    </label>
-                                    <input 
-                                        type="number" 
-                                        name="total_exercise" 
-                                        class="w-full px-3 py-2 transition duration-200 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
-                                        required
-                                    >
-                                </div>
-                            </div> --}}
                         </div>
             
                         <div class="mt-6">

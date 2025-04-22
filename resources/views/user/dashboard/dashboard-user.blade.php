@@ -107,7 +107,7 @@
                             <h3 class="mb-4 text-lg font-semibold text-gray-800">Riwayat Prediksi</h3>
                             <canvas id="predictionChart" height="200"></canvas>
                             <div class="mt-4 text-center">
-                                <a href="#" class="text-sm font-medium text-blue-600 hover:text-blue-800">Lihat
+                                <a href="{{ route('predict.history') }}" class="text-sm font-medium text-blue-600 hover:text-blue-800">Lihat
                                     detail riwayat prediksi</a>
                             </div>
                         </div>

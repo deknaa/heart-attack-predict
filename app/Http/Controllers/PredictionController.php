@@ -14,7 +14,10 @@ class PredictionController extends Controller
     // method untuk menampilkan halaman prediksi
     public function index()
     {   
-        return view('prediction.index');
+        $latestPrediction = auth()->user()->predictions()->latest()->first();
+        $inputData = $latestPrediction ? $latestPrediction->input_data : [];
+
+        return view('prediction.index', compact('inputData'));
     }
 
     public function predict(Request $request)
