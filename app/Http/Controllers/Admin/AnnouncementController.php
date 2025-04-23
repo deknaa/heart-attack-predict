@@ -97,7 +97,7 @@ class AnnouncementController extends Controller
 
     public function list()
     {
-        $announcements = Announcement::all();
+        $announcements = Announcement::where('visibility', 'public')->get();
         return view('user.announcement.show', compact('announcements'));
     }
 
