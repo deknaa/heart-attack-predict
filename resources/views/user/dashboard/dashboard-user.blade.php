@@ -172,7 +172,7 @@
                         <div class="p-6 bg-white rounded-lg shadow">
                             <h3 class="mb-4 text-lg font-semibold text-gray-800">Tindakan</h3>
                             <div class="space-y-3">
-                                <a href="#"
+                                <a href="{{ route('predict') }}"
                                     class="flex items-center justify-between p-3 text-gray-800 transition duration-200 bg-gray-100 rounded-lg hover:bg-blue-700 hover:text-white">
                                     <span class="flex items-center">
                                         <i class="mr-3 fas fa-calculator"></i>

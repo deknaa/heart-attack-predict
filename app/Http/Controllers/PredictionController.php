@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Prediction;
 use App\Models\User;
 use GuzzleHttp\Client;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -50,5 +51,25 @@ class PredictionController extends Controller
     {
         $predictions = Prediction::where('user_id', Auth::id())->latest()->get();
         return view('prediction.history', compact('predictions'));
+    }
+
+    public function show($id): JsonResponse
+    {
+        // Cari prediksi berdasarkan ID
+        $prediction = Prediction::findOrFail($id);
+        
+        // Format tanggal agar sesuai dengan yang ditampilkan di frontend
+        $formattedDate = $prediction->created_at->format('d M Y, H:i');
+        
+        // response data
+        $responseData = [
+            'id' => $prediction->id,
+            'created_at' => $formattedDate,
+            'prediction_result' => $prediction->prediction_result,
+            'probability' => $prediction->probability,
+            'input_data' => $prediction->input_data,
+        ];
+        
+        return response()->json($responseData);
     }
 }

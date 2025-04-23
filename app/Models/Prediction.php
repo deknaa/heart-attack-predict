@@ -13,6 +13,8 @@ class Prediction extends Model
 
     protected $casts = [
         'input_data' => 'array', // agar data JSON bisa digunakan sebagai array
+        'probability' => 'float',
+        'prediction_result' => 'integer',
     ];
 
     public function user()

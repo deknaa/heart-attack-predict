@@ -1,5 +1,6 @@
 <?php
 
+use App\Exports\PredictionsExport;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\admin\AnnouncementController;
 use App\Http\Controllers\ArticleController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\UserArticleController;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
 
 Route::get('/', function () {
     return view('index');
@@ -31,8 +33,7 @@ Route::middleware(['auth', 'userRole'])->group(function () {
     Route::get('predict', [PredictionController::class, 'index'])->name('predict');
     Route::post('predict', [PredictionController::class, 'predict'])->name('predict');
     Route::get('predict-history', [PredictionController::class, 'history'])->name('predict.history');
-    // Route::get('predict', [PredictionController::class, 'predictionPage'])->name('predict');
-    // Route::get('history-predict', [PredictionController::class, 'historyPredict'])->name('predict.history');
+    Route::get('predictions/{id}', [PredictionController::class, 'show'])->name('predict.show');
 
     // Route for article
     Route::get('article/list', [UserArticleController::class, 'list'])->name('article.list');
@@ -41,6 +42,11 @@ Route::middleware(['auth', 'userRole'])->group(function () {
     // Route for announcement
     Route::get('announcement/list', [AnnouncementController::class, 'list'])->name('announcement.list');
     Route::get('announcement/detail/{id}', [AnnouncementController::class, 'detail'])->name('announcement.detail');
+
+    // Route for export excel
+    Route::get('export/excel/predictions', function() {
+        return Excel::download(new PredictionsExport, 'predictions.xlsx');
+    });
 });
 
 // Route untuk user dengan role admin
