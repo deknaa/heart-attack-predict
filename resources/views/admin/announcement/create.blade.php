@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="flex items-center justify-between">
-                    <a href="{{ route('article.index') }}"
+                    <a href="{{ route('announcement.index') }}"
                         class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-gray-700 uppercase transition duration-150 ease-in-out bg-gray-300 border border-transparent rounded-md hover:bg-gray-400 active:bg-gray-500 focus:outline-none focus:border-gray-500 focus:ring ring-gray-300 disabled:opacity-25">
                         Kembali
                     </a>

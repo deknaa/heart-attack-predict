@@ -95,9 +95,19 @@ class AnnouncementController extends Controller
         return redirect()->route('announcement.index')->with('success', 'Announcement deleted successfully');
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $announcements = Announcement::where('visibility', 'public')->get();
+        $query = Announcement::query()->where('visibility', 'public');
+
+        // Sorting
+        if ($request->sort == 'terlama') {
+            $query->orderBy('created_at', 'asc');
+        } else {
+            $query->orderBy('created_at', 'desc'); // default: terbaru
+        }
+
+        $announcements = $query->paginate(3)->withQueryString();
+
         return view('user.announcement.show', compact('announcements'));
     }
 
@@ -105,5 +115,22 @@ class AnnouncementController extends Controller
     {
         $announcements = Announcement::where('slug', $slug)->firstOrFail();
         return view('user.announcement.detail', compact('announcements'));
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->search;
+
+        $announcements = Announcement::where('visibility', 'public')
+        ->when($search, function($q) use ($search) {
+            $q->where(function($sub) use ($search) {
+                $sub->where('title', 'like', "%$search%")
+                    ->orWhere('content', 'like', "%$search%");
+            });
+        })
+        ->latest()
+        ->paginate(3);
+
+        return view('user.announcement._list', compact('announcements', 'search'));
     }
 }

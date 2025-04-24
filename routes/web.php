@@ -42,6 +42,7 @@ Route::middleware(['auth', 'userRole'])->group(function () {
     // Route for announcement
     Route::get('announcement/list', [AnnouncementController::class, 'list'])->name('announcement.list');
     Route::get('announcement/detail/{id}', [AnnouncementController::class, 'detail'])->name('announcement.detail');
+    Route::get('announcement/search', [AnnouncementController::class, 'search'])->name('announcement.search');
 
     // Route for export excel
     Route::get('export/excel/predictions', function() {
