@@ -1,8 +1,8 @@
 <x-app-layout>
     <div class="px-4 py-6 pt-24 mx-auto md:px-8 lg:px-14 max-w-7xl">
         <div class="mb-8">
-            <h2 class="text-2xl font-bold text-gray-800 md:text-3xl">Artikel Terbaru</h2>
-            <p class="mt-2 text-gray-600">Temukan informasi menarik dan bermanfaat dari koleksi artikel kami</p>
+            <h2 class="text-2xl font-bold text-gray-800 md:text-3xl dark:text-white">Artikel Terbaru</h2>
+            <p class="mt-2 text-gray-600 dark:text-white">Temukan informasi menarik dan bermanfaat dari koleksi artikel kami</p>
         </div>
         
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
