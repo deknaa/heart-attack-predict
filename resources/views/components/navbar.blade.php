@@ -91,7 +91,7 @@
                                         </svg>
                                     </button>
 
-                                    <!-- User Dropdown Menu -->
+                                    {{-- User Dropdown --}}
                                     <div class="z-50 hidden min-w-[200px] my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-lg dark:bg-gray-700 dark:divide-gray-600"
                                         id="user-dropdown">
                                         <div class="px-4 py-3">
@@ -102,7 +102,7 @@
                                         </div>
                                         <ul class="py-2" aria-labelledby="user-menu-button">
                                             <li>
-                                                <a href="/dashboard"
+                                                <a href="{{ route('dashboard') }}"
                                                     class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                                                     <svg class="w-4 h-4 mr-2 text-gray-500 dark:text-gray-400" fill="none"
                                                         stroke="currentColor" viewBox="0 0 24 24">
@@ -123,20 +123,6 @@
                                                         </path>
                                                     </svg>
                                                     My Profile
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="/settings"
-                                                    class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                                                    <svg class="w-4 h-4 mr-2 text-gray-500 dark:text-gray-400" fill="none"
-                                                        stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
-                                                        </path>
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                                    </svg>
-                                                    Settings
                                                 </a>
                                             </li>
                                             <li class="border-t border-gray-100 dark:border-gray-600">
@@ -350,32 +336,6 @@
 
                     {{-- Right Side --}}
                     <div class="flex items-center space-x-3">
-                        {{-- Search Button --}}
-                        <button type="button"
-                            class="p-2 text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                            <span class="sr-only">Search</span>
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                            </svg>
-                        </button>
-
-                        {{-- Notifications --}}
-                        <button type="button"
-                            class="p-2 text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                            <span class="sr-only">View notifications</span>
-                            <div class="relative">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
-                                    </path>
-                                </svg>
-                                <div class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></div>
-                            </div>
-                        </button>
-
                         {{-- Theme Toggle --}}
                         <button id="theme-toggle" type="button"
                             class="p-2 text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
@@ -448,20 +408,6 @@
                                                     My Profile
                                                 </a>
                                             </li>
-                                            <li>
-                                                <a href="/settings"
-                                                    class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                                                    <svg class="w-4 h-4 mr-2 text-gray-500 dark:text-gray-400" fill="none"
-                                                        stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
-                                                        </path>
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                                    </svg>
-                                                    Settings
-                                                </a>
-                                            </li>
                                             <li class="border-t border-gray-100 dark:border-gray-600">
                                                 <form method="POST" action="{{ route('logout') }}">
                                                     @csrf
@@ -521,53 +467,53 @@
                     <ul class="space-y-1">
                         <li>
                             <a href="/dashboard/admin"
-                                class="flex items-center p-3 text-gray-700 transition-colors rounded-lg hover:bg-blue-50 dark:text-white dark:hover:bg-gray-700 group">
-                                <svg class="w-5 h-5 text-red-600 dark:text-red-500" xmlns="http://www.w3.org/2000/svg"
+                                class="flex items-center p-3 text-gray-700 transition-colors rounded-lg hover:bg-blue-50 dark:text-white dark:hover:bg-gray-700 group {{ request()->is('dashboard/admin') ? 'bg-red-50 dark:bg-gray-700' : '' }}">
+                                <svg class="w-5 h-5 {{ request()->is('dashboard/admin') ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-white' }}" xmlns="http://www.w3.org/2000/svg"
                                     fill="currentColor" viewBox="0 0 22 21">
                                     <path
                                         d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
                                     <path
                                         d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
                                 </svg>
-                                <span class="font-medium ms-3">Dashboard</span>
+                                <span class="font-medium ms-3 {{ request()->is('dashboard/admin') ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-white' }}">Dashboard</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('article.index') }}"
-                                class="flex items-center p-3 text-gray-700 transition-colors rounded-lg hover:bg-blue-50 dark:text-white dark:hover:bg-gray-700 group">
-                                <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg"
+                                class="flex items-center p-3 text-gray-700 transition-colors rounded-lg hover:bg-blue-50 dark:text-white dark:hover:bg-gray-700 group {{ request()->is('article') ? 'bg-red-50 dark:bg-gray-700' : '' }}">
+                                <svg class="w-5 h-5 {{ request()->is('article') ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-white' }}" xmlns="http://www.w3.org/2000/svg"
                                     fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2"
                                         d="M19 7h1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h11.5M7 14h6m-6 3h6m0-10h.5m-.5 3h.5M7 7h3v3H7V7Z" />
                                 </svg>
-                                <span class="font-medium ms-3">Article Management</span>
+                                <span class="font-medium ms-3 {{ request()->is('article') ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-white' }}">Manajemen Artikel</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('users.data') }}"
-                                class="flex items-center p-3 text-gray-700 transition-colors rounded-lg hover:bg-blue-50 dark:text-white dark:hover:bg-gray-700 group">
-                                <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg"
+                                class="flex items-center p-3 text-gray-700 transition-colors rounded-lg hover:bg-blue-50 dark:text-white dark:hover:bg-gray-700 group {{ request()->is('users/data') ? 'bg-red-50 dark:bg-gray-700' : '' }}">
+                                <svg class="w-5 h-5 {{ request()->is('users/data') ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-white' }}" xmlns="http://www.w3.org/2000/svg"
                                     fill="currentColor" viewBox="0 0 24 24">
                                     <path fill-rule="evenodd"
                                         d="M8 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4H6Zm7.25-2.095c.478-.86.75-1.85.75-2.905a5.973 5.973 0 0 0-.75-2.906 4 4 0 1 1 0 5.811ZM15.466 20c.34-.588.535-1.271.535-2v-1a5.978 5.978 0 0 0-1.528-4H18a4 4 0 0 1 4 4v1a2 2 0 0 1-2 2h-4.535Z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span class="font-medium ms-3">User Data</span>
+                                <span class="font-medium ms-3 {{ request()->is('users/data') ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-white' }}">Data User</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('announcement.index') }}"
-                                class="flex items-center p-3 text-gray-700 transition-colors rounded-lg hover:bg-blue-50 dark:text-white dark:hover:bg-gray-700 group">
-                                <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg"
+                                class="flex items-center p-3 text-gray-700 transition-colors rounded-lg hover:bg-blue-50 dark:text-white dark:hover:bg-gray-700 group {{ request()->is('announcement') ? 'bg-red-50 dark:bg-gray-700' : '' }}">
+                                <svg class="w-5 h-5 {{ request()->is('announcement') ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-white' }}" xmlns="http://www.w3.org/2000/svg"
                                     fill="currentColor" viewBox="0 0 24 24">
                                     <path fill-rule="evenodd"
                                         d="M18.458 3.11A1 1 0 0 1 19 4v16a1 1 0 0 1-1.581.814L12 16.944V7.056l5.419-3.87a1 1 0 0 1 1.039-.076ZM22 12c0 1.48-.804 2.773-2 3.465v-6.93c1.196.692 2 1.984 2 3.465ZM10 8H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6V8Zm0 9H5v3a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-3Z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <div class="flex-1 ms-3">
-                                    <span class="font-medium">Announcements</span>
-                                    <div class="text-xs text-gray-500 dark:text-gray-400">Manage system alerts</div>
+                                <div class="flex-1 ms-3 {{ request()->is('announcement') ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-white' }}">
+                                    <span class="font-medium">Pengumuman</span>
+                                    <div class="text-xs">Kelola Pengumuman</div>
                                 </div>
                             </a>
                         </li>
@@ -580,14 +526,14 @@
                         <li>
                             <a href="#"
                                 class="flex items-center p-3 text-gray-700 transition-colors rounded-lg hover:bg-blue-50 dark:text-white dark:hover:bg-gray-700 group">
-                                <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg"
+                                <svg class="w-5 h-5 {{ request()->is('dashboard/admin') ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-white' }}" xmlns="http://www.w3.org/2000/svg"
                                     fill="currentColor" viewBox="0 0 18 20">
                                     <path
                                         d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z" />
                                 </svg>
-                                <div class="flex-1 ms-3">
-                                    <span class="font-medium">NULL</span>
-                                    <div class="text-xs text-gray-500 dark:text-gray-400">Manage NULL</div>
+                                <div class="flex-1 ms-3 {{ request()->is('dashboard/admin') ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-white' }}">
+                                    <span class="font-medium">Grafik Informasi</span>
+                                    <div class="text-xs">Kelola dan Lihat Grafik Informasi</div>
                                 </div>
                             </a>
                         </li>
@@ -599,16 +545,16 @@
                     <h6 class="mb-2 text-xs font-semibold text-gray-600 uppercase dark:text-gray-400">Account</h6>
                     <ul class="space-y-1">
                         <li>
-                            <a href="#"
+                            <a href="{{ route('profile.index', Auth::user()->id) }}"
                                 class="flex items-center p-3 text-gray-700 transition-colors rounded-lg hover:bg-blue-50 dark:text-white dark:hover:bg-gray-700 group">
-                                <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg"
+                                <svg class="w-5 h-5 {{ request()->is('profile', Auth::user()->id) ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-white' }}" xmlns="http://www.w3.org/2000/svg"
                                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
-                                <span class="font-medium ms-3">Settings</span>
+                                <span class="font-medium ms-3 {{ request()->is('profile', Auth::user()->id) ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-white' }}">Settings</span>
                             </a>
                         </li>
                         <li>
