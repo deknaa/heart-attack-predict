@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Announcement;
 use App\Models\Article;
+use App\Models\Prediction;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminDashboardController extends Controller
 {
@@ -36,6 +38,18 @@ class AdminDashboardController extends Controller
         $growthUsers = (($totalUsersThisMonth - $totalUsersLastMonth) / max(1, $totalUsersLastMonth)) * 100;
         $userGrowth = round($growthUsers, 1);
 
+        // Tampilkan persentase dalam bentuk line chart
+        $chartData = [
+            'label' => [
+                $lastMonth->format('F Y'),
+                $now->format('F Y')
+            ],
+            'data' => [
+                $totalUsersLastMonth,
+                $totalUsersThisMonth
+            ]
+        ];
+
         // Total Articles
         // Hitung jumlah artikel baru bulan ini
         $totalArticlesThisMonth = Article::whereMonth('created_at', $now->month)
@@ -56,7 +70,7 @@ class AdminDashboardController extends Controller
         // Hitung jumlah pengumuman baru bulan ini
         $totalAnnouncementsThisMonth = Announcement::whereMonth('created_at', $now->month)
             ->whereYear('created_at', $now->year)
-            ->count();  
+            ->count();
 
         // Hitung jumlah pengumuman baru bulan lalu
         $lastMonth = $now->copy()->subMonth();
@@ -68,7 +82,53 @@ class AdminDashboardController extends Controller
         $growthAnnouncement = (($totalAnnouncementsThisMonth - $totalAnnouncementsLastMonth) / max(1, $totalAnnouncementsLastMonth)) * 100;
         $announcementGrowth = round($growthAnnouncement, 1);
 
-        return view('admin.dashboard.dashboard-admin', compact('totalArticlePublished', 'totalUsers', 'totalAnnouncements', 'userGrowth', 'articleGrowth', 'announcementGrowth'));
+        // ----------------------------
+        // 1. Data Bar Chart: Prediksi per Minggu
+        // ----------------------------
+        $weeklyPredictions = Prediction::select(
+            DB::raw('WEEK(created_at, 1) as week'),
+            DB::raw('COUNT(*) as total')
+        )
+            ->whereMonth('created_at', $now->month)
+            ->whereYear('created_at', $now->year)
+            ->groupBy(DB::raw('WEEK(created_at, 1)'))
+            ->get();
+
+        $barLabels = [];
+        $barData = [];
+
+        for ($i = 1; $i <= 5; $i++) {
+            $barLabels[] = "Minggu ke-$i";
+            $week = $now->copy()->startOfMonth()->addWeeks($i - 1)->week;
+            $data = $weeklyPredictions->firstWhere('week', $week);
+            $barData[] = $data ? $data->total : 0;
+        }
+
+        $barChartData = [
+            'labels' => $barLabels,
+            'data' => $barData
+        ];
+
+        // ----------------------------
+        // 2. Data Pie Chart: Risiko vs Tidak Risiko
+        // ----------------------------
+        $riskData = Prediction::select('prediction_result', DB::raw('COUNT(*) as total'))
+            ->groupBy('prediction_result')
+            ->get()
+            ->pluck('total', 'prediction_result');
+
+        $pieLabels = ['Berisiko', 'Tidak Berisiko'];
+        $pieData = [
+            $riskData['1'] ?? 0,
+            $riskData['0'] ?? 0,
+        ];
+
+        $pieChartData = [
+            'labels' => $pieLabels,
+            'data' => $pieData
+        ];
+
+        return view('admin.dashboard.dashboard-admin', compact('totalArticlePublished', 'totalUsers', 'totalAnnouncements', 'userGrowth', 'articleGrowth', 'announcementGrowth', 'chartData', 'barChartData', 'pieChartData', 'riskData'));
     }
 
     // Display list of user on admin dashboard
