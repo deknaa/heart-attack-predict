@@ -12,7 +12,7 @@
             {{-- Search Input --}}
             <form method="GET" action="{{ route('announcement.list') }}"
                 class="flex flex-col gap-4 mb-8 sm:flex-row sm:items-center sm:justify-between">
-                <div class="relative flex-1 max-w-xs">
+                <div class="relative flex-1 w-full md:max-w-xs">
                     <input type="text" id="search" placeholder="Cari pengumuman..."
                         class="w-full py-2 pl-10 pr-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -27,7 +27,7 @@
                 {{-- Sorting select --}}
                 <div class="flex space-x-2">
                     <select name="sort" onchange="this.form.submit()"
-                        class="px-4 py-2 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        class="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                         <option value="terbaru" {{ request('sory') == 'terbaru' ? 'selected' : '' }}>Terbaru</option>
                         <option value="terlama" {{ request('sort') == 'terlama' ? 'selected' : '' }}>Terlama</option>
                     </select>

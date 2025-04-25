@@ -59,7 +59,7 @@
     </div>
 @else
     @if (isset($search))
-        <p class="block">Tidak ada hasil pencarian yang ditemukan.</p>
+        <p class="block text-center dark:text-white">Tidak ada hasil pencarian yang ditemukan.</p>
     @else
         <p class="hidden">Tidak ada hasil pencarian yang ditemukan.</p>
     @endif
