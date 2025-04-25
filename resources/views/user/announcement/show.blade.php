@@ -1,10 +1,10 @@
 <x-app-layout>
-    <div class="min-h-screen pt-20 bg-gray-50">
+    <div class="min-h-screen pt-20">
         <div class="px-4 py-10 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <!-- Header Section -->
             <div class="mb-10 text-center">
-                <h1 class="text-3xl font-bold text-gray-900 sm:text-4xl">Pengumuman</h1>
-                <p class="max-w-2xl mx-auto mt-3 text-xl text-gray-500 sm:mt-4">
+                <h1 class="text-3xl font-bold text-gray-900 sm:text-4xl dark:text-white">Pengumuman</h1>
+                <p class="max-w-2xl mx-auto mt-3 text-xl text-gray-500 dark:text-white sm:mt-4">
                     Dapatkan informasi terbaru tentang kegiatan dan berita penting
                 </p>
             </div>
