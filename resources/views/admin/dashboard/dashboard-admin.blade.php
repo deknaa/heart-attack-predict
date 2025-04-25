@@ -4,12 +4,12 @@
             <div class="w-full max-w-md p-6 bg-white border-l-4 border-blue-500 rounded-lg shadow-md">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="mb-1 text-sm font-medium tracking-wide text-blue-500 uppercase">Total Article Published
+                        <p class="mb-1 text-sm font-medium tracking-wide text-blue-500 uppercase">Total Artikel
                         </p>
-                        <h2 class="text-2xl font-semibold text-gray-700">{{ $article }} Article</h2>
+                        <h2 class="text-2xl font-semibold text-gray-700">{{ $totalArticlePublished }} Artikel</h2>
                     </div>
                     <div class="p-3 bg-gray-100 rounded-md">
-                        <svg class="w-6 h-6 text-blue-500 dark:text-white" aria-hidden="true"
+                        <svg class="w-6 h-6 text-blue-500 dark:text-blue-400" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                             viewBox="0 0 24 24">
                             <path fill-rule="evenodd"
@@ -28,17 +28,16 @@
             <div class="w-full max-w-md p-6 bg-white border-l-4 border-blue-500 rounded-lg shadow-md">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="mb-1 text-sm font-medium tracking-wide text-blue-500 uppercase">Total Users</p>
-                        <h2 class="text-2xl font-semibold text-gray-700">{{ $users }} Users</h2>
+                        <p class="mb-1 text-sm font-medium tracking-wide text-blue-500 uppercase">Total Pengumuman</p>
+                        <h2 class="text-2xl font-semibold text-gray-700">{{ $totalAnnouncements }} Pengumuman</h2>
                     </div>
                     <div class="p-3 bg-gray-100 rounded-md">
-                        <svg class="w-6 h-6 text-blue-500 dark:text-white" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                            viewBox="0 0 24 24">
-                            <path fill-rule="evenodd"
-                                d="M8 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4H6Zm7.25-2.095c.478-.86.75-1.85.75-2.905a5.973 5.973 0 0 0-.75-2.906 4 4 0 1 1 0 5.811ZM15.466 20c.34-.588.535-1.271.535-2v-1a5.978 5.978 0 0 0-1.528-4H18a4 4 0 0 1 4 4v1a2 2 0 0 1-2 2h-4.535Z"
-                                clip-rule="evenodd" />
-                        </svg>
+                      <svg class="w-6 h-6 text-blue-500 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd"
+                            d="M18.458 3.11A1 1 0 0 1 19 4v16a1 1 0 0 1-1.581.814L12 16.944V7.056l5.419-3.87a1 1 0 0 1 1.039-.076ZM22 12c0 1.48-.804 2.773-2 3.465v-6.93c1.196.692 2 1.984 2 3.465ZM10 8H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6V8Zm0 9H5v3a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-3Z"
+                            clip-rule="evenodd" />
+                      </svg>
                     </div>
                 </div>
                 <div class="flex items-center mt-4 text-sm">
@@ -52,10 +51,10 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="mb-1 text-sm font-medium tracking-wide text-blue-500 uppercase">Total Users</p>
-                        <h2 class="text-2xl font-semibold text-gray-700">{{ $users }} Users</h2>
+                        <h2 class="text-2xl font-semibold text-gray-700">{{ $totalUsers }} Users</h2>
                     </div>
                     <div class="p-3 bg-gray-100 rounded-md">
-                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                        <svg class="w-6 h-6 text-blue-500 dark:text-blue-400" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                             viewBox="0 0 24 24">
                             <path fill-rule="evenodd"
@@ -65,23 +64,29 @@
                     </div>
                 </div>
                 <div class="flex items-center mt-4 text-sm">
-                  <span class="flex items-center text-green-500">
-                    <i class="mr-1 fas fa-arrow-up"></i> 5.2%
-                  </span>
+                  @if($userGrowth >= 0 )
+                    <span class="flex items-center text-green-500">
+                      <i class="mr-1 fas fa-arrow-up"></i> {{ $userGrowth }}%
+                    </span>
+                  @else
+                    <span class="flex items-center text-green-500">
+                      <i class="mr-1 fas fa-arrow-down"></i> {{ abs($userGrowth) }}%
+                    </span>
+                  @endif
                   <span class="ml-2 text-gray-400">Since last month</span>
                 </div>
             </div>
         </div>
         <div class="max-w-6xl mx-auto">
-            <!-- Header Section -->
+            {{-- Header Section --}}
             <div class="mt-6 mb-6">
               <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-50">Dashboard Analytics</h1>
               <p class="text-gray-600 dark:text-gray-300">Monitoring performance metrics for Q1 2025</p>
             </div>
             
-            <!-- Chart Cards Row -->
+            {{-- Chart Card Section --}}
             <div class="grid grid-cols-1 gap-6 mb-6 md:grid-cols-2">
-              <!-- Line Chart Card -->
+              {{-- Line Chart --}}
               <div class="p-6 bg-white rounded-lg shadow-md">
                 <div class="flex items-center justify-between mb-4">
                   <h2 class="text-lg font-semibold text-gray-700">Monthly Revenue</h2>
@@ -95,7 +100,7 @@
                 </div>
               </div>
               
-              <!-- Bar Chart Card -->
+              {{-- Bar Chart --}}
               <div class="p-6 bg-white rounded-lg shadow-md">
                 <div class="flex items-center justify-between mb-4">
                   <h2 class="text-lg font-semibold text-gray-700">Traffic Sources</h2>
@@ -111,7 +116,7 @@
               </div>
             </div>
             
-            <!-- Donut Chart Card -->
+            {{-- Donut Chart --}}
             <div class="p-6 bg-white rounded-lg shadow-md">
               <div class="flex items-center justify-between mb-4">
                 <h2 class="text-lg font-semibold text-gray-700">Product Categories</h2>

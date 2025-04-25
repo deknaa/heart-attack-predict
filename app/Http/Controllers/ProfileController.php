@@ -18,20 +18,24 @@ class ProfileController extends Controller
     {
         $users = User::findOrFail($id);
 
-        if(Auth::user()->role === 'user') 
-        {
+        if (Auth::user()->role === 'user') {
             // Status kesehatan user
-            $prediction = Prediction::where('user_id', Auth::id())->latest()->first();
-            $input = $prediction->input_data;
-            
-            $age = $input['age']; // Usia
-            $sex = $input['sex']; // Jenis Kelamin
-            $cp = $input['thalach']; // detak jantung
-            $trestbps = $input['trestbps']; // tekanan darah
-            $chol = $input['chol']; // kolesterol
+            $prediction = Prediction::where('user_id', Auth::id())->latest()->first(); // ambil prediksi terakhir user
+
+            // inisialisasi nilai default jika tidak ada data prediksi
+            $cp = $trestbps = $chol = $probability = $input = $age = $sex = null;
+
+            if ($prediction) {
+                $input = $prediction->input_data;
+                $age = $input['age']; // Usia
+                $sex = $input['sex']; // Jenis Kelamin
+                $cp = $input['thalach']; // detak jantung
+                $trestbps = $input['trestbps']; // tekanan darah
+                $chol = $input['chol']; // kolesterol
+            }
 
             return view('profile.details', compact('users', 'input', 'cp', 'trestbps', 'chol', 'age', 'sex'));
-        }else{
+        } else {
             return view('profile.details', compact('users'));
         }
     }

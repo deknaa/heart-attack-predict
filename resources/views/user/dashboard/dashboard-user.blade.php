@@ -1,17 +1,21 @@
 <x-app-layout>
     <div class="flex flex-col min-h-screen mx-auto max-w-7xl">
-        <!-- Main Content -->
+        {{-- Main Content --}}
         <div class="flex-1">
-            <!-- Dashboard Content -->
+            {{-- Dashboard Content --}}
             <main class="p-6">
-                <!-- Health Status -->
+                {{-- Health Status --}}
                 <div class="p-6 mt-20 mb-6 bg-white rounded-lg shadow">
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-lg font-semibold text-gray-800">Status Kesehatan Anda</h3>
-                        @if($prediction->probability < 0.5)
-                            <span class="px-3 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Baik</span>
+                        @if($prediction)
+                            @if($prediction->probability < 0.5)
+                                <span class="px-3 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full">Baik</span>
+                            @else
+                                <span class="px-3 py-1 text-sm font-medium text-red-800 bg-red-100 rounded-full">Buruk</span>
+                            @endif
                         @else
-                            <span class="px-3 py-1 text-sm font-medium text-red-800 bg-red-100 rounded-full">Buruk</span>
+                            <span class="px-3 py-1 text-sm font-medium text-red-800 bg-red-100 rounded-full">Belum Ada Data Prediksi</span>
                         @endif
                     </div>
                     <div class="flex flex-wrap -mx-2">
@@ -72,7 +76,7 @@
                     </div>
                 </div>
 
-                <!-- Risk Assessment -->
+                {{-- Risk Assessment --}}
                 <div class="flex flex-wrap mb-6 -mx-3">
                     <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
                         <div class="h-full p-6 bg-white rounded-lg shadow">
@@ -114,7 +118,7 @@
                     </div>
                 </div>
 
-                <!-- Recommendations & Actions -->
+                {{-- Recommended and Actions --}}
                 <div class="flex flex-wrap -mx-3">
                     <div class="w-full px-3 mb-6 md:w-2/3">
                         <div class="p-6 bg-white rounded-lg shadow">

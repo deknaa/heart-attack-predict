@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="p-14 sm:ml-64">
+    <div class="p-14 {{ Auth::user()->role === 'admin' ? 'sm:ml-64' : '' }}">
         <div class="min-h-screen" x-data="{ activeTab: 'profile' }">
             {{-- Profile Header --}}
             <div class="px-4 pt-8 mx-auto max-w-7xl sm:px-6 lg:px-8">

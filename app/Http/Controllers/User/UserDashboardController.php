@@ -16,12 +16,19 @@ class UserDashboardController extends Controller
         $articleRecommendation = Article::with('user')->latest()->get();// rekomendasi artikel belum sesuai sementara ini, seharusnya memberikan rekomendasi berdasarkan prediksi risiko
         
         // Status kesehatan user
-        $prediction = Prediction::where('user_id', Auth::id())->latest()->first();
-        $input = $prediction->input_data;
-        
-        $cp = $input['thalach']; // detak jantung
-        $trestbps = $input['trestbps']; // tekanan darah
-        $chol = $input['chol']; // kolesterol
+        $prediction = Prediction::where('user_id', Auth::id())->latest()->first(); // ambil prediksi terakhir user
+
+        // inisialisasi nilai default jika tidak ada data prediksi
+        $cp = $trestbps = $chol = $probability = $input = null;
+
+        if($prediction)
+        {
+            $input = $prediction->input_data;
+            $cp = $input['thalach'] ?? null; // detak jantung
+            $trestbps = $input['trestbps'] ?? null; // tekanan darah
+            $chol = $input['chol'] ?? null; // kolesterol
+            $probability = $prediction->probability ?? null;
+        }
 
         return view('user.dashboard.dashboard-user', compact('activitesRecommendation', 'articleRecommendation', 'prediction', 'cp', 'trestbps', 'chol'));
     }
