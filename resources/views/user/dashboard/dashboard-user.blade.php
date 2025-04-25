@@ -27,7 +27,7 @@
                                     </div>
                                     <div>
                                         <p class="text-sm text-gray-500">Detak Jantung</p>
-                                        <p class="text-xl font-bold">{{ $cp }} <span class="text-sm font-normal">bpm</span></p>
+                                        <p class="text-xl font-bold">{{ $cp ? $cp : '-' }} <span class="text-sm font-normal">bpm</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -41,6 +41,11 @@
                                     <div>
                                         <p class="text-sm text-gray-500">Berat Badan</p>
                                         <p class="text-xl font-bold">- <span class="text-sm font-normal">kg</span></p>
+                                        {{-- @if($weight)
+                                            <p class="text-xl font-bold">{{ $weight }} <span class="text-sm font-normal">kg</span></p>
+                                        @else
+                                            <p class="text-xl font-bold">- <span class="text-sm font-normal">kg</span></p>
+                                        @endif --}}
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +58,7 @@
                                     </div>
                                     <div>
                                         <p class="text-sm text-gray-500">Tekanan Darah</p>
-                                        <p class="text-xl font-bold">{{ $trestbps }}/80 <span
+                                        <p class="text-xl font-bold">{{ $trestbps ? $trestbps : '-' }}/80 <span
                                                 class="text-sm font-normal">mmHg</span></p>
                                     </div>
                                 </div>
@@ -67,7 +72,7 @@
                                     </div>
                                     <div>
                                         <p class="text-sm text-gray-500">Kolesterol</p>
-                                        <p class="text-xl font-bold">{{ $chol }} <span class="text-sm font-normal">mg/dL</span>
+                                        <p class="text-xl font-bold">{{ $chol ? $chol : '-' }} <span class="text-sm font-normal">mg/dL</span>
                                         </p>
                                     </div>
                                 </div>
@@ -184,21 +189,17 @@
                                     </span>
                                     <i class="fas fa-chevron-right"></i>
                                 </a>
-                                <a href="{{ url('export/excel/predictions') }}"
-                                    class="flex items-center justify-between p-3 text-gray-800 transition duration-200 bg-gray-100 rounded-lg hover:bg-blue-700 hover:text-white">
-                                    <span class="flex items-center">
-                                        <i class="mr-3 fas fa-download"></i>
-                                        <span>Unduh Laporan</span>
-                                    </span>
-                                </a>
-                                <a href="#"
-                                    class="flex items-center justify-between p-3 text-gray-800 transition duration-200 bg-gray-100 rounded-lg hover:bg-blue-700 hover:text-white">
-                                    <span class="flex items-center">
-                                        <i class="mr-3 fas fa-bell"></i>
-                                        <span>Atur Pengingat</span>
-                                    </span>
-                                    <i class="fas fa-chevron-right"></i>
-                                </a>
+                                @if($prediction)
+                                    <a href="{{ url('export/excel/predictions') }}"
+                                        class="flex items-center justify-between p-3 text-gray-800 transition duration-200 bg-gray-100 rounded-lg hover:bg-blue-700 hover:text-white">
+                                        <span class="flex items-center">
+                                            <i class="mr-3 fas fa-download"></i>
+                                            <span>Unduh Laporan</span>
+                                        </span>
+                                    </a>
+                                @else
+                                    <span></span>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -242,119 +243,5 @@
             </main>
         </div>
     </div>
-
-    <script>
-        // Initialize Chart
-        document.addEventListener('DOMContentLoaded', function() {
-            fetch('/dashboard/user/predictions') // Ambil data dari endpoint baru
-                .then(response => response.json())
-                .then(data => {
-                    const labels = data.map(item => new Date(item.created_at).toLocaleDateString());
-                    const probabilities = data.map(item => item.probability * 100);
-
-                    const ctx = document.getElementById('predictionChart').getContext('2d');
-                    new Chart(ctx, {
-                        type: 'line',
-                        data: {
-                            labels: labels,
-                            datasets: [{
-                                label: 'Risiko (dalam %)',
-                                data: probabilities,
-                                borderColor: 'rgba(235, 0, 0, 1)',
-                                backgroundColor: 'rgba(37, 99, 235, 0.1)',
-                                borderWidth: 2,
-                                fill: true,
-                                tension: 0.4
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            plugins: {
-                                legend: {
-                                    display: false
-                                }
-                            },
-                            scales: {
-                                y: {
-                                    beginAtZero: true,
-                                    max: 100,
-                                    ticks: {
-                                        stepSize: 10
-                                    }
-                                }
-                            }
-                        }
-                    });
-                })
-                .catch(error => console.error('Error fetching prediction data:', error));
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            fetch('/dashboard/user/risk-assessment')
-                .then(response => response.json())
-                .then(data => {
-                    const riskBar = document.getElementById('riskBar');
-                    const riskPercentage = document.getElementById('riskPercentage');
-                    const riskBox = document.getElementById('riskBox');
-                    const riskTitle = document.getElementById('riskTitle');
-                    const riskDescription = document.getElementById('riskDescription');
-
-                    const probability = data.probability; // Ambil probabilitas dari database
-                    riskBar.style.width = probability + '%';
-                    riskPercentage.textContent = probability + '%';
-
-                    // Reset kelas warna agar tidak menumpuk
-                    riskBar.classList.remove('bg-green-500', 'bg-yellow-500', 'bg-red-500');
-                    riskPercentage.classList.remove('text-green-500', 'text-yellow-500', 'text-red-500');
-                    riskBox.classList.remove('bg-green-50', 'bg-yellow-50', 'bg-red-50', 'border-green-200',
-                        'border-yellow-200', 'border-red-200');
-
-                    // Tentukan level risiko berdasarkan probabilitas
-                    if (probability == 0) {
-                        riskBar.classList.add('bg-green-500');
-                        riskPercentage.classList.add('text-green-500');
-                        riskBox.classList.add('bg-green-50', 'border-green-200');
-                        riskTitle.textContent = 'Tidak Ada Risiko';
-                        riskDescription.textContent = 'Lakukan Prediksi Risiko untuk mengetahui tingkat risiko anda.';
-                    } else if (probability < 50){
-                        riskBar.classList.add('bg-green-500');
-                        riskPercentage.classList.add('text-green-500');
-                        riskBox.classList.add('bg-green-50', 'border-green-200');
-                        riskTitle.textContent = 'Risiko Rendah';
-                        riskDescription.textContent = 'Pertahankan gaya hidup sehat Anda.';
-                    } else if (probability < 70) {
-                        riskBar.classList.add('bg-yellow-500');
-                        riskPercentage.classList.add('text-yellow-500');
-                        riskBox.classList.add('bg-yellow-50', 'border-yellow-200');
-                        riskTitle.textContent = 'Risiko Sedang';
-                        riskDescription.textContent = 'Perhatikan pola makan dan olahraga lebih teratur.';
-                    } else {
-                        riskBar.classList.add('bg-red-500');
-                        riskPercentage.classList.add('text-red-500');
-                        riskBox.classList.add('bg-red-50', 'border-red-200');
-                        riskTitle.textContent = 'Risiko Tinggi';
-                        riskDescription.textContent =
-                            'Segera konsultasi dengan dokter untuk evaluasi lebih lanjut.';
-                    }
-                })
-                .catch(error => console.error('Error fetching risk assessment:', error));
-        });
-
-        // Mobile menu toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuButton = document.querySelector('button.md\\:hidden');
-            const sidebar = document.querySelector('.bg-gradient-to-b');
-
-            if (menuButton && sidebar) {
-                menuButton.addEventListener('click', function() {
-                    if (sidebar.classList.contains('hidden-mobile')) {
-                        sidebar.classList.remove('hidden-mobile');
-                    } else {
-                        sidebar.classList.add('hidden-mobile');
-                    }
-                });
-            }
-        });
-    </script>
-
+    @vite(['resources/js/userDashboardChart.js'])
 </x-app-layout>
