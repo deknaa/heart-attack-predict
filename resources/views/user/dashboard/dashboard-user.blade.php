@@ -180,7 +180,7 @@
                                     </span>
                                     <i class="fas fa-chevron-right"></i>
                                 </a>
-                                <a href="#"
+                                <a href="{{ url('export/excel/predictions') }}"
                                     class="flex items-center justify-between p-3 text-gray-800 transition duration-200 bg-gray-100 rounded-lg hover:bg-blue-700 hover:text-white">
                                     <span class="flex items-center">
                                         <i class="mr-3 fas fa-download"></i>
