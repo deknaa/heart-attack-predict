@@ -18,11 +18,9 @@ class LabelPopover extends Component
         public string $popoverId,
         public string $popoverTitle,
         public string $popoverDescription,
+        public string $popoverLink,
     ){}
     
-        
-    
-
     /**
      * Get the view / contents that represent the component.
      */

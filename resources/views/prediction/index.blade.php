@@ -41,7 +41,7 @@
                                 <div>
                                     <x-forms.label-popover :for="'age'"
                                     :text="'Usia'"
-                                    popover-target="popover-age" popover-id="popover-age" popover-title="Usia" popover-description="Usia pasien dalam tahun. Semakin tua usia seseorang, semakin besar risiko terkena serangan jantung, terutama jika ada faktor risiko lainnya." 
+                                    popover-target="popover-age" popover-id="popover-age" popover-title="Usia" popover-description="Usia pasien dalam tahun. Semakin tua usia seseorang, semakin besar risiko terkena serangan jantung, terutama jika ada faktor risiko lainnya." popover-link="#"
                                     />
                                     <input 
                                         type="number" 
@@ -55,7 +55,7 @@
                                 <div>
                                     <x-forms.label-popover :for="'sex'"
                                     :text="'Jenis Kelamin (0: Perempuan, 1: Laki-laki)'"
-                                    popover-target="popover-sex" popover-id="popover-sex" popover-title="Jenis Kelamin" popover-description="Pria sering kali memiliki risiko lebih tinggi untuk terkena serangan jantung pada usia yang lebih muda dibandingkan dengan wanita." 
+                                    popover-target="popover-sex" popover-id="popover-sex" popover-title="Jenis Kelamin" popover-description="Pria sering kali memiliki risiko lebih tinggi untuk terkena serangan jantung pada usia yang lebih muda dibandingkan dengan wanita." popover-link="#"
                                     />
                                     <input 
                                         type="number" 
@@ -69,7 +69,7 @@
                                 <div>
                                     <x-forms.label-popover :for="'cp'"
                                     :text="'Tipe Nyeri Dada (0-3)'"
-                                    popover-target="popover-cp" popover-id="popover-cp" popover-title="Tipe Nyeri Dada" popover-description="Pria sering kali memiliki risiko lebih tinggi untuk terkena serangan jantung pada usia yang lebih muda dibandingkan dengan wanita." 
+                                    popover-target="popover-cp" popover-id="popover-cp" popover-title="Tipe Nyeri Dada" popover-description="Pria sering kali memiliki risiko lebih tinggi untuk terkena serangan jantung pada usia yang lebih muda dibandingkan dengan wanita." popover-link="#"
                                     />
                                     <input 
                                         type="number" 
@@ -83,7 +83,7 @@
                                 <div>
                                     <x-forms.label-popover :for="'trestbps'"
                                     :text="'Tekanan Darah'"
-                                    popover-target="popover-trestbps" popover-id="popover-trestbps" popover-title="Tekanan Darah" popover-description="Tekanan darah pasien yang diukur saat dalam keadaan istirahat, dinyatakan dalam milimeter merkuri (mm Hg)." 
+                                    popover-target="popover-trestbps" popover-id="popover-trestbps" popover-title="Tekanan Darah" popover-description="Tekanan darah pasien yang diukur saat dalam keadaan istirahat, dinyatakan dalam milimeter merkuri (mm Hg)." popover-link="#"
                                     />
                                     <input 
                                         type="number" 
@@ -97,7 +97,7 @@
                                 <div>
                                     <x-forms.label-popover :for="'chol'"
                                     :text="'Kolesterol (Cholesterol)'"
-                                    popover-target="popover-chol" popover-id="popover-chol" popover-title="Kolesterol" popover-description="Kadar kolesterol serum dalam darah. Kolesterol yang tinggi dapat meningkatkan risiko terkena serangan jantung." 
+                                    popover-target="popover-chol" popover-id="popover-chol" popover-title="Kolesterol" popover-description="Kadar kolesterol serum dalam darah. Kolesterol yang tinggi dapat meningkatkan risiko terkena serangan jantung." popover-link="#"
                                     />
                                     <input 
                                         type="number" 
@@ -111,7 +111,7 @@
                                 <div>
                                     <x-forms.label-popover :for="'fbs'"
                                     :text="'Gula Darah Puasa (0: Tidak, 1: Ya)'"
-                                    popover-target="popover-fbs" popover-id="popover-fbs" popover-title="Kolesterol" popover-description="Kadar kolesterol serum dalam darah. Kolesterol yang tinggi dapat meningkatkan risiko terkena serangan jantung." 
+                                    popover-target="popover-fbs" popover-id="popover-fbs" popover-title="Kolesterol" popover-description="Kadar kolesterol serum dalam darah. Kolesterol yang tinggi dapat meningkatkan risiko terkena serangan jantung." popover-link="#"
                                     />
                                     <input 
                                         type="number" 
@@ -125,7 +125,7 @@
                                 <div>
                                     <x-forms.label-popover :for="'restecg'"
                                     :text="'Hasil Elektrokardiografi (0-2)'"
-                                    popover-target="popover-restecg" popover-id="popover-restecg" popover-title="Kolesterol" popover-description="Kadar kolesterol serum dalam darah. Kolesterol yang tinggi dapat meningkatkan risiko terkena serangan jantung." 
+                                    popover-target="popover-restecg" popover-id="popover-restecg" popover-title="Kolesterol" popover-description="Kadar kolesterol serum dalam darah. Kolesterol yang tinggi dapat meningkatkan risiko terkena serangan jantung." popover-link="#"
                                     />
                                     <input 
                                         type="number" 
@@ -141,7 +141,7 @@
                                 <div>
                                     <x-forms.label-popover :for="'thalach'"
                                     :text="'Detak Jantung Maksimum'"
-                                    popover-target="popover-thalach" popover-id="popover-thalach" popover-title="Detak Jantung Maksimum" popover-description="Jumlah detak jantung maksimum per menit yang bisa dicapai selama latihan yang sangat intens. Respon abnormal terhadap latihan bisa menunjukkan masalah jantung." 
+                                    popover-target="popover-thalach" popover-id="popover-thalach" popover-title="Detak Jantung Maksimum" popover-description="Jumlah detak jantung maksimum per menit yang bisa dicapai selama latihan yang sangat intens. Respon abnormal terhadap latihan bisa menunjukkan masalah jantung." popover-link="#"
                                     />
                                     <input 
                                         type="number" 
@@ -155,7 +155,7 @@
                                 <div>
                                     <x-forms.label-popover :for="'exang'"
                                     :text="'Angina Induksi Latihan (0: Tidak, 1: Ya)'"
-                                    popover-target="popover-exang" popover-id="popover-exang" popover-title="Detak Jantung Maksimum" popover-description="Jumlah detak jantung maksimum per menit yang bisa dicapai selama latihan yang sangat intens. Respon abnormal terhadap latihan bisa menunjukkan masalah jantung." 
+                                    popover-target="popover-exang" popover-id="popover-exang" popover-title="Detak Jantung Maksimum" popover-description="Jumlah detak jantung maksimum per menit yang bisa dicapai selama latihan yang sangat intens. Respon abnormal terhadap latihan bisa menunjukkan masalah jantung." popover-link="#"
                                     />
                                     <input 
                                         type="number" 
@@ -169,7 +169,7 @@
                                 <div>
                                     <x-forms.label-popover :for="'oldpeak'"
                                     :text="'Depresi ST (Oldpeak)'"
-                                    popover-target="popover-oldpeak" popover-id="popover-oldpeak" popover-title="Depresi ST (oldpeak)" popover-description="Pengurangan segmen ST pada EKG, diukur dalam mm. Ini dapat memberikan indikasi tentang keparahan penyumbatan atau kerusakan pada jantung. Depresi ST yang signifikan sering dikaitkan dengan adanya masalah pada jantung, khususnya saat ada penyumbatan arteri koroner." 
+                                    popover-target="popover-oldpeak" popover-id="popover-oldpeak" popover-title="Depresi ST (oldpeak)" popover-description="Pengurangan segmen ST pada EKG, diukur dalam mm. Ini dapat memberikan indikasi tentang keparahan penyumbatan atau kerusakan pada jantung. Depresi ST yang signifikan sering dikaitkan dengan adanya masalah pada jantung, khususnya saat ada penyumbatan arteri koroner." popover-link="#"
                                     />
                                     <input 
                                         type="number" 
@@ -184,7 +184,7 @@
                                 <div>
                                     <x-forms.label-popover :for="'slope'"
                                     :text="'Kemiringan Segmen ST (0-2)'"
-                                    popover-target="popover-slope" popover-id="popover-slope" popover-title="Depresi ST (oldpeak)" popover-description="Pengurangan segmen ST pada EKG, diukur dalam mm. Ini dapat memberikan indikasi tentang keparahan penyumbatan atau kerusakan pada jantung. Depresi ST yang signifikan sering dikaitkan dengan adanya masalah pada jantung, khususnya saat ada penyumbatan arteri koroner." 
+                                    popover-target="popover-slope" popover-id="popover-slope" popover-title="Depresi ST (oldpeak)" popover-description="Pengurangan segmen ST pada EKG, diukur dalam mm. Ini dapat memberikan indikasi tentang keparahan penyumbatan atau kerusakan pada jantung. Depresi ST yang signifikan sering dikaitkan dengan adanya masalah pada jantung, khususnya saat ada penyumbatan arteri koroner." popover-link="#"
                                     />
                                     <input 
                                         type="number" 
@@ -198,7 +198,7 @@
                                 <div>
                                     <x-forms.label-popover :for="'ca'"
                                     :text="'Jumlah Pembuluh Darah yang Ditemukan (0-4)'"
-                                    popover-target="popover-ca" popover-id="popover-ca" popover-title="Depresi ST (oldpeak)" popover-description="Pengurangan segmen ST pada EKG, diukur dalam mm. Ini dapat memberikan indikasi tentang keparahan penyumbatan atau kerusakan pada jantung. Depresi ST yang signifikan sering dikaitkan dengan adanya masalah pada jantung, khususnya saat ada penyumbatan arteri koroner." 
+                                    popover-target="popover-ca" popover-id="popover-ca" popover-title="Depresi ST (oldpeak)" popover-description="Pengurangan segmen ST pada EKG, diukur dalam mm. Ini dapat memberikan indikasi tentang keparahan penyumbatan atau kerusakan pada jantung. Depresi ST yang signifikan sering dikaitkan dengan adanya masalah pada jantung, khususnya saat ada penyumbatan arteri koroner." popover-link="#"
                                     />
                                     <input 
                                         type="number" 
@@ -212,7 +212,7 @@
                                 <div>
                                     <x-forms.label-popover :for="'thal'"
                                     :text="'Hasil Tes Thalassemia (0-3)'"
-                                    popover-target="popover-thal" popover-id="popover-thal" popover-title="Depresi ST (oldpeak)" popover-description="Pengurangan segmen ST pada EKG, diukur dalam mm. Ini dapat memberikan indikasi tentang keparahan penyumbatan atau kerusakan pada jantung. Depresi ST yang signifikan sering dikaitkan dengan adanya masalah pada jantung, khususnya saat ada penyumbatan arteri koroner." 
+                                    popover-target="popover-thal" popover-id="popover-thal" popover-title="Depresi ST (oldpeak)" popover-description="Pengurangan segmen ST pada EKG, diukur dalam mm. Ini dapat memberikan indikasi tentang keparahan penyumbatan atau kerusakan pada jantung. Depresi ST yang signifikan sering dikaitkan dengan adanya masalah pada jantung, khususnya saat ada penyumbatan arteri koroner." popover-link="#"
                                     />
                                     <input 
                                         type="number" 
@@ -268,7 +268,6 @@
                     @endif
                 </div>
             </div>
-
         </div>
     </div>
 </x-app-layout>
