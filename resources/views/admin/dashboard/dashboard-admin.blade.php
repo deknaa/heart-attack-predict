@@ -19,9 +19,15 @@
                     </div>
                 </div>
                 <div class="flex items-center mt-4 text-sm">
-                  <span class="flex items-center text-red-500">
-                    <i class="mr-1 fas fa-arrow-down"></i> 0.8%
-                  </span>
+                  @if($announcementGrowth >= 0 )
+                    <span class="flex items-center text-green-500">
+                      <i class="mr-1 fas fa-arrow-up"></i> {{ $announcementGrowth }}%
+                    </span>
+                  @else
+                    <span class="flex items-center text-green-500">
+                      <i class="mr-1 fas fa-arrow-down"></i> {{ abs($announcementGrowth) }}%
+                    </span>
+                  @endif
                   <span class="ml-2 text-gray-400">Since last month</span>
                 </div>
             </div>
@@ -41,9 +47,15 @@
                     </div>
                 </div>
                 <div class="flex items-center mt-4 text-sm">
-                  <span class="flex items-center text-green-500">
-                    <i class="mr-1 fas fa-arrow-up"></i> 8.2%
-                  </span>
+                  @if($articleGrowth >= 0 )
+                    <span class="flex items-center text-green-500">
+                      <i class="mr-1 fas fa-arrow-up"></i> {{ $articleGrowth }}%
+                    </span>
+                  @else
+                    <span class="flex items-center text-green-500">
+                      <i class="mr-1 fas fa-arrow-down"></i> {{ abs($articleGrowth) }}%
+                    </span>
+                  @endif
                   <span class="ml-2 text-gray-400">Since last month</span>
                 </div>
             </div>
