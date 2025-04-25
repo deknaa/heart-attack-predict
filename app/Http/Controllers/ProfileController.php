@@ -18,17 +18,22 @@ class ProfileController extends Controller
     {
         $users = User::findOrFail($id);
 
-        // Status kesehatan user
-        $prediction = Prediction::where('user_id', Auth::id())->latest()->first();
-        $input = $prediction->input_data;
-        
-        $age = $input['age']; // Usia
-        $sex = $input['sex']; // Jenis Kelamin
-        $cp = $input['thalach']; // detak jantung
-        $trestbps = $input['trestbps']; // tekanan darah
-        $chol = $input['chol']; // kolesterol
+        if(Auth::user()->role === 'user') 
+        {
+            // Status kesehatan user
+            $prediction = Prediction::where('user_id', Auth::id())->latest()->first();
+            $input = $prediction->input_data;
+            
+            $age = $input['age']; // Usia
+            $sex = $input['sex']; // Jenis Kelamin
+            $cp = $input['thalach']; // detak jantung
+            $trestbps = $input['trestbps']; // tekanan darah
+            $chol = $input['chol']; // kolesterol
 
-        return view('profile.details', compact('users', 'input', 'cp', 'trestbps', 'chol', 'age', 'sex'));
+            return view('profile.details', compact('users', 'input', 'cp', 'trestbps', 'chol', 'age', 'sex'));
+        }else{
+            return view('profile.details', compact('users'));
+        }
     }
 
     /**
