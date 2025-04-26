@@ -28,7 +28,7 @@
                 <div class="flex space-x-2">
                     <select name="sort" onchange="this.form.submit()"
                         class="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                        <option value="terbaru" {{ request('sory') == 'terbaru' ? 'selected' : '' }}>Terbaru</option>
+                        <option value="terbaru" {{ request('sort') == 'terbaru' ? 'selected' : '' }}>Terbaru</option>
                         <option value="terlama" {{ request('sort') == 'terlama' ? 'selected' : '' }}>Terlama</option>
                     </select>
                 </div>

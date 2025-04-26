@@ -4,8 +4,8 @@
             {{-- Header --}}
             <div class="flex flex-col items-start justify-between pb-4 mb-6 border-b sm:flex-row sm:items-center">
                 <div>
-                    <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Articles</h1>
-                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Manage and view your article collection</p>
+                    <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Artikel</h1>
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Kelola dan lihat artikel koleksi</p>
                 </div>
                 <div class="mt-4 sm:mt-0">
                     <a href="{{ route('article.create') }}"
@@ -15,38 +15,13 @@
                             <line x1="12" y1="5" x2="12" y2="19"></line>
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                         </svg>
-                        Create Article
+                        Buat Artikel
                     </a>
                 </div>
             </div>
 
-            {{-- Search and filter --}}
-            <div class="mb-6">
-                <div class="flex flex-col gap-4 sm:flex-row">
-                    <div class="relative flex-grow">
-                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
-                        </div>
-                        <input type="search" id="article-search"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                            placeholder="Search articles...">
-                    </div>
-                    <select id="article-filter"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                        <option selected>All Articles</option>
-                        <option>Published</option>
-                        <option>Drafts</option>
-                        <option>My Articles</option>
-                    </select>
-                </div>
-            </div>
-
             {{-- Table --}}
-            <div class="overflow-hidden border border-gray-200 rounded-lg shadow dark:border-gray-700">
+            <div class="p-3 overflow-hidden border border-gray-200 rounded-lg shadow dark:border-gray-700">
                 <table id="selection-table" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-300">
                         <tr>
@@ -115,20 +90,20 @@
                                         <span>{{ $article->title }}</span>
                                     </div>
                                 </td>
-                                <td class="px-6 py-4">
-                                    <p class="text-sm line-clamp-2">{{ Str::limit($article->content, 50) }}</p>
+                                <td class="px-6 py-4 dark:text-white">
+                                    <p class="text-sm line-clamp-2 dark:text-white">{!! Str::limit($article->content, 50) !!}</p>
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center">
                                         <div
                                             class="flex items-center justify-center w-6 h-6 mr-2 bg-gray-200 rounded-full dark:bg-gray-600">
-                                            <span class="text-xs">{{ substr($article->user->name, 0, 1) }}</span>
+                                            <span class="text-xs dark:text-white">{{ substr($article->user->name, 0, 1) }}</span>
                                         </div>
-                                        <span>{{ $article->user->name }}</span>
+                                        <span class="dark:text-white">{{ $article->user->name }}</span>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <span>{{ $article->created_at->format('M d, Y') }}</span>
+                                    <span class="dark:text-white">{{ $article->created_at->format('M d, Y') }}</span>
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center justify-center space-x-1">
@@ -195,13 +170,14 @@
     <script>
         function confirmDelete(button) {
             Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: 'Anda Yakin Ingin Menghapus ini?',
+                text: "Anda tidak dapat mengembalikan data apabila terhapus!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Ya, Hapus!',
+                cancelButtonText: 'Batal'
             }).then((result) => {
                 if (result.isConfirmed) {
                     button.closest('form').submit();

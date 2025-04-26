@@ -5,36 +5,12 @@
             <div class="flex flex-col items-start justify-between pb-4 mb-6 border-b sm:flex-row sm:items-center">
                 <div>
                     <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Data Users</h1>
-                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Manage and view data users collection</p>
-                </div>
-            </div>
-
-            {{-- Search and filter --}}
-            <div class="mb-6">
-                <div class="flex flex-col gap-4 sm:flex-row">
-                    <div class="relative flex-grow">
-                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
-                        </div>
-                        <input type="search" id="article-search"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                            placeholder="Search users...">
-                    </div>
-                    <select id="article-filter"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                        <option selected>All Role</option>
-                        <option>Admin</option>
-                        <option>User</option>
-                    </select>
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Kelola dan lihat data pengguna</p>
                 </div>
             </div>
 
             {{-- Table --}}
-            <div class="overflow-hidden border border-gray-200 rounded-lg shadow dark:border-gray-700">
+            <div class="p-3 overflow-hidden border border-gray-200 rounded-lg shadow dark:border-gray-700">
                 <table id="selection-table" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-300">
                         <tr>
@@ -104,13 +80,13 @@
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <p class="text-sm line-clamp-2">{{ $user->email }}</p>
+                                    <p class="text-sm line-clamp-2 dark:text-white">{{ $user->email }}</p>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <p class="text-sm line-clamp-2">{{ $user->role }}</p>
+                                    <p class="text-sm line-clamp-2 dark:text-white">{{ $user->role }}</p>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <span>{{ $user->created_at->format('M d, Y') }}</span>
+                                    <span class="dark:text-white">{{ $user->created_at->format('M d, Y') }}</span>
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center justify-center space-x-1">
