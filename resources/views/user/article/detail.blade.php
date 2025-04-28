@@ -7,7 +7,7 @@
                     <div class="flex flex-wrap">
                         <div class="w-full md:w-2/3 md:pr-8">
                             <span
-                                class="px-3 py-1 text-sm font-medium text-blue-600 bg-white rounded-full">{{ $article->category }}</span>
+                                class="px-3 py-1 text-sm font-medium text-blue-600 bg-white rounded-full">{{ ucwords(str_replace('_', ' ', $article->category)) }}</span>
                             <h1 class="mt-4 mb-3 text-3xl font-bold md:text-4xl lg:text-5xl">{{ $article->title }}</h1>
                             <div class="flex items-center space-x-4 text-sm text-blue-100">
                                 <div class="flex items-center">
@@ -46,7 +46,8 @@
                         {{-- Article Category --}}
                         <div class="flex flex-wrap gap-2 my-8">
                             <a href="#"
-                                class="px-3 py-1 text-sm text-gray-700 transition bg-gray-100 rounded-full hover:bg-gray-200">{{ $article->category }}</a>
+                                class="px-3 py-1 text-sm text-gray-700 transition bg-gray-100 rounded-full hover:bg-gray-200">{{ ucwords(str_replace('_', ' ', $article->category)) }}
+                            </a>
                         </div>
 
                         {{-- Author Bio --}}
@@ -126,7 +127,7 @@
                                 @foreach ($articleCategory as $item)
                                     <a href="#"
                                         class="flex items-center justify-between py-2 transition border-b hover:text-blue-600">
-                                        <span class="capitalize">{{ $item->category }}</span>
+                                        <span class="capitalize">{{ ucwords(str_replace('_', ' ', $item->category)) }}</span>
                                         <span
                                             class="px-2 py-1 text-xs text-blue-600 bg-blue-100 rounded">{{ $totalCategory }}</span>
                                     </a>
@@ -150,7 +151,7 @@
                                         class="object-cover w-full h-48">
                                     <div class="p-6">
                                         <span
-                                            class="text-sm font-medium text-blue-600 capitalize">{{ $item->category }}</span>
+                                            class="text-sm font-medium text-blue-600 capitalize">{{ ucwords(str_replace('_', ' ', $item->category)) }}</span>
                                         <h3 class="mt-2 mb-3 text-xl font-bold transition hover:text-blue-600">
                                             {{ $item->title }}</h3>
                                         <p class="text-gray-600 line-clamp-3">{!! $item->content !!}</p>

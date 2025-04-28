@@ -58,7 +58,20 @@ class ArticleController extends Controller
     public function show(string $slug )
     {
         $article = Article::with('user')->where('slug', $slug)->firstOrFail();
-        return view('admin.article.show', compact('article'));
+
+         // popular article
+         $popularArticles = Article::with('user')->latest()->take(5)->get();
+
+         // Category article
+         $articleCategory = Article::with('user')->where('category', $article->category)->get();
+ 
+         // total category
+         $totalCategory = Article::where('category', $article->category)->count();
+ 
+         // article terkait
+         $relatedArticle = Article::with('user')->where('category', $article->category)->take(3)->get();
+
+        return view('admin.article.show', compact('article', 'popularArticles', 'articleCategory', 'totalCategory', 'relatedArticle'));
     }
 
     /**
