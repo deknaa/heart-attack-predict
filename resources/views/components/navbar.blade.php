@@ -21,10 +21,10 @@
 
                         {{-- Logo --}}
                         <a href="/" class="items-center hidden space-x-3 md:flex">
-                            <img src="https://flowbite.com/docs/images/logo.svg" class="h-9" alt="Company Logo" />
+                            <span class="text-2xl font-bold text-red-600"><i class="mr-2 fas fa-heartbeat"></i></span>
                             <div>
                                 <span
-                                    class="self-center text-xl font-semibold text-gray-800 whitespace-nowrap dark:text-white">
+                                    class="self-center text-xl font-semibold text-red-600 whitespace-nowrap dark:text-white">
                                     {{ config('app.name') }}
                                 </span>
                                 <p class="text-xs text-gray-500 dark:text-gray-400">User Portal</p>
@@ -35,19 +35,19 @@
                     {{-- Center Navigation --}}
                     <div class="hidden md:flex md:items-center md:space-x-4">
                         <a href="{{ route('dashboard') }}"
-                            class="px-3 py-2 text-sm font-medium {{ request()->is('dashboard/user') ? 'text-blue-600 rounded-md dark:text-blue-400' : 'text-gray-600 rounded-md hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-700' }}">Dashboard</a>
+                            class="px-3 py-2 text-sm font-medium {{ request()->is('dashboard/user') ? 'text-red-600 rounded-md dark:text-red-400' : 'text-gray-600 rounded-md hover:text-red-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-red-400 dark:hover:bg-gray-700' }}">Dashboard</a>
                         <a href="{{ route('predict') }}"
-                            class="px-3 py-2 text-sm font-medium {{ request()->is('predict') ? 'text-blue-600 rounded-md dark:text-blue-400' : 'text-gray-600 rounded-md hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-700' }}">Prediksi</a>
+                            class="px-3 py-2 text-sm font-medium {{ request()->is('predict') ? 'text-red-600 rounded-md dark:text-red-400' : 'text-gray-600 rounded-md hover:text-red-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-red-400 dark:hover:bg-gray-700' }}">Prediksi</a>
                         <a href="{{ route('predict.history') }}"
-                            class="px-3 py-2 text-sm font-medium {{ request()->is('predict-history') ? 'text-blue-600 rounded-md dark:text-blue-400' : 'text-gray-600 rounded-md hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-700' }}">History
+                            class="px-3 py-2 text-sm font-medium {{ request()->is('predict-history') ? 'text-red-600 rounded-md dark:text-red-400' : 'text-gray-600 rounded-md hover:text-red-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-red-400 dark:hover:bg-gray-700' }}">History
                             Prediksi</a>
                         <a href="{{ route('article.list') }}"
-                            class="px-3 py-2 text-sm font-medium {{ request()->is('article/list') ? 'text-blue-600 rounded-md dark:text-blue-400' : 'text-gray-600 rounded-md hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-700' }}">Artikel</a>
+                            class="px-3 py-2 text-sm font-medium {{ request()->is('article/list') ? 'text-red-600 rounded-md dark:text-red-400' : 'text-gray-600 rounded-md hover:text-red-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-red-400 dark:hover:bg-gray-700' }}">Artikel</a>
                         <a href="{{ route('announcement.list') }}"
-                            class="flex items-center px-3 py-2 text-sm font-medium {{ request()->is('announcement/list') ? 'text-blue-600 rounded-md dark:text-blue-400' : 'text-gray-600 rounded-md hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-700' }}">
+                            class="flex items-center px-3 py-2 text-sm font-medium {{ request()->is('announcement/list') ? 'text-red-600 rounded-md dark:text-red-400' : 'text-gray-600 rounded-md hover:text-red-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-red-400 dark:hover:bg-gray-700' }}">
                             Pengumuman
                             <span
-                                class="flex items-center justify-center w-5 h-5 ml-2 text-xs font-semibold text-white bg-blue-600 rounded-full">{{ $announcements }}</span>
+                                class="flex items-center justify-center w-5 h-5 ml-2 text-xs font-semibold text-white bg-red-600 rounded-full">{{ $announcements }}</span>
                         </a>
                     </div>
 
