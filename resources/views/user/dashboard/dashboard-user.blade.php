@@ -20,9 +20,9 @@
                     </div>
                     <div class="flex flex-wrap -mx-2">
                         <div class="w-full px-2 mb-4 md:w-1/4">
-                            <div class="p-4 border-l-4 border-blue-500 rounded-lg bg-blue-50">
+                            <div class="p-4 border-l-4 border-red-500 rounded-lg bg-red-50">
                                 <div class="flex items-center">
-                                    <div class="mr-3 text-blue-500">
+                                    <div class="mr-3 text-red-500">
                                         <i class="text-2xl fas fa-heartbeat"></i>
                                     </div>
                                     <div>
@@ -33,9 +33,9 @@
                             </div>
                         </div>
                         <div class="w-full px-2 mb-4 md:w-1/4">
-                            <div class="p-4 border-l-4 border-blue-500 rounded-lg bg-blue-50">
+                            <div class="p-4 border-l-4 border-red-500 rounded-lg bg-red-50">
                                 <div class="flex items-center">
-                                    <div class="mr-3 text-blue-500">
+                                    <div class="mr-3 text-red-500">
                                         <i class="text-2xl fas fa-weight"></i>
                                     </div>
                                     <div>
@@ -51,9 +51,9 @@
                             </div>
                         </div>
                         <div class="w-full px-2 mb-4 md:w-1/4">
-                            <div class="p-4 border-l-4 border-blue-500 rounded-lg bg-blue-50">
+                            <div class="p-4 border-l-4 border-red-500 rounded-lg bg-red-50">
                                 <div class="flex items-center">
-                                    <div class="mr-3 text-blue-500">
+                                    <div class="mr-3 text-red-500">
                                         <i class="text-2xl fas fa-tachometer-alt"></i>
                                     </div>
                                     <div>
@@ -65,9 +65,9 @@
                             </div>
                         </div>
                         <div class="w-full px-2 mb-4 md:w-1/4">
-                            <div class="p-4 border-l-4 border-blue-500 rounded-lg bg-blue-50">
+                            <div class="p-4 border-l-4 border-red-500 rounded-lg bg-red-50">
                                 <div class="flex items-center">
-                                    <div class="mr-3 text-blue-500">
+                                    <div class="mr-3 text-red-500">
                                         <i class="text-2xl fas fa-vial"></i>
                                     </div>
                                     <div>
@@ -216,8 +216,8 @@
                         @endif
                     </div>
                     {{-- Rekomendasi artikel belum tuntas, seharusnya rekomendasi artikel di berikan berdasarkan hasil prediksi risiko --}}
-                    @forelse ($articleRecommendation as $article)
                     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+                    @forelse ($articleRecommendation as $article)
                         <div class="overflow-hidden border rounded-lg">
                             <img src="{{ asset('storage/' . $article->featured_image) }}" alt=""
                                 class="object-cover w-full h-40">
@@ -229,8 +229,8 @@
                                     selengkapnya</a>
                             </div>
                         </div>
-                    </div>
                     @empty
+                    </div>
                     <div class="flex flex-col items-center justify-center py-12 rounded-lg bg-gray-50">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
