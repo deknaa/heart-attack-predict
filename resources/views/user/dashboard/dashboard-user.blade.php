@@ -132,8 +132,8 @@
 
                                 {{-- Sementara disable dulu, perlu research terkait rekomendasi kesehatan/aktifitas berdasarkan tingkat risiko --}}
                                 @if($activitesRecommendation->count() > 0)
-                                    <div class="flex p-4 border border-blue-100 rounded-lg bg-blue-50">
-                                        <div class="mr-4 text-blue-500">
+                                    <div class="flex p-4 border border-green-100 rounded-lg bg-green-50">
+                                        <div class="mr-4 text-green-500">
                                             <i class="text-xl fas fa-walking"></i>
                                         </div>
                                         <div>
@@ -142,8 +142,8 @@
                                                 untuk mengurangi risiko penyakit jantung sebesar 30%.</p>
                                         </div>
                                     </div>
-                                    <div class="flex p-4 border border-blue-100 rounded-lg bg-blue-50">
-                                        <div class="mr-4 text-blue-500">
+                                    <div class="flex p-4 border border-green-100 rounded-lg bg-green-50">
+                                        <div class="mr-4 text-green-500">
                                             <i class="text-xl fas fa-utensils"></i>
                                         </div>
                                         <div>
@@ -152,8 +152,8 @@
                                                     untuk membantu mengontrol tekanan darah.</p>
                                         </div>
                                     </div>
-                                    <div class="flex p-4 border border-blue-100 rounded-lg bg-blue-50">
-                                        <div class="mr-4 text-blue-500">
+                                    <div class="flex p-4 border border-green-100 rounded-lg bg-green-50">
+                                        <div class="mr-4 text-green-500">
                                             <i class="text-xl fas fa-ban"></i>
                                         </div>
                                         <div>
@@ -163,8 +163,8 @@
                                         </div>
                                     </div>
                                 @else
-                                    <div class="flex p-4 border border-blue-100 rounded-lg bg-blue-50">
-                                        <div class="mr-4 text-blue-500">
+                                    <div class="flex p-4 border border-red-100 rounded-lg bg-red-50">
+                                        <div class="mr-4 text-red-500">
                                             <i class="text-xl fas fa-walking"></i>
                                         </div>
                                         <div>
