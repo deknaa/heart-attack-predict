@@ -19,7 +19,7 @@
                             </div>
                         @endif
                         <div class="absolute top-0 right-0 px-2 py-1 m-2 text-xs font-semibold text-white bg-blue-600 rounded-full">
-                            {{ $article->category ?? 'Umum' }}
+                            {{ ucwords(str_replace('_', ' ', $article->category)) }}
                         </div>
                     </div>
                     
