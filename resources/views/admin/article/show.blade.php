@@ -105,7 +105,7 @@
                             <div class="space-y-4">
                                 @foreach ($popularArticles as $item)
                                     <a href="#" class="flex group">
-                                        <img src="{{ Storage::url($article->featured_image) }}" alt="Article thumbnail"
+                                        <img src="{{ Storage::url($item->featured_image) }}" alt="Article thumbnail"
                                             class="object-cover w-20 h-16 rounded">
                                         <div class="ml-3">
                                             <h4
