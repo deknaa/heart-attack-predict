@@ -48,6 +48,9 @@ Route::middleware(['auth', 'userRole'])->group(function () {
     Route::get('export/excel/predictions', function() {
         return Excel::download(new PredictionsExport, 'predictions.xlsx');
     });
+
+    // Route for PDF file download
+    Route::get('laporan/{id}/download', [PredictionController::class, 'generatePDF'])->name('pdf.download');
 });
 
 // Route untuk user dengan role admin
@@ -64,6 +67,7 @@ Route::middleware(['auth', 'adminRole'])->group(function () {
     Route::resource('announcement', AnnouncementController::class);
 });
 
+// Google Callback
 Route::get('auth/google', [GoogleAuthController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('auth/google/callback', [GoogleAuthController::class, 'handleGoogleCallback'])->name('auth.google.callback');
 

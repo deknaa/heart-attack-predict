@@ -4,7 +4,7 @@
             <div
                 class="bg-white overflow-hidden shadow-sm rounded-lg transition-all duration-300 hover:shadow-md hover:translate-y-[-4px]">
 
-                <div class="relative h-48 bg-gradient-to-r from-blue-500 to-indigo-600">
+                <div class="relative h-48 bg-gradient-to-r from-red-500 to-red-600">
                     @if (isset($announcement->image) && $announcement->image)
                         <img src="{{ $announcement->image }}" alt="{{ $announcement->title }}"
                             class="object-cover w-full h-full">

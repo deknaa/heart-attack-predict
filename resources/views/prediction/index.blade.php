@@ -19,7 +19,7 @@
             {{-- Input Data --}}
             <div class="min-h-screen px-4 py-12 sm:px-6 lg:px-8">
                 <div class="max-w-4xl mx-auto overflow-hidden bg-white shadow-2xl rounded-xl">
-                    <div class="p-6 bg-gradient-to-r from-blue-500 to-blue-600">
+                    <div class="p-6 bg-gradient-to-r from-red-500 to-red-600">
                         <h2 class="flex items-center justify-center gap-4 text-3xl font-extrabold text-center text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -228,7 +228,7 @@
                         <div class="mt-6">
                             <button 
                                 type="submit" 
-                                class="w-full py-3 text-white transition duration-300 ease-in-out transform bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:scale-105"
+                                class="w-full py-3 text-white transition duration-300 ease-in-out transform bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 hover:scale-105"
                             >
                                 Prediksi Risiko
                             </button>

@@ -81,7 +81,7 @@
                                                 {{ Str::limit(Auth::user()->name, 15) }}</p>
                                             <p class="text-xs text-gray-500 dark:text-gray-400">{{ Auth::user()->role }}</p>
                                         </div>
-                                        <img class="rounded-full w-9 h-9 ring-2 ring-gray-200 dark:ring-gray-600"
+                                        <img class="rounded-full w-9 h-9 ring-2 ring-red-400 dark:ring-red-600"
                                             src="{{ auth()->user()->avatar_url ?? 'https://ui-avatars.com/api/?name=' . urlencode(auth()->user()->name) }}"
                                             alt="User photo">
                                         <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor"

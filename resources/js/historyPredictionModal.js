@@ -313,9 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function downloadReport() {
-        // In a real application, this would generate a PDF report
-        // For this example, we'll just show an alert
-        alert('Laporan prediksi akan di-download (Fitur ini akan diimplementasikan)');
+        alert('Laporan prediksi akan di-download...');
     }
 
     // Close modal when clicking outside

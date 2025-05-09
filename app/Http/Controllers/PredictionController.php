@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Prediction;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use GuzzleHttp\Client;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -71,5 +72,18 @@ class PredictionController extends Controller
         ];
         
         return response()->json($responseData);
+    }
+
+    // save result as pdf file
+    public function generatePDF($id)
+    {
+        $prediction = Prediction::findOrFail($id);
+        $users = Auth::user();
+        
+        $pdf = Pdf::loadView('pdf.laporan-prediksi', [
+            'prediction' => $prediction
+        ]);
+
+        return $pdf->download('laporan-prediksi-' . $users->name . $prediction->id . '.pdf');
     }
 }
