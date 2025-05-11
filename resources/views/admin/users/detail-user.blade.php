@@ -72,10 +72,6 @@
                                         <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Email Address</p>
                                         <p class="mt-1 text-gray-900 dark:text-gray-100">{{ $user->email }}</p>
                                     </div>
-                                    <div class="mb-4">
-                                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Phone Number</p>
-                                        <p class="mt-1 text-gray-900 dark:text-gray-100">{{ $user->phone ?? 'Not provided' }}</p>
-                                    </div>
                                 </div>
                                 <div>
                                     <div class="mb-4">
@@ -83,22 +79,8 @@
                                         <p class="mt-1 text-gray-900 dark:text-gray-100">{{ ucfirst($user->role) }}</p>
                                     </div>
                                     <div class="mb-4">
-                                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Status</p>
-                                        <p class="mt-1">
-                                            @if($user->status === 'active')
-                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                                    Active
-                                                </span>
-                                            @else
-                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                                                    Inactive
-                                                </span>
-                                            @endif
-                                        </p>
-                                    </div>
-                                    <div class="mb-4">
-                                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Department</p>
-                                        <p class="mt-1 text-gray-900 dark:text-gray-100">{{ $user->department ?? 'Not assigned' }}</p>
+                                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Phone Number</p>
+                                        <p class="mt-1 text-gray-900 dark:text-gray-100">{{ $user->phone ?? 'Not provided' }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -121,20 +103,6 @@
                                     <div class="mb-4">
                                         <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Last Login</p>
                                         <p class="mt-1 text-gray-900 dark:text-gray-100">{{ $user->last_login_at ? $user->last_login_at->format('F d, Y H:i') : 'Never' }}</p>
-                                    </div>
-                                    <div class="mb-4">
-                                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Email Verified</p>
-                                        <p class="mt-1">
-                                            @if($user->email_verified_at)
-                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                                    Verified on {{ $user->email_verified_at->format('M d, Y') }}
-                                                </span>
-                                            @else
-                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                                                    Not Verified
-                                                </span>
-                                            @endif
-                                        </p>
                                     </div>
                                 </div>
                             </div>

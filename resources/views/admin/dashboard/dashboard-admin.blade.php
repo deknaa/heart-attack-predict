@@ -1,15 +1,15 @@
 <x-app-layout>
     <div class="p-14 sm:ml-64">
         <div class="flex flex-col items-center justify-center gap-5 lg:flex-row">
-            <div class="w-full max-w-md p-6 bg-white border-l-4 border-blue-500 rounded-lg shadow-md">
+            <div class="w-full max-w-md p-6 bg-white border-l-4 border-red-500 rounded-lg shadow-md">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="mb-1 text-sm font-medium tracking-wide text-blue-500 uppercase">Total Artikel
+                        <p class="mb-1 text-sm font-medium tracking-wide text-red-500 uppercase">Total Artikel
                         </p>
                         <h2 class="text-2xl font-semibold text-gray-700">{{ $totalArticlePublished }} Artikel</h2>
                     </div>
                     <div class="p-3 bg-gray-100 rounded-md">
-                        <svg class="w-6 h-6 text-blue-500 dark:text-blue-400" aria-hidden="true"
+                        <svg class="w-6 h-6 text-red-500 dark:text-red-400" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                             viewBox="0 0 24 24">
                             <path fill-rule="evenodd"
@@ -31,14 +31,14 @@
                     <span class="ml-2 text-gray-400">Since last month</span>
                 </div>
             </div>
-            <div class="w-full max-w-md p-6 bg-white border-l-4 border-blue-500 rounded-lg shadow-md">
+            <div class="w-full max-w-md p-6 bg-white border-l-4 border-red-500 rounded-lg shadow-md">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="mb-1 text-sm font-medium tracking-wide text-blue-500 uppercase">Total Pengumuman</p>
+                        <p class="mb-1 text-sm font-medium tracking-wide text-red-500 uppercase">Total Pengumuman</p>
                         <h2 class="text-2xl font-semibold text-gray-700">{{ $totalAnnouncements }} Pengumuman</h2>
                     </div>
                     <div class="p-3 bg-gray-100 rounded-md">
-                        <svg class="w-6 h-6 text-blue-500 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg"
+                        <svg class="w-6 h-6 text-red-500 dark:text-red-400" xmlns="http://www.w3.org/2000/svg"
                             fill="currentColor" viewBox="0 0 24 24">
                             <path fill-rule="evenodd"
                                 d="M18.458 3.11A1 1 0 0 1 19 4v16a1 1 0 0 1-1.581.814L12 16.944V7.056l5.419-3.87a1 1 0 0 1 1.039-.076ZM22 12c0 1.48-.804 2.773-2 3.465v-6.93c1.196.692 2 1.984 2 3.465ZM10 8H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6V8Zm0 9H5v3a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-3Z"
@@ -59,14 +59,14 @@
                     <span class="ml-2 text-gray-400">Since last month</span>
                 </div>
             </div>
-            <div class="w-full max-w-md p-6 bg-white border-l-4 border-blue-500 rounded-lg shadow-md">
+            <div class="w-full max-w-md p-6 bg-white border-l-4 border-red-500 rounded-lg shadow-md">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="mb-1 text-sm font-medium tracking-wide text-blue-500 uppercase">Total Users</p>
+                        <p class="mb-1 text-sm font-medium tracking-wide text-red-500 uppercase">Total Users</p>
                         <h2 class="text-2xl font-semibold text-gray-700">{{ $totalUsers }} Users</h2>
                     </div>
                     <div class="p-3 bg-gray-100 rounded-md">
-                        <svg class="w-6 h-6 text-blue-500 dark:text-blue-400" aria-hidden="true"
+                        <svg class="w-6 h-6 text-red-500 dark:text-red-400" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                             viewBox="0 0 24 24">
                             <path fill-rule="evenodd"
