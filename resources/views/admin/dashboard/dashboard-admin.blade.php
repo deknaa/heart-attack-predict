@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="p-14 sm:ml-64">
-        <div class="flex flex-col gap-5 lg:flex-row">
+        <div class="flex flex-col items-center justify-center gap-5 lg:flex-row">
             <div class="w-full max-w-md p-6 bg-white border-l-4 border-blue-500 rounded-lg shadow-md">
                 <div class="flex items-center justify-between">
                     <div>
@@ -89,7 +89,7 @@
                 </div>
             </div>
         </div>
-        <div class="max-w-6xl mx-auto">
+        <div class="">
             {{-- Header Section --}}
             <div class="mt-6 mb-6">
                 <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-50">Dashboard Analytics</h1>

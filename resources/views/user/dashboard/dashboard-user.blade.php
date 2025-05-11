@@ -36,16 +36,11 @@
                             <div class="p-4 border-l-4 border-red-500 rounded-lg bg-red-50">
                                 <div class="flex items-center">
                                     <div class="mr-3 text-red-500">
-                                        <i class="text-2xl fas fa-weight"></i>
+                                        <i class="text-2xl fas fa-person"></i>
                                     </div>
                                     <div>
-                                        <p class="text-sm text-gray-500">Berat Badan</p>
-                                        <p class="text-xl font-bold">- <span class="text-sm font-normal">kg</span></p>
-                                        {{-- @if($weight)
-                                            <p class="text-xl font-bold">{{ $weight }} <span class="text-sm font-normal">kg</span></p>
-                                        @else
-                                            <p class="text-xl font-bold">- <span class="text-sm font-normal">kg</span></p>
-                                        @endif --}}
+                                        <p class="text-sm text-gray-500">Usia</p>
+                                         <p class="text-xl font-bold">{{ $age ? $age : '-' }} <span class="text-sm font-normal">tahun</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -182,7 +177,7 @@
                             <h3 class="mb-4 text-lg font-semibold text-gray-800">Tindakan</h3>
                             <div class="space-y-3">
                                 <a href="{{ route('predict') }}"
-                                    class="flex items-center justify-between p-3 text-gray-800 transition duration-200 bg-gray-100 rounded-lg hover:bg-blue-700 hover:text-white">
+                                    class="flex items-center justify-between p-3 text-gray-800 transition duration-200 bg-gray-100 rounded-lg hover:bg-red-700 hover:text-white">
                                     <span class="flex items-center">
                                         <i class="mr-3 fas fa-calculator"></i>
                                         <span>Prediksi Baru</span>
@@ -191,7 +186,7 @@
                                 </a>
                                 @if($prediction)
                                     <a href="{{ url('export/excel/predictions') }}"
-                                        class="flex items-center justify-between p-3 text-gray-800 transition duration-200 bg-gray-100 rounded-lg hover:bg-blue-700 hover:text-white">
+                                        class="flex items-center justify-between p-3 text-gray-800 transition duration-200 bg-gray-100 rounded-lg hover:bg-red-700 hover:text-white">
                                         <span class="flex items-center">
                                             <i class="mr-3 fas fa-download"></i>
                                             <span>Unduh Laporan</span>

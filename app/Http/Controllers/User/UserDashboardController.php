@@ -27,10 +27,11 @@ class UserDashboardController extends Controller
             $cp = $input['thalach'] ?? null; // detak jantung
             $trestbps = $input['trestbps'] ?? null; // tekanan darah
             $chol = $input['chol'] ?? null; // kolesterol
+            $age = $input['age'] ?? null; // usia
             $probability = $prediction->probability ?? null;
         }
 
-        return view('user.dashboard.dashboard-user', compact('activitesRecommendation', 'articleRecommendation', 'prediction', 'cp', 'trestbps', 'chol'));
+        return view('user.dashboard.dashboard-user', compact('activitesRecommendation', 'articleRecommendation', 'prediction', 'cp', 'trestbps', 'chol', 'age'));
     }
 
     public function getUserPredictions()
