@@ -2,7 +2,6 @@
 
 namespace App\View\Components;
 
-use App\Models\Announcement;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -22,7 +21,6 @@ class Navbar extends Component
      */
     public function render(): View|Closure|string
     {
-        $announcements = Announcement::where('visibility', 'public')->count();
-        return view('components.navbar', compact('announcements'));
+        return view('components.navbar');
     }
 }

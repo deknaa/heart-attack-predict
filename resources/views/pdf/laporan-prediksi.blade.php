@@ -254,6 +254,14 @@
         <h2 class="section-title">Data Pasien</h2>
         <div class="data-grid">
             <div class="data-card">
+                <h3>Nama Pasien</h3>
+                <p>{{ $users->name }}</p>
+            </div>
+            <div class="data-card">
+                <h3>Alamat</h3>
+                <p>{{ $users->name }}</p>
+            </div>
+            <div class="data-card">
                 <h3>Usia</h3>
                 <p>{{ $prediction->input_data['age'] }} tahun</p>
             </div>
@@ -494,7 +502,7 @@
         
         <!-- Footer -->
         <div class="footer">
-            <p>Sistem Prediksi Kesehatan Jantung &copy; {{ date('Y') }}. Semua hak dilindungi.</p>
+            <p>{{ config('app.name') }} &copy; {{ date('Y') }}. Semua hak dilindungi.</p>
             <p>Dihasilkan secara otomatis pada {{ date('d/m/Y H:i') }} WIB.</p>
         </div>
     </div>

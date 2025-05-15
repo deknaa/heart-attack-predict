@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Announcement;
 use App\Models\Article;
 use App\Models\Prediction;
 use App\Models\User;
@@ -18,7 +17,6 @@ class AdminDashboardController extends Controller
     {
         $totalArticlePublished = Article::count();
         $totalUsers = User::count();
-        $totalAnnouncements = Announcement::count();
 
         $now = Carbon::now();
 
@@ -65,22 +63,6 @@ class AdminDashboardController extends Controller
         // Hitung persentase perubahan
         $growthArticle = (($totalArticlesThisMonth - $totalArticlesLastMonth) / max(1, $totalArticlesLastMonth)) * 100;
         $articleGrowth = round($growthArticle, 1);
-
-        // Total Announcements
-        // Hitung jumlah pengumuman baru bulan ini
-        $totalAnnouncementsThisMonth = Announcement::whereMonth('created_at', $now->month)
-            ->whereYear('created_at', $now->year)
-            ->count();
-
-        // Hitung jumlah pengumuman baru bulan lalu
-        $lastMonth = $now->copy()->subMonth();
-        $totalAnnouncementsLastMonth = Announcement::whereMonth('created_at', $lastMonth->month)
-            ->whereYear('created_at', $lastMonth->year)
-            ->count();
-
-        // Hitung persentase perubahan
-        $growthAnnouncement = (($totalAnnouncementsThisMonth - $totalAnnouncementsLastMonth) / max(1, $totalAnnouncementsLastMonth)) * 100;
-        $announcementGrowth = round($growthAnnouncement, 1);
 
         // ----------------------------
         // 1. Data Bar Chart: Prediksi per Minggu

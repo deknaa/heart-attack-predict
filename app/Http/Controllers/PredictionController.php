@@ -81,9 +81,10 @@ class PredictionController extends Controller
         $users = Auth::user();
         
         $pdf = Pdf::loadView('pdf.laporan-prediksi', [
-            'prediction' => $prediction
+            'prediction' => $prediction,
+            'users' => $users
         ]);
 
-        return $pdf->download('laporan-prediksi-' . $users->name . $prediction->id . '.pdf');
+        return $pdf->download('laporan-prediksi-' . $users->name . '.pdf');
     }
 }

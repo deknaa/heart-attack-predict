@@ -19,7 +19,7 @@ class UserDashboardController extends Controller
         $prediction = Prediction::where('user_id', Auth::id())->latest()->first(); // ambil prediksi terakhir user
 
         // inisialisasi nilai default jika tidak ada data prediksi
-        $cp = $trestbps = $chol = $probability = $input = null;
+        $cp = $trestbps = $chol = $probability = $age = $input = null;
 
         if($prediction)
         {

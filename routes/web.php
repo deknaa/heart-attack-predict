@@ -2,7 +2,6 @@
 
 use App\Exports\PredictionsExport;
 use App\Http\Controllers\Admin\AdminDashboardController;
-use App\Http\Controllers\admin\AnnouncementController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\ImageUploadController;
