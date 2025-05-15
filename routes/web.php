@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('profile/{id}', [ProfileController::class, 'index'])->name('profile.index');
+Route::put('profile/{id}', [ProfileController::class, 'updateData'])->name('profile.update');
 
 // Route untuk user dengan role users
 Route::middleware(['auth', 'userRole'])->group(function () {
@@ -25,9 +26,9 @@ Route::middleware(['auth', 'userRole'])->group(function () {
     Route::get('dashboard/user/predictions', [UserDashboardController::class, 'getUserPredictions']);
     Route::get('dashboard/user/risk-assessment', [UserDashboardController::class, 'getLatestRiskAssessment']);
     
-    Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // Route for Predict
     Route::get('predict', [PredictionController::class, 'index'])->name('predict');
@@ -38,11 +39,6 @@ Route::middleware(['auth', 'userRole'])->group(function () {
     // Route for article
     Route::get('article/list', [UserArticleController::class, 'list'])->name('article.list');
     Route::get('article/detail/{slug}', [UserArticleController::class, 'detail'])->name('article.detail');
-
-    // Route for announcement
-    Route::get('announcement/list', [AnnouncementController::class, 'list'])->name('announcement.list');
-    Route::get('announcement/detail/{id}', [AnnouncementController::class, 'detail'])->name('announcement.detail');
-    Route::get('announcement/search', [AnnouncementController::class, 'search'])->name('announcement.search');
 
     // Route for export excel
     Route::get('export/excel/predictions', function() {
@@ -63,8 +59,6 @@ Route::middleware(['auth', 'adminRole'])->group(function () {
     
     Route::get('users/data', [AdminDashboardController::class, 'usersData'])->name('users.data');
     Route::get('users/data/{id}', [AdminDashboardController::class, 'usersDetail'])->name('users.detail');
-
-    Route::resource('announcement', AnnouncementController::class);
 });
 
 // Google Callback

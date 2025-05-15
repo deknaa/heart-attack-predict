@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="p-14 {{ Auth::user()->role === 'admin' ? 'sm:ml-64' : '' }}">
-        <div class="min-h-screen" x-data="{ activeTab: 'profile' }">
+        <div class="min-h-screen">
             {{-- Profile Header --}}
             <div class="px-4 pt-8 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div class="overflow-hidden bg-white rounded-lg shadow">
@@ -29,11 +29,12 @@
                             <div class="flex flex-col justify-between sm:flex-row sm:items-center">
                                 <div>
                                     <h1 class="text-2xl font-bold text-gray-900">{{ Auth::user()->name }}</h1>
-                                    <p class="text-sm text-gray-500">{{ Auth::user()->name }} • Joined
+                                    <p class="text-sm text-gray-500"><span>@</span>{{ Auth::user()->username }} • Joined
                                         {{ Auth::user()->created_at->diffForHumans() }}</p>
                                 </div>
                                 <div class="mt-3 sm:mt-0">
-                                    <button type="button"
+                                    <button type="button" data-modal-target="profile-edit-modal"
+                                        data-modal-toggle="profile-edit-modal"
                                         class="inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                         Edit Profil
                                     </button>
@@ -60,10 +61,61 @@
                 </div>
             </div>
 
+            {{-- Profile Edit Modal --}}
+            <div id="profile-edit-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                <div class="relative w-full max-w-md max-h-full p-4">
+                    {{-- Modal Content --}}
+                    <div class="relative bg-white rounded-lg shadow-sm dark:bg-gray-700">
+                        {{-- Modal Header --}}
+                        <div
+                            class="flex items-center justify-between p-4 border-b border-gray-200 rounded-t md:p-5 dark:border-gray-600">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                Update Profile
+                            </h3>
+                            <button type="button"
+                                class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                data-modal-hide="profile-edit-modal">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
+                        </div>
+                        {{-- Modal Body --}}
+                        <div class="p-4 md:p-5">
+                            <form class="space-y-4" action="{{ route('profile.update', $users->id) }}" method="POST">
+                                @method('PUT')
+                                @csrf
+                                <div>
+                                    <label for="name"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
+                                    <input type="text" name="name" id="name"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                        value="{{ $users->name }}"
+                                        required />
+                                </div>
+                                <div>
+                                    <label for="password"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">New Password</label>
+                                    <input type="password" name="password" id="password" placeholder="••••••••"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                        required />
+                                </div>
+                                <button type="submit"
+                                    class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update User Profile</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             {{-- Content --}}
             <div class="px-4 pb-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 {{-- Profile --}}
-                <div x-show="activeTab === 'profile'" class="grid grid-cols-1 gap-6 mt-2 lg:grid-cols-3">
+                <div class="grid grid-cols-1 gap-6 mt-2 lg:grid-cols-3">
                     @if (Auth::user()->role === 'user')
                         {{-- About Section --}}
                         <div class="p-6 bg-white rounded-lg shadow">
@@ -96,16 +148,16 @@
                             </div>
                             <div class="space-y-3">
                                 <div class="flex">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
                                     <span class="ml-2 text-gray-700">{{ $users->email }}</span>
                                 </div>
                                 <div class="flex">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                     </svg>
@@ -159,12 +211,14 @@
                         </div>
                     @elseif (Auth::user()->role === 'admin')
                 </div>
-                <div x-show="activeTab === 'profile'" class="grid grid-cols-1 gap-6 mt-2 lg:grid-cols-2">
+                <div class="grid grid-cols-1 gap-6 mt-2 lg:grid-cols-2">
                     {{-- About Section --}}
                     <div class="p-6 bg-white rounded-lg shadow">
                         <h2 class="mb-4 text-lg font-medium text-gray-900">Tentang</h2>
                         <p class="mb-4 text-justify text-gray-700">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur praesentium incidunt enim nulla, vero laborum mollitia placeat est cumque sunt quasi iure temporibus reiciendis magni ad fuga autem nemo minus?
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur praesentium incidunt
+                            enim nulla, vero laborum mollitia placeat est cumque sunt quasi iure temporibus reiciendis
+                            magni ad fuga autem nemo minus?
                         </p>
                     </div>
 
@@ -178,16 +232,16 @@
                         </div>
                         <div class="space-y-3">
                             <div class="flex">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                 </svg>
                                 <span class="ml-2 text-gray-700">{{ $users->email }}</span>
                             </div>
                             <div class="flex">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                 </svg>

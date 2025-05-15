@@ -59,15 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.getElementById('predictionProbability').textContent = `${data.probability}%`;
 
-        // Format and display input data
-        const inputDataDisplay = document.getElementById('inputDataDisplay');
-        try {
-            const formattedData = JSON.stringify(data.input_data, null, 2);
-            inputDataDisplay.innerHTML = `<pre class="text-xs text-gray-700">${formattedData}</pre>`;
-        } catch (e) {
-            inputDataDisplay.innerHTML = '<p class="text-red-500">Error displaying input data</p>';
-        }
-
         // Update recommendations based on prediction result
         const recommendationsContent = document.getElementById('recommendationsContent');
         recommendationsContent.innerHTML = ''; // Clear previous content
@@ -83,9 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const iconClass = data.prediction_result == 1 ? 'text-red-600' : 'text-green-600';
 
             recItem.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mt-0.5 ${iconClass} mr-2" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-            </svg>
+            <div class="w-5 h-5 mt-0.5 mr-2 flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mt-0.5 ${iconClass} mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+            </div>
             <p class="text-sm">${rec}</p>
         `;
 
@@ -105,15 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Determine if this factor is a risk (could be more sophisticated based on your model)
             const isRisk = factor.isRisk;
-            const iconColor = isRisk ? 'text-red-600' : 'text-gray-600';
-            const iconPath = isRisk ?
-                '<path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />' :
-                '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />';
 
             factorItem.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mt-0.5 ${iconColor} mr-2" viewBox="0 0 20 20" fill="currentColor">
-                ${iconPath}
-            </svg>
             <div>
                 <p class="font-medium text-gray-700">${factor.name}</p>
                 <p class="text-sm text-gray-600">${factor.value}</p>

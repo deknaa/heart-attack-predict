@@ -8,7 +8,9 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
@@ -38,6 +40,23 @@ class ProfileController extends Controller
         } else {
             return view('profile.details', compact('users'));
         }
+    }
+
+    public function updateData(Request $request, $id)
+    {
+        $users = User::findOrFail($id);
+
+        $request->validate([
+            'name' => ['required', 'string', 'max:255', 'min:3'],
+            'password' => ['required', Rules\Password::defaults()],
+        ]);
+
+        $users->update([
+            'name' => $request->name,
+            'password' => Hash::make($request->password)
+        ]);
+
+        return redirect()->back()->with('success', "Profile User anda berhasil di perbaharui ☺️");
     }
 
     /**

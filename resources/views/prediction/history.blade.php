@@ -137,12 +137,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <div class="p-4 rounded-lg bg-gray-50">
-                                    <h4 class="mb-2 text-lg font-medium text-gray-800">Input Data</h4>
-                                    <div class="p-3 overflow-auto bg-white rounded-md max-h-32" id="inputDataDisplay">
-                                    </div>
-                                </div>
                             </div>
                             
                             {{-- Health Recommendations --}}
