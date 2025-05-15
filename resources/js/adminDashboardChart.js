@@ -1,10 +1,10 @@
 // Initialize charts when the page loads
 document.addEventListener('DOMContentLoaded', function () {
     // Line Chart - total user baru yang register
-    const userChart = document.getElementById('userChart');
+    const userChart = document.getElementById('userGrowthChart');
     const labels = JSON.parse(userChart.dataset.labels);
     const data = JSON.parse(userChart.dataset.values);
-    const userCtx = document.getElementById('userGrowthChart').getContext('2d');
+    const userCtx = userChart.getContext('2d');
     const userGrowthChart = new Chart(userCtx, {
         type: 'line',
         data: {
@@ -105,9 +105,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Donut Chart - Categories
     const pieChart = document.getElementById('pieChart');
-    const labelPie = JSON.parse(pieChart.dataset.labels);
-    const dataPie = JSON.parse(pieChart.dataset.values);
-    const categoriesCtx = document.getElementById('pieChart').getContext('2d');
+    const labelPie = JSON.parse(pieChart.dataset.labels || '[]');
+    const dataPie = JSON.parse(pieChart.dataset.values || '[]');
+    
+    if (labelPie.length > 0 && dataPie.length > 0) {
+    const categoriesCtx = pieChart.getContext('2d');
     const categoriesChart = new Chart(categoriesCtx, {
         type: 'doughnut',
         data: {
@@ -132,6 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     });
+    }
 
     window.userGrowthChart = userGrowthChart;
     window.trafficChart = trafficChart;

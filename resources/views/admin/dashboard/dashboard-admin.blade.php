@@ -19,16 +19,16 @@
                     </div>
                 </div>
                 <div class="flex items-center mt-4 text-sm">
-                    @if ($announcementGrowth >= 0)
+                    @if ($articleGrowth >= 0)
                         <span class="flex items-center text-green-500">
-                            <i class="mr-1 fas fa-arrow-up"></i> {{ $announcementGrowth }}%
+                            <i class="mr-1 fas fa-arrow-up"></i> {{ $articleGrowth }}%
                         </span>
                     @else
                         <span class="flex items-center text-green-500">
-                            <i class="mr-1 fas fa-arrow-down"></i> {{ abs($announcementGrowth) }}%
+                            <i class="mr-1 fas fa-arrow-down"></i> {{ abs($articleGrowth) }}%
                         </span>
                     @endif
-                    <span class="ml-2 text-gray-400">Since last month</span>
+                    <span class="ml-2 text-gray-400">Since last month Article</span>
                 </div>
             </div>
             <div class="w-full max-w-md p-6 bg-white border-l-4 border-red-500 rounded-lg shadow-md">
@@ -76,11 +76,11 @@
                         <h2 class="text-lg font-semibold text-gray-700">Total Pengguna Baru</h2>
                     </div>
                     <div class="h-64">
-                        <div id="userChart" 
+                        <canvas id="userGrowthChart" 
                           data-labels='@json($chartData['label'])' 
                           data-values='@json($chartData['data'])'>
-                        </div>
-                        <canvas id="userGrowthChart"></canvas>
+                        </canvas>
+                        {{-- <canvas id="userGrowthChart"></canvas> --}}
                     </div>
                 </div>
 
@@ -102,7 +102,15 @@
                 </div>
                 <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
                     <div class="flex items-center justify-center h-64 col-span-1">
-                        <canvas id="pieChart" data-labels='@json($pieChartData["labels"])' data-values='@json($pieChartData["data"])'></canvas>
+
+                        @php
+                            $pieChartData['labels'] = $pieChartData['labels'] ?? [];
+                            $pieChartData['data'] = $pieChartData['data'] ?? [];
+                        @endphp
+
+                        <canvas id="pieChart" 
+                            data-labels='@json($pieChartData["labels"])' data-values='@json($pieChartData["data"])'>
+                        </canvas>
                     </div>
                     <div class="grid grid-cols-2 col-span-2 gap-4">
                         <div class="p-4 rounded-lg bg-gray-50">
@@ -111,7 +119,7 @@
                                 <span class="text-gray-700">Berisiko</span>
                             </div>
                             <div class="mt-2">
-                                <span class="text-2xl font-bold text-gray-800">{{ $riskData[1] }}</span>
+                                <span class="text-2xl font-bold text-gray-800">{{ $riskData[1] ?? 0 }}</span>
                             </div>
                         </div>
                         <div class="p-4 rounded-lg bg-gray-50">
@@ -120,7 +128,7 @@
                                 <span class="text-gray-700">Tidak Berisiko</span>
                             </div>
                             <div class="mt-2">
-                                <span class="text-2xl font-bold text-gray-800">{{ $riskData[0] }}</span>
+                                <span class="text-2xl font-bold text-gray-800">{{ $riskData[0] ?? 0 }}</span>
                             </div>
                         </div>
                     </div>

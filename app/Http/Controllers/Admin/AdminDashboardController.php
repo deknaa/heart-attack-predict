@@ -110,7 +110,7 @@ class AdminDashboardController extends Controller
             'data' => $pieData
         ];
 
-        return view('admin.dashboard.dashboard-admin', compact('totalArticlePublished', 'totalUsers', 'totalAnnouncements', 'userGrowth', 'articleGrowth', 'announcementGrowth', 'chartData', 'barChartData', 'pieChartData', 'riskData'));
+        return view('admin.dashboard.dashboard-admin', compact('totalArticlePublished', 'totalUsers', 'userGrowth', 'articleGrowth', 'chartData', 'barChartData', 'pieChartData', 'riskData'));
     }
 
     // Display list of user on admin dashboard
