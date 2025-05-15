@@ -482,26 +482,6 @@
                     </ul>
                 </div>
 
-                <div class="mb-5">
-                    <h6 class="mb-2 text-xs font-semibold text-gray-600 uppercase dark:text-gray-400">Resources</h6>
-                    <ul class="space-y-1">
-                        <li>
-                            <a href="#"
-                                class="flex items-center p-3 text-gray-700 transition-colors rounded-lg hover:bg-blue-50 dark:text-white dark:hover:bg-gray-700 group">
-                                <svg class="w-5 h-5 {{ request()->is('dashboard/admin') ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-white' }}" xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor" viewBox="0 0 18 20">
-                                    <path
-                                        d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z" />
-                                </svg>
-                                <div class="flex-1 ms-3 {{ request()->is('dashboard/admin') ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-white' }}">
-                                    <span class="font-medium">Grafik Informasi</span>
-                                    <div class="text-xs">Kelola dan Lihat Grafik Informasi</div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
                 {{-- Account Sections --}}
                 <div>
                     <h6 class="mb-2 text-xs font-semibold text-gray-600 uppercase dark:text-gray-400">Account</h6>

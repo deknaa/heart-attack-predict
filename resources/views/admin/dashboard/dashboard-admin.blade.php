@@ -34,34 +34,6 @@
             <div class="w-full max-w-md p-6 bg-white border-l-4 border-red-500 rounded-lg shadow-md">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="mb-1 text-sm font-medium tracking-wide text-red-500 uppercase">Total Pengumuman</p>
-                        <h2 class="text-2xl font-semibold text-gray-700">{{ $totalAnnouncements }} Pengumuman</h2>
-                    </div>
-                    <div class="p-3 bg-gray-100 rounded-md">
-                        <svg class="w-6 h-6 text-red-500 dark:text-red-400" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 24 24">
-                            <path fill-rule="evenodd"
-                                d="M18.458 3.11A1 1 0 0 1 19 4v16a1 1 0 0 1-1.581.814L12 16.944V7.056l5.419-3.87a1 1 0 0 1 1.039-.076ZM22 12c0 1.48-.804 2.773-2 3.465v-6.93c1.196.692 2 1.984 2 3.465ZM10 8H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6V8Zm0 9H5v3a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-3Z"
-                                clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="flex items-center mt-4 text-sm">
-                    @if ($articleGrowth >= 0)
-                        <span class="flex items-center text-green-500">
-                            <i class="mr-1 fas fa-arrow-up"></i> {{ $articleGrowth }}%
-                        </span>
-                    @else
-                        <span class="flex items-center text-green-500">
-                            <i class="mr-1 fas fa-arrow-down"></i> {{ abs($articleGrowth) }}%
-                        </span>
-                    @endif
-                    <span class="ml-2 text-gray-400">Since last month</span>
-                </div>
-            </div>
-            <div class="w-full max-w-md p-6 bg-white border-l-4 border-red-500 rounded-lg shadow-md">
-                <div class="flex items-center justify-between">
-                    <div>
                         <p class="mb-1 text-sm font-medium tracking-wide text-red-500 uppercase">Total Users</p>
                         <h2 class="text-2xl font-semibold text-gray-700">{{ $totalUsers }} Users</h2>
                     </div>
