@@ -22,8 +22,6 @@
                             <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                 Tanggal</th>
                             <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                Input Data</th>
-                            <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                 Hasil Prediksi</th>
                             <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                 Probabilitas</th>
@@ -39,11 +37,6 @@
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">
                                     {{ $prediction->created_at->format('d M Y, H:i') }}
-                                </td>
-                                <td class="px-6 py-4 text-sm text-gray-500">
-                                    <div class="p-2 overflow-auto bg-gray-100 rounded-md max-h-20">
-                                        <pre class="text-xs">{{ json_encode($prediction->input_data, JSON_PRETTY_PRINT) }}</pre>
-                                    </div>
                                 </td>
                                 <td class="px-6 py-4 text-sm whitespace-nowrap">
                                     <span class="inline-flex px-2 py-1 text-xs font-semibold leading-5 rounded-full">
