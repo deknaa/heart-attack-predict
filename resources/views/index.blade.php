@@ -42,12 +42,6 @@
     {{-- Risk factors --}}
     <x-landing-page.risk-factors></x-landing-page.risk-factors>
 
-    {{-- Prediction --}}
-    <x-landing-page.prediction></x-landing-page.prediction>
-
-    {{-- Testimonials Section --}}
-    <x-landing-page.testimony></x-landing-page.testimony>
-
     {{-- FAQ Section --}}
     <x-landing-page.faq></x-landing-page.faq>
 

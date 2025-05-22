@@ -1,13 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Simple menu toggle
-    // const menuButton = document.querySelector('button[aria-expanded]');
-    // if (menuButton) {
-    //     menuButton.addEventListener('click', function () {
-    //         const expanded = this.getAttribute('aria-expanded') === 'true';
-    //         this.setAttribute('aria-expanded', !expanded);
-    //     });
-    // }
-
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -51,13 +42,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const lightIconDesktop = document.getElementById('theme-toggle-light-icon');
         const darkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
         const lightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
-    
+
         function toggleDarkMode() {
             document.documentElement.classList.toggle('dark');
             localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
             updateIcons();
         }
-    
+
         function updateIcons() {
             const isDark = document.documentElement.classList.contains('dark');
             darkIconDesktop.classList.toggle('hidden', !isDark);
@@ -65,10 +56,10 @@ document.addEventListener('DOMContentLoaded', function () {
             darkIconMobile.classList.toggle('hidden', !isDark);
             lightIconMobile.classList.toggle('hidden', isDark);
         }
-    
+
         themeToggleDesktop?.addEventListener('click', toggleDarkMode);
         themeToggleMobile?.addEventListener('click', toggleDarkMode);
-    
+
         // Set initial theme
         if (localStorage.getItem('theme') === 'dark') {
             document.documentElement.classList.add('dark');
@@ -77,5 +68,30 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         updateIcons();
     });
-    
+
+    // navigasi ketika di scroll berisi underline
+     const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll('a[href^="#"]');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            const id = entry.target.getAttribute("id");
+            const navLink = document.querySelector(`a[href="#${id}"]`);
+
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => {
+                    link.classList.remove("border-red-500", "text-gray-900", "dark:text-white");
+                    link.classList.add("border-transparent");
+                });
+
+                navLink.classList.add("border-red-500", "text-gray-900", "dark:text-white");
+                navLink.classList.remove("border-transparent");
+            }
+        });
+    }, {
+        threshold: 0.6
+    });
+
+    sections.forEach(section => observer.observe(section));
+
 });

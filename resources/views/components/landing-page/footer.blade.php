@@ -1,7 +1,7 @@
 <footer class="text-white bg-gray-800">
     <div class="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 gap-8 md:grid-cols-4">
-            <div data-aos="fade-up" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+            <div>
                 <span class="text-2xl font-bold text-white"><i
                         class="mr-2 fas fa-heartbeat"></i>{{ config('app.name') }}</span>
                 <p class="mt-2 text-sm text-gray-300">
@@ -24,33 +24,9 @@
                 </div>
             </div>
 
-            <div data-aos="fade-up" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
-                <h3 class="text-sm font-semibold tracking-wider text-gray-300 uppercase">Navigasi</h3>
+            <div class="flex justify-end">
                 <ul class="mt-4 space-y-4">
-                    <li><a href="#home" class="text-base text-gray-300 hover:text-white">Beranda</a></li>
-                    <li><a href="#about" class="text-base text-gray-300 hover:text-white">Tentang</a></li>
-                    <li><a href="#risk-factors" class="text-base text-gray-300 hover:text-white">Faktor Risiko</a>
-                    </li>
-                    <li><a href="#prediction" class="text-base text-gray-300 hover:text-white">Prediksi</a></li>
-                    <li><a href="#faq" class="text-base text-gray-300 hover:text-white">FAQ</a></li>
-                </ul>
-            </div>
-
-            <div data-aos="fade-up" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
-                <h3 class="text-sm font-semibold tracking-wider text-gray-300 uppercase">Informasi</h3>
-                <ul class="mt-4 space-y-4">
-                    <li><a href="#" class="text-base text-gray-300 hover:text-white">Kebijakan Privasi</a>
-                    </li>
-                    <li><a href="#" class="text-base text-gray-300 hover:text-white">Syarat dan
-                            Ketentuan</a></li>
-                    <li><a href="#" class="text-base text-gray-300 hover:text-white">Bantuan</a></li>
-                    <li><a href="#" class="text-base text-gray-300 hover:text-white">Kontak</a></li>
-                </ul>
-            </div>
-
-            <div data-aos="fade-up" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
-                <h3 class="text-sm font-semibold tracking-wider text-gray-300 uppercase">Kontak</h3>
-                <ul class="mt-4 space-y-4">
+                    <h3 class="text-sm font-semibold tracking-wider text-gray-300 uppercase">Kontak</h3>
                     <li class="flex">
                         <i class="mt-1 mr-2 text-red-500 fas fa-map-marker-alt"></i>
                         <span>Jl. Gunung Agung No. 123, Denpasar, Bali.</span>
@@ -61,7 +37,7 @@
                     </li>
                     <li class="flex">
                         <i class="mt-1 mr-2 text-red-500 fas fa-envelope"></i>
-                        <span>info@cardioguard.id</span>
+                        <span>{{ config('mail.from.address') }}</span>
                     </li>
                 </ul>
             </div>

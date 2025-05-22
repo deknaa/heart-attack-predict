@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('featured_image')->nullable();
             $table->enum('visibility', ['private', 'public'])->default('private');
-            $table->enum('category', ['umum', 'kesehatan_mental', 'gizi_nutrisi', 'penyakit', 'seksual_reproduksi', 'tips_kesehatan'])->default('umum');
+            $table->enum('category', ['umum', 'tips_kesehatan'])->default('umum');
             $table->timestamps();
         });
     }

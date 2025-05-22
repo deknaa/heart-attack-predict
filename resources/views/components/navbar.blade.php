@@ -569,23 +569,19 @@
                 {{-- Center Navigation (Desktop) --}}
                 <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
                     <a href="#home"
-                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900 border-b-2 border-red-500 dark:text-white">
+                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-red-500 hover:text-gray-700 dark:text-slate-300" data-target="home">
                         Beranda
                     </a>
                     <a href="#about"
-                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700 dark:text-slate-300">
+                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-red-500 hover:text-gray-700 dark:text-slate-300" data-target="about">
                         Tentang
                     </a>
                     <a href="#risk-factors"
-                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700 dark:text-slate-300">
+                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-red-500 hover:text-gray-700 dark:text-slate-300" data-target="risk-factors">
                         Faktor Risiko
                     </a>
-                    <a href="#prediction"
-                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700 dark:text-slate-300">
-                        Prediksi
-                    </a>
                     <a href="#faq"
-                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700 dark:text-slate-300">
+                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-red-500 hover:text-gray-700 dark:text-slate-300" data-target="faq">
                         FAQ
                     </a>
                 </div>
@@ -684,3 +680,8 @@
         </div>
     </nav>
 @endif
+<style>
+a {
+    transition: border-color 0.3s, color 0.3s;
+}
+</style>
