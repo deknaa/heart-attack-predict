@@ -214,8 +214,12 @@
                     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                     @forelse ($articleRecommendation as $article)
                         <div class="overflow-hidden border rounded-lg">
-                            <img src="{{ asset('storage/' . $article->featured_image) }}" alt=""
+                            @if ($article->featured_image)     
+                                <img src="{{ asset('storage/' . $article->featured_image) }}" alt=""
                                 class="object-cover w-full h-40">
+                            @else
+                                <span></span>
+                            @endif
                             <div class="p-4">
                                 <h4 class="mb-2 font-medium text-gray-900">{{ $article->title }}
                                 </h4>

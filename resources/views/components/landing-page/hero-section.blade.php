@@ -20,7 +20,7 @@
                 
                 <!-- Call to Action Buttons -->
                 <div class="flex flex-wrap gap-4 mt-10">
-                    <a href="#prediction"
+                    <a href="{{ route('login') }}"
                         class="px-6 py-3.5 text-base font-medium text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 dark:from-red-500 dark:to-red-600 dark:hover:from-red-600 dark:hover:to-red-700 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center group">
                         Cek Risiko Anda
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -56,14 +56,12 @@
             
             {{-- Rigth --}}
             <div class="relative flex items-center justify-center" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
-                <!-- Main Image with glow effect -->
                 <div class="relative">
                     <div class="absolute inset-0 -m-16 rounded-full bg-gradient-to-r from-red-500 to-red-600 opacity-20 dark:opacity-30 blur-3xl"></div>
                     <img src="{{ asset('image/landingpage/heart.png') }}" alt="Heart Illustration"
                         class="relative z-10 w-full h-auto max-w-md mx-auto rounded-xl" />
                 </div>
                 
-                <!-- Floating Stats Cards -->
                 <div class="absolute z-20 p-4 bg-white shadow-xl -top-4 -right-4 sm:right-8 dark:bg-gray-800 rounded-2xl">
                     <div class="text-center">
                         <div class="flex items-center mb-2">

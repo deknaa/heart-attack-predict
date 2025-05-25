@@ -73,7 +73,7 @@
                                         <div class="hidden mr-2 text-right md:block">
                                             <p class="text-sm font-medium text-gray-800 dark:text-white">
                                                 {{ Str::limit(Auth::user()->name, 15) }}</p>
-                                            <p class="text-xs text-gray-500 dark:text-gray-400">{{ Auth::user()->role }}</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400">{{ Auth::user()->role == 'user' ? 'Pengguna' : '' }}</p>
                                         </div>
                                         <img class="rounded-full w-9 h-9 ring-2 ring-red-400 dark:ring-red-600"
                                             src="{{ auth()->user()->avatar_url ?? 'https://ui-avatars.com/api/?name=' . urlencode(auth()->user()->name) }}"

@@ -29,9 +29,9 @@
                 <div id="accordion-flush-body-1" class="hidden max-w-3xl mx-auto space-y-6"
                     aria-labelledby="accordion-flush-heading-1">
                     <div class="py-5 border-b border-gray-200 dark:border-gray-700">
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">Model AI kami telah diuji dengan ribuan kasus medis
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">Model AI kami telah diuji dengan ratusan kasus medis
                             nyata dan memiliki tingkat akurasi hingga
-                            95%. Namun, penting untuk diingat bahwa ini adalah alat prediksi dan bukan diagnosis medis.
+                            83.61%. Namun, penting untuk diingat bahwa ini adalah alat prediksi dan bukan diagnosis medis.
                             Selalu konsultasikan hasilnya dengan profesional kesehatan.
                         </p>
                     </div>

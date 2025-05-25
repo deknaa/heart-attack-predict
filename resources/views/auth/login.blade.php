@@ -77,9 +77,9 @@
                                 name="remember" />
                             <label for="remember_me" class="text-sm font-medium text-gray-900 ms-2 dark:text-gray-300">{{ __('Remember Me') }}</label>
                         </div>
-                        @if (Route::has('password.request'))
+                        {{-- @if (Route::has('password.request'))
                             <a href="{{ route('password.request') }}" class="text-sm text-blue-700 hover:underline dark:text-blue-500">{{ __('Forgot Password?') }}</a>
-                        @endif
+                        @endif --}}
                     </div>
 
                     {{-- Sign In Button --}}

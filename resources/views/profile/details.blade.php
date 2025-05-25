@@ -15,14 +15,14 @@
                                 <img class="w-32 h-32 border-4 border-white rounded-full"
                                     src="{{ Auth::user()->avatar_url ?? 'https://ui-avatars.com/api/?name=' . urlencode(auth()->user()->name) }}"
                                     alt="Foto profil">
-                                <button
+                                {{-- <button
                                     class="absolute bottom-0 right-0 p-1 bg-white rounded-full shadow hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-700" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                     </svg>
-                                </button>
+                                </button> --}}
                             </div>
                         </div>
                         <div class="flex-1 mt-4 sm:mt-14 sm:ml-6">
@@ -85,7 +85,7 @@
                             </button>
                         </div>
                         {{-- Modal Body --}}
-                        <div class="p-4 md:p-5">
+                        <div class="p-4 pt-0">
                             <form class="space-y-4" action="{{ route('profile.update', $users->id) }}" method="POST">
                                 @method('PUT')
                                 @csrf
@@ -97,13 +97,17 @@
                                         value="{{ $users->name }}"
                                         required />
                                 </div>
-                                <div>
-                                    <label for="password"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">New Password</label>
-                                    <input type="password" name="password" id="password" placeholder="••••••••"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                        required />
-                                </div>
+                                @if(Auth::user()->google_id)
+                                    <span></span>
+                                @else
+                                    <div>
+                                        <label for="password"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ubah Password (Opsional)</label>
+                                        <input type="password" name="password" id="password" placeholder="••••••••"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                            required />
+                                    </div>
+                                @endif
                                 <button type="submit"
                                     class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update User Profile</button>
                             </form>
@@ -142,9 +146,6 @@
                         <div class="p-6 bg-white rounded-lg shadow">
                             <div class="flex items-center justify-between mb-4">
                                 <h2 class="text-lg font-medium text-gray-900">Kontak</h2>
-                                <button type="button" class="text-sm text-indigo-600 hover:text-indigo-500">
-                                    Edit
-                                </button>
                             </div>
                             <div class="space-y-3">
                                 <div class="flex">
