@@ -48,9 +48,24 @@ class PredictionController extends Controller
     }
 
     // to view history of predict
-    public function history()
+    public function history(Request $request)
     {
-        $predictions = Prediction::where('user_id', Auth::id())->latest()->get();
+        // Validasi parameter per_page
+        $perPage = $request->get('per_page', 10);
+        
+        // Validasi agar per_page hanya bisa nilai yang diizinkan
+        if (!in_array($perPage, [5, 10, 15, 25, 50])) {
+            $perPage = 10;
+        }
+
+        // Query prediksi dengan pagination
+        $predictions = Prediction::where('user_id', Auth::id()) // Sesuaikan dengan field user_id Anda
+            ->orderBy('created_at', 'desc') // Urutkan dari terbaru
+            ->paginate($perPage);
+
+        // Append parameter query string ke pagination links
+        $predictions->appends($request->query());
+
         return view('prediction.history', compact('predictions'));
     }
 

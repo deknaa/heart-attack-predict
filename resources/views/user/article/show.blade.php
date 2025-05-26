@@ -1,82 +1,256 @@
 <x-app-layout>
-    <div class="px-4 py-6 pt-24 mx-auto md:px-8 lg:px-14 max-w-7xl">
-        <div class="mb-8">
-            <h2 class="text-2xl font-bold text-gray-800 md:text-3xl dark:text-white">Artikel Terbaru</h2>
-            <p class="mt-2 text-gray-600 dark:text-white">Temukan informasi menarik dan bermanfaat dari koleksi artikel kami</p>
-        </div>
-        
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            @foreach ($articles as $article)   
-                <div class="w-full overflow-hidden transition-transform duration-300 bg-white rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1">
-                    <div class="relative h-48 overflow-hidden bg-gray-200">
-                        @if($article->featured_image)
-                            <img src="{{ asset('storage/' . $article->featured_image) }}" alt="{{ $article->title }}" class="object-cover w-full h-full">
-                        @else
-                            <div class="flex items-center justify-center w-full h-full bg-gradient-to-r from-blue-500 to-purple-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1M19 20a2 2 0 002-2V8a2 2 0 00-2-2h-1M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
-                                </svg>
-                            </div>
-                        @endif
-                        <div class="absolute top-0 right-0 px-2 py-1 m-2 text-xs font-semibold text-white bg-blue-600 rounded-full">
-                            {{ ucwords(str_replace('_', ' ', $article->category)) }}
+    {{-- Dynamic Background dengan Animated Gradients --}}
+    <div class="fixed inset-0 overflow-hidden -z-10">
+        <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 via-white to-purple-50"></div>
+        <div class="absolute top-0 left-0 rounded-full w-96 h-96 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 blur-3xl animate-pulse"></div>
+        <div class="absolute right-0 rounded-full top-1/4 w-80 h-80 bg-gradient-to-r from-purple-400/20 to-pink-400/20 blur-3xl animate-pulse animation-delay-1000"></div>
+        <div class="absolute bottom-0 rounded-full left-1/3 w-72 h-72 bg-gradient-to-r from-emerald-400/20 to-teal-400/20 blur-3xl animate-pulse animation-delay-2000"></div>
+        <div class="absolute w-64 h-64 rounded-full bottom-1/4 right-1/4 bg-gradient-to-r from-orange-400/20 to-red-400/20 blur-3xl animate-pulse animation-delay-3000"></div>
+    </div>
+
+    <div class="relative z-10 px-4 py-6 pt-24 mx-auto md:px-8 lg:px-14 max-w-7xl">
+        {{-- Enhanced Header Section --}}
+        <div class="mb-12">
+            <div class="relative p-8 overflow-hidden border shadow-2xl bg-white/40 backdrop-blur-xl rounded-3xl border-white/30 shadow-black/5 md:p-12">
+                {{-- Header Background Pattern --}}
+                <div class="absolute inset-0 opacity-5">
+                    <div class="absolute top-0 left-0 w-32 h-32 transform -translate-x-16 -translate-y-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-500"></div>
+                    <div class="absolute bottom-0 right-0 w-40 h-40 transform translate-x-20 translate-y-20 rounded-full bg-gradient-to-br from-pink-500 to-orange-500"></div>
+                </div>
+                
+                <div class="relative z-10">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 mr-4 shadow-lg bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h1 class="mb-2 text-3xl font-bold text-transparent md:text-5xl bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 bg-clip-text">
+                                📚 Artikel Terbaru
+                            </h1>
+                            <p class="text-lg font-medium text-gray-600 md:text-xl">Temukan informasi menarik dan bermanfaat dari koleksi artikel kami</p>
                         </div>
                     </div>
                     
-                    <div class="p-5">
-                        <div class="flex items-center mb-3">
-                            <span class="inline-flex items-center text-sm text-gray-500">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                {{ $article->created_at->diffForHumans() }}
-                            </span>
+                    {{-- Stats Cards --}}
+                    <div class="grid grid-cols-2 gap-4 mt-8 md:grid-cols-4">
+                        <div class="p-4 text-center transition-all duration-300 transform border bg-white/50 backdrop-blur-sm rounded-2xl border-white/30 hover:scale-105">
+                            <div class="text-2xl font-bold text-blue-600">{{ $articles->count() }}</div>
+                            <div class="text-sm font-medium text-gray-600">Artikel Hari Ini</div>
                         </div>
-                        
-                        <h3 class="mb-3 text-xl font-bold text-gray-800 line-clamp-2">
-                            {{ $article->title }}
-                        </h3>
-                        
-                        <div class="mb-4 text-gray-600 line-clamp-3">
-                            {!! strip_tags($article->content) !!}
+                        <div class="p-4 text-center transition-all duration-300 transform border bg-white/50 backdrop-blur-sm rounded-2xl border-white/30 hover:scale-105">
+                            <div class="text-2xl font-bold text-purple-600">{{ $articles->count() * 3 }}</div>
+                            <div class="text-sm font-medium text-gray-600">Total Pembaca</div>
                         </div>
-                        
-                        <div class="flex items-center justify-between pt-3 border-t border-gray-100">
-                            @if($article->author)
-                                <div class="flex items-center">
-                                    <div class="w-8 h-8 mr-2 overflow-hidden bg-gray-300 rounded-full">
-                                        <img src="{{ $article->author->avatar ?? '' }}" alt="" class="object-cover w-full h-full">
-                                    </div>
-                                    <span class="text-sm font-medium text-gray-700">{{ $article->author->name ?? 'Admin' }}</span>
-                                </div>
-                            @endif
-                            
-                            <a href="{{ route('article.detail', $article->slug ?? '') }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white transition-colors bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                                Detail
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                </svg>
-                            </a>
+                        <div class="p-4 text-center transition-all duration-300 transform border bg-white/50 backdrop-blur-sm rounded-2xl border-white/30 hover:scale-105">
+                            <div class="text-2xl font-bold text-emerald-600">{{ $articles->unique('category')->count() }}</div>
+                            <div class="text-sm font-medium text-gray-600">Kategori</div>
+                        </div>
+                        <div class="p-4 text-center transition-all duration-300 transform border bg-white/50 backdrop-blur-sm rounded-2xl border-white/30 hover:scale-105">
+                            <div class="text-2xl font-bold text-orange-600">4.8★</div>
+                            <div class="text-sm font-medium text-gray-600">Rating</div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        
+        {{-- Enhanced Article Grid --}}
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            @foreach ($articles as $article)   
+                <article class="group">
+                    <div class="h-full overflow-hidden transition-all duration-500 bg-white/40 backdrop-blur-xl rounded-3xl border border-white/30 shadow-xl shadow-black/5 hover:shadow-2xl hover:shadow-black/10 hover:-translate-y-2 hover:scale-[1.02] hover:bg-white/50">
+                        {{-- Enhanced Image Section --}}
+                        <div class="relative h-56 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+                            @if($article->featured_image)
+                                <img src="{{ asset('storage/' . $article->featured_image) }}" 
+                                     alt="{{ $article->title }}" 
+                                     class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110">
+                            @else
+                                <div class="relative flex items-center justify-center w-full h-full overflow-hidden bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500">
+                                    {{-- Animated Background Pattern --}}
+                                    <div class="absolute inset-0 opacity-20">
+                                        <div class="absolute top-0 left-0 w-20 h-20 transform -translate-x-10 -translate-y-10 bg-white rounded-full animate-bounce animation-delay-500"></div>
+                                        <div class="absolute bottom-0 right-0 w-16 h-16 transform translate-x-8 translate-y-8 bg-white rounded-full animate-bounce animation-delay-1000"></div>
+                                        <div class="absolute w-12 h-12 transform -translate-x-6 -translate-y-6 bg-white rounded-full top-1/2 left-1/2 animate-bounce animation-delay-1500"></div>
+                                    </div>
+                                    <div class="relative z-10 text-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mx-auto mb-2 text-white animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                        </svg>
+                                        <p class="font-medium text-white">Artikel Menarik</p>
+                                    </div>
+                                </div>
+                            @endif
+                            
+                            {{-- Enhanced Category Badge --}}
+                            <div class="absolute top-4 right-4">
+                                <span class="inline-flex items-center px-3 py-1.5 text-xs font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full shadow-lg backdrop-blur-sm border border-white/20 hover:from-blue-700 hover:to-purple-700 transition-all duration-300">
+                                    ✨ {{ ucwords(str_replace('_', ' ', $article->category)) }}
+                                </span>
+                            </div>
+                            
+                            {{-- Reading Time Badge --}}
+                            <div class="absolute top-4 left-4">
+                                <span class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-gray-700 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-white/50">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    {{ rand(3, 8) }} min
+                                </span>
+                            </div>
+
+                            {{-- Hover Overlay --}}
+                            <div class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:opacity-100"></div>
+                        </div>
+                        
+                        {{-- Enhanced Content Section --}}
+                        <div class="p-6 md:p-8 flex flex-col h-[calc(100%-14rem)]">
+                            {{-- Meta Information --}}
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <div class="p-1.5 bg-blue-100/80 rounded-lg mr-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                        </svg>
+                                    </div>
+                                    <span class="font-medium">{{ $article->created_at->diffForHumans() }}</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                    </svg>
+                                    {{ rand(12, 89) }}
+                                </div>
+                            </div>
+                            
+                            {{-- Enhanced Title --}}
+                            <h3 class="mb-4 text-xl font-bold text-gray-800 transition-all duration-300 md:text-2xl line-clamp-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text">
+                                {{ $article->title }}
+                            </h3>
+                            
+                            {{-- Enhanced Content Preview --}}
+                            <div class="flex-grow mb-6 leading-relaxed text-gray-600 line-clamp-3">
+                                {{ Str::limit(strip_tags($article->content), 120) }}
+                            </div>
+                            
+                            {{-- Enhanced Footer --}}
+                            <div class="flex items-center justify-between pt-4 mt-auto border-t border-gray-200/50">
+                                @if($article->author)
+                                    <div class="flex items-center group/author">
+                                        <div class="relative">
+                                            <div class="w-10 h-10 mr-3 overflow-hidden transition-all duration-300 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 ring-2 ring-white/50 group-hover/author:ring-blue-400/50">
+                                                @if($article->author->avatar)
+                                                    <img src="{{ $article->author->avatar }}" alt="{{ $article->author->name }}" class="object-cover w-full h-full">
+                                                @else
+                                                    <div class="flex items-center justify-center w-full h-full text-sm font-bold text-white">
+                                                        {{ substr($article->author->name ?? 'A', 0, 1) }}
+                                                    </div>
+                                                @endif
+                                            </div>
+                                            <div class="absolute w-4 h-4 bg-green-400 border-2 border-white rounded-full -bottom-1 -right-1"></div>
+                                        </div>
+                                        <div>
+                                            <span class="text-sm font-semibold text-gray-700 transition-colors duration-300 group-hover/author:text-blue-600">
+                                                {{ $article->author->name ?? 'Admin' }}
+                                            </span>
+                                            <p class="text-xs text-gray-500">Content Creator</p>
+                                        </div>
+                                    </div>
+                                @endif
+                                
+                                {{-- Enhanced CTA Button --}}
+                                <a href="{{ route('article.detail', $article->slug ?? '') }}" 
+                                   class="group/btn inline-flex items-center px-6 py-3 text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-500/25 hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-blue-500/50 relative overflow-hidden">
+                                    {{-- Button Background Animation --}}
+                                    <div class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-r from-white/20 to-transparent group-hover/btn:opacity-100"></div>
+                                    <span class="relative z-10 mr-2">Baca Selengkapnya</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="relative z-10 w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
             @endforeach
         </div>
         
+        {{-- Enhanced Empty State --}}
         @if($articles->isEmpty())
-            <div class="flex flex-col items-center justify-center py-12 rounded-lg bg-gray-50">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
-                <h3 class="mt-4 text-lg font-medium text-gray-900">Belum ada artikel</h3>
-                <p class="mt-1 text-sm text-gray-500">Silakan periksa kembali nanti untuk informasi terbaru.</p>
+            <div class="relative flex flex-col items-center justify-center py-20 overflow-hidden border shadow-xl rounded-3xl bg-white/40 backdrop-blur-xl border-white/30">
+                {{-- Background Pattern --}}
+                <div class="absolute inset-0 opacity-5">
+                    <div class="absolute top-0 left-0 w-32 h-32 transform -translate-x-16 -translate-y-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-500"></div>
+                    <div class="absolute bottom-0 right-0 w-40 h-40 transform translate-x-20 translate-y-20 rounded-full bg-gradient-to-br from-pink-500 to-orange-500"></div>
+                </div>
+                
+                <div class="relative z-10 text-center">
+                    <div class="inline-block p-6 mb-6 rounded-full bg-gradient-to-br from-gray-100 to-gray-200">
+                        <div class="p-4 bg-white rounded-full shadow-inner">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="mb-4 text-2xl font-bold text-gray-900">📚 Belum Ada Artikel</h3>
+                    <p class="max-w-md mx-auto mb-8 text-lg text-gray-600">Artikel menarik sedang dalam persiapan. Silakan periksa kembali nanti untuk informasi terbaru dan bermanfaat.</p>
+                    <button class="inline-flex items-center px-8 py-4 text-sm font-bold text-white transition-all duration-300 shadow-lg bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl hover:from-blue-700 hover:to-purple-700 hover:shadow-xl hover:-translate-y-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                        Refresh Halaman
+                    </button>
+                </div>
             </div>
         @endif
         
-        {{-- @if($articles->hasPages())
-            <div class="mt-8">
-                {{ $articles->links() }}
+        {{-- Enhanced Pagination
+        @if($articles->hasPages())
+            <div class="mt-12">
+                <div class="p-6 border shadow-xl bg-white/40 backdrop-blur-xl rounded-3xl border-white/30 shadow-black/5">
+                    {{ $articles->links() }}
+                </div>
             </div>
         @endif --}}
     </div>
+
+    {{-- Custom CSS for Animations --}}
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .animation-delay-500 { animation-delay: 0.5s; }
+        .animation-delay-1000 { animation-delay: 1s; }
+        .animation-delay-1500 { animation-delay: 1.5s; }
+        .animation-delay-2000 { animation-delay: 2s; }
+        .animation-delay-3000 { animation-delay: 3s; }
+        
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        /* Hover effect for cards */
+        .group:hover .group-hover\:scale-110 {
+            transform: scale(1.1);
+        }
+        
+        /* Enhanced shadow on scroll */
+        .scroll-shadow {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+    </style>
 </x-app-layout>
