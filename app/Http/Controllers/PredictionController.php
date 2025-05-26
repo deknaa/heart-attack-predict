@@ -19,7 +19,7 @@ class PredictionController extends Controller
         $latestPrediction = auth()->user()->predictions()->latest()->first();
         $inputData = $latestPrediction ? $latestPrediction->input_data : [];
 
-        return view('prediction.backup2', compact('inputData'));
+        return view('prediction.index', compact('inputData'));
     }
 
     public function predict(Request $request)
@@ -41,7 +41,7 @@ class PredictionController extends Controller
                 'probability' => $data['probability'] ?? 'Unknown'
             ]);
 
-            return view('prediction.backup2', ['result' => $data]);
+            return view('prediction.index', ['result' => $data]);
         }catch(\Exception $e){
             return back()->with('error', 'Gagal mendapatkan hasil prediksi, kemungkinan masalah pada API');
         }

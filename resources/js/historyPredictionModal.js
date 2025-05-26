@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             recommendationsTitle.className = 'mb-2 text-lg font-medium text-green-800';
         }
 
-        document.getElementById('predictionProbability').textContent = `${data.probability}%`;
+        document.getElementById('predictionProbability').textContent = `${data.probability * 100}%`;
 
         // Update recommendations based on prediction result
         const recommendationsContent = document.getElementById('recommendationsContent');

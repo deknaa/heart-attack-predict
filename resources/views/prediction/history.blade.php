@@ -50,7 +50,7 @@
                                     </span>
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">
-                                    {{ $prediction->probability }}%
+                                    {{ $prediction->probability * 100 }}%
                                 </td>
                                 <td class="flex items-center gap-5 px-6 py-4 text-sm font-medium whitespace-nowrap">
                                     <div class="flex space-x-2">

@@ -63,9 +63,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Tentukan level risiko berdasarkan probabilitas
             if (probability == 0) {
-                riskBar.classList.add('bg-green-500');
-                riskPercentage.classList.add('text-green-500');
-                riskBox.classList.add('bg-green-50', 'border-green-200');
+                riskBar.classList.add('bg-yellow-500');
+                riskPercentage.classList.add('text-yellow-500');
+                riskBox.classList.add('bg-yellow-50', 'border-yellow-200');
                 riskTitle.textContent = 'Tidak Ada Risiko';
                 riskDescription.textContent = 'Lakukan Prediksi Risiko untuk mengetahui tingkat risiko anda.';
             } else if (probability < 50) {
@@ -74,19 +74,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 riskBox.classList.add('bg-green-50', 'border-green-200');
                 riskTitle.textContent = 'Risiko Rendah';
                 riskDescription.textContent = 'Pertahankan gaya hidup sehat Anda.';
-            } else if (probability < 70) {
-                riskBar.classList.add('bg-yellow-500');
-                riskPercentage.classList.add('text-yellow-500');
-                riskBox.classList.add('bg-yellow-50', 'border-yellow-200');
-                riskTitle.textContent = 'Risiko Sedang';
-                riskDescription.textContent = 'Perhatikan pola makan dan olahraga lebih teratur.';
             } else {
                 riskBar.classList.add('bg-red-500');
                 riskPercentage.classList.add('text-red-500');
                 riskBox.classList.add('bg-red-50', 'border-red-200');
                 riskTitle.textContent = 'Risiko Tinggi';
                 riskDescription.textContent =
-                    'Segera konsultasi dengan dokter untuk evaluasi lebih lanjut.';
+                    'Perbaiki pola hidup dan makanan anda, lakukan olahraga dan segera konsultasi dengan dokter untuk evaluasi lebih lanjut.';
             }
         })
         .catch(error => console.error('Error fetching risk assessment:', error));
