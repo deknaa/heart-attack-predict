@@ -116,16 +116,16 @@
                         <h3
                             class="mb-6 text-xl font-bold text-transparent md:text-2xl bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text">
                             Penilaian Risiko Anda</h3>
-                        <div
-                            class="p-4 mb-6 border bg-gradient-to-r from-blue-50/50 to-purple-50/50 rounded-xl border-blue-100/30">
-                            <h4 class="text-lg font-semibold text-gray-800 md:text-xl">
-                                @if ($prediction)
+                        @if ($prediction)
+                            <div
+                                class="p-4 mb-6 border bg-gradient-to-r from-blue-50/50 to-purple-50/50 rounded-xl border-blue-100/30">
+                                <h4 class="text-lg font-semibold text-gray-800 md:text-xl">
                                     {{ $prediction->prediction_result == 0 ? '✅ Tidak Berisiko Serangan Jantung' : '⚠️ Berisiko Serangan Jantung' }}
-                                @else
-                                    -
-                                @endif
-                            </h4>
-                        </div>
+                                </h4>
+                            </div>
+                        @else
+                            <p>Tidak ada Penilaian risiko, karena anda belum melakukan prediksi.</p>
+                        @endif
                         <div class="flex items-center mb-6">
                             <div class="w-full h-3 overflow-hidden rounded-full bg-gray-200/50 backdrop-blur-sm">
                                 <div id="riskBar"
@@ -188,8 +188,7 @@
 
                     <div
                         class="p-6 transition-all duration-300 border shadow-2xl bg-white/40 backdrop-blur-xl rounded-2xl border-white/30 shadow-black/5 md:p-8 hover:shadow-3xl">
-                        <h3
-                            class="mb-6 text-xl font-bold md:text-2xl">
+                        <h3 class="mb-6 text-xl font-bold md:text-2xl">
                             📊 Riwayat Prediksi</h3>
                         <div class="p-4 bg-white/30 rounded-xl backdrop-blur-sm">
                             <canvas id="predictionChart" height="200"></canvas>
@@ -207,8 +206,7 @@
                 <div class="grid grid-cols-1 gap-6 lg:grid-cols-3 md:gap-8">
                     <div
                         class="p-6 transition-all duration-300 border shadow-2xl lg:col-span-2 bg-white/40 backdrop-blur-xl rounded-2xl border-white/30 shadow-black/5 md:p-8 hover:shadow-3xl">
-                        <h3
-                            class="mb-6 text-xl font-bold md:text-2xl">
+                        <h3 class="mb-6 text-xl font-bold md:text-2xl">
                             💡 Rekomendasi untuk Anda</h3>
                         <div class="space-y-4">
                             @if ($prediction)
@@ -263,8 +261,7 @@
                                 <!-- Modal Header -->
                                 <div
                                     class="flex items-center justify-between p-6 border-b bg-gradient-to-r from-blue-50 to-indigo-50">
-                                    <h2
-                                        class="text-2xl font-bold">
+                                    <h2 class="text-2xl font-bold">
                                         💡 Rekomendasi Lengkap untuk Anda
                                     </h2>
                                     <button onclick="closeModal()"
@@ -400,8 +397,7 @@
 
                     <div
                         class="p-6 transition-all duration-300 border shadow-2xl bg-white/40 backdrop-blur-xl rounded-2xl border-white/30 shadow-black/5 md:p-8 hover:shadow-3xl">
-                        <h3
-                            class="mb-6 text-xl font-bold md:text-2xl">
+                        <h3 class="mb-6 text-xl font-bold md:text-2xl">
                             ⚡ Tindakan</h3>
                         <div class="space-y-4">
                             <a href="{{ route('predict') }}" class="block group">
@@ -435,8 +431,7 @@
                 <div
                     class="p-6 mt-6 transition-all duration-300 border shadow-2xl md:p-8 md:mt-8 bg-white/40 backdrop-blur-xl rounded-2xl border-white/30 shadow-black/5 hover:shadow-3xl">
                     <div class="flex flex-col gap-4 mb-6 sm:flex-row sm:items-center sm:justify-between">
-                        <h3
-                            class="text-xl font-bold md:text-2xl">
+                        <h3 class="text-xl font-bold md:text-2xl">
                             📚 Rekomendasi Artikel Untuk Anda</h3>
                         @if ($articleRecommendation->count() > 0)
                             <a href="{{ route('article.list') }}"
