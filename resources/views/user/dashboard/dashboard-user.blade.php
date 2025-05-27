@@ -119,7 +119,11 @@
                         <div
                             class="p-4 mb-6 border bg-gradient-to-r from-blue-50/50 to-purple-50/50 rounded-xl border-blue-100/30">
                             <h4 class="text-lg font-semibold text-gray-800 md:text-xl">
-                                {{ $prediction->prediction_result == 0 ? '✅ Tidak Berisiko Serangan Jantung' : '⚠️ Berisiko Serangan Jantung' }}
+                                @if ($prediction)
+                                    {{ $prediction->prediction_result == 0 ? '✅ Tidak Berisiko Serangan Jantung' : '⚠️ Berisiko Serangan Jantung' }}
+                                @else
+                                    -
+                                @endif
                             </h4>
                         </div>
                         <div class="flex items-center mb-6">
@@ -133,28 +137,34 @@
                         <div id="riskBox"
                             class="p-6 border shadow-lg border-green-200/50 rounded-xl bg-gradient-to-r from-green-50/80 to-emerald-50/80 backdrop-blur-sm">
                             <div class="flex">
-                                <div class="p-2 mr-4 rounded-lg bg-green-500/10">
-                                    <i
-                                        class="text-2xl fas {{ $prediction->prediction_result == 0 ? 'fa-check-circle text-green-500' : 'fa-exclamation-triangle text-orange-500' }}"></i>
-                                </div>
-                                <div>
-                                    <p id="riskTitle" class="text-lg font-bold text-green-800">Risiko Rendah</p>
-                                    <p id="riskDescription" class="mt-1 text-gray-700">Pertahankan gaya hidup sehat
-                                        Anda.</p>
-                                </div>
+                                @if ($prediction)
+                                    <div class="p-2 mr-4 rounded-lg bg-green-500/10">
+                                        <i
+                                            class="text-2xl fas {{ $prediction->prediction_result == 0 ? 'fa-check-circle text-green-500' : 'fa-exclamation-triangle text-orange-500' }}"></i>
+                                    </div>
+                                    <div>
+                                        <p id="riskTitle" class="text-lg font-bold text-green-800">Risiko Rendah</p>
+                                        <p id="riskDescription" class="mt-1 text-gray-700">Pertahankan gaya hidup sehat
+                                            Anda.</p>
+                                    </div>
+                                @else
+                                    -
+                                @endif
                             </div>
                         </div>
                         <div
                             class="p-6 mt-6 border bg-gradient-to-r from-blue-50/80 to-indigo-50/80 rounded-xl border-blue-100/30 backdrop-blur-sm">
-                            <p class="leading-relaxed text-gray-700">
-                                Berdasarkan data yang diberikan, Anda termasuk dalam kategori
-                                <span
-                                    class="font-bold text-blue-600">{{ $prediction->prediction_result == 0 ? 'Risiko Rendah' : 'Risiko Tinggi' }}</span>
-                                terkena serangan jantung. Model memperkirakan kemungkinan sebesar
-                                <span class="font-bold text-blue-600">{{ $prediction->probability * 100 }}%</span> bahwa
-                                Anda berisiko.
-                                Segera konsultasikan dengan tenaga medis untuk langkah pencegahan lebih lanjut.
-                            </p>
+                            @if ($prediction)
+                                <p class="leading-relaxed text-gray-700">
+                                    Berdasarkan data yang diberikan, Anda termasuk dalam kategori
+                                    <span
+                                        class="font-bold text-blue-600">{{ $prediction->prediction_result == 0 ? 'Risiko Rendah' : 'Risiko Tinggi' }}</span>
+                                    terkena serangan jantung. Model memperkirakan kemungkinan sebesar
+                                    <span class="font-bold text-blue-600">{{ $prediction->probability * 100 }}%</span>
+                                    bahwa
+                                    Anda berisiko.
+                                    Segera konsultasikan dengan tenaga medis untuk langkah pencegahan lebih lanjut.
+                                </p>
                         </div>
                         <div
                             class="p-6 mt-6 border border-amber-200/50 rounded-xl bg-gradient-to-r from-amber-50/80 to-yellow-50/80 backdrop-blur-sm">
@@ -170,13 +180,16 @@
                                         dokter.</p>
                                 </div>
                             </div>
+                        @else
+                            <span></span>
+                            @endif
                         </div>
                     </div>
 
                     <div
                         class="p-6 transition-all duration-300 border shadow-2xl bg-white/40 backdrop-blur-xl rounded-2xl border-white/30 shadow-black/5 md:p-8 hover:shadow-3xl">
                         <h3
-                            class="mb-6 text-xl font-bold text-transparent md:text-2xl bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text">
+                            class="mb-6 text-xl font-bold md:text-2xl">
                             📊 Riwayat Prediksi</h3>
                         <div class="p-4 bg-white/30 rounded-xl backdrop-blur-sm">
                             <canvas id="predictionChart" height="200"></canvas>
@@ -195,10 +208,10 @@
                     <div
                         class="p-6 transition-all duration-300 border shadow-2xl lg:col-span-2 bg-white/40 backdrop-blur-xl rounded-2xl border-white/30 shadow-black/5 md:p-8 hover:shadow-3xl">
                         <h3
-                            class="mb-6 text-xl font-bold text-transparent md:text-2xl bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text">
+                            class="mb-6 text-xl font-bold md:text-2xl">
                             💡 Rekomendasi untuk Anda</h3>
                         <div class="space-y-4">
-                            @if ($prediction->count() > 0)
+                            @if ($prediction)
                                 @foreach ($displayRecommendations as $recommendation)
                                     <div class="transition-all duration-300 group hover:scale-102">
                                         <div
@@ -217,7 +230,7 @@
                                         </div>
                                     </div>
                                 @endforeach
-                                
+
                                 <div class="pt-4">
                                     <button onclick="openModal()"
                                         class="w-full px-6 py-3 text-white transition-all duration-300 transform shadow-lg bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl hover:from-blue-600 hover:to-indigo-700 hover:scale-105 hover:shadow-xl">
@@ -251,7 +264,7 @@
                                 <div
                                     class="flex items-center justify-between p-6 border-b bg-gradient-to-r from-blue-50 to-indigo-50">
                                     <h2
-                                        class="text-2xl font-bold text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text">
+                                        class="text-2xl font-bold">
                                         💡 Rekomendasi Lengkap untuk Anda
                                     </h2>
                                     <button onclick="closeModal()"
@@ -262,7 +275,7 @@
 
                                 {{-- Modal Content --}}
                                 <div class="p-6 overflow-y-auto max-h-[70vh]">
-                                    @if ($prediction->count() > 0)
+                                    @if ($prediction)
                                         @if ($prediction->prediction_result == 1)
                                             <div class="p-4 mb-6 border border-red-200 bg-red-50 rounded-xl">
                                                 <h3 class="mb-2 text-lg font-bold text-red-800">⚠️ Rekomendasi untuk
@@ -388,7 +401,7 @@
                     <div
                         class="p-6 transition-all duration-300 border shadow-2xl bg-white/40 backdrop-blur-xl rounded-2xl border-white/30 shadow-black/5 md:p-8 hover:shadow-3xl">
                         <h3
-                            class="mb-6 text-xl font-bold text-transparent md:text-2xl bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text">
+                            class="mb-6 text-xl font-bold md:text-2xl">
                             ⚡ Tindakan</h3>
                         <div class="space-y-4">
                             <a href="{{ route('predict') }}" class="block group">
@@ -423,7 +436,7 @@
                     class="p-6 mt-6 transition-all duration-300 border shadow-2xl md:p-8 md:mt-8 bg-white/40 backdrop-blur-xl rounded-2xl border-white/30 shadow-black/5 hover:shadow-3xl">
                     <div class="flex flex-col gap-4 mb-6 sm:flex-row sm:items-center sm:justify-between">
                         <h3
-                            class="text-xl font-bold text-transparent md:text-2xl bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text">
+                            class="text-xl font-bold md:text-2xl">
                             📚 Rekomendasi Artikel Untuk Anda</h3>
                         @if ($articleRecommendation->count() > 0)
                             <a href="{{ route('article.list') }}"

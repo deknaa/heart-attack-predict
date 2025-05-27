@@ -76,21 +76,21 @@
                         <h2 class="text-lg font-semibold text-gray-700">Total Pengguna Baru</h2>
                     </div>
                     <div class="h-64">
-                        <canvas id="userGrowthChart" 
-                          data-labels='@json($chartData['label'])' 
-                          data-values='@json($chartData['data'])'>
+                        <canvas id="userGrowthChart" data-labels='@json($chartData['label'])'
+                            data-values='@json($chartData['data'])'>
                         </canvas>
                         {{-- <canvas id="userGrowthChart"></canvas> --}}
                     </div>
                 </div>
 
-                {{-- Bar Chart Prediction per week--}}
+                {{-- Bar Chart Prediction per week --}}
                 <div class="p-6 bg-white rounded-lg shadow-md">
                     <div class="flex items-center justify-between mb-4">
                         <h2 class="text-lg font-semibold text-gray-700">Total Prediksi Dilakukan User</h2>
                     </div>
                     <div class="h-64">
-                        <canvas id="barChart" data-labels='@json($barChartData["labels"])' data-values='@json($barChartData["data"])'></canvas>
+                        <canvas id="barChart" data-labels='@json($barChartData['labels'])'
+                            data-values='@json($barChartData['data'])'></canvas>
                     </div>
                 </div>
             </div>
@@ -108,8 +108,8 @@
                             $pieChartData['data'] = $pieChartData['data'] ?? [];
                         @endphp
 
-                        <canvas id="pieChart" 
-                            data-labels='@json($pieChartData["labels"])' data-values='@json($pieChartData["data"])'>
+                        <canvas id="pieChart" data-labels='@json($pieChartData['labels'])'
+                            data-values='@json($pieChartData['data'])'>
                         </canvas>
                     </div>
                     <div class="grid grid-cols-2 col-span-2 gap-4">
@@ -119,7 +119,7 @@
                                 <span class="text-gray-700">Berisiko</span>
                             </div>
                             <div class="mt-2">
-                                <span class="text-2xl font-bold text-gray-800">{{ $riskData[1] ?? 0 }}</span>
+                                <span class="text-2xl font-bold text-gray-800">{{ $riskCount[1] ?? 0 }}</span>
                             </div>
                         </div>
                         <div class="p-4 rounded-lg bg-gray-50">
@@ -128,7 +128,7 @@
                                 <span class="text-gray-700">Tidak Berisiko</span>
                             </div>
                             <div class="mt-2">
-                                <span class="text-2xl font-bold text-gray-800">{{ $riskData[0] ?? 0 }}</span>
+                                <span class="text-2xl font-bold text-gray-800">{{ $riskCount[0] ?? 0 }}</span>
                             </div>
                         </div>
                     </div>

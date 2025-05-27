@@ -71,16 +71,6 @@
                                     ✨ {{ ucwords(str_replace('_', ' ', $article->category)) }}
                                 </span>
                             </div>
-                            
-                            {{-- Reading Time Badge --}}
-                            <div class="absolute top-4 left-4">
-                                <span class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-gray-700 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-white/50">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    {{ rand(3, 8) }} min
-                                </span>
-                            </div>
 
                             {{-- Hover Overlay --}}
                             <div class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:opacity-100"></div>
@@ -97,12 +87,6 @@
                                         </svg>
                                     </div>
                                     <span class="font-medium">{{ $article->created_at->diffForHumans() }}</span>
-                                </div>
-                                <div class="flex items-center text-sm text-gray-500">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                                    </svg>
-                                    {{ rand(12, 89) }}
                                 </div>
                             </div>
                             

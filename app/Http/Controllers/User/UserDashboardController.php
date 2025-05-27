@@ -18,16 +18,7 @@ class UserDashboardController extends Controller
         $prediction = Prediction::where('user_id', Auth::id())->latest()->first(); // ambil prediksi terakhir user
 
         // inisialisasi nilai default jika tidak ada data prediksi
-        $cp = $trestbps = $chol = $probability = $age = $input = null;
-
-        if ($prediction) {
-            $input = $prediction->input_data;
-            $cp = $input['thalach'] ?? null; // detak jantung
-            $trestbps = $input['trestbps'] ?? null; // tekanan darah
-            $chol = $input['chol'] ?? null; // kolesterol
-            $age = $input['age'] ?? null; // usia
-            $probability = $prediction->probability ?? null;
-        }
+        $cp = $trestbps = $chol = $probability = $age = $input = $displayRecommendations = null;
 
         $heartDiseaseRecommendations = [
             [
@@ -77,10 +68,17 @@ class UserDashboardController extends Controller
             ],
         ];
 
-        $displayRecommendations = $prediction->prediction_result == 1
-            ? $heartDiseaseRecommendations
-            : $healthyRecommendations;
-
+         if ($prediction) {
+            $input = $prediction->input_data;
+            $cp = $input['thalach'] ?? null; // detak jantung
+            $trestbps = $input['trestbps'] ?? null; // tekanan darah
+            $chol = $input['chol'] ?? null; // kolesterol
+            $age = $input['age'] ?? null; // usia
+            $probability = $prediction->probability ?? null;
+            $displayRecommendations = $prediction->prediction_result == 1
+                ? $heartDiseaseRecommendations
+                : $healthyRecommendations;
+        }
 
         return view('user.dashboard.dashboard-user', compact('articleRecommendation', 'prediction', 'cp', 'trestbps', 'chol', 'age', 'displayRecommendations'));
     }

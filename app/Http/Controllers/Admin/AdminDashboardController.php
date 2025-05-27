@@ -94,15 +94,27 @@ class AdminDashboardController extends Controller
         // ----------------------------
         // 2. Data Pie Chart: Risiko vs Tidak Risiko
         // ----------------------------
-        $riskData = Prediction::select('prediction_result', DB::raw('COUNT(*) as total'))
-            ->groupBy('prediction_result')
-            ->get()
-            ->pluck('total', 'prediction_result');
+        // Ambil prediksi terbaru untuk setiap user
+        // Ambil prediksi terakhir per user
+        $sub = DB::table('predictions')
+            ->select('user_id', DB::raw('MAX(created_at) as latest'))
+            ->groupBy('user_id');
+
+        $latestPredictions = DB::table('predictions as p')
+            ->joinSub($sub, 'latest', function ($join) {
+                $join->on('p.user_id', '=', 'latest.user_id')
+                    ->on('p.created_at', '=', 'latest.latest');
+            })
+            ->select('p.prediction_result')
+            ->get();
+
+        // Hitung jumlah yang berisiko dan tidak berisiko dari hasil terakhir user
+        $riskCount = $latestPredictions->groupBy('prediction_result')->map->count();
 
         $pieLabels = ['Berisiko', 'Tidak Berisiko'];
         $pieData = [
-            $riskData['1'] ?? 0,
-            $riskData['0'] ?? 0,
+            $riskCount[1] ?? 0, // prediction_result = 1
+            $riskCount[0] ?? 0, // prediction_result = 0
         ];
 
         $pieChartData = [
@@ -110,7 +122,7 @@ class AdminDashboardController extends Controller
             'data' => $pieData
         ];
 
-        return view('admin.dashboard.dashboard-admin', compact('totalArticlePublished', 'totalUsers', 'userGrowth', 'articleGrowth', 'chartData', 'barChartData', 'pieChartData', 'riskData'));
+        return view('admin.dashboard.dashboard-admin', compact('totalArticlePublished', 'totalUsers', 'userGrowth', 'articleGrowth', 'chartData', 'barChartData', 'pieChartData', 'riskCount'));
     }
 
     // Display list of user on admin dashboard
