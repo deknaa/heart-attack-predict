@@ -14,7 +14,7 @@
             <div class="p-6 border shadow-2xl bg-white/40 backdrop-blur-xl rounded-2xl border-white/30 shadow-black/5 md:p-8">
                 <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <div>
-                        <h1 class="mb-2 text-2xl font-bold text-transparent md:text-3xl bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text">
+                        <h1 class="mb-2 text-2xl font-bold md:text-3xl">
                             📊 History Prediksi Anda
                         </h1>
                         <p class="text-gray-600">Lihat riwayat lengkap prediksi kesehatan jantung Anda</p>
@@ -231,7 +231,7 @@
             {{-- Modal Header --}}
             <div class="flex flex-col pb-4 mb-6 border-b sm:flex-row sm:items-center sm:justify-between border-white/30">
                 <div>
-                    <h3 class="text-xl font-bold text-transparent md:text-2xl bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text" id="modalTitle">
+                    <h3 class="text-xl font-bold md:text-2xl" id="modalTitle">
                         🔍 Detail Prediksi Kesehatan
                     </h3>
                     <p class="mt-1 text-sm text-gray-600">Analisis lengkap hasil prediksi Anda</p>

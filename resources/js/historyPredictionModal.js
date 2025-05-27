@@ -112,27 +112,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function getHighRiskRecommendations() {
         return [
-            "Periksakan diri ke dokter untuk evaluasi menyeluruh kardiovaskular sesegera mungkin.",
-            "Pertimbangkan untuk melakukan tes diagnostik lanjutan seperti EKG, ekokardiografi, atau tes stres jantung.",
-            "Evaluasi dan kelola faktor risiko yang teridentifikasi dengan bantuan profesional kesehatan.",
-            "Terapkan diet rendah garam, rendah lemak jenuh, dan kaya serat untuk mendukung kesehatan jantung.",
-            "Lakukan aktivitas fisik moderat secara teratur sesuai dengan rekomendasi dokter.",
-            "Hentikan kebiasaan merokok dan hindari paparan asap rokok pasif.",
-            "Batasi konsumsi alkohol sesuai dengan rekomendasi medis.",
-            "Kelola stres dengan teknik relaksasi seperti meditasi, yoga, atau pernapasan dalam."
+            "Rutin berolahraga minimal 30 menit per hari",
+            "Terus aktif bergerak sesuai kemampuan",
+            "Konsultasi rutin ke dokter jantung",
+            "Menjaga tekanan darah dan kadar gula",
+            "Menghindari makanan tinggi kolesterol",
+            "Konsumsi sayur, buah, dan ikan secara teratur",
+            "Mengontrol berat badan ideal",
+            "Berhenti/hindari untuk merokok",
+            "Menghindari alkohol dan zat adiktif",
+            "Kelola stres dengan baik",
+            "Mengatur pola tidur yang sehat (7-8 jam per hari)",
+            "Hindari begadang dan tidur tidak teratur"            
         ];
     }
 
     function getLowRiskRecommendations() {
         return [
-            "Pertahankan gaya hidup sehat dengan diet seimbang kaya buah, sayur, dan biji-bijian.",
-            "Lakukan aktivitas fisik setidaknya 150 menit per minggu dengan intensitas sedang.",
-            "Jaga berat badan ideal dan perhatikan lingkar pinggang.",
-            "Periksa tekanan darah, gula darah, dan kolesterol secara berkala.",
-            "Hindari merokok dan batasi konsumsi alkohol.",
-            "Kelola stres dengan baik melalui teknik relaksasi dan istirahat yang cukup.",
-            "Konsumsi makanan rendah garam dan lemak jenuh untuk menjaga kesehatan jantung.",
-            "Tetap lakukan pemeriksaan kesehatan rutin setahun sekali."
+            "Jaga gaya hidup sehat",
+            "Terus aktif bergerak dan berolahraga",
+            "Rutin cek kesehatan secara berkala",
+            "Konsultasikan gaya hidup dengan ahli gizi/dokter",
+            "Hindari pola makan yang tidak sehat",
+            "Batasi konsumsi gula, garam, dan lemak jenuh",
+            "Jaga berat badan ideal",
+            "Kelola stres dengan baik",
+            "Perhatikan kualitas tidur",
+            "Jangan merokok dan hindari asap rokok",
         ];
     }
 
