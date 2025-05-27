@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('google_id')->nullable();
             $table->string('avatar')->nullable();
             $table->boolean('is_data_filled')->default(false);
+            $table->string('alamat')->nullable();
+            $table->string('no_telp')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

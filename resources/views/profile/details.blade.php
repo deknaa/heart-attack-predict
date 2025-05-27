@@ -29,7 +29,7 @@
                             <div class="flex flex-col justify-between sm:flex-row sm:items-center">
                                 <div>
                                     <h1 class="text-2xl font-bold text-gray-900">{{ Auth::user()->name }}</h1>
-                                    <p class="text-sm text-gray-500"><span>@</span>{{ Auth::user()->username }} • Joined
+                                    <p class="text-sm text-gray-500"><span>@</span>{{ Auth::user()->username }} • Terdaftar
                                         {{ Auth::user()->created_at->diffForHumans() }}</p>
                                 </div>
                                 <div class="mt-3 sm:mt-0">
@@ -49,8 +49,8 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                     </svg>
-                                    @if ($users->address)
-                                        <span class="ml-1 text-sm">{{ $users->address }}</span>
+                                    @if ($users->alamat)
+                                        <span class="ml-1 text-sm">{{ $users->alamat }}</span>
                                     @else
                                         <span class="ml-1 text-sm">Unknown</span>
                                     @endif
@@ -104,10 +104,24 @@
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ubah
                                             Password (Opsional)</label>
                                         <input type="password" name="password" id="password" placeholder="••••••••"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                            required />
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" />
                                     </div>
                                 @endif
+                                <div>
+                                    <label for="alamat"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat</label>
+                                    <input type="text" name="alamat" id="alamat"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                        value="{{ $users->alamat }}" required />
+                                </div>
+                                <div>
+                                    <label for="no_telp"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No
+                                        Telp</label>
+                                    <input type="number" name="no_telp" id="no_telp"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                        value="{{ $users->no_telp }}" required />
+                                </div>
                                 <button type="submit"
                                     class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update
                                     User Profile</button>
@@ -150,8 +164,8 @@
                             </div>
                             <div class="space-y-3">
                                 <div class="flex">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
@@ -220,13 +234,11 @@
     @if (session('success'))
         <script>
             Swal.fire({
-                toast: true,
-                position: "bottom-end",
                 title: 'Success',
                 text: "{{ session('success') }}",
                 icon: 'success',
                 showConfirmButton: false,
-                timer: 3000,
+                timer: 3500,
                 timerProgressBar: true,
             });
         </script>

@@ -48,12 +48,17 @@ class ProfileController extends Controller
 
         $request->validate([
             'name' => ['required', 'string', 'max:255', 'min:3'],
-            'password' => ['required', Rules\Password::defaults()],
+            'password' => [Rules\Password::defaults()],
+            'alamat' => ['required', 'string'],
+            'no_telp' => ['required', 'numeric'],
         ]);
 
         $users->update([
             'name' => $request->name,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
+            'alamat' => $request->alamat,
+            'no_telp' => $request->no_telp,
+            'is_data_filled' => true,
         ]);
 
         return redirect()->back()->with('success', "Profile User anda berhasil di perbaharui ☺️");
