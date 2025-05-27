@@ -20,13 +20,8 @@
                 
                 <div class="relative z-10">
                     <div class="flex items-center mb-4">
-                        <div class="p-3 mr-4 shadow-lg bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </div>
                         <div>
-                            <h1 class="mb-2 text-3xl font-bold text-transparent md:text-5xl bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 bg-clip-text">
+                            <h1 class="mb-2 text-3xl font-bold md:text-5xl">
                                 📚 Artikel Terbaru
                             </h1>
                             <p class="text-lg font-medium text-gray-600 md:text-xl">Temukan informasi menarik dan bermanfaat dari koleksi artikel kami</p>
@@ -34,22 +29,14 @@
                     </div>
                     
                     {{-- Stats Cards --}}
-                    <div class="grid grid-cols-2 gap-4 mt-8 md:grid-cols-4">
+                    <div class="grid grid-cols-2 gap-4 mt-8">
                         <div class="p-4 text-center transition-all duration-300 transform border bg-white/50 backdrop-blur-sm rounded-2xl border-white/30 hover:scale-105">
                             <div class="text-2xl font-bold text-blue-600">{{ $articles->count() }}</div>
-                            <div class="text-sm font-medium text-gray-600">Artikel Hari Ini</div>
-                        </div>
-                        <div class="p-4 text-center transition-all duration-300 transform border bg-white/50 backdrop-blur-sm rounded-2xl border-white/30 hover:scale-105">
-                            <div class="text-2xl font-bold text-purple-600">{{ $articles->count() * 3 }}</div>
-                            <div class="text-sm font-medium text-gray-600">Total Pembaca</div>
+                            <div class="text-sm font-medium text-gray-600">Total Artikel</div>
                         </div>
                         <div class="p-4 text-center transition-all duration-300 transform border bg-white/50 backdrop-blur-sm rounded-2xl border-white/30 hover:scale-105">
                             <div class="text-2xl font-bold text-emerald-600">{{ $articles->unique('category')->count() }}</div>
                             <div class="text-sm font-medium text-gray-600">Kategori</div>
-                        </div>
-                        <div class="p-4 text-center transition-all duration-300 transform border bg-white/50 backdrop-blur-sm rounded-2xl border-white/30 hover:scale-105">
-                            <div class="text-2xl font-bold text-orange-600">4.8★</div>
-                            <div class="text-sm font-medium text-gray-600">Rating</div>
                         </div>
                     </div>
                 </div>
@@ -68,13 +55,7 @@
                                      alt="{{ $article->title }}" 
                                      class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110">
                             @else
-                                <div class="relative flex items-center justify-center w-full h-full overflow-hidden bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500">
-                                    {{-- Animated Background Pattern --}}
-                                    <div class="absolute inset-0 opacity-20">
-                                        <div class="absolute top-0 left-0 w-20 h-20 transform -translate-x-10 -translate-y-10 bg-white rounded-full animate-bounce animation-delay-500"></div>
-                                        <div class="absolute bottom-0 right-0 w-16 h-16 transform translate-x-8 translate-y-8 bg-white rounded-full animate-bounce animation-delay-1000"></div>
-                                        <div class="absolute w-12 h-12 transform -translate-x-6 -translate-y-6 bg-white rounded-full top-1/2 left-1/2 animate-bounce animation-delay-1500"></div>
-                                    </div>
+                                <div class="relative flex items-center justify-center w-full h-full overflow-hidden bg-gradient-to-br from-red-500 via-red-700 to-red-600">
                                     <div class="relative z-10 text-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mx-auto mb-2 text-white animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -86,7 +67,7 @@
                             
                             {{-- Enhanced Category Badge --}}
                             <div class="absolute top-4 right-4">
-                                <span class="inline-flex items-center px-3 py-1.5 text-xs font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full shadow-lg backdrop-blur-sm border border-white/20 hover:from-blue-700 hover:to-purple-700 transition-all duration-300">
+                                <span class="inline-flex items-center px-3 py-1.5 text-xs font-bold text-white bg-gradient-to-r from-red-600 to-red-600 rounded-full shadow-lg backdrop-blur-sm border border-white/60 hover:from-blue-700 hover:to-purple-700 transition-all duration-300">
                                     ✨ {{ ucwords(str_replace('_', ' ', $article->category)) }}
                                 </span>
                             </div>
@@ -162,7 +143,7 @@
                                 
                                 {{-- Enhanced CTA Button --}}
                                 <a href="{{ route('article.detail', $article->slug ?? '') }}" 
-                                   class="group/btn inline-flex items-center px-6 py-3 text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-500/25 hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-blue-500/50 relative overflow-hidden">
+                                   class="group/btn inline-flex items-center px-6 py-3 text-sm font-bold text-white bg-gradient-to-r from-red-600 to-red-600 rounded-2xl hover:from-red-700 hover:to-red-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-500/25 hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-blue-500/50 relative overflow-hidden">
                                     {{-- Button Background Animation --}}
                                     <div class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-r from-white/20 to-transparent group-hover/btn:opacity-100"></div>
                                     <span class="relative z-10 mr-2">Baca Selengkapnya</span>
