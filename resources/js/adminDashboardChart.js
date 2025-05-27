@@ -107,33 +107,33 @@ document.addEventListener('DOMContentLoaded', function () {
     const pieChart = document.getElementById('pieChart');
     const labelPie = JSON.parse(pieChart.dataset.labels || '[]');
     const dataPie = JSON.parse(pieChart.dataset.values || '[]');
-    
+
     if (labelPie.length > 0 && dataPie.length > 0) {
-    const categoriesCtx = pieChart.getContext('2d');
-    const categoriesChart = new Chart(categoriesCtx, {
-        type: 'doughnut',
-        data: {
-            labels: labelPie,
-            datasets: [{
-                data: dataPie,
-                backgroundColor: [
-                    'rgba(255, 0, 0, 0.8)',
-                    'rgba(16, 185, 129, 0.8)',
-                ],
-                borderWidth: 0,
-                hoverOffset: 4
-            }]
-        },
-        options: {
-            maintainAspectRatio: false,
-            cutout: '70%',
-            plugins: {
-                legend: {
-                    display: false
+        const categoriesCtx = pieChart.getContext('2d');
+        const categoriesChart = new Chart(categoriesCtx, {
+            type: 'doughnut',
+            data: {
+                labels: labelPie,
+                datasets: [{
+                    data: dataPie,
+                    backgroundColor: [
+                        'rgba(255, 0, 0, 0.8)',
+                        'rgba(16, 185, 129, 0.8)',
+                    ],
+                    borderWidth: 0,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: {
+                    legend: {
+                        display: false
+                    }
                 }
             }
-        }
-    });
+        });
     }
 
     window.userGrowthChart = userGrowthChart;

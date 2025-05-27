@@ -122,7 +122,33 @@ class AdminDashboardController extends Controller
             'data' => $pieData
         ];
 
-        return view('admin.dashboard.dashboard-admin', compact('totalArticlePublished', 'totalUsers', 'userGrowth', 'articleGrowth', 'chartData', 'barChartData', 'pieChartData', 'riskCount'));
+        // ----------------------------
+        // 3. Data Bar Chart: Prediksi per Bulan (1 Tahun)
+        // ----------------------------
+        $monthlyPredictions = Prediction::select(
+            DB::raw('MONTH(created_at) as month'),
+            DB::raw('COUNT(*) as total')
+        )
+            ->whereYear('created_at', $now->year)
+            ->groupBy(DB::raw('MONTH(created_at)'))
+            ->orderBy(DB::raw('MONTH(created_at)'))
+            ->get();
+
+        $monthlyLabels = [];
+        $monthlyData = [];
+
+        for ($i = 1; $i <= 12; $i++) {
+            $monthlyLabels[] = Carbon::create()->month($i)->format('F'); // e.g., "January"
+            $data = $monthlyPredictions->firstWhere('month', $i);
+            $monthlyData[] = $data ? $data->total : 0;
+        }
+
+        $monthlyPredictionChart = [
+            'labels' => $monthlyLabels,
+            'data' => $monthlyData,
+        ];
+
+        return view('admin.dashboard.dashboard-admin', compact('totalArticlePublished', 'totalUsers', 'userGrowth', 'articleGrowth', 'chartData', 'barChartData', 'pieChartData', 'riskCount', 'monthlyPredictionChart'));
     }
 
     // Display list of user on admin dashboard
