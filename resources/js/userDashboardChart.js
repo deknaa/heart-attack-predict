@@ -101,4 +101,31 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+     function openModal() {
+            document.getElementById('recommendationModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('recommendationModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('recommendationModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close modal with ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        window.openModal = openModal;
+        window.closeModal = closeModal;
+
 });
