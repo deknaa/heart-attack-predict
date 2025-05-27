@@ -16,8 +16,15 @@ class PredictionController extends Controller
     // method untuk menampilkan halaman prediksi
     public function index()
     {   
+        $users = Auth::user();
+
         $latestPrediction = auth()->user()->predictions()->latest()->first();
         $inputData = $latestPrediction ? $latestPrediction->input_data : [];
+
+        if(!$users->is_data_filled) 
+        {
+            return redirect()->route('profile.index', $users->id)->with('error', 'Anda harus mengupdate profile dahulu sebelum dapat menggunakan fitur prediksi.');
+        }
 
         return view('prediction.index', compact('inputData'));
     }
