@@ -261,12 +261,12 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        stepSize: 1,
                         grid: {
                             color: 'rgba(0, 0, 0, 0.1)',
                             drawBorder: false,
                         },
                         ticks: {
+                            precision: 0,
                             color: 'rgba(0, 0, 0, 0.6)'
                         }
                     },
@@ -275,6 +275,7 @@
                             display: false,
                         },
                         ticks: {
+                            precision: 0,
                             color: 'rgba(0, 0, 0, 0.6)'
                         }
                     }

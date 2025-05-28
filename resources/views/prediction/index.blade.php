@@ -527,8 +527,7 @@
                             </div>
                             <h3 class="ml-3 text-lg font-semibold text-gray-800">Akurasi Model</h3>
                         </div>
-                        <p class="text-gray-600">Model machine learning ini memiliki tingkat akurasi 90% berdasarkan
-                            dataset Heart Attack dari Kaggle.</p>
+                        <p class="text-gray-600">Model machine learning ini memiliki tingkat akurasi 83.61% (berdasarkan hasil training model)</p>
                     </div>
 
                     <div class="p-6 bg-white shadow-lg card-hover rounded-2xl">

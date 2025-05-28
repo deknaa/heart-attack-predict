@@ -20,7 +20,7 @@
                         <div class="ml-4">
                             <h3 class="text-lg font-medium text-gray-900 dark:text-gray-50">Analisis Faktor Risiko Komprehensif</h3>
                             <p class="mt-2 text-gray-600 dark:text-gray-300">
-                                Kami menganalisis lebih dari 15 faktor risiko yang telah terbukti secara ilmiah
+                                Kami menganalisis lebih dari 12 faktor risiko yang telah terbukti secara ilmiah
                                 berhubungan dengan serangan jantung.
                             </p>
                         </div>
@@ -34,7 +34,7 @@
                         <div class="ml-4">
                             <h3 class="text-lg font-medium text-gray-900 dark:text-gray-50">Algoritma AI yang Teruji</h3>
                             <p class="mt-2 text-gray-600 dark:text-gray-300">
-                                Model prediksi kami dilatih dengan dataset dari ribuan kasus nyata dengan tingkat
+                                Model prediksi kami dilatih dengan dataset dari ratusan kasus nyata dengan tingkat
                                 akurasi mencapai 83.61%.
                             </p>
                         </div>
