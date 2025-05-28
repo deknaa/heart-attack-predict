@@ -136,7 +136,60 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    const monthlyPredictionChart = document.getElementById('monthlyPredictionChart');
+    const labelMonthly = JSON.parse(monthlyPredictionChart.dataset.labels);
+    const dataMonthly = JSON.parse(monthlyPredictionChart.dataset.values);
+    const monthlyChartCtx = document.getElementById('monthlyPredictionChart').getContext('2d');
+    const monthlyChart = new Chart(monthlyChartCtx, {
+        type: 'bar',
+        data: {
+            labels: labelMonthly,
+            datasets: [{
+                label: 'Jumlah Prediksi per Bulan',
+                data: dataMonthly,
+                backgroundColor: 'rgba(147, 51, 234, 0.7)',
+                borderColor: 'rgba(147, 51, 234, 1)',
+                borderWidth: 2,
+                borderRadius: 8,
+                borderSkipped: false,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.1)',
+                        drawBorder: false,
+                    },
+                    ticks: {
+                        precision: 0,
+                        color: 'rgba(0, 0, 0, 0.6)'
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false,
+                    },
+                    ticks: {
+                        precision: 0,
+                        color: 'rgba(0, 0, 0, 0.6)'
+                    }
+                }
+            }
+        }
+    });
+
     window.userGrowthChart = userGrowthChart;
     window.trafficChart = trafficChart;
     window.categoriesChart = categoriesChart;
+    window.monthlyChart = monthlyChart;
+
 });
