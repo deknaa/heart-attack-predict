@@ -44,7 +44,7 @@
                                     <span class="font-semibold">{{ abs($articleGrowth) }}%</span>
                                 </div>
                             @endif
-                            <span class="ml-3 text-sm text-gray-600 dark:text-gray-300">Since last month</span>
+                            <span class="ml-3 text-sm text-gray-600 dark:text-gray-300">Sejak bulan lalu</span>
                         </div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                                     <span class="font-semibold">{{ abs($userGrowth) }}%</span>
                                 </div>
                             @endif
-                            <span class="ml-3 text-sm text-gray-600 dark:text-gray-300">Since last month</span>
+                            <span class="ml-3 text-sm text-gray-600 dark:text-gray-300">Sejak bulan lalu</span>
                         </div>
                     </div>
                 </div>
