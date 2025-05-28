@@ -50,10 +50,6 @@
                         <select name="category" id="category">
                             <option value="">Pilih Kategori</option>
                             <option value="umum">Umum</option>
-                            <option value="kesehatan_mental">Mental</option>
-                            <option value="gizi_nutrisi">Gizi dan Nutrisi</option>
-                            <option value="penyakit">Penyakit</option>
-                            <option value="seksual_reproduksi">Seksual dan Reproduksi</option>
                             <option value="tips_kesehatan">Tips Kesehatan</option>
                         </select>
                         @error('category')
@@ -77,7 +73,7 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var quill = new Quill('#editor', {
+            const quill = new Quill('#editor', {
                 theme: 'snow',
                 modules: {
                     toolbar: [
@@ -168,5 +164,7 @@
                 };
             });
         });
+
+        const quill = window.quillInstance;
     </script>
 </x-app-layout>

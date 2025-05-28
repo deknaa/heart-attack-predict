@@ -12,37 +12,36 @@
                     Kembali
                 </a>
             </div>
-    
+
             <form action="{{ route('article.update', $article->slug) }}" enctype="multipart/form-data" method="POST"
                 class="space-y-6">
                 @method('PUT')
                 @csrf
-    
+
                 {{-- Title --}}
                 <div>
                     <label for="title" class="block text-sm font-medium text-gray-700">Judul Artikel</label>
                     <input type="text" name="title" id="title"
                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                        value="{{ old('title', $article->title) }}" required>
+                        value="{{ old('title', $article->title) }}">
                     @error('title')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
-    
+
                 {{-- Content --}}
                 <div>
                     <label for="editor" class="block text-sm font-medium text-gray-700">Konten Artikel</label>
-                    <div id="editor" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm min-h-[300px]">
-                        {!! $article->content !!}
-                    </div>
-                    <input type="hidden" name="content" id="content" value="{{ old('content', $article->content) }}">
+                    <div id="editor" class="h-48 p-2 bg-white border rounded"></div>
+                    <input type="hidden" name="content" id="content">
                     @error('content')
                         <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                     @enderror
-                    <p class="mt-2 text-xs text-gray-500">You can upload images by clicking the image icon in the toolbar
+                    <p class="mt-2 text-xs text-gray-500">You can upload images by clicking the image icon in the
+                        toolbar
                     </p>
                 </div>
-    
+
                 <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
                     <!-- Featured Image -->
                     <div class="md:col-span-1">
@@ -50,8 +49,9 @@
                         <div class="relative mt-2">
                             <div
                                 class="overflow-hidden bg-gray-100 border border-gray-300 rounded-md aspect-w-16 aspect-h-9">
-                                <img id="featured-image-preview" src="{{ asset('storage/' . $article->featured_image) }}"
-                                    alt="Featured image" class="object-cover w-full h-auto">
+                                <img id="featured-image-preview"
+                                    src="{{ asset('storage/' . $article->featured_image) }}" alt="Featured image"
+                                    class="object-cover w-full h-auto">
                             </div>
                             <div class="mt-2">
                                 <label for="featured_image"
@@ -71,13 +71,14 @@
                             @enderror
                         </div>
                     </div>
-    
+
                     <!-- Visibility -->
                     <div class="md:col-span-1">
                         <label for="visibility" class="block text-sm font-medium text-gray-700">Visibilitas</label>
                         <select name="visibility" id="visibility"
                             class="block w-full py-2 pl-3 pr-10 mt-1 text-base border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                            <option value="public" {{ $article->visibility == 'public' ? 'selected' : '' }}>Public</option>
+                            <option value="public" {{ $article->visibility == 'public' ? 'selected' : '' }}>Public
+                            </option>
                             <option value="private" {{ $article->visibility == 'private' ? 'selected' : '' }}>Private
                             </option>
                         </select>
@@ -85,23 +86,15 @@
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
-    
+
                     <!-- Category -->
                     <div class="md:col-span-1">
                         <label for="category" class="block text-sm font-medium text-gray-700">Kategori</label>
                         <select name="category" id="category"
                             class="block w-full py-2 pl-3 pr-10 mt-1 text-base border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             <option value="umum" {{ $article->category == 'umum' ? 'selected' : '' }}>Umum</option>
-                            <option value="kesehatan_mental"
-                                {{ $article->category == 'kesehatan_mental' ? 'selected' : '' }}>Kesehatan Mental</option>
-                            <option value="gizi_nutrisi" {{ $article->category == 'gizi_nutrisi' ? 'selected' : '' }}>Gizi
-                                dan Nutrisi</option>
-                            <option value="penyakit" {{ $article->category == 'penyakit' ? 'selected' : '' }}>Penyakit
-                            </option>
-                            <option value="seksual_reproduksi"
-                                {{ $article->category == 'seksual_reproduksi' ? 'selected' : '' }}>Seksual dan Reproduksi
-                            </option>
-                            <option value="tips_kesehatan" {{ $article->category == 'tips_kesehatan' ? 'selected' : '' }}>
+                            <option value="tips_kesehatan"
+                                {{ $article->category == 'tips_kesehatan' ? 'selected' : '' }}>
                                 Tips Kesehatan</option>
                         </select>
                         @error('category')
@@ -109,7 +102,7 @@
                         @enderror
                     </div>
                 </div>
-    
+
                 <div class="flex justify-end pt-5 space-x-3 border-t border-gray-200">
                     <a href="{{ route('article.index') }}"
                         class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
@@ -124,119 +117,95 @@
         </div>
     </div>
     <script>
-        const toolbarOptions = [
-            ['bold', 'italic', 'underline', 'strike'], // toggled buttons
-            ['blockquote', 'code-block'],
-            ['link', 'image', 'video', 'formula'],
-
-            [{
-                'header': 1
-            }, {
-                'header': 2
-            }], // custom button values
-            [{
-                'list': 'ordered'
-            }, {
-                'list': 'bullet'
-            }, {
-                'list': 'check'
-            }],
-            [{
-                'script': 'sub'
-            }, {
-                'script': 'super'
-            }], // superscript/subscript
-            [{
-                'indent': '-1'
-            }, {
-                'indent': '+1'
-            }], // outdent/indent
-            [{
-                'direction': 'rtl'
-            }], // text direction
-
-            [{
-                'size': ['small', false, 'large', 'huge']
-            }], // custom dropdown
-            [{
-                'header': [1, 2, 3, 4, 5, 6, false]
-            }],
-
-            [{
-                'color': []
-            }, {
-                'background': []
-            }], // dropdown with defaults from theme
-            [{
-                'font': []
-            }],
-            [{
-                'align': []
-            }],
-
-            ['clean'] // remove formatting button
-        ];
-        
         document.addEventListener('DOMContentLoaded', function() {
-            if (!document.getElementById('editor').classList.contains('ql-container')) {
-                const quill = new Quill('#editor', {
-                    modules: {
-                        toolbar: toolbarOptions
-                    },
-                    theme: 'snow',
-                    placeholder: 'Tulis konten artikel di sini...',
-                });
-
-                // Populate editor with old content if exists
-                let oldContent = @json(old('content', $article->content));
-                if (oldContent) {
-                    quill.root.innerHTML = oldContent;
-                }
-
-                // Update hidden input
-                quill.on('text-change', function() {
-                    document.getElementById('content').value = quill.root.innerHTML;
-                });
-
-                document.querySelector('form').addEventListener('submit', function() {
-                    document.getElementById('content').value = quill.root.innerHTML;
-                });
-            }
-
-            // Handle image upload
-            var toolbar = quill.getModule('toolbar');
-            toolbar.addHandler('image', function() {
-                var input = document.createElement('input');
-                input.setAttribute('type', 'file');
-                input.setAttribute('accept', 'image/*');
-                input.click();
-
-                input.onchange = function() {
-                    var file = input.files[0];
-                    if (file) {
-                        var formData = new FormData();
-                        formData.append('image', file);
-                        formData.append('_token', '{{ csrf_token() }}');
-
-                        // Upload to server
-                        fetch('{{ route('image.upload') }}', {
-                                method: 'POST',
-                                body: formData
-                            })
-                            .then(response => response.json())
-                            .then(result => {
-                                if (result.success) {
-                                    // Insert image into editor
-                                    const range = quill.getSelection();
-                                    quill.insertEmbed(range.index, 'image', result.url);
-                                }
-                            })
-                            .catch(error => {
-                                console.error('Error:', error);
-                            });
-                    }
-                };
+            const quill = new Quill('#editor', {
+                theme: 'snow',
+                modules: {
+                    toolbar: [
+                        [{
+                            'header': [1, 2, 3, 4, 5, 6, false]
+                        }],
+                        ['bold', 'italic', 'underline', 'strike'],
+                        [{
+                            'list': 'ordered'
+                        }, {
+                            'list': 'bullet'
+                        }],
+                        [{
+                            'script': 'sub'
+                        }, {
+                            'script': 'super'
+                        }],
+                        [{
+                            'indent': '-1'
+                        }, {
+                            'indent': '+1'
+                        }],
+                        [{
+                            'direction': 'rtl'
+                        }],
+                        [{
+                            'color': []
+                        }, {
+                            'background': []
+                        }],
+                        [{
+                            'align': []
+                        }],
+                        ['link', 'image', 'video'],
+                        ['clean']
+                    ]
+                },
+                placeholder: 'Tulis konten artikel di sini...',
             });
+
+        // Set isi editor dari database
+        quill.root.innerHTML = {!! json_encode($article->content) !!};
+
+        // Update hidden input when editor content changes
+        quill.on('text-change', function() {
+            document.getElementById('content').value = quill.root.innerHTML;
+        });
+
+        // Ensure form submission captures editor content
+        document.querySelector('form').addEventListener('submit', function() {
+            document.getElementById('content').value = quill.root.innerHTML;
+        });
+
+        // Handle image upload
+        var toolbar = quill.getModule('toolbar'); toolbar.addHandler('image', function() {
+            var input = document.createElement('input');
+            input.setAttribute('type', 'file');
+            input.setAttribute('accept', 'image/*');
+            input.click();
+
+            input.onchange = function() {
+                var file = input.files[0];
+                if (file) {
+                    var formData = new FormData();
+                    formData.append('image', file);
+                    formData.append('_token', '{{ csrf_token() }}');
+
+                    // Upload to server
+                    fetch('{{ route('image.upload') }}', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(result => {
+                            if (result.success) {
+                                // Insert image into editor
+                                const range = quill.getSelection();
+                                quill.insertEmbed(range.index, 'image', result.url);
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('Gagal mengunggah gambar. Pastikan koneksi internet stabil.');
+                        });
+                }
+            };
+        });
         });
 
         // Preview featured image
@@ -254,5 +223,7 @@
                 reader.readAsDataURL(fileInput.files[0]);
             }
         }
+
+        const quill = window.quillInstance;
     </script>
 </x-app-layout>

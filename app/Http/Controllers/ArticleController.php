@@ -36,7 +36,7 @@ class ArticleController extends Controller
             'content' => 'required|string|min:5',
             'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'visibility' => 'required|in:public,private',
-            'category' => 'required|in:umum,kesehatan_mental,gizi_nutrisi,penyakit,seksual_reproduksi,tips_kesehatan',
+            'category' => 'required|in:umum,tips_kesehatan',
         ]);
 
         Article::create([
@@ -49,7 +49,7 @@ class ArticleController extends Controller
             'category' => $request->category,
         ]);
 
-        return redirect()->route('article.index')->with('success', 'Article created successfully');
+        return redirect()->route('article.index')->with('success', 'Artikel baru berhasil di buat');
     }
 
     /**
@@ -89,11 +89,11 @@ class ArticleController extends Controller
     public function update(Request $request, string $slug)
     {
         $request->validate([
-            'title' => 'required|string|max:150|min:5',
-            'content' => 'required|string|min:5',
+            'title' => 'nullable|string|max:150|min:5',
+            'content' => 'nullable|string|min:5',
             'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'visibility' => 'required|in:public,private',
-            'category' => 'required|in:umum,kesehatan_mental,gizi_nutrisi,penyakit,seksual_reproduksi,tips_kesehatan',
+            'visibility' => 'nullable|in:public,private',
+            'category' => 'nullable|in:umum,tips_kesehatan',
         ]);
 
         $article = Article::where('slug', $slug)->firstOrFail();
@@ -105,7 +105,7 @@ class ArticleController extends Controller
             'category' => $request->category,
         ]);
 
-        return redirect()->route('article.index')->with('success', 'Article updated successfully');
+        return redirect()->route('article.index')->with('success', 'Artikel berhasil di update');
     }
 
     /**
@@ -114,6 +114,6 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         $article->delete();
-        return redirect()->route('article.index')->with('success', 'Article deleted successfully');
+        return redirect()->route('article.index')->with('success', 'Artikel berhasil dihapus');
     }
 }
