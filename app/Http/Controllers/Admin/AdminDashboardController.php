@@ -163,7 +163,8 @@ class AdminDashboardController extends Controller
     public function usersDetail($id)
     {
         $user = User::find($id);
+        $userPredictions = Prediction::where('user_id', $user->id)->get();
 
-        return view('admin.users.detail-user', compact('user'));
+        return view('admin.users.detail-user', compact('user', 'userPredictions'));
     }
 }

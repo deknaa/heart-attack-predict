@@ -457,26 +457,26 @@
                         </li>
                         <li>
                             <a href="{{ route('article.index') }}"
-                                class="flex items-center p-3 text-gray-700 transition-colors rounded-lg hover:bg-blue-50 dark:text-white dark:hover:bg-gray-700 group {{ request()->is('article') ? 'bg-red-50 dark:bg-gray-700' : '' }}">
-                                <svg class="w-5 h-5 {{ request()->is('article') ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-white' }}" xmlns="http://www.w3.org/2000/svg"
+                                class="flex items-center p-3 text-gray-700 transition-colors rounded-lg hover:bg-blue-50 dark:text-white dark:hover:bg-gray-700 group {{ request()->is('article*') ? 'bg-red-50 dark:bg-gray-700' : '' }}">
+                                <svg class="w-5 h-5 {{ request()->is('article*') ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-white' }}" xmlns="http://www.w3.org/2000/svg"
                                     fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2"
                                         d="M19 7h1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h11.5M7 14h6m-6 3h6m0-10h.5m-.5 3h.5M7 7h3v3H7V7Z" />
                                 </svg>
-                                <span class="font-medium ms-3 {{ request()->is('article') ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-white' }}">Manajemen Artikel</span>
+                                <span class="font-medium ms-3 {{ request()->is('article*') ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-white' }}">Manajemen Artikel</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('users.data') }}"
-                                class="flex items-center p-3 text-gray-700 transition-colors rounded-lg hover:bg-blue-50 dark:text-white dark:hover:bg-gray-700 group {{ request()->is('users/data') ? 'bg-red-50 dark:bg-gray-700' : '' }}">
-                                <svg class="w-5 h-5 {{ request()->is('users/data') ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-white' }}" xmlns="http://www.w3.org/2000/svg"
+                                class="flex items-center p-3 text-gray-700 transition-colors rounded-lg hover:bg-blue-50 dark:text-white dark:hover:bg-gray-700 group {{ request()->is('users/data*') ? 'bg-red-50 dark:bg-gray-700' : '' }}">
+                                <svg class="w-5 h-5 {{ request()->is('users/data*') ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-white' }}" xmlns="http://www.w3.org/2000/svg"
                                     fill="currentColor" viewBox="0 0 24 24">
                                     <path fill-rule="evenodd"
                                         d="M8 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4H6Zm7.25-2.095c.478-.86.75-1.85.75-2.905a5.973 5.973 0 0 0-.75-2.906 4 4 0 1 1 0 5.811ZM15.466 20c.34-.588.535-1.271.535-2v-1a5.978 5.978 0 0 0-1.528-4H18a4 4 0 0 1 4 4v1a2 2 0 0 1-2 2h-4.535Z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span class="font-medium ms-3 {{ request()->is('users/data') ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-white' }}">Data User</span>
+                                <span class="font-medium ms-3 {{ request()->is('users/data*') ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-white' }}">Data User</span>
                             </a>
                         </li>
                     </ul>

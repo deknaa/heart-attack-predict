@@ -5,12 +5,6 @@
                 {{ __('Detail User') }}
             </h2>
             <div class="flex gap-2">
-                <a href="" class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                    </svg>
-                    {{ __('Edit') }}
-                </a>
                 <a href="{{ route('users.data') }}" class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-gray-600 border border-transparent rounded-md hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -65,11 +59,11 @@
                             <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
                                 <div>
                                     <div class="mb-4">
-                                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Full Name</p>
+                                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Nama Pengguna</p>
                                         <p class="mt-1 text-gray-900 dark:text-gray-100">{{ $user->name }}</p>
                                     </div>
                                     <div class="mb-4">
-                                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Email Address</p>
+                                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Email</p>
                                         <p class="mt-1 text-gray-900 dark:text-gray-100">{{ $user->email }}</p>
                                     </div>
                                 </div>
@@ -79,8 +73,8 @@
                                         <p class="mt-1 text-gray-900 dark:text-gray-100">{{ ucfirst($user->role) }}</p>
                                     </div>
                                     <div class="mb-4">
-                                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Phone Number</p>
-                                        <p class="mt-1 text-gray-900 dark:text-gray-100">{{ $user->phone ?? 'Not provided' }}</p>
+                                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">No Telephone</p>
+                                        <p class="mt-1 text-gray-900 dark:text-gray-100">{{ $user->no_telp ?? '-' }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -97,12 +91,6 @@
                                     <div class="mb-4">
                                         <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Last Updated</p>
                                         <p class="mt-1 text-gray-900 dark:text-gray-100">{{ $user->updated_at->format('F d, Y') }}</p>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="mb-4">
-                                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Last Login</p>
-                                        <p class="mt-1 text-gray-900 dark:text-gray-100">{{ $user->last_login_at ? $user->last_login_at->format('F d, Y H:i') : 'Never' }}</p>
                                     </div>
                                 </div>
                             </div>

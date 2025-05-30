@@ -1,6 +1,6 @@
 <x-app-layout>
     <!-- Background with gradient -->
-    <div class="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
+    <div class="min-h-screen bg-gradient-to-br from-red-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-red-900 dark:to-purple-900">
         <div class="p-6 sm:ml-64 lg:p-8">
             <!-- Stats Cards Section -->
             <div class="grid grid-cols-1 gap-6 mt-5 mb-8 md:grid-cols-2 xl:grid-cols-2">
@@ -59,7 +59,7 @@
                             <div class="flex-1">
                                 <div class="flex items-center gap-3 mb-3">
                                     <div class="w-1 h-8 rounded-full bg-gradient-to-b from-blue-500 to-purple-500"></div>
-                                    <p class="text-sm font-semibold tracking-wider text-blue-500 uppercase">Total Users</p>
+                                    <p class="text-sm font-semibold tracking-wider text-blue-500 uppercase">Total Pengguna</p>
                                 </div>
                                 <h2 class="mb-1 text-3xl font-bold text-gray-800 dark:text-white">{{ $totalUsers }}</h2>
                                 <p class="text-sm text-gray-500 dark:text-gray-400">Pengguna Terdaftar</p>
@@ -98,12 +98,12 @@
             <!-- Header Section -->
             <div class="mb-10">
                 <div class="mb-2 text-center">
-                    <h1 class="text-4xl font-bold text-transparent bg-gradient-to-r from-gray-800 via-blue-600 to-purple-600 bg-clip-text dark:from-white dark:via-blue-400 dark:to-purple-400">
+                    <h1 class="text-4xl font-bold text-transparent bg-gradient-to-r from-gray-800 via-red-600 to-purple-600 bg-clip-text dark:from-white dark:via-red-400 dark:to-purple-400">
                         Dashboard Analytics
                     </h1>
                 </div>
                 <p class="text-lg text-center text-gray-600 dark:text-gray-300">Monitoring Performa Dalam Bentuk Grafik</p>
-                <div class="w-24 h-1 mx-auto mt-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"></div>
+                <div class="w-24 h-1 mx-auto mt-4 rounded-full bg-gradient-to-r from-red-500 to-red-700"></div>
             </div>
 
             <!-- Chart Cards Section -->
