@@ -58,6 +58,8 @@ Route::middleware(['auth', 'adminRole'])->group(function () {
     
     Route::get('users/data', [AdminDashboardController::class, 'usersData'])->name('users.data');
     Route::get('users/data/{id}', [AdminDashboardController::class, 'usersDetail'])->name('users.detail');
+
+    Route::get('predictions/{id}', [PredictionController::class, 'show'])->name('predict.show');
 });
 
 // Google Callback

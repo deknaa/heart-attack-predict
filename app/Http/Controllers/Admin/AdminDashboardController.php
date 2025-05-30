@@ -160,11 +160,26 @@ class AdminDashboardController extends Controller
     }
 
     // Display details of a specific user on admin dashboard
-    public function usersDetail($id)
+    public function usersDetail(Request $request, $id)
     {
         $user = User::find($id);
-        $userPredictions = Prediction::where('user_id', $user->id)->get();
 
-        return view('admin.users.detail-user', compact('user', 'userPredictions'));
+         // Validasi parameter per_page
+        $perPage = $request->get('per_page', 10);
+        
+        // Validasi agar per_page hanya bisa nilai yang diizinkan
+        if (!in_array($perPage, [5, 10, 15, 25, 50])) {
+            $perPage = 10;
+        }
+
+        // Query prediksi dengan pagination
+        $predictions = Prediction::where('user_id', $user->id) // Sesuaikan dengan field user_id Anda
+            ->orderBy('created_at', 'desc') // Urutkan dari terbaru
+            ->paginate($perPage);
+
+        // Append parameter query string ke pagination links
+        $predictions->appends($request->query());
+
+        return view('admin.users.detail-user', compact('user', 'predictions'));
     }
 }
