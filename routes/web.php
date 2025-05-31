@@ -37,7 +37,7 @@ Route::middleware(['auth', 'userRole'])->group(function () {
 
     // Route for article
     Route::get('article/list', [UserArticleController::class, 'list'])->name('article.list');
-    Route::get('article/detail/{slug}', [UserArticleController::class, 'detail'])->name('article.detail');
+    Route::get('article/list/{slug}/detail', [UserArticleController::class, 'detail'])->name('article.detail');
 
     // Route for export excel
     Route::get('export/excel/predictions', function() {

@@ -42,7 +42,7 @@
                             class="px-3 py-2 text-sm font-medium {{ request()->is('predict-history') ? 'text-red-600 rounded-md dark:text-red-400' : 'text-gray-600 rounded-md hover:text-red-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-red-400 dark:hover:bg-gray-700' }}">History
                             Prediksi</a>
                         <a href="{{ route('article.list') }}"
-                            class="px-3 py-2 text-sm font-medium {{ request()->is('article/list') ? 'text-red-600 rounded-md dark:text-red-400' : 'text-gray-600 rounded-md hover:text-red-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-red-400 dark:hover:bg-gray-700' }}">Artikel</a>
+                            class="px-3 py-2 text-sm font-medium {{ request()->is('article/list*') ? 'text-red-600 rounded-md dark:text-red-400' : 'text-gray-600 rounded-md hover:text-red-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-red-400 dark:hover:bg-gray-700' }}">Artikel</a>
                     </div>
 
                     {{-- Right Side --}}
