@@ -272,15 +272,8 @@
                                                     d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                             </svg>
                                         </div>
-                                        <h3 class="mb-2 text-xl font-bold text-gray-900">📋 Tidak ada history
+                                        <h3 class="mb-2 text-xl font-bold text-gray-900">📋 User tidak memiliki history
                                             prediksi</h3>
-                                        <p class="max-w-md mb-6 text-center text-gray-600">Belum ada data prediksi
-                                            yang tersimpan. Mulai lakukan prediksi kesehatan jantung Anda sekarang.
-                                        </p>
-                                        <a href="{{ route('predict') }}"
-                                            class="inline-flex items-center px-6 py-3 text-sm font-semibold text-white transition-all duration-300 shadow-lg bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl hover:from-blue-600 hover:to-blue-700 hover:shadow-xl hover:scale-105">
-                                            🩺 Mulai Prediksi
-                                        </a>
                                     </div>
                                 </td>
                             </tr>
