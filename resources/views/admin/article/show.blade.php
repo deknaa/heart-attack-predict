@@ -170,23 +170,6 @@
                 </div>
             </section>
 
-            {{-- CTA Section --}}
-            <section class="py-16 text-white bg-gradient-to-r from-blue-600 to-purple-600">
-                <div class="container px-4 mx-auto text-center">
-                    <h2 class="mb-4 text-3xl font-bold">Tetap Update dengan Perkembangan Dunia Kesehatan</h2>
-                    <p class="max-w-3xl mx-auto mb-8 text-xl">Dapatkan artikel terbaru tentang kesehatan, gaya hidup, dan tips
-                        kesehatan
-                        langsung ke inbox Anda.</p>
-                    <form class="flex flex-col max-w-xl gap-4 mx-auto sm:flex-row">
-                        <input type="email" placeholder="Email Anda"
-                            class="flex-1 px-4 py-3 text-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300">
-                        <button type="submit"
-                            class="px-6 py-3 font-bold text-blue-600 transition bg-white rounded-lg hover:bg-blue-50">Berlangganan</button>
-                    </form>
-                    <p class="mt-4 text-sm text-blue-100">Kami menghargai privasi Anda. Tidak ada spam, kapanpun.</p>
-                </div>
-            </section>
-
             {{-- Back to top button --}}
             <button id="back-to-top"
                 class="fixed p-3 text-white transition-opacity duration-300 bg-blue-600 rounded-full shadow-lg opacity-0 bottom-6 right-6 hover:bg-blue-700">
