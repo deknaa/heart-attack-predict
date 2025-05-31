@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 Route::get('profile/{id}', [ProfileController::class, 'index'])->name('profile.index');
 Route::put('profile/{id}', [ProfileController::class, 'updateData'])->name('profile.update');
+Route::get('predictions/{id}', [PredictionController::class, 'show'])->name('predict.show');
 
 // Route untuk user dengan role users
 Route::middleware(['auth', 'userRole'])->group(function () {
@@ -33,7 +34,6 @@ Route::middleware(['auth', 'userRole'])->group(function () {
     Route::get('predict', [PredictionController::class, 'index'])->name('predict');
     Route::post('predict', [PredictionController::class, 'predict'])->name('predict');
     Route::get('predict-history', [PredictionController::class, 'history'])->name('predict.history');
-    Route::get('predictions/{id}', [PredictionController::class, 'show'])->name('predict.show');
 
     // Route for article
     Route::get('article/list', [UserArticleController::class, 'list'])->name('article.list');
@@ -58,8 +58,6 @@ Route::middleware(['auth', 'adminRole'])->group(function () {
     
     Route::get('users/data', [AdminDashboardController::class, 'usersData'])->name('users.data');
     Route::get('users/data/{id}', [AdminDashboardController::class, 'usersDetail'])->name('users.detail');
-
-    Route::get('predictions/{id}', [PredictionController::class, 'show'])->name('predict.show');
 });
 
 // Google Callback
