@@ -73,29 +73,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        {{-- Share Buttons --}}
-                        <div class="py-6 my-8 border-t border-b">
-                            <h3 class="mb-4 text-lg font-bold">Bagikan Artikel Ini</h3>
-                            <div class="flex flex-wrap items-center gap-2">
-                                <a href="https://www.facebook.com/" target="_blank"
-                                    class="flex items-center w-full px-4 py-2 text-white transition bg-blue-600 rounded-lg md:w-fit hover:bg-blue-700">
-                                    <i class="mr-2 fab fa-facebook-f"></i> Facebook
-                                </a>
-                                <a href="#"
-                                    class="flex items-center w-full px-4 py-2 text-white transition bg-blue-400 rounded-lg hover:bg-blue-500 md:w-fit">
-                                    <i class="mr-2 fab fa-twitter"></i> Twitter
-                                </a>
-                                <a href="#"
-                                    class="flex items-center w-full px-4 py-2 text-white transition bg-green-500 rounded-lg hover:bg-green-600 md:w-fit">
-                                    <i class="mr-2 fab fa-whatsapp"></i> WhatsApp
-                                </a>
-                                <a href="#"
-                                    class="flex items-center w-full px-4 py-2 text-gray-700 transition bg-gray-200 rounded-lg hover:bg-gray-300 md:w-fit">
-                                    <i class="mr-2 far fa-envelope"></i> Email
-                                </a>
-                            </div>
-                        </div>
                     </div>
 
                     {{-- Sidebar --}}
