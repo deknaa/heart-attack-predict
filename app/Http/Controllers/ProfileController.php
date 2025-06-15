@@ -48,7 +48,7 @@ class ProfileController extends Controller
 
         $request->validate([
             'name' => ['required', 'string', 'max:255', 'min:3'],
-            'password' => [Rules\Password::defaults()],
+            'password' => ['nullable', 'string'],
             'alamat' => ['required', 'string'],
             'no_telp' => ['required', 'numeric'],
         ]);
