@@ -74,7 +74,7 @@
                         </div>
 
                         {{-- Share Buttons --}}
-                        <div class="py-6 my-8 border-t border-b">
+                        {{-- <div class="py-6 my-8 border-t border-b">
                             <h3 class="mb-4 text-lg font-bold">Bagikan Artikel Ini</h3>
                             <div class="flex flex-wrap items-center gap-2">
                                 <a href="https://www.facebook.com/" target="_blank"
@@ -94,7 +94,7 @@
                                     <i class="mr-2 far fa-envelope"></i> Email
                                 </a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
 
                     {{-- Sidebar --}}
@@ -105,8 +105,12 @@
                             <div class="space-y-4">
                                 @foreach ($popularArticles as $item)
                                     <a href="#" class="flex group">
+                                        @if ($item->featured_image)    
                                         <img src="{{ Storage::url($item->featured_image) }}" alt="Article thumbnail"
                                             class="object-cover w-20 h-16 rounded">
+                                        @else
+                                        <span>Tidak Ada Gambar</span>
+                                        @endif
                                         <div class="ml-3">
                                             <h4
                                                 class="font-medium text-gray-900 transition group-hover:text-blue-600 line-clamp-2">
@@ -127,8 +131,9 @@
                                     <a href="#"
                                         class="flex items-center justify-between py-2 transition border-b hover:text-blue-600">
                                         <span>{{ ucwords(str_replace('_', ' ', $item->category)) }}</span>
-                                        <span
-                                            class="px-2 py-1 text-xs text-blue-600 bg-blue-100 rounded">{{ $totalCategory }}</span>
+                                        <span class="px-2 py-1 text-xs text-blue-600 bg-blue-100 rounded">
+                                            {{ $item->total }}
+                                        </span>
                                     </a>
                                 @endforeach
                             </div>
@@ -146,14 +151,14 @@
                         @foreach ($relatedArticle as $item)
                             <div class="overflow-hidden transition bg-white shadow-sm rounded-xl hover:shadow-md">
                                 <a href="#">
-                                    <img src="{{ Storage::url($article->featured_image) }}" alt="Article thumbnail"
-                                        class="object-cover w-full h-48">
+                                    {{-- <img src="{{ Storage::url($article->featured_image) }}" alt="Article thumbnail"
+                                        class="object-cover w-full h-48"> --}}
                                     <div class="p-6">
                                         <span
                                             class="text-sm font-medium text-blue-600 capitalize">{{ ucwords(str_replace('_', ' ', $item->category)) }}</span>
                                         <h3 class="mt-2 mb-3 text-xl font-bold transition hover:text-blue-600">
                                             {{ $item->title }}</h3>
-                                        <p class="text-gray-600 line-clamp-3">{!! $item->content !!}</p>
+                                        <p class="text-gray-600 line-clamp-3">{!! Str::limit(strip_tags($item->content), 100) !!}</p>
                                         <div class="flex items-center mt-4">
                                             <img src="{{ $article->user->avatar_url }}" alt="Author"
                                                 class="w-6 h-6 mr-2 rounded-full">

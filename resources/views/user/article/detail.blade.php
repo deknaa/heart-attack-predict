@@ -104,7 +104,8 @@
                                 @foreach ($articleCategory as $item)
                                     <a href="#"
                                         class="flex items-center justify-between py-2 transition border-b hover:text-blue-600">
-                                        <span class="capitalize">{{ ucwords(str_replace('_', ' ', $item->category)) }}</span>
+                                        <span
+                                            class="capitalize">{{ ucwords(str_replace('_', ' ', $item->category)) }}</span>
                                         <span
                                             class="px-2 py-1 text-xs text-blue-600 bg-blue-100 rounded">{{ $totalCategory }}</span>
                                     </a>
@@ -120,25 +121,29 @@
                 <div class="container px-4 mx-auto">
                     <h2 class="mb-8 text-2xl font-bold">Artikel Terkait</h2>
                     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                        {{-- Article Card --}}
                         @foreach ($relatedArticle as $item)
                             <div class="overflow-hidden transition bg-white shadow-sm rounded-xl hover:shadow-md">
-                                <a href="#">
-                                    <img src="{{ Storage::url($article->featured_image) }}" alt="Article thumbnail"
+                                <a href="{{ route('article.show', $item->slug) }}">
+                                    <img src="{{ Storage::url($item->featured_image) }}" alt="Article thumbnail"
                                         class="object-cover w-full h-48">
                                     <div class="p-6">
-                                        <span
-                                            class="text-sm font-medium text-blue-600 capitalize">{{ ucwords(str_replace('_', ' ', $item->category)) }}</span>
+                                        <span class="text-sm font-medium text-blue-600 capitalize">
+                                            {{ ucwords(str_replace('_', ' ', $item->category)) }}
+                                        </span>
                                         <h3 class="mt-2 mb-3 text-xl font-bold transition hover:text-blue-600">
-                                            {{ $item->title }}</h3>
-                                        <p class="text-gray-600 line-clamp-3">{!! $item->content !!}</p>
+                                            {{ $item->title }}
+                                        </h3>
+                                        <p class="text-gray-600 line-clamp-3">
+                                            {!! Str::limit(strip_tags($item->content), 50) !!}
+                                        </p>
                                         <div class="flex items-center mt-4">
-                                            <img src="{{ $article->user->avatar_url }}" alt="Author"
+                                            <img src="{{ $item->user->avatar_url }}" alt="Author"
                                                 class="w-6 h-6 mr-2 rounded-full">
                                             <span class="text-sm text-gray-500">{{ $item->user->name }}</span>
                                             <span class="mx-2 text-gray-300">•</span>
-                                            <span
-                                                class="text-sm text-gray-500">{{ $item->created_at->diffForHumans() }}</span>
+                                            <span class="text-sm text-gray-500">
+                                                {{ $item->created_at->diffForHumans() }}
+                                            </span>
                                         </div>
                                     </div>
                                 </a>
@@ -147,6 +152,7 @@
                     </div>
                 </div>
             </section>
+
 
             {{-- Back to top button --}}
             <button id="back-to-top"

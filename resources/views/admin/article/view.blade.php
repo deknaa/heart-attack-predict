@@ -91,13 +91,17 @@
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 dark:text-white">
-                                    <p class="text-sm line-clamp-2 dark:text-white">{!! Str::limit($article->content, 50) !!}</p>
+                                    <p class="text-sm line-clamp-2 dark:text-white">
+                                        {!! Str::limit(strip_tags($article->content), 50) !!}
+                                    </p>
                                 </td>
+
                                 <td class="px-6 py-4">
                                     <div class="flex items-center">
                                         <div
                                             class="flex items-center justify-center w-6 h-6 mr-2 bg-gray-200 rounded-full dark:bg-gray-600">
-                                            <span class="text-xs dark:text-white">{{ substr($article->user->name, 0, 1) }}</span>
+                                            <span
+                                                class="text-xs dark:text-white">{{ substr($article->user->name, 0, 1) }}</span>
                                         </div>
                                         <span class="dark:text-white">{{ $article->user->name }}</span>
                                     </div>

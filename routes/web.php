@@ -19,6 +19,8 @@ Route::get('/', function () {
 Route::get('profile/{id}', [ProfileController::class, 'index'])->name('profile.index');
 Route::put('profile/{id}', [ProfileController::class, 'updateData'])->name('profile.update');
 Route::get('predictions/{id}', [PredictionController::class, 'show'])->name('predict.show');
+// Route for PDF file download
+    Route::get('laporan/{id}/download', [PredictionController::class, 'generatePDF'])->name('pdf.download');
 
 // Route untuk user dengan role users
 Route::middleware(['auth', 'userRole'])->group(function () {
@@ -43,9 +45,6 @@ Route::middleware(['auth', 'userRole'])->group(function () {
     Route::get('export/excel/predictions', function() {
         return Excel::download(new PredictionsExport, 'predictions.xlsx');
     });
-
-    // Route for PDF file download
-    Route::get('laporan/{id}/download', [PredictionController::class, 'generatePDF'])->name('pdf.download');
 });
 
 // Route untuk user dengan role admin
